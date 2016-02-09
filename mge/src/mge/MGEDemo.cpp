@@ -18,7 +18,8 @@ using namespace std;
 #include "mge/materials/TextureMaterial.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
-#include "mge/behaviours/KeysBehaviour.hpp"
+//#include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/behaviours/FPS_Controller.hpp"
 #include "mge/behaviours/LookAt.hpp"
 
 #include "mge/util/DebugHud.hpp"
@@ -74,7 +75,7 @@ void MGEDemo::_initializeScene()
     GameObject* teapot = new GameObject ("teapot", glm::vec3(-3,1,0));
     teapot->setMesh (teapotMeshS);
     teapot->setMaterial(textureMaterial2);
-    teapot->setBehaviour (new KeysBehaviour());
+    teapot->setBehaviour (new FPS_Controller());
     _world->add(teapot);
 
     GameObject* monkey = new GameObject ("monkey", glm::vec3(3,1,0));
