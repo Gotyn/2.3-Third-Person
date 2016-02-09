@@ -5,7 +5,7 @@
 using namespace std;
 #include <lua.hpp>
 #include "mge/MGEDemo.hpp"
-#include "mge/core/LuaLevelManager.h"
+#include "mge/core/LuaLevelManger.h"
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 MGEDemo::MGEDemo():AbstractGame ()

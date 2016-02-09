@@ -1,4 +1,4 @@
-#include "mge/core/LuaLevelManager.h"
+#include "mge/core/LuaLevelManger.h"
 #include <stdio.h>      /* printf, fgets */
 #include <stdlib.h>     /* atoi */
 #include "mge/core/Timer.hpp"
