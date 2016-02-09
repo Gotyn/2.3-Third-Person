@@ -1,4 +1,5 @@
 #include "AbstractGame.hpp"
+#include "LuaLevelManger.h"
 
 #include <iostream>
 using namespace std;

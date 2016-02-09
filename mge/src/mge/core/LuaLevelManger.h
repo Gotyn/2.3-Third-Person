@@ -16,7 +16,6 @@ using namespace std;
 
 #include "mge/core/GameObject.hpp"
 #include "mge/core/AbstractGame.hpp"
-#include "mge/core/LuaLevelDesigner.h"
 #include "mge/materials/AbstractMaterial.hpp"
 
 #include "mge/materials/ColorMaterial.hpp"
