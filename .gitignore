@@ -1,5 +1,3 @@
-/mge/bin
-
 # Compiled Object files
 *.slo
 *.lo
@@ -28,6 +26,6 @@
 *.exe
 *.out
 *.app
-
-# CodeBlocks
 *.layout
+*.layout
+mge/mingwbundle_dynamic.layout
