@@ -1497,3 +1497,281 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
+1449670561 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\main.cpp
+	<iostream>
+	"mge/core/AbstractGame.hpp"
+	"mge/MGEDemo.hpp"
+
+1455025710 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+	<SFML/Graphics.hpp>
+	<GL/glew.h>
+	<string>
+
+1455029199 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\mgedemo.hpp
+	<mge/core/AbstractGame.hpp>
+	<SFML/Graphics.hpp>
+	<vector>
+	<string>
+	<lua.hpp>
+	"mge/core/Renderer.hpp"
+	"mge/core/Mesh.hpp"
+	"mge/core/World.hpp"
+	"mge/core/FPS.hpp"
+	"mge/core/Camera.hpp"
+	"mge/core/GameObject.hpp"
+	"mge/materials/AbstractMaterial.hpp"
+	"mge/materials/ColorMaterial.hpp"
+	"mge/materials/TextureMaterial.hpp"
+	"mge/behaviours/RotatingBehaviour.hpp"
+	"mge/behaviours/KeysBehaviour.hpp"
+	"mge/behaviours/LookAt.hpp"
+	"mge/util/DebugHud.hpp"
+	"mge/config.hpp"
+	"mge/MGEDemo.hpp"
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\renderer.hpp
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\mesh.hpp
+	<vector>
+	<cstring>
+	<string>
+	<GL/glew.h>
+	<glm.hpp>
+
+1449670561 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\glm.hpp
+	<iostream>
+	<iomanip>
+	<glm/glm.hpp>
+	<glm/ext.hpp>
+
+1449670563 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\world.hpp
+	<vector>
+	"mge/core/GameObject.hpp"
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\gameobject.hpp
+	<vector>
+	<string>
+	<iostream>
+	<glm.hpp>
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\fps.hpp
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\camera.hpp
+	<string>
+	"mge/core/GameObject.hpp"
+
+1449670563 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\abstractmaterial.hpp
+	"mge/core/ShaderProgram.hpp"
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\shaderprogram.hpp
+	<vector>
+	<string>
+	<GL/glew.h>
+
+1449670563 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\colormaterial.hpp
+	"mge/materials/AbstractMaterial.hpp"
+	<glm.hpp>
+
+1449670563 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\texturematerial.hpp
+	"mge/core/Texture.hpp"
+	"mge/materials/AbstractMaterial.hpp"
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\texture.hpp
+	<map>
+	<string>
+	<GL/glew.h>
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.hpp
+	"mge/behaviours/AbstractBehaviour.hpp"
+
+1449670561 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.hpp
+
+1449670561 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\keysbehaviour.hpp
+	"mge/behaviours/AbstractBehaviour.hpp"
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\lookat.hpp
+	<glm.hpp>
+	"mge/behaviours/AbstractBehaviour.hpp"
+
+1449670563 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\util\debughud.hpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1455029264 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\config.hpp
+	<string>
+
+1449670561 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.cpp
+	<cassert>
+	<iostream>
+	"mge/behaviours/AbstractBehaviour.hpp"
+	"mge/core/GameObject.hpp"
+
+1449670561 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\keysbehaviour.cpp
+	"mge/behaviours/KeysBehaviour.hpp"
+	"mge/core/GameObject.hpp"
+	<sfml/window/event.hpp>
+
+1449670561 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\lookat.cpp
+	<glm.hpp>
+	"mge/behaviours/LookAt.hpp"
+	"mge/core/GameObject.hpp"
+	<iostream>
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.cpp
+	"mge/behaviours/RotatingBehaviour.hpp"
+	"mge/core/GameObject.hpp"
+
+1455029035 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+	"AbstractGame.hpp"
+	"LuaLevelManger.h"
+	<iostream>
+	"mge/core/Timer.hpp"
+	"mge/core/FPS.hpp"
+	"mge/core/Renderer.hpp"
+	"mge/core/World.hpp"
+
+1455027888 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\lualevelmanger.h
+	<glm.hpp>
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"mge/core/Renderer.hpp"
+	"mge/core/Mesh.hpp"
+	"mge/core/World.hpp"
+	"mge/core/FPS.hpp"
+	"mge/core/Camera.hpp"
+	"mge/core/GameObject.hpp"
+	"mge/core/AbstractGame.hpp"
+	"mge/materials/AbstractMaterial.hpp"
+	"mge/materials/ColorMaterial.hpp"
+	"mge/materials/TextureMaterial.hpp"
+	"mge/behaviours/RotatingBehaviour.hpp"
+	"mge/behaviours/KeysBehaviour.hpp"
+	"mge/behaviours/LookAt.hpp"
+	"mge/util/DebugHud.hpp"
+	<lua.hpp>
+	<mge/config.hpp>
+
+1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\timer.hpp
+	<SFML/System.hpp>
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\camera.cpp
+	<iostream>
+	<glm.hpp>
+	"mge/core/Camera.hpp"
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\fps.cpp
+	<iostream>
+	"mge/core/FPS.hpp"
+	"mge/core/Timer.hpp"
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\gameobject.cpp
+	<cassert>
+	<iostream>
+	<glm.hpp>
+	"mge/core/GameObject.hpp"
+	"mge/core/Mesh.hpp"
+	"mge/core/World.hpp"
+	"mge/behaviours/AbstractBehaviour.hpp"
+
+1455028728 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\lualevelmanger.cpp
+	"mge/core/LuaLevelManager.h"
+	<stdio.h>
+	<stdlib.h>
+	"mge/core/Timer.hpp"
+
+1455027905 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\lualevelmanager.h
+	<glm.hpp>
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	"mge/core/Renderer.hpp"
+	"mge/core/Mesh.hpp"
+	"mge/core/World.hpp"
+	"mge/core/FPS.hpp"
+	"mge/core/Camera.hpp"
+	"mge/core/GameObject.hpp"
+	"mge/core/AbstractGame.hpp"
+	"mge/materials/AbstractMaterial.hpp"
+	"mge/materials/ColorMaterial.hpp"
+	"mge/materials/TextureMaterial.hpp"
+	"mge/behaviours/RotatingBehaviour.hpp"
+	"mge/behaviours/KeysBehaviour.hpp"
+	"mge/behaviours/LookAt.hpp"
+	"mge/util/DebugHud.hpp"
+	<lua.hpp>
+	<mge/config.hpp>
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\mesh.cpp
+	"mge/core/Mesh.hpp"
+	<iostream>
+	<map>
+	<string>
+	<fstream>
+	"mge/core/Renderer.hpp"
+	"mge/core/World.hpp"
+	"mge/core/Camera.hpp"
+	"glm.hpp"
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\renderer.cpp
+	"mge/core/Renderer.hpp"
+	<cassert>
+	<GL/glew.h>
+	"mge/core/GameObject.hpp"
+	"mge/core/World.hpp"
+	"mge/core/Camera.hpp"
+	"mge/materials/AbstractMaterial.hpp"
+	<iostream>
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\shaderprogram.cpp
+	"mge/core/ShaderProgram.hpp"
+	<iostream>
+	<fstream>
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\texture.cpp
+	<iostream>
+	<string>
+	<SFML/Graphics.hpp>
+	"mge/core/Texture.hpp"
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\timer.cpp
+	"mge/core/Timer.hpp"
+
+1449670562 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\world.cpp
+	<cassert>
+	<algorithm>
+	<iostream>
+	"mge/core/World.hpp"
+	"mge/core/Camera.hpp"
+	"mge/core/Mesh.hpp"
+
+1449670563 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\abstractmaterial.cpp
+	"mge/materials/AbstractMaterial.hpp"
+
+1449670563 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\colormaterial.cpp
+	<glm.hpp>
+	"mge/materials/ColorMaterial.hpp"
+	"mge/config.hpp"
+	"mge/core/Camera.hpp"
+	"mge/core/Mesh.hpp"
+
+1449670563 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
+	<glm.hpp>
+	"mge/materials/TextureMaterial.hpp"
+	"mge/core/Texture.hpp"
+	"mge/core/Camera.hpp"
+	"mge/core/Mesh.hpp"
+	"mge/config.hpp"
+
+1449670563 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\util\debughud.cpp
+	<cassert>
+	<iostream>
+	<cstdio>
+	<GL/glew.h>
+	<SFML/Graphics/Text.hpp>
+	"mge/core/FPS.hpp"
+	"mge/util/DebugHud.hpp"
+	"mge/config.hpp"
+

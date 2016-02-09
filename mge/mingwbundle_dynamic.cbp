@@ -19,6 +19,7 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="src" />
+					<Add directory="src/mge/core" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32" />
@@ -76,6 +77,8 @@
 		<Unit filename="src/mge/core/FPS.hpp" />
 		<Unit filename="src/mge/core/GameObject.cpp" />
 		<Unit filename="src/mge/core/GameObject.hpp" />
+		<Unit filename="src/mge/core/LuaLevelManger.cpp" />
+		<Unit filename="src/mge/core/LuaLevelManger.h" />
 		<Unit filename="src/mge/core/Mesh.cpp" />
 		<Unit filename="src/mge/core/Mesh.hpp" />
 		<Unit filename="src/mge/core/Renderer.cpp" />

@@ -26,7 +26,6 @@ LuaLevelManager::LuaLevelManager()
 
 LuaLevelManager::~LuaLevelManager()
 {
-    //delete _lua;
     //dtor
 }
 
