@@ -44,6 +44,8 @@ class AbstractGame
         virtual void _initializeRenderer();
         //initialize a scene root to which we can attach/add objects
         virtual void _initializeWorld();
+        //delete existing world and initialize a new one
+        virtual void _resetWorld();
 
         //initialize the actual scene, to be done by a subclass
         virtual void _initializeScene() = 0;

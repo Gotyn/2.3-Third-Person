@@ -84,6 +84,15 @@ void AbstractGame::_initializeWorld() {
     cout << "World initialized." << endl << endl;
 }
 
+void AbstractGame::_resetWorld() {
+    if (_world != NULL)
+    {
+        delete _world;
+        _world = NULL;
+    }
+    _initializeWorld();
+}
+
 ///LOOP
 
 void AbstractGame::run()
