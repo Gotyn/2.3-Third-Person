@@ -27,6 +27,10 @@ GameObject::~GameObject()
     }
 
     //do not forget to delete behaviour, material, mesh, collider manually if required!
+    for (auto& c : _behaviours)
+    {
+        delete c.second;
+    }
 }
 
 void GameObject::setName (std::string pName)
@@ -88,6 +92,12 @@ void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
 AbstractBehaviour * GameObject::getBehaviour() const
 {
     return _behaviour;
+}
+
+//new multiple behaviours
+void GameObject::addBehaviour(std::type_index type, AbstractBehaviour* pBehaviour)
+{
+    _behaviours[type] = pBehaviour;
 }
 
 void GameObject::setParent (GameObject* pParent) {
@@ -173,6 +183,11 @@ void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 	if (_behaviour) {
 		_behaviour->update(pStep);
 	}
+
+    for (auto p : _behaviours)
+    {
+        p.second->update(pStep);
+    }
 
     for (int i = _children.size()-1; i >= 0; --i ) {
         _children[i]->update(pStep, _worldTransform);

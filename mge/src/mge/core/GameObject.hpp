@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <glm.hpp>
+#include <map>
+#include <typeindex>
 
 class AbstractCollider;
 class AbstractBehaviour;
@@ -56,6 +58,18 @@ class GameObject
 		void setBehaviour(AbstractBehaviour* pBehaviour);
 		AbstractBehaviour* getBehaviour() const;
 
+		//new multiple behaviours:
+		void addBehaviour(std::type_index type, AbstractBehaviour* pBehaviour);
+
+        template <typename T> T* getBehaviour()
+        {
+            auto it = _behaviours.find(std::type_index(typeid(T)));
+            if (it != _behaviours.end()) {
+                return dynamic_cast<T*>(it->second);
+            }
+            return nullptr;
+        }
+
 		virtual void update(float pStep, const glm::mat4& pParentTransform);
 
         //child management
@@ -78,9 +92,11 @@ class GameObject
 
         GameObject* _parent;
 		std::vector<GameObject*> _children;
+        std::map<std::type_index, AbstractBehaviour*> _behaviours;
 
+        std::string _type; //type of GameObject(eg. tree/car)
         Mesh* _mesh;
-		AbstractBehaviour* _behaviour;
+		AbstractBehaviour* _behaviour; //to be removed
 		AbstractMaterial* _material;
 		World* _world;
 
