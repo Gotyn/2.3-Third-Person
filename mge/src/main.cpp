@@ -2,6 +2,7 @@
 
 #include "mge/core/AbstractGame.hpp"
 #include "mge/MGEDemo.hpp"
+#include "mge/core/SphinxDreams.h"
 
 /**
  * Main entry point for the Micro Engine.
@@ -22,7 +23,7 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
-    AbstractGame* game = new MGEDemo();
+    AbstractGame* game = new SphinxDreams();
     game->initialize();
     game->run();
 
