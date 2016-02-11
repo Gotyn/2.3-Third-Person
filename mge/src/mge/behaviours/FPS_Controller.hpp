@@ -1,6 +1,7 @@
 #ifndef FPS_Controller_H
 #define FPS_Controller_H
 
+#include <glm.hpp>
 #include "mge/behaviours/AbstractBehaviour.hpp"
 
 /**
@@ -10,13 +11,17 @@
 class FPS_Controller : public AbstractBehaviour
 {
 	public:
-		FPS_Controller(float moveSpeed = 5, float turnSpeed = 45);
+		FPS_Controller(float moveSpeed = 5, float sensitivity = 1000);
 		virtual ~FPS_Controller();
 		virtual void update( float step );
 
     private:
         float _moveSpeed;
-        float _turnSpeed;
+        float _sensitivity;
+        float _mouseX, _mouseY;
+
+        glm::vec2 _mouseOld;
+        glm::vec2 _mouseDelta;
 };
 
 #endif // FPS_Controller_H
