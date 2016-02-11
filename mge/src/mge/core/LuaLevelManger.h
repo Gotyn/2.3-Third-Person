@@ -41,8 +41,13 @@ class LuaLevelManager
         static void getObjectPositionCPP(int id);
         static void detectCollision(lua_State* _lua);
         static void luaUpdateLoop(lua_State* _lua);
+        static void LoadLevel(World* _world);
+        static void registerFunctionsInLua();
+
         static int moveObject(lua_State* _lua);
         static int getObjectPositionLua(lua_State* _lua);
+        static int Create(lua_State* _lua);
+
         static std::vector<std::string> objects;
         static std::vector<int> positions;
         static std::vector<int> rotations;

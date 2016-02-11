@@ -29,8 +29,25 @@ LuaLevelManager::~LuaLevelManager()
     //dtor
 }
 
+//add here all C++ functions that need to be registered in Lua
+void LuaLevelManager::registerFunctionsInLua()
+{
+    lua_register(_lua, "Create", Create);
+    lua_register(_lua, "getObjectPositionLua", getObjectPositionLua);
+    lua_register(_lua, "moveObject", moveObject);
+}
+
+void LuaLevelManager::LoadLevel(World* _world)
+{
+    registerFunctionsInLua();
+    fillInArrays(_lua);
+
+}
+
 std::vector<GameObject*> LuaLevelManager::makeObjectsForLevel()
 {
+    fillInArrays(_lua);
+    registerFunctionsInLua();
     std::vector<GameObject*> gameObjects;
 
     for (int i = 0; i < objects.size(); ++i)
@@ -126,11 +143,26 @@ void LuaLevelManager::luaUpdateLoop(lua_State* _lua)
 //------------- FUNCTION CALLED FROM LUA WITHIN UPDATE LOOP -----------------//
 int LuaLevelManager::moveObject(lua_State* _lua)
 {
-    // get id from argumet
+    // get id from argument
 	int obj_id = lua_tonumber(_lua, 1);
-
     _gameObjects.at(obj_id)->translate(glm::vec3(0, 0, 0.05f));
     _gameObjects.at(obj_id)->rotate( glm::radians(1.5f), glm::vec3(0.0f, 0.0f, 1.0f ) );
+	// return the number of results
+    return 1;
+}
+//------------- FUNCTION CALLED FROM LUA WITHIN UPDATE LOOP -----------------//
+
+int LuaLevelManager::Create(lua_State* _lua)
+{
+    // get id from argument
+	int obj_type = lua_tonumber(_lua, 1);
+	std::cout << "ID ========>>>>> " << obj_type << std::endl;
+//    glm::vec3 obj_pos;
+//    obj_pos.x = lua_tonumber(_lua, 2);
+//    obj_pos.y = lua_tonumber(_lua, 3);
+//    obj_pos.z = lua_tonumber(_lua, 4);
+//    std::cout << obj_type << " | " << obj_pos.x << " | " << obj_pos.y << " | " << obj_pos.z << std::endl;
+
 	// return the number of results
     return 1;
 }
@@ -145,8 +177,6 @@ Camera* LuaLevelManager::_camera()
 void LuaLevelManager::fillInArrays(lua_State* _lua)
 {
     luaL_openlibs(_lua);
-    lua_register(_lua, "getObjectPositionLua", getObjectPositionLua);
-    lua_register(_lua, "moveObject", moveObject);
     luaL_loadfile(_lua, "level.lua");
     lua_call(_lua, 0, 0);
     //--------------- OBJECTS ------------------//
