@@ -15,11 +15,11 @@ extern "C" {
 using namespace std;
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
-MGEDemo::MGEDemo():AbstractGame ()
+MGEPaul::MGEPaul():AbstractGame ()
 {
 }
 
-void MGEDemo::initialize() {
+void MGEPaul::initialize() {
     //setup the core part
     AbstractGame::initialize();
     //setup the custom part
@@ -29,7 +29,7 @@ void MGEDemo::initialize() {
 }
 
 //build the game _world
-void MGEDemo::_initializeScene()
+void MGEPaul::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
@@ -94,7 +94,7 @@ void MGEDemo::_initializeScene()
     _world->add(testModel2);
 
     Camera* camera = new Camera ("camera", glm::vec3(0, 4.0f, 5.0f));
-    camera->setBehaviour (new OrbitBehaviourPaul(10, 0.20f, 0.99f, testModel, 0.1f, 0.1f, this->getWindow()));
+    camera->setBehaviour (new OrbitBehaviourPaul(10, 0.20f, 0.99f, testModel, 0.1f, 0.1f, _window));
     _world->add(camera);
     _world->setMainCamera(camera);
 
@@ -107,30 +107,33 @@ void MGEDemo::_initializeScene()
     _world->add(testLight);
     _world->add(testLight2);
     _world->add(testLight3);
+    _world->addLight(testLight);
+    _world->addLight(testLight2);
+    _world->addLight(testLight3);
 
 }
 
-void MGEDemo::_render() {
+void MGEPaul::_render() {
     AbstractGame::_render();
     _updateHud();
 }
 
-void MGEDemo::_update() {
+void MGEPaul::_update() {
     AbstractGame::_update();
 }
 
-void MGEDemo::_processEvents() {
+void MGEPaul::_processEvents() {
     AbstractGame::_processEvents();
 }
 
-void MGEDemo::_updateHud() {
+void MGEPaul::_updateHud() {
     string debugInfo = "";
     debugInfo += string ("FPS:") + std::to_string(FPS::getFPS())+"\n";
     _hud->setDebugInfo(debugInfo);
     _hud->draw();
 }
 
-MGEDemo::~MGEDemo()
+MGEPaul::~MGEPaul()
 {
     //dtor
 }

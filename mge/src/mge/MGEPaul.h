@@ -1,5 +1,5 @@
-#ifndef MGEDEMO_H
-#define MGEDEMO_H
+#ifndef MGEPaul_H
+#define MGEPaul_H
 
 #include <vector>
 #include <string>
@@ -34,13 +34,13 @@ class Swapper;
 class GameObject;
 class DebugHud;
 
-class MGEDemo: public AbstractGame
+class MGEPaul: public AbstractGame
 {
     //PUBLIC FUNCTIONS
 
 	public:
-		MGEDemo();
-		virtual ~MGEDemo();
+		MGEPaul();
+		virtual ~MGEPaul();
         virtual void initialize();
 
 	protected:
@@ -57,4 +57,4 @@ class MGEDemo: public AbstractGame
         void _initializeSceneFromLua();
 };
 
-#endif // MGEDEMO_H
+#endif // MGEPaul_H
