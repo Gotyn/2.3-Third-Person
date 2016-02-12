@@ -6,6 +6,7 @@
 
 #include "mge/MGEDemo.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/LookAt.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 
@@ -41,36 +42,70 @@ void MGEDemo::_initializeScene()
     luaL_openlibs(L);
     luaL_dofile(L, "testTable.lua");
 
-    luabridge::LuaRef t = luabridge::getGlobal(L, "window");
-    luabridge::LuaRef title = t["title"];
+    loadGameObject(L, "shadowCaster1");
 
-    int width = t["width"].cast<int>();
-    int height = t["height"].cast<int>();
-
-    std::string titleString = title.cast<std::string>();
-
-    std::cout << titleString << std::endl;
-    std::cout << "width = " << width << std::endl;
-    std::cout << "height = " << height << std::endl;
+//
+//    luabridge::LuaRef t = luabridge::getGlobal(L, "window");
+//    luabridge::LuaRef title = t["title"];
+//
+//    int width = t["width"].cast<int>();
+//    int height = t["height"].cast<int>();
+//
+//    std::string titleString = title.cast<std::string>();
+//
+//    std::cout << titleString << std::endl;
+//    std::cout << "width = " << width << std::endl;
+//    std::cout << "height = " << height << std::endl;
 
     // ==== end lua test =====
 
     // ==== TEST NEW OBJECT CREATION ====
 
-    GameObject* testGO = new GameObject("testGO", glm::vec3(0,0,0));
-    _world->add(testGO);
-
-    KeysBehaviour* kb = new KeysBehaviour;
-    kb->setOwner(testGO);
-//    kb->setFilename("ghost.png");
-    testGO->addBehaviour(std::type_index(typeid(KeysBehaviour)), kb);
-
-    RotatingBehaviour* rb = new RotatingBehaviour();
-    rb->setOwner(testGO);
-//    npcc->setPhrase("I'M A SCARY GHOST!!!");
-    testGO->addBehaviour(std::type_index(typeid(RotatingBehaviour)), rb);
+//    GameObject* testGO = new GameObject("testGO", glm::vec3(0,0,0));
+//    _world->add(testGO);
+//
+//    KeysBehaviour* kb = new KeysBehaviour;
+//    kb->setOwner(testGO);
+////    kb->setFilename("ghost.png");
+//    testGO->addBehaviour(std::type_index(typeid(KeysBehaviour)), kb);
+//
+//    RotatingBehaviour* rb = new RotatingBehaviour();
+//    rb->setOwner(testGO);
+////    npcc->setPhrase("I'M A SCARY GHOST!!!");
+//    testGO->addBehaviour(std::type_index(typeid(RotatingBehaviour)), rb);
 
     // ==== END TEST NEW OBJECT CREATION ====
+}
+
+GameObject* MGEDemo::loadGameObject(lua_State* L, const std::string& type)
+{
+    GameObject* go = new GameObject("luaGO", glm::vec3(0,0,0));
+    _world->add(go);
+
+    luabridge::LuaRef shadowCasterRef = luabridge::getGlobal(L, "shadowCaster");
+    for(int i = 0; i < shadowCasterRef.length(); ++i)
+    {
+//        std::string componentName = shadowCasterRef[i + 1]["componentName"].cast<std::string>();
+
+        luabridge::LuaRef comp = shadowCasterRef[i + 1];
+        std::string componentName = comp["componentName"].cast<std::string>();
+
+        go->addBehaviour(componentName);
+
+//        if (componentName == "RotatingBehaviour")
+//        {
+//            go->addBehaviour(std::type_index(typeid(RotatingBehaviour)));
+//        }
+//        else if (componentName == "NpcComponent")
+//        {
+//                addComponent<NpcComponent>(e);
+//        }
+
+        // create a component
+        std::cout << componentName << " added to " << go->getName() << std::endl;
+    }
+
+    return go;
 }
 
 void MGEDemo::_render() {

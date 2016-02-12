@@ -59,7 +59,7 @@ class GameObject
 		AbstractBehaviour* getBehaviour() const;
 
 		//new multiple behaviours:
-		void addBehaviour(std::type_index type, AbstractBehaviour* pBehaviour);
+		void addBehaviour(std::string pBehaviourName); // std::type_index type
 
         template <typename T> T* getBehaviour()
         {

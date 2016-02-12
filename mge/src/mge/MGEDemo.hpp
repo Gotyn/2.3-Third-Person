@@ -44,6 +44,7 @@ class MGEDemo: public AbstractGame
 		MGEDemo();
 		virtual ~MGEDemo();
         virtual void initialize();
+        GameObject* loadGameObject(lua_State* L, const std::string& type);
 
 	protected:
         virtual void _initializeScene();
@@ -54,9 +55,7 @@ class MGEDemo: public AbstractGame
 
 	private:
 		DebugHud* _hud;                   //hud display
-        //lua_State* _lua;
         void _updateHud();
-        void _initializeSceneFromLua();
 };
 
 #endif // MGEDEMO_H

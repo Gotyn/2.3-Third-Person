@@ -7,7 +7,7 @@ using namespace std;
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
-#include "mge/behaviours/AbstractBehaviour.hpp"
+#include "mge/behaviours/RotatingBehaviour.hpp"
 
 GameObject::GameObject(std::string pName, glm::vec3 pPosition )
 :	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children(),
@@ -95,9 +95,10 @@ AbstractBehaviour * GameObject::getBehaviour() const
 }
 
 //new multiple behaviours
-void GameObject::addBehaviour(std::type_index type, AbstractBehaviour* pBehaviour)
+void GameObject::addBehaviour(std::string pBehaviourName) // std::type_index type
 {
-    _behaviours[type] = pBehaviour;
+    RotatingBehaviour* ab = new RotatingBehaviour;
+//    _behaviours[std::type_index(typeid(RotatingBehaviour))] = ab;
 }
 
 void GameObject::setParent (GameObject* pParent) {
