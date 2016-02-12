@@ -66,6 +66,8 @@
 		<Unit filename="src/mge/behaviours/KeysBehaviour.hpp" />
 		<Unit filename="src/mge/behaviours/LookAt.cpp" />
 		<Unit filename="src/mge/behaviours/LookAt.hpp" />
+		<Unit filename="src/mge/behaviours/OrbitBehaviour.cpp" />
+		<Unit filename="src/mge/behaviours/OrbitBehaviour.hpp" />
 		<Unit filename="src/mge/behaviours/RotatingBehaviour.cpp" />
 		<Unit filename="src/mge/behaviours/RotatingBehaviour.hpp" />
 		<Unit filename="src/mge/config.hpp" />
@@ -85,6 +87,8 @@
 		<Unit filename="src/mge/core/Renderer.hpp" />
 		<Unit filename="src/mge/core/ShaderProgram.cpp" />
 		<Unit filename="src/mge/core/ShaderProgram.hpp" />
+		<Unit filename="src/mge/core/SphinxDreams.cpp" />
+		<Unit filename="src/mge/core/SphinxDreams.h" />
 		<Unit filename="src/mge/core/Texture.cpp" />
 		<Unit filename="src/mge/core/Texture.hpp" />
 		<Unit filename="src/mge/core/Timer.cpp" />

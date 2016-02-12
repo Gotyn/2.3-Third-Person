@@ -2,10 +2,20 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-using namespace std;
 #include <lua.hpp>
+
 #include "mge/MGEDemo.hpp"
-#include "mge/core/LuaLevelManger.h"
+#include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/behaviours/LookAt.hpp"
+#include "mge/LuaBridge/LuaBridge.h"
+
+extern "C" {
+# include "lua.h"
+# include "lauxlib.h"
+# include "lualib.h"
+}
+
+using namespace std;
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 MGEDemo::MGEDemo():AbstractGame ()
@@ -21,17 +31,46 @@ void MGEDemo::initialize() {
 	cout << "HUD initialized." << endl << endl;
 }
 
-int say(lua_State * _lua)
-{
-    cout << "hello from c++ func from lua\n" << endl;
-    return 0;
-}
-
 //build the game _world
 void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
-    _initializeSceneFromLua();
+
+    // ==== lua testing ====
+    lua_State* L = luaL_newstate();
+    luaL_openlibs(L);
+    luaL_dofile(L, "testTable.lua");
+
+    luabridge::LuaRef t = luabridge::getGlobal(L, "window");
+    luabridge::LuaRef title = t["title"];
+
+    int width = t["width"].cast<int>();
+    int height = t["height"].cast<int>();
+
+    std::string titleString = title.cast<std::string>();
+
+    std::cout << titleString << std::endl;
+    std::cout << "width = " << width << std::endl;
+    std::cout << "height = " << height << std::endl;
+
+    // ==== end lua test =====
+
+    // ==== TEST NEW OBJECT CREATION ====
+
+    GameObject* testGO = new GameObject("testGO", glm::vec3(0,0,0));
+    _world->add(testGO);
+
+    KeysBehaviour* kb = new KeysBehaviour;
+    kb->setOwner(testGO);
+//    kb->setFilename("ghost.png");
+    testGO->addBehaviour(std::type_index(typeid(KeysBehaviour)), kb);
+
+    RotatingBehaviour* rb = new RotatingBehaviour();
+    rb->setOwner(testGO);
+//    npcc->setPhrase("I'M A SCARY GHOST!!!");
+    testGO->addBehaviour(std::type_index(typeid(RotatingBehaviour)), rb);
+
+    // ==== END TEST NEW OBJECT CREATION ====
 }
 
 void MGEDemo::_render() {
@@ -41,9 +80,6 @@ void MGEDemo::_render() {
 
 void MGEDemo::_update() {
     AbstractGame::_update();
-    LuaLevelManager::detectCollision(LuaLevelManager::_lua);
-    LuaLevelManager::setGameTimeToLua(LuaLevelManager::_lua);
-    LuaLevelManager::luaUpdateLoop(LuaLevelManager::_lua);
 }
 
 void MGEDemo::_processEvents() {
@@ -55,17 +91,6 @@ void MGEDemo::_updateHud() {
     debugInfo += string ("FPS:") + std::to_string(FPS::getFPS())+"\n";
     _hud->setDebugInfo(debugInfo);
     _hud->draw();
-}
-//takes data provided by lua script and initializes scene
-void MGEDemo::_initializeSceneFromLua()
-{
-    LuaLevelManager::fillInArrays(LuaLevelManager::_lua);
-    std::vector<GameObject*> myGO = LuaLevelManager::makeObjectsForLevel();
-    for(int i = 0; i < myGO.size(); ++i) _world->add(myGO[i]);
-    Camera* camera = LuaLevelManager::_camera();
-    camera->setBehaviour(new LookAt(myGO[0]));
-    _world->add(camera);
-    _world->setMainCamera(camera);
 }
 
 MGEDemo::~MGEDemo()
