@@ -146,14 +146,14 @@ void AbstractGame::_processEvents()
                     exit = true;
                 }
                 //-------- THIS SECTION "SENDS" KEY_PRESSED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
-                LuaLevelManager::sendKeyPressedToLua = true;
-                if(LuaLevelManager::sendKeyPressedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, true);
+//                LuaLevelManager::sendKeyPressedToLua = true;
+//                if(LuaLevelManager::sendKeyPressedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, true);
                 //-------- THIS SECTION "SENDS" KEY_PRESSED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
                 break;
             case sf::Event::KeyReleased:
                 //-------- THIS SECTION "SENDS" KEY_RELEASED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
-                LuaLevelManager::sendKeyReleasedToLua = true;
-                if(LuaLevelManager::sendKeyReleasedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, false);
+//                LuaLevelManager::sendKeyReleasedToLua = true;
+//                if(LuaLevelManager::sendKeyReleasedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, false);
                 //-------- THIS SECTION "SENDS" KEY_RELEASED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
                 break;
             case sf::Event::Resized:
