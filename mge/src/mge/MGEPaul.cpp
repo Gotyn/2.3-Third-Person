@@ -42,7 +42,6 @@ void MGEPaul::_initializeScene()
     //Mesh* testModelMesh = Mesh::load (config::MGE_MODEL_PATH+"car.obj");
     Mesh* testModelMesh = Mesh::load (config::MGE_MODEL_PATH+"teapot_smooth.obj");
     Mesh* testModelMesh2 = Mesh::load (config::MGE_MODEL_PATH+"sphere_smooth.obj");
-    Mesh* testModelMesh3 = Mesh::load (config::MGE_MODEL_PATH+"car.obj");
 
     //LIGHTS
     BaseLight* testLight = new BaseLight("baseLight", glm::vec3(3,3,3), glm::vec3 (1,0,0), 0.5f, glm::vec3(0,1,1));
@@ -68,7 +67,6 @@ void MGEPaul::_initializeScene()
     //MATERIALS
     AbstractMaterial* textureMaterial = new TextureMaterial (Texture::load (config::MGE_TEXTURE_PATH+"land.jpg"));
     LitColorMaterial* litColorMaterial = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 0.0f), tempLights);
-    LitColorMaterial* litColorMaterial2 = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 1.0f), tempLights);
     LitColorMaterial* litColorMaterial3 = new LitColorMaterial (glm::vec3(1.0f, 1.0f, 0.5f), tempLights);
     //SCENE SETUP
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
@@ -77,21 +75,12 @@ void MGEPaul::_initializeScene()
     plane->setMaterial(litColorMaterial3);
     _world->add(plane);
 
-    GameObject* testModel = new GameObject ("testModel", glm::vec3(0, 0, 0));
-    //testModel->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+    GameObject* testModel = new GameObject ("testModel", glm::vec3(0, 1, 0));
     testModel->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));
     testModel->setMesh (testModelMesh);
     testModel->setMaterial(litColorMaterial);
     testModel->setBehaviour (new KeysBehaviour());
     _world->add(testModel);
-
-    GameObject* testModel2 = new GameObject ("testModel2", glm::vec3(3.0f, 0, -3.5f));
-    testModel2->scale(glm::vec3(0.15f, 0.15f, 0.15f));
-    testModel2->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));
-    testModel2->setMesh (testModelMesh3);
-    testModel2->setMaterial(litColorMaterial2);
-    testModel2->setBehaviour (new KeysBehaviour());
-    _world->add(testModel2);
 
     Camera* camera = new Camera ("camera", glm::vec3(0, 4.0f, 5.0f));
     camera->setBehaviour (new OrbitBehaviourPaul(10, 0.20f, 0.99f, testModel, 0.1f, 0.1f, _window));
