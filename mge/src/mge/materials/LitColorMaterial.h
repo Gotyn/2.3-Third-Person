@@ -5,6 +5,7 @@
 #include <glm.hpp>
 #include "BaseLight.h"
 
+#define MAX_LIGHTS_NUM 5
 /**
  * Lit color material.
  * This material uses lights.
@@ -12,13 +13,12 @@
 class LitColorMaterial : public AbstractMaterial
 {
     public:
-        LitColorMaterial(glm::vec3 pColor, BaseLight* pLights[]);
+        LitColorMaterial(glm::vec3 pColor, World* pWorld);
         virtual ~LitColorMaterial();
         virtual void render(World* pWorld, GameObject* pGameObject, Camera* pCamera);
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);
-        BaseLight* myLights[];
 
     private:
         //all the static properties are shared between instances of ColorMaterial
@@ -38,6 +38,7 @@ class LitColorMaterial : public AbstractMaterial
         static GLint uLightDirectionIndex[];
 
         static GLint uCameraPosIndex;
+        static GLint lightsUniforArraySize;
         static GLint _aVertex ;
         static GLint _aNormal;
         static GLint _aUV ;
@@ -45,11 +46,14 @@ class LitColorMaterial : public AbstractMaterial
         //this one is unique per instance of color material
         glm::vec3 _diffuseColor;
 
-        glm::vec3 ambientColorArr[3] = { glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec3(0,0,0) };
-        float ambientIntensityArr[3] = { 0, 0, 0 };
-        glm::vec3 lightColorArr[3] = { glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec3(0,0,0) };
-        glm::vec3 lightPositionArr[3] = { glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec3(0,0,0) };
-        glm::vec3 lightDirectionArr[3] = { glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec3(0,0,0) };
+        static glm::vec3 ambientColors[];
+        static float ambientIntensities[];
+        static glm::vec3 lightColors[];
+        static glm::vec3 lightPositions[];
+        static glm::vec3 lightDirections[];
+
+        static int tempSize;
+        static World* _myWorld;
 };
 
 #endif // LITCOLORMATERIAL_H

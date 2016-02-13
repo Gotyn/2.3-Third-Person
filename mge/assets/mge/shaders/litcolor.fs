@@ -1,7 +1,7 @@
 //DIFFUSE COLOR FRAGMENT SHADER
 
 #version 330 // for glsl version (12 is for older versions , say opengl 2.1
-#define MAX_LIGHTS 3
+#define MAX_LIGHTS 5
 
 struct PointLight
 {
@@ -13,6 +13,7 @@ struct PointLight
 };
 
 uniform vec3 cameraPos;
+uniform int uniformArraySize;
 uniform PointLight pointLights[MAX_LIGHTS];
 
 in vec3 wNormal;
@@ -23,7 +24,7 @@ void main( void )
 {
     vec4 result = vec4(0,0,0,0);
 
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < uniformArraySize; ++i)
     {
         vec3 L = normalize(pointLights[i].lightPosition - worldPosition); //light direction
         vec3 V = normalize(cameraPos - worldPosition); //view direction

@@ -1,5 +1,5 @@
 #ifndef BASELIGHT_H
-#define BASELIGHT_H+
+#define BASELIGHT_H +
 
 #include <string>
 #include "mge/core/GameObject.hpp"

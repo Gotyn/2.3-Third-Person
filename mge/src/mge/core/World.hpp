@@ -18,7 +18,7 @@ class World : public GameObject
 
         void renderDebugInfo();
         void addLight(BaseLight* light);
-        std::vector<BaseLight*> getLights() { return _lights; }
+        std::vector<BaseLight*> sceneLights() { return _lights; }
 
 	private:
 	    Camera* _mainCamera;
