@@ -29,14 +29,14 @@ void main( void )
         vec3 L = normalize(pointLights[i].lightPosition - worldPosition); //light direction
         vec3 V = normalize(cameraPos - worldPosition); //view direction
         vec3 color = pointLights[i].globalAmbient;
-        float theta = dot(normalize(worldPosition - pointLights[i].lightPosition), -vec3(0,1,0));
+        float theta = dot(normalize(worldPosition - pointLights[i].lightPosition), normalize(pointLights[i].lightDirection));
+        //float theta = dot(normalize(worldPosition - pointLights[i].lightPosition), vec3(0,1,0));
 
         float LdotN = max(0, dot(L, wNormal));
 
         float diffuse = 0.4f * LdotN; //material diffuse coeff
 
         float specular = 0;
-        float spotEffect = 0;
         float light = 0;
         vec3 ambientTerm = vec3(0,0,0);
         vec3 diffuseTerm = vec3(0,0,0);
@@ -48,10 +48,10 @@ void main( void )
         }
         //attenuation based on distance
         float d = distance(pointLights[i].lightPosition, worldPosition);
-        float att = ((spotEffect == 0) ? 1.0f : 0.0f)  / (1.0f + (d * 0.0f) + (d * d * 0));
-        if(i == 1)
+        float att = 1.0f  / (1.0f + (d * 0.00004f) + (d * d * 0.0005f));
+        if(i == 0)
         {
-            if (theta > 0.97f)
+            if (theta > 0.92f)
             {
                 light = att * diffuse + att * specular;
                 ambientTerm = pointLights[i].globalAmbient * pointLights[i].diffuseColor;
