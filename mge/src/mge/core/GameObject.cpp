@@ -7,11 +7,10 @@ using namespace std;
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
-#include "mge/behaviours/AbstractBehaviour.hpp"
+#include "mge/behaviours/RotatingBehaviour.hpp"
 
 GameObject::GameObject(std::string pName, glm::vec3 pPosition )
-:	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children(),
-    _mesh( NULL ),_behaviour( NULL ), _material(NULL), _world(NULL)
+:	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children(), _world(NULL)
 {
 }
 
@@ -26,11 +25,11 @@ GameObject::~GameObject()
         delete child;
     }
 
-    //do not forget to delete behaviour, material, mesh, collider manually if required!
-    for (auto& c : _behaviours)
-    {
-        delete c.second;
-    }
+//    //do not forget to delete behaviour, material, mesh, collider manually if required!
+//    for (auto& c : _behaviours)
+//    {
+//        delete c.second;
+//    }
 }
 
 void GameObject::setName (std::string pName)
@@ -63,41 +62,13 @@ glm::vec3 GameObject::getLocalPosition()
 	return glm::vec3(_transform[3]);
 }
 
-void GameObject::setMaterial(AbstractMaterial* pMaterial)
-{
-    _material = pMaterial;
-}
-
-AbstractMaterial * GameObject::getMaterial() const
-{
-    return _material;
-}
-
-void GameObject::setMesh(Mesh* pMesh)
-{
-	_mesh = pMesh;
-}
-
-Mesh * GameObject::getMesh() const
-{
-    return _mesh;
-}
-
-void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
-{
-	_behaviour = pBehaviour;
-	_behaviour->setOwner(this);
-}
-
-AbstractBehaviour * GameObject::getBehaviour() const
-{
-    return _behaviour;
-}
-
 //new multiple behaviours
-void GameObject::addBehaviour(std::type_index type, AbstractBehaviour* pBehaviour)
+void GameObject::addBehaviour(AbstractBehaviour* pBehaviour)
 {
-    _behaviours[type] = pBehaviour;
+    _behaviours.push_back(pBehaviour);
+
+//    RotatingBehaviour* ab = new RotatingBehaviour;
+//    _behaviours[type] = ab;
 }
 
 void GameObject::setParent (GameObject* pParent) {
@@ -153,6 +124,11 @@ glm::vec3 GameObject::getWorldPosition()
 	return glm::vec3(getWorldTransform()[3]);
 }
 
+World* GameObject::getWorld()
+{
+    return _world;
+}
+
 glm::mat4& GameObject::getWorldTransform()
 {
     return _worldTransform;
@@ -179,14 +155,9 @@ void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 {
     _worldTransform = pParentTransform * _transform;
 
-    //make sure behaviour is updated after worldtransform is set
-	if (_behaviour) {
-		_behaviour->update(pStep);
-	}
-
-    for (auto p : _behaviours)
+    for (auto const& value: _behaviours)
     {
-        p.second->update(pStep);
+        value->update(pStep);
     }
 
     for (int i = _children.size()-1; i >= 0; --i ) {

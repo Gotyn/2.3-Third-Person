@@ -5,7 +5,9 @@
 #include <lua.hpp>
 
 #include "mge/MGEDemo.hpp"
+#include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/LookAt.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 
@@ -41,36 +43,71 @@ void MGEDemo::_initializeScene()
     luaL_openlibs(L);
     luaL_dofile(L, "testTable.lua");
 
-    luabridge::LuaRef t = luabridge::getGlobal(L, "window");
-    luabridge::LuaRef title = t["title"];
+    _loadLuaScene(L);
+    loadGameObject(L, "camera");
+    loadGameObject(L, "gameObject");
+}
 
-    int width = t["width"].cast<int>();
-    int height = t["height"].cast<int>();
+void MGEDemo::_loadLuaScene(lua_State* L)
+{
+    luabridge::LuaRef sceneRef = luabridge::getGlobal(L, "scene");
 
-    std::string titleString = title.cast<std::string>();
+    for (int i = 0; i < sceneRef.length(); ++i)
+    {
+        cout << i << " test counter!!!" << endl;
+    }
+}
 
-    std::cout << titleString << std::endl;
-    std::cout << "width = " << width << std::endl;
-    std::cout << "height = " << height << std::endl;
+GameObject* MGEDemo::loadGameObject(lua_State* L, char* type)
+{
+    GameObject* go = new GameObject("luaGO", glm::vec3(0,0,0));
+    _world->add(go);
 
-    // ==== end lua test =====
+    luabridge::LuaRef gameObjectRef = luabridge::getGlobal(L, type);
+    for(int i = 0; i < gameObjectRef.length(); ++i)
+    {
+        luabridge::LuaRef comp = gameObjectRef[i + 1];
+        std::string componentName = comp["componentName"].cast<std::string>();
 
-    // ==== TEST NEW OBJECT CREATION ====
+        if (componentName == "Transform")
+        {
+            float x = comp["x"].cast<float>();
+            float y = comp["y"].cast<float>();
+            float z = comp["z"].cast<float>();
 
-    GameObject* testGO = new GameObject("testGO", glm::vec3(0,0,0));
-    _world->add(testGO);
+            go->setLocalPosition(glm::vec3(x,y,z));
+        }
 
-    KeysBehaviour* kb = new KeysBehaviour;
-    kb->setOwner(testGO);
-//    kb->setFilename("ghost.png");
-    testGO->addBehaviour(std::type_index(typeid(KeysBehaviour)), kb);
+        if (componentName == "Camera")
+        {
+            Camera* camera = new Camera ();
+            camera->setOwner(go);
+            go->addBehaviour(camera);
+            _world->setMainCamera(camera);
+        }
 
-    RotatingBehaviour* rb = new RotatingBehaviour();
-    rb->setOwner(testGO);
-//    npcc->setPhrase("I'M A SCARY GHOST!!!");
-    testGO->addBehaviour(std::type_index(typeid(RotatingBehaviour)), rb);
+        if (componentName == "MeshRenderer")
+        {
+            std::string modelName = comp["modelname"].cast<std::string>();
+//            std::cout << modelName << std::endl;
 
-    // ==== END TEST NEW OBJECT CREATION ====
+            MeshRenderer* mr = new MeshRenderer(modelName);
+            mr->setOwner(go);
+            go->addBehaviour(mr);
+        }
+
+        if (componentName == "RotatingBehaviour")
+        {
+            RotatingBehaviour* rb = new RotatingBehaviour();
+            rb->setOwner(go);
+            go->addBehaviour(rb);
+        }
+
+        // log created component
+        std::cout << componentName << " added to " << go->getName() << std::endl;
+    }
+
+    return go;
 }
 
 void MGEDemo::_render() {
