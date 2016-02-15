@@ -27,7 +27,7 @@ void TextureMaterial::setDiffuseTexture (Texture* pDiffuseTexture) {
     _diffuseTexture = pDiffuseTexture;
 }
 
-void TextureMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pCamera) {
+void TextureMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
     if (!_diffuseTexture) return;
 
     _shader->use();
@@ -43,7 +43,7 @@ void TextureMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pCa
     glUniformMatrix4fv ( _shader->getUniformLocation("modelMatrix"),        1, GL_FALSE, glm::value_ptr(pGameObject->getWorldTransform() ) );
 
     //now inform mesh of where to stream its data
-    pGameObject->getMesh()->streamToOpenGL(
+    pMesh->streamToOpenGL(
         _shader->getAttribLocation("vertex"),
         _shader->getAttribLocation("normal"),
         _shader->getAttribLocation("uv")

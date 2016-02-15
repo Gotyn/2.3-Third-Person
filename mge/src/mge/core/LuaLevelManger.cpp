@@ -65,42 +65,42 @@ std::vector<GameObject*> LuaLevelManager::makeObjectsForLevel()
         //---------------- CREATE OBJECTS FROM GIVEN LUA DATA -----------------//
         if(objects[i] == "teapot")
         {
-            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
-            AbstractMaterial* material = new TextureMaterial (Texture::load (config::MGE_TEXTURE_PATH+materials[i]+".jpg"));
-            GameObject* teapot = new GameObject ("teapot", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
-            teapot->setMesh (mesh);
-            teapot->rotate(rotations[i*4], glm::vec3(rotations[i*4+1],rotations[i*4+2],rotations[i*4+3]));
-            teapot->setMaterial(material);
-            teapot->setBehaviour (new KeysBehaviour());
-            gameObjects.push_back(teapot);
+//            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
+//            AbstractMaterial* material = new TextureMaterial (Texture::load (config::MGE_TEXTURE_PATH+materials[i]+".jpg"));
+//            GameObject* teapot = new GameObject ("teapot", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
+//            teapot->setMesh (mesh);
+//            teapot->rotate(rotations[i*4], glm::vec3(rotations[i*4+1],rotations[i*4+2],rotations[i*4+3]));
+//            teapot->setMaterial(material);
+//            teapot->setBehaviour (new KeysBehaviour());
+//            gameObjects.push_back(teapot);
         } else if(objects[i] == "monkey")
         {
-            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
-            AbstractMaterial* material = new ColorMaterial (tempColor);
-            GameObject* monkey = new GameObject ("monkey", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
-            monkey->rotate(rotations[i*4], glm::vec3(rotations[i*4+1],rotations[i*4+2],rotations[i*4+3]));
-            monkey->setMesh (mesh);
-            monkey->setMaterial(material);
-            monkey->setBehaviour (new RotatingBehaviour());
-            gameObjects.push_back(monkey);
+//            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
+//            AbstractMaterial* material = new ColorMaterial (tempColor);
+//            GameObject* monkey = new GameObject ("monkey", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
+//            monkey->rotate(rotations[i*4], glm::vec3(rotations[i*4+1],rotations[i*4+2],rotations[i*4+3]));
+//            monkey->setMesh (mesh);
+//            monkey->setMaterial(material);
+////            monkey->setBehaviour (new RotatingBehaviour());
+//            gameObjects.push_back(monkey);
         } else if(objects[i] == "car")
         {
-            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
-            AbstractMaterial* material = new ColorMaterial (tempColor);
-            GameObject* car = new GameObject ("car", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
-            car->rotate(rotations[i*4], glm::vec3(rotations[i*4+1],rotations[i*4+2],rotations[i*4+3]));
-            car->setMesh (mesh);
-            car->setMaterial(material);
-            gameObjects.push_back(car);
+//            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
+//            AbstractMaterial* material = new ColorMaterial (tempColor);
+//            GameObject* car = new GameObject ("car", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
+//            car->rotate(rotations[i*4], glm::vec3(rotations[i*4+1],rotations[i*4+2],rotations[i*4+3]));
+//            car->setMesh (mesh);
+//            car->setMaterial(material);
+//            gameObjects.push_back(car);
         } else if(objects[i] == "plane")
         {
-            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
-            AbstractMaterial* material = new TextureMaterial (Texture::load (config::MGE_TEXTURE_PATH+materials[i]+".jpg"));
-            GameObject* plane = new GameObject ("plane", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
-            plane->scale(glm::vec3(scalings[i], scalings[i], scalings[i]));
-            plane->setMesh (mesh);
-            plane->setMaterial(material);
-            gameObjects.push_back(plane);
+//            Mesh* mesh = Mesh::load (config::MGE_MODEL_PATH+textures[i]+".obj");
+//            AbstractMaterial* material = new TextureMaterial (Texture::load (config::MGE_TEXTURE_PATH+materials[i]+".jpg"));
+//            GameObject* plane = new GameObject ("plane", glm::vec3(positions[i*3],positions[i*3+1],positions[i*3+2]));
+//            plane->scale(glm::vec3(scalings[i], scalings[i], scalings[i]));
+//            plane->setMesh (mesh);
+//            plane->setMaterial(material);
+//            gameObjects.push_back(plane);
         }
     }
     _gameObjects = gameObjects;

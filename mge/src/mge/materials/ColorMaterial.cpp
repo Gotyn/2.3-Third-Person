@@ -47,7 +47,7 @@ void ColorMaterial::setDiffuseColor(glm::vec3 pDiffuseColor) {
     _diffuseColor = pDiffuseColor;
 }
 
-void ColorMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pCamera) {
+void ColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
     _shader->use();
 
     //pass in a precalculate mvp matrix (see texture material for the opposite)
@@ -58,6 +58,6 @@ void ColorMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pCame
     glUniform3fv (_uDiffuseColor, 1, glm::value_ptr(_diffuseColor));
 
     //now inform mesh of where to stream its data
-    pGameObject->getMesh()->streamToOpenGL(_aVertex, _aNormal, _aUV);
+    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 
 }

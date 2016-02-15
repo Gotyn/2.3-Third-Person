@@ -5,8 +5,9 @@
 #include <string>
 #include <GL/glew.h>
 #include <glm.hpp>
+#include "mge/core/World.hpp"
 
-class World;
+//class World;
 
 /**
  * A mesh represents an .OBJ file. It knows how it is constructed, how its data should be buffered to OpenGL

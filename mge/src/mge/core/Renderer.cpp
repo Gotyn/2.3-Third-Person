@@ -33,21 +33,21 @@ void Renderer::render (World* pWorld) {
 
 void Renderer::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive)
 {
-    AbstractMaterial* material = pGameObject->getMaterial();
-
-    //our material (shader + settings) determines how we actually look
-    if (pGameObject->getMesh() && material != NULL) {
-        material->render(pWorld, pGameObject, pCamera);
-    }
-
+//    AbstractMaterial* material = pGameObject->getMaterial();
+//
+//    //our material (shader + settings) determines how we actually look
+//    if (pGameObject->getMesh() && material != NULL) {
+//        material->render(pWorld, pGameObject, pCamera);
+//    }
+//
     if (!pRecursive) return;
 
     int childCount = pGameObject->getChildCount();
     if (childCount < 1) return;
 
-    //note that with a loop like this, deleting children during rendering is not a good idea :)
-    for (int i = 0; i < childCount; i++) {
-        render (pWorld, pGameObject->getChildAt(i), pCamera, pRecursive);
-    }
+//    //note that with a loop like this, deleting children during rendering is not a good idea :)
+//    for (int i = 0; i < childCount; i++) {
+//        render (pWorld, pGameObject->getChildAt(i), pCamera, pRecursive);
+//    }
 }
 

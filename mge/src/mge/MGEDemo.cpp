@@ -5,6 +5,7 @@
 #include <lua.hpp>
 
 #include "mge/MGEDemo.hpp"
+#include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/LookAt.hpp"
@@ -36,6 +37,12 @@ void MGEDemo::initialize() {
 void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
+
+    Camera* camera = new Camera ("camera", glm::vec3(0,3,3));
+    camera->rotate(glm::radians(-40.0f), glm::vec3(1,0,0));
+//    camera->setBehaviour(new LookAt (teapot));
+    _world->add(camera);
+    _world->setMainCamera(camera);
 
     // ==== lua testing ====
     lua_State* L = luaL_newstate();
@@ -85,23 +92,27 @@ GameObject* MGEDemo::loadGameObject(lua_State* L, const std::string& type)
     luabridge::LuaRef shadowCasterRef = luabridge::getGlobal(L, "shadowCaster");
     for(int i = 0; i < shadowCasterRef.length(); ++i)
     {
-//        std::string componentName = shadowCasterRef[i + 1]["componentName"].cast<std::string>();
-
         luabridge::LuaRef comp = shadowCasterRef[i + 1];
         std::string componentName = comp["componentName"].cast<std::string>();
 
-        go->addBehaviour(componentName);
+        if (componentName == "MeshRenderer")
+        {
+            std::string modelName = comp["modelname"].cast<std::string>();
+//            std::cout << modelName << std::endl;
 
-//        if (componentName == "RotatingBehaviour")
-//        {
-//            go->addBehaviour(std::type_index(typeid(RotatingBehaviour)));
-//        }
-//        else if (componentName == "NpcComponent")
-//        {
-//                addComponent<NpcComponent>(e);
-//        }
+            MeshRenderer* mr = new MeshRenderer(modelName);
+            mr->setOwner(go);
+            go->addBehaviour(mr);
+        }
 
-        // create a component
+        if (componentName == "RotatingBehaviour")
+        {
+            RotatingBehaviour* rb = new RotatingBehaviour();
+            rb->setOwner(go);
+            go->addBehaviour(rb);
+        }
+
+        // log created component
         std::cout << componentName << " added to " << go->getName() << std::endl;
     }
 
