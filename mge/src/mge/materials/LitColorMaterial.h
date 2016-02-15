@@ -44,6 +44,7 @@ class LitColorMaterial : public AbstractMaterial
         static GLint uDirectionalLightColorIndex[];
         static GLint uLightPositionIndex[];
         static GLint uLightDirectionIndex[];
+        static GLint uConeAnglesIndex[];
 
         static GLint uCameraPosIndex;
         static GLint lightsUniforArraySize;
@@ -59,6 +60,7 @@ class LitColorMaterial : public AbstractMaterial
         static glm::vec3 lightColors[];
         static glm::vec3 lightPositions[];
         static glm::vec3 lightDirections[];
+        static float coneAngles[];
 
         static int tempSize;
         static World* _myWorld;

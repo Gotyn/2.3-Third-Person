@@ -13,7 +13,7 @@ class BaseLight : public GameObject
     public:
         BaseLight(std::string pName = "base light", glm::vec3 pPosition = glm::vec3(3,3,3), glm::vec3 ambientColor = glm::vec3 (1,0,0),
                   float ambientIntensity = 0.2f, glm::vec3 directionalLightColor = glm::vec3(0,1,1), glm::vec3 pLightDirection = glm::vec3 (0,-1,0),
-                  float pConeAngle = 15.0f);
+                  float pConeAngle = 0.0f);
         virtual ~BaseLight();
         glm::vec3 getAmbientColor() { return ambientColor; }
         float getAmbientIntensity() { return ambientIntensity; }

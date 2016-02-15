@@ -17,6 +17,7 @@ GLint LitColorMaterial::uDiffuseColorIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uDirectionalLightColorIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uLightPositionIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uLightDirectionIndex[MAX_LIGHTS_NUM];
+GLint LitColorMaterial::uConeAnglesIndex[MAX_LIGHTS_NUM];
 
 GLint LitColorMaterial::uCameraPosIndex = 0;
 GLint LitColorMaterial::_aVertex = 0;
@@ -29,6 +30,8 @@ float LitColorMaterial::ambientIntensities[MAX_LIGHTS_NUM];
 glm::vec3 LitColorMaterial::lightColors[MAX_LIGHTS_NUM];
 glm::vec3 LitColorMaterial::lightPositions[MAX_LIGHTS_NUM];
 glm::vec3 LitColorMaterial::lightDirections[MAX_LIGHTS_NUM];
+float LitColorMaterial::coneAngles[MAX_LIGHTS_NUM];
+
 int LitColorMaterial::tempSize = 0;
 World* LitColorMaterial::_myWorld;
 
@@ -84,6 +87,7 @@ void LitColorMaterial::_lazyInitializeShader() {
                 uDirectionalLightColorIndex[i]  = _shader->getUniformLocation (uniName("directionalLightColor",i));
                 uLightPositionIndex[i]          = _shader->getUniformLocation (uniName("lightPosition",i));
                 uLightDirectionIndex[i]         = _shader->getUniformLocation (uniName("lightDirection",i));
+                uConeAnglesIndex[i]             = _shader->getUniformLocation (uniName("coneAngles",i));
             }
         }
     }
@@ -111,17 +115,19 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pC
         for (int i = 0; i < tempSize; ++i)
         {
             //update material colors and lights data
-            ambientColors[i] = pWorld->sceneLights().at(i)->getAmbientColor();
-            ambientIntensities[i] = pWorld->sceneLights().at(i)->getAmbientIntensity();
-            lightColors[i] = pWorld->sceneLights().at(i)->getDirectionalLightColor();
-            lightPositions[i] = pWorld->sceneLights().at(i)->getLightPosition();
-            lightDirections[i] = pWorld->sceneLights().at(i)->getLightDirection();
+            ambientColors[i]        = pWorld->sceneLights().at(i)->getAmbientColor();
+            ambientIntensities[i]   = pWorld->sceneLights().at(i)->getAmbientIntensity();
+            lightColors[i]          = pWorld->sceneLights().at(i)->getDirectionalLightColor();
+            lightPositions[i]       = pWorld->sceneLights().at(i)->getLightPosition();
+            lightDirections[i]      = pWorld->sceneLights().at(i)->getLightDirection();
+            coneAngles[i]           = pWorld->sceneLights().at(i)->getConeAngle();
 
             glUniform3fv (uGlobalAmbientIndex[i], 1, glm::value_ptr(ambientColors[i] * ambientIntensities[i]));
             glUniform3fv (uDiffuseColorIndex[i], 1, glm::value_ptr(_diffuseColor));
             glUniform3fv (uDirectionalLightColorIndex[i], 1, glm::value_ptr(lightColors[i]));
             glUniform3fv (uLightPositionIndex[i], 1, glm::value_ptr(lightPositions[i]));
             glUniform3fv (uLightDirectionIndex[i], 1, glm::value_ptr(lightDirections[i]));
+            glUniform1f (uConeAnglesIndex[i], coneAngles[i]);
         }
     }
 

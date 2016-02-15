@@ -10,6 +10,7 @@ struct PointLight
     vec3 directionalLightColor;
     vec3 lightPosition;
     vec3 lightDirection;
+    float coneAngles;
 };
 
 uniform vec3 cameraPos;
@@ -49,7 +50,7 @@ void main( void )
         //attenuation based on distance
         float d = distance(pointLights[i].lightPosition, worldPosition);
         float att = 1.0f  / (1.0f + (d * 0.00004f) + (d * d * 0.0005f));
-        if(i == 0)
+        if(pointLights[i].coneAngles > 0)
         {
             if (theta > 0.92f)
             {
