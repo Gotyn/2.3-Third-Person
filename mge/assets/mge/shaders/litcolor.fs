@@ -23,6 +23,7 @@ out vec4 sColor;
 
 void main( void )
 {
+
     vec4 result = vec4(0,0,0,0);
 
     for(int i = 0; i < uniformArraySize; ++i)
@@ -30,8 +31,7 @@ void main( void )
         vec3 L = normalize(pointLights[i].lightPosition - worldPosition); //light direction
         vec3 V = normalize(cameraPos - worldPosition); //view direction
         vec3 color = pointLights[i].globalAmbient;
-        float theta = dot(normalize(worldPosition - pointLights[i].lightPosition), normalize(pointLights[i].lightDirection));
-        //float theta = dot(normalize(worldPosition - pointLights[i].lightPosition), vec3(0,1,0));
+        float theta = dot(-L, normalize(pointLights[i].lightDirection));
 
         float LdotN = max(0, dot(L, wNormal));
 
@@ -52,19 +52,18 @@ void main( void )
         float att = 1.0f  / (1.0f + (d * 0.00004f) + (d * d * 0.0005f));
         if(pointLights[i].coneAngles > 0)
         {
-            if (theta > 0.92f)
+            if (theta > pointLights[i].coneAngles)
             {
                 light = att * diffuse + att * specular;
-                ambientTerm = pointLights[i].globalAmbient * pointLights[i].diffuseColor;
+                ambientTerm = color * pointLights[i].diffuseColor;
                 diffuseTerm = light * pointLights[i].directionalLightColor * pointLights[i].diffuseColor;
             }
             else {
-                light = att * diffuse;
-                ambientTerm = pointLights[i].globalAmbient * pointLights[i].diffuseColor;
+                ambientTerm = color * pointLights[i].diffuseColor;
             }
         } else {
             light = att * diffuse + att * specular;
-            ambientTerm = pointLights[i].globalAmbient * pointLights[i].diffuseColor;
+            ambientTerm = color * pointLights[i].diffuseColor;
             diffuseTerm = light * pointLights[i].directionalLightColor * pointLights[i].diffuseColor;
         }
 

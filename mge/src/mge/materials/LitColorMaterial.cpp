@@ -26,10 +26,10 @@ GLint LitColorMaterial::_aUV = 0;
 GLint LitColorMaterial::lightsUniforArraySize = 0;
 
 glm::vec3 LitColorMaterial::ambientColors[MAX_LIGHTS_NUM];
-float LitColorMaterial::ambientIntensities[MAX_LIGHTS_NUM];
 glm::vec3 LitColorMaterial::lightColors[MAX_LIGHTS_NUM];
 glm::vec3 LitColorMaterial::lightPositions[MAX_LIGHTS_NUM];
 glm::vec3 LitColorMaterial::lightDirections[MAX_LIGHTS_NUM];
+float LitColorMaterial::ambientIntensities[MAX_LIGHTS_NUM];
 float LitColorMaterial::coneAngles[MAX_LIGHTS_NUM];
 
 int LitColorMaterial::tempSize = 0;

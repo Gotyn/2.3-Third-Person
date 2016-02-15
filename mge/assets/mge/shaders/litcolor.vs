@@ -16,6 +16,6 @@ out vec3 worldPosition;
 void main( void )
 {
 	gl_Position = perspectiveMatrix * viewMatrix * modelMatrix * vec4(vertex,1);
-    worldPosition = mat3(modelMatrix) * vertex;
+    worldPosition = vec3(modelMatrix * vec4(vertex,1));
     wNormal = normalize(vec3 (modelMatrix * vec4 (normal, 0)));
 }
