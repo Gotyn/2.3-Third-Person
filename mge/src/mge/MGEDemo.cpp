@@ -38,10 +38,13 @@ void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
-    Camera* camera = new Camera ("camera", glm::vec3(0,3,3));
-    camera->rotate(glm::radians(-40.0f), glm::vec3(1,0,0));
-//    camera->setBehaviour(new LookAt (teapot));
-    _world->add(camera);
+    GameObject* cameraGO = new GameObject("camera", glm::vec3(0,0,5));
+    Camera* camera = new Camera ();
+    camera->setOwner(cameraGO);
+    cameraGO->addBehaviour(camera);
+//    camera->rotate(glm::radians(-40.0f), glm::vec3(1,0,0));
+////    camera->setBehaviour(new LookAt (teapot));
+    _world->add(cameraGO);
     _world->setMainCamera(camera);
 
     // ==== lua testing ====
@@ -94,6 +97,15 @@ GameObject* MGEDemo::loadGameObject(lua_State* L, const std::string& type)
     {
         luabridge::LuaRef comp = shadowCasterRef[i + 1];
         std::string componentName = comp["componentName"].cast<std::string>();
+
+        if (componentName == "Transform")
+        {
+            float x = comp["x"].cast<float>();
+            float y = comp["y"].cast<float>();
+            float z = comp["z"].cast<float>();
+
+            go->setLocalPosition(glm::vec3(x,y,z));
+        }
 
         if (componentName == "MeshRenderer")
         {

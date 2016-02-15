@@ -255,7 +255,7 @@ void Mesh::renderDebugInfo(glm::mat4& pModelMatrix, World* pWorld) {
     glMatrixMode(GL_PROJECTION);
     glLoadMatrixf(glm::value_ptr(pWorld->getMainCamera()->getProjection()));
     glMatrixMode(GL_MODELVIEW);
-    glLoadMatrixf(glm::value_ptr(glm::inverse(pWorld->getMainCamera()->getWorldTransform()) * pModelMatrix));
+    glLoadMatrixf(glm::value_ptr(glm::inverse(pWorld->getMainCamera()->getOwner()->getWorldTransform()) * pModelMatrix));
 
     glBegin(GL_LINES);
     //for each index draw the normal starting at the corresponding vertex

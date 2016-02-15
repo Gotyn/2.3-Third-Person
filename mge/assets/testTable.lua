@@ -1,4 +1,10 @@
 shadowCaster = {
+	{
+		componentName = "Transform",
+		x = 0;
+		y = 0;
+		z = 2;
+	},
     {
         componentName = "MeshRenderer",
         modelname = "teapot_smooth.obj"

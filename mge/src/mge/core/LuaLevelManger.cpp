@@ -167,12 +167,12 @@ int LuaLevelManager::Create(lua_State* _lua)
     return 1;
 }
 
-Camera* LuaLevelManager::_camera()
-{
-    Camera* camera = new Camera ("camera", glm::vec3(cameraDetails[0],cameraDetails[1],cameraDetails[2]));
-    camera->rotate(glm::radians((float)cameraDetails[5]), glm::vec3(cameraDetails[5],cameraDetails[6],cameraDetails[7]));
-    return camera;
-}
+//Camera* LuaLevelManager::_camera()
+//{
+//    Camera* camera = new Camera ("camera", glm::vec3(cameraDetails[0],cameraDetails[1],cameraDetails[2]));
+//    camera->rotate(glm::radians((float)cameraDetails[5]), glm::vec3(cameraDetails[5],cameraDetails[6],cameraDetails[7]));
+//    return camera;
+//}
 
 void LuaLevelManager::fillInArrays(lua_State* _lua)
 {
