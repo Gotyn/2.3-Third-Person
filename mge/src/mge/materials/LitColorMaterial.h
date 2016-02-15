@@ -21,7 +21,7 @@ class LitColorMaterial : public AbstractMaterial
     public:
         LitColorMaterial(glm::vec3 pColor, World* pWorld);
         virtual ~LitColorMaterial();
-        virtual void render(World* pWorld, GameObject* pGameObject, Camera* pCamera);
+        virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);

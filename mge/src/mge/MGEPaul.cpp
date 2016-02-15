@@ -34,22 +34,45 @@ void MGEPaul::_initializeScene()
     _renderer->setClearColor(0,0,0);
 
     //MESHES
-    Mesh* planeMeshDefault = Mesh::load (config::MGE_MODEL_PATH+"plane.obj");
+    /*Mesh* planeMeshDefault = Mesh::load (config::MGE_MODEL_PATH+"plane.obj");
     Mesh* testModelMesh = Mesh::load (config::MGE_MODEL_PATH+"teapot_smooth.obj");
-    Mesh* lightBowlMesh = Mesh::load (config::MGE_MODEL_PATH+"sphere_smooth.obj");
+    Mesh* lightBowlMesh = Mesh::load (config::MGE_MODEL_PATH+"sphere_smooth.obj");*/
 
     //LIGHTS
-    BaseLight* testLight = new BaseLight("spot", glm::vec3(0,3,0), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0), 0.92f);
-    testLight->setMesh(lightBowlMesh);
-    testLight->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
-    testLight->scale(glm::vec3(0.2f,0.2f,0.2f));
+    GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,3,0));
+    _world->add(spotLightGO);
+    BaseLight* testLight = new BaseLight(glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0), 0.92f);
+    spotLightGO->addBehaviour(testLight);
+    testLight->setOwner(spotLightGO);
+    testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
+    _world->addLight(testLight);
+    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth", new ColorMaterial(glm::vec3(1,1,0)));
+    spotLightGO->addBehaviour(spotLightMesh);
+    spotLightMesh->setOwner(spotLightGO);
 
-    BaseLight* testLight2 = new BaseLight("positional", glm::vec3(-3,3,-3), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(0,1,0));
+    GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
+    plane->scale(glm::vec3(5, 5, 5));
+    _world->add(plane);
+    MeshRenderer* planeMesh = new MeshRenderer("plane", new LitColorMaterial(glm::vec3(1,0,1), _world));
+    planeMesh->setOwner(plane);
+    plane->addBehaviour(planeMesh);
+
+    GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 4.0f, 5.0f));
+    _world->add(spotLightGO);
+    Camera* camera = new Camera ();
+    camera->setOwner(cameraGO);
+    cameraGO->addBehaviour(camera);
+    _world->setMainCamera(camera);
+    OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window);
+    orbit->setOwner(cameraGO);
+    cameraGO->addBehaviour(orbit);
+
+    /*BaseLight* testLight2 = new BaseLight("positional", glm::vec3(-3,3,-3), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(0,1,0));
     testLight2->setMesh(lightBowlMesh);
     testLight2->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
     testLight2->scale(glm::vec3(0.2f,0.2f,0.2f));
 
-    /*BaseLight* testLight3 = new BaseLight("baseLight3", glm::vec3(-3,3,3), glm::vec3 (1,0,0), 0.5f, glm::vec3(0,1,1));
+    BaseLight* testLight3 = new BaseLight("baseLight3", glm::vec3(-3,3,3), glm::vec3 (1,0,0), 0.5f, glm::vec3(0,1,1));
     testLight3->setMesh(lightBowlMesh);
     testLight3->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
     testLight3->scale(glm::vec3(0.2f,0.2f,0.2f));
@@ -64,16 +87,16 @@ void MGEPaul::_initializeScene()
     testLight5->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
     testLight5->scale(glm::vec3(0.2f,0.2f,0.2f));*/
 
-    _world->add(testLight);
-    //_world->add(testLight2);
-    /*_world->add(testLight3);
+    /*_world->add(testLight);
+    _world->add(testLight2);
+    _world->add(testLight3);
     _world->add(testLight4);
-    _world->add(testLight5);*/
+    _world->add(testLight5);
     _world->addLight(testLight);
-    //_world->addLight(testLight2);
-    /*_world->addLight(testLight3);
+    _world->addLight(testLight2);
+    _world->addLight(testLight3);
     _world->addLight(testLight4);
-    _world->addLight(testLight5);*/
+    _world->addLight(testLight5);
 
     //MATERIALS
     LitColorMaterial* litColorMaterial = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 0.0f), _world);
@@ -116,7 +139,7 @@ void MGEPaul::_initializeScene()
     Camera* camera = new Camera ("camera", glm::vec3(0, 4.0f, 5.0f));
     camera->setBehaviour (new OrbitBehaviourPaul(10, 0.20f, 0.99f, testModel, 0.1f, 0.1f, _window));
     _world->add(camera);
-    _world->setMainCamera(camera);
+    _world->setMainCamera(camera);*/
 }
 
 void MGEPaul::_render() {

@@ -25,6 +25,7 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/OrbitBehaviour.hpp"
 #include "mge/behaviours/OrbitBehaviourPaul.h"
+#include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/util/DebugHud.hpp"
 #include "mge/config.hpp"
 

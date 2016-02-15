@@ -93,14 +93,14 @@ void LitColorMaterial::_lazyInitializeShader() {
     }
 }
 
-void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pCamera) {
+void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
     _shader->use();
 
     //pass in a precalculate mvp matrix (see texture material for the opposite)
     glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
-    glm::mat4 viewMatrix        = glm::inverse(pCamera->getWorldTransform());
+    glm::mat4 viewMatrix        = glm::inverse(pCamera->getOwner()->getWorldTransform());
     glm::mat4 perspectiveMatrix = pCamera->getProjection();
-    glm::vec3 cameraPos         = pCamera->getWorldPosition();
+    glm::vec3 cameraPos         = pCamera->getOwner()->getWorldPosition();
 
     glUniformMatrix4fv ( _uModelMatrix, 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glUniformMatrix4fv ( _uViewMatrix, 1, GL_FALSE, glm::value_ptr(viewMatrix));
@@ -132,5 +132,5 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pC
     }
 
     //now inform mesh of where to stream its data
-    pGameObject->getMesh()->streamToOpenGL(_aVertex, _aNormal, _aUV);
+    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 }

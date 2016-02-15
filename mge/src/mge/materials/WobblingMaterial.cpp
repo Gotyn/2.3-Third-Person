@@ -58,12 +58,12 @@ void WobblingMaterial::setDiffuseColor(glm::vec3 pDiffuseColor) {
     _diffuseColor = pDiffuseColor;
 }
 
-void WobblingMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pCamera) {
+void WobblingMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
     _shader->use();
     _time[0] = clock();
     _time[1] = clock();
     //pass in a precalculate mvp matrix (see texture material for the opposite)
-    glm::mat4 mvpMatrix = pCamera->getProjection() * glm::inverse(pCamera->getWorldTransform()) * pGameObject->getWorldTransform();
+    glm::mat4 mvpMatrix = pCamera->getProjection() * glm::inverse(pCamera->getOwner()->getWorldTransform()) * pGameObject->getWorldTransform();
     glUniformMatrix4fv ( _uMVPMatrix, 1, GL_FALSE, glm::value_ptr(mvpMatrix));
 
     //set the material color
@@ -71,5 +71,5 @@ void WobblingMaterial::render(World* pWorld, GameObject* pGameObject, Camera* pC
     glUniform2fv (_offsetIndex, 1, offset);
     glUniform2fv (_timeIndex, 1, _time);
     //now inform mesh of where to stream its data
-    pGameObject->getMesh()->streamToOpenGL(_aVertex, _aNormal, _aUV);
+    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 }
