@@ -1,9 +1,21 @@
-shadowCaster = {
+camera = {
 	{
 		componentName = "Transform",
 		x = 0;
 		y = 0;
-		z = 2;
+		z = 5;
+	},
+    {
+        componentName = "Camera"
+    }
+}
+
+gameObject = {
+	{
+		componentName = "Transform",
+		x = 0;
+		y = 0;
+		z = -2;
 	},
     {
         componentName = "MeshRenderer",

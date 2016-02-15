@@ -38,64 +38,35 @@ void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
-    GameObject* cameraGO = new GameObject("camera", glm::vec3(0,0,5));
-    Camera* camera = new Camera ();
-    camera->setOwner(cameraGO);
-    cameraGO->addBehaviour(camera);
-//    camera->rotate(glm::radians(-40.0f), glm::vec3(1,0,0));
-////    camera->setBehaviour(new LookAt (teapot));
-    _world->add(cameraGO);
-    _world->setMainCamera(camera);
-
     // ==== lua testing ====
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     luaL_dofile(L, "testTable.lua");
 
-    loadGameObject(L, "shadowCaster1");
-
-//
-//    luabridge::LuaRef t = luabridge::getGlobal(L, "window");
-//    luabridge::LuaRef title = t["title"];
-//
-//    int width = t["width"].cast<int>();
-//    int height = t["height"].cast<int>();
-//
-//    std::string titleString = title.cast<std::string>();
-//
-//    std::cout << titleString << std::endl;
-//    std::cout << "width = " << width << std::endl;
-//    std::cout << "height = " << height << std::endl;
-
-    // ==== end lua test =====
-
-    // ==== TEST NEW OBJECT CREATION ====
-
-//    GameObject* testGO = new GameObject("testGO", glm::vec3(0,0,0));
-//    _world->add(testGO);
-//
-//    KeysBehaviour* kb = new KeysBehaviour;
-//    kb->setOwner(testGO);
-////    kb->setFilename("ghost.png");
-//    testGO->addBehaviour(std::type_index(typeid(KeysBehaviour)), kb);
-//
-//    RotatingBehaviour* rb = new RotatingBehaviour();
-//    rb->setOwner(testGO);
-////    npcc->setPhrase("I'M A SCARY GHOST!!!");
-//    testGO->addBehaviour(std::type_index(typeid(RotatingBehaviour)), rb);
-
-    // ==== END TEST NEW OBJECT CREATION ====
+    _loadLuaScene(L);
+    loadGameObject(L, "camera");
+    loadGameObject(L, "gameObject");
 }
 
-GameObject* MGEDemo::loadGameObject(lua_State* L, const std::string& type)
+void MGEDemo::_loadLuaScene(lua_State* L)
+{
+    luabridge::LuaRef sceneRef = luabridge::getGlobal(L, "scene");
+
+    for (int i = 0; i < sceneRef.length(); ++i)
+    {
+        cout << i << " test counter!!!" << endl;
+    }
+}
+
+GameObject* MGEDemo::loadGameObject(lua_State* L, char* type)
 {
     GameObject* go = new GameObject("luaGO", glm::vec3(0,0,0));
     _world->add(go);
 
-    luabridge::LuaRef shadowCasterRef = luabridge::getGlobal(L, "shadowCaster");
-    for(int i = 0; i < shadowCasterRef.length(); ++i)
+    luabridge::LuaRef gameObjectRef = luabridge::getGlobal(L, type);
+    for(int i = 0; i < gameObjectRef.length(); ++i)
     {
-        luabridge::LuaRef comp = shadowCasterRef[i + 1];
+        luabridge::LuaRef comp = gameObjectRef[i + 1];
         std::string componentName = comp["componentName"].cast<std::string>();
 
         if (componentName == "Transform")
@@ -105,6 +76,14 @@ GameObject* MGEDemo::loadGameObject(lua_State* L, const std::string& type)
             float z = comp["z"].cast<float>();
 
             go->setLocalPosition(glm::vec3(x,y,z));
+        }
+
+        if (componentName == "Camera")
+        {
+            Camera* camera = new Camera ();
+            camera->setOwner(go);
+            go->addBehaviour(camera);
+            _world->setMainCamera(camera);
         }
 
         if (componentName == "MeshRenderer")

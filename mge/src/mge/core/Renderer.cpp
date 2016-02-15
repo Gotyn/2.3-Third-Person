@@ -28,7 +28,7 @@ void Renderer::setClearColor(int pR, int pG, int pB) {
 }
 
 void Renderer::render (World* pWorld) {
-    render (pWorld, pWorld, pWorld->getMainCamera(), true);
+//    render (pWorld, pWorld, pWorld->getMainCamera(), true);
 }
 
 void Renderer::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive)
@@ -40,10 +40,10 @@ void Renderer::render (World* pWorld, GameObject * pGameObject, Camera * pCamera
 //        material->render(pWorld, pGameObject, pCamera);
 //    }
 //
-    if (!pRecursive) return;
-
-    int childCount = pGameObject->getChildCount();
-    if (childCount < 1) return;
+//    if (!pRecursive) return;
+//
+//    int childCount = pGameObject->getChildCount();
+//    if (childCount < 1) return;
 
 //    //note that with a loop like this, deleting children during rendering is not a good idea :)
 //    for (int i = 0; i < childCount; i++) {
