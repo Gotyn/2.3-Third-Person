@@ -10,9 +10,7 @@
 
 class AbstractCollider;
 class AbstractBehaviour;
-class AbstractMaterial;
 class World;
-class Mesh;
 
 /**
  * A GameObject wraps all data required to display an (interactive / dynamic) object, but knows nothing about OpenGL or rendering.
@@ -38,6 +36,9 @@ class GameObject
 		void setLocalPosition (glm::vec3 pPosition);
 		glm::vec3 getLocalPosition();
 
+        //get world
+        World* getWorld();
+
         //get the objects world position by combining transforms
 		glm::vec3 getWorldPosition();
 		virtual glm::mat4& getWorldTransform();
@@ -47,26 +48,15 @@ class GameObject
 		void rotate(float pAngle, glm::vec3 pAxis);
 		void scale(glm::vec3 pScale);
 
-        //mesh and material should be shared as much as possible
-		void setMesh(Mesh* pMesh);
-		Mesh* getMesh() const;
-
-		void setMaterial (AbstractMaterial* pMaterial);
-		AbstractMaterial* getMaterial() const;
-
-        //behaviour will probably be a unique instance per gameobject
-		void setBehaviour(AbstractBehaviour* pBehaviour);
-		AbstractBehaviour* getBehaviour() const;
-
 		//new multiple behaviours:
-		void addBehaviour(std::type_index type, AbstractBehaviour* pBehaviour);
+		void addBehaviour(AbstractBehaviour* pBehaviour);
 
         template <typename T> T* getBehaviour()
         {
-            auto it = _behaviours.find(std::type_index(typeid(T)));
-            if (it != _behaviours.end()) {
-                return dynamic_cast<T*>(it->second);
-            }
+//            auto it = _behaviours.find(std::type_index(typeid(T)));
+//            if (it != _behaviours.end()) {
+//                return dynamic_cast<T*>(it->second);
+//            }
             return nullptr;
         }
 
@@ -92,12 +82,10 @@ class GameObject
 
         GameObject* _parent;
 		std::vector<GameObject*> _children;
-        std::map<std::type_index, AbstractBehaviour*> _behaviours;
+        std::vector<AbstractBehaviour*> _behaviours;
 
-        std::string _type; //type of GameObject(eg. tree/car)
-        Mesh* _mesh;
-		AbstractBehaviour* _behaviour; //to be removed
-		AbstractMaterial* _material;
+//        std::string _type; //type of GameObject(eg. tree/car)
+
 		World* _world;
 
         //update children list administration

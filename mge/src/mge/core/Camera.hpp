@@ -3,22 +3,20 @@
 
 #include <string>
 #include "mge/core/GameObject.hpp"
+#include "mge/behaviours/AbstractBehaviour.hpp"
 
 /**
- * Camera is just a GameObject with an additional perspective matrix.
  * The camera's own transform is used to generate a world to view matrix by taking the inverse of the camera transform.
  */
-class Camera : public GameObject
+class Camera : public AbstractBehaviour
 {
 	public:
 		Camera(
-            std::string pName = "camera",
-            glm::vec3 pPosition = glm::vec3( 0.0f, 3.0f, 5.0f ),
             glm::mat4 pProjectionMatrix = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f  )
         );
-
 		virtual ~Camera();
 
+        virtual void update(float pStep);
         glm::mat4& getProjection();
 
 	private:
