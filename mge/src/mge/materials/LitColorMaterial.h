@@ -3,6 +3,9 @@
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include <glm.hpp>
+#include <iostream>
+#include <sstream>
+#include <ostream>
 #include "BaseLight.h"
 
 #define MAX_LIGHTS_NUM 5
@@ -10,6 +13,9 @@
  * Lit color material.
  * This material uses lights.
  */
+
+using namespace std;
+
 class LitColorMaterial : public AbstractMaterial
 {
     public:
@@ -19,6 +25,8 @@ class LitColorMaterial : public AbstractMaterial
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);
+
+        static string uniName(string propertyName, int lightIndex);
 
     private:
         //all the static properties are shared between instances of ColorMaterial

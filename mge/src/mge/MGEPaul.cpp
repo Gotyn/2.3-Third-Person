@@ -39,12 +39,12 @@ void MGEPaul::_initializeScene()
     Mesh* lightBowlMesh = Mesh::load (config::MGE_MODEL_PATH+"sphere_smooth.obj");
 
     //LIGHTS
-    BaseLight* testLight = new BaseLight("baseLight", glm::vec3(0,3,0), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(0,0,-1));
+    BaseLight* testLight = new BaseLight("baseLight", glm::vec3(0,3,0), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(-1,0,0), 15.0f);
     testLight->setMesh(lightBowlMesh);
     testLight->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
     testLight->scale(glm::vec3(0.2f,0.2f,0.2f));
 
-    BaseLight* testLight2 = new BaseLight("baseLight2", glm::vec3(-3,3,-3), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,0,0));
+    BaseLight* testLight2 = new BaseLight("baseLight2", glm::vec3(-3,3,-3), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(0,1,0));
     testLight2->setMesh(lightBowlMesh);
     testLight2->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
     testLight2->scale(glm::vec3(0.2f,0.2f,0.2f));
@@ -78,9 +78,6 @@ void MGEPaul::_initializeScene()
     //MATERIALS
     LitColorMaterial* litColorMaterial = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 0.0f), _world);
     LitColorMaterial* litColorMaterial_2 = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 1.0f), _world);
-    LitColorMaterial* litColorMaterial_3 = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 1.0f), _world);
-    LitColorMaterial* litColorMaterial_4 = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 1.0f), _world);
-    LitColorMaterial* litColorMaterial_5 = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 1.0f), _world);
     //SCENE SETUP
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
     plane->scale(glm::vec3(5, 5, 5));
@@ -92,21 +89,21 @@ void MGEPaul::_initializeScene()
     plane2->rotate(glm::radians(90.0f), glm::vec3(0,0,1));
     plane2->scale(glm::vec3(5, 5, 5));
     plane2->setMesh(planeMeshDefault);
-    plane2->setMaterial(litColorMaterial_3);
+    plane2->setMaterial(litColorMaterial_2);
     _world->add(plane2);
 
     GameObject* plane3 = new GameObject ("plane3", glm::vec3(-5, 5, 0));
     plane3->rotate(glm::radians(-90.0f), glm::vec3(0,0,1));
     plane3->scale(glm::vec3(5, 5, 5));
     plane3->setMesh(planeMeshDefault);
-    plane3->setMaterial(litColorMaterial_4);
+    plane3->setMaterial(litColorMaterial_2);
     _world->add(plane3);
 
     GameObject* plane4 = new GameObject ("plane4", glm::vec3(0, 5, -5));
     plane4->rotate(glm::radians(90.0f), glm::vec3(1,0,0));
     plane4->scale(glm::vec3(5, 5, 5));
     plane4->setMesh(planeMeshDefault);
-    plane4->setMaterial(litColorMaterial_5);
+    plane4->setMaterial(litColorMaterial_2);
     _world->add(plane4);
 
     GameObject* testModel = new GameObject ("testModel", glm::vec3(0, 0.5f, 0));
