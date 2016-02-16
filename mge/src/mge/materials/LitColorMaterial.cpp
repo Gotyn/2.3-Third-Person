@@ -103,6 +103,38 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getId());
     glUniform1i (_shader->getUniformLocation("textureDiffuse"), 0);
 
+    // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
+    /*GLuint depthMapFBO;
+    glGenFramebuffers(1, &depthMapFBO);
+
+    GLuint depthMap;
+    glGenTextures(1, &depthMap);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    // 1. first render to depth map
+    glViewport(0, 0, 1024, 1024);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+        glClear(GL_DEPTH_BUFFER_BIT);
+        //ConfigureShaderAndMatrices();
+        //RenderScene();
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // 2. then render scene as normal with shadow mapping (using depth map)
+    glViewport(0, 0, 1024, 1024);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glBindTexture(GL_TEXTURE_2D, depthMap);*/
+    // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
+
     //pass in a precalculate mvp matrix (see texture material for the opposite)
     glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
     glm::mat4 viewMatrix        = glm::inverse(pCamera->getOwner()->getWorldTransform());
@@ -113,10 +145,10 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     glUniformMatrix4fv ( _uViewMatrix, 1, GL_FALSE, glm::value_ptr(viewMatrix));
     glUniformMatrix4fv ( _uPerspectiveMatrix, 1, GL_FALSE, glm::value_ptr(perspectiveMatrix));
     glUniform3fv (uCameraPosIndex, 1, glm::value_ptr(cameraPos));
-    //send current amount of lights
-    glUniform1i (lightsUniforArraySize, tempSize);
     //get current amount of lights
     tempSize = pWorld->sceneLights().size();
+    //send current amount of lights
+    glUniform1i (lightsUniforArraySize, tempSize);
     //set the material color
     if(tempSize > 0 && tempSize <= MAX_LIGHTS_NUM) {
         for (int i = 0; i < tempSize; ++i)
@@ -137,12 +169,6 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
             glUniform1f (uConeAnglesIndex[i], coneAngles[i]);
         }
     }
-
     //now inform mesh of where to stream its data
-    //pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
-    pMesh->streamToOpenGL(
-          _shader->getAttribLocation("vertex"),
-          _shader->getAttribLocation("normal"),
-          _shader->getAttribLocation("uv")
-                          );
+    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 }

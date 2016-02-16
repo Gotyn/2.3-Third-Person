@@ -33,7 +33,7 @@ void MGEPaul::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
-    //LIGHTS
+    //ADD LIGHTS
     GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     _world->add(spotLightGO);
@@ -46,6 +46,7 @@ void MGEPaul::_initializeScene()
     spotLightGO->addBehaviour(spotLightMesh);
     spotLightMesh->setOwner(spotLightGO);
 
+    /*
     GameObject* spotLightGO2 = new GameObject("positional", glm::vec3(-3,3,-3));
     spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     _world->add(spotLightGO2);
@@ -53,10 +54,11 @@ void MGEPaul::_initializeScene()
     spotLightGO2->addBehaviour(testLight2);
     testLight2->setOwner(spotLightGO2);
     testLight2->setLightPosition(testLight2->getOwner()->getWorldPosition());
-    //_world->addLight(testLight2);
+    _world->addLight(testLight2);
     MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
     spotLightGO2->addBehaviour(spotLightMesh2);
     spotLightMesh2->setOwner(spotLightGO2);
+    */
 
     //ADD PLANE GO, MESH AND MATERIAL
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
