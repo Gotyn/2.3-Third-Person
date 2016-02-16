@@ -30,6 +30,7 @@ int main()
     //AbstractGame* game = new MGEDemo();
     //AbstractGame* game = new MGEPaul();
     //AbstractGame* game = new MGEMartijn();
+
     game->initialize();
     game->run();
 
