@@ -33,11 +33,6 @@ void MGEPaul::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
-    //MESHES
-    /*Mesh* planeMeshDefault = Mesh::load (config::MGE_MODEL_PATH+"plane.obj");
-    Mesh* testModelMesh = Mesh::load (config::MGE_MODEL_PATH+"teapot_smooth.obj");
-    Mesh* lightBowlMesh = Mesh::load (config::MGE_MODEL_PATH+"sphere_smooth.obj");*/
-
     //LIGHTS
     GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
