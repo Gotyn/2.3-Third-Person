@@ -5,6 +5,7 @@
 #include "mge/core/SphinxDreams.h"
 #include "mge/MGEDemo.hpp"
 #include "mge/MGEPaul.h"
+#include "mge/MGEMartijn.h"
 
 /**
  * Main entry point for the Micro Engine.
@@ -27,8 +28,13 @@ int main()
 
     //AbstractGame* game = new SphinxDreams();
     //AbstractGame* game = new MGEDemo();
+<<<<<<< HEAD
     AbstractGame* game = new MGEPaul();
 
+=======
+    //AbstractGame* game = new MGEPaul();
+    //AbstractGame* game = new MGEMartijn();
+>>>>>>> refs/remotes/origin/master
     game->initialize();
     game->run();
 
