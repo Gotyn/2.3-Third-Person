@@ -26,15 +26,11 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
-    //AbstractGame* game = new SphinxDreams();
+    AbstractGame* game = new SphinxDreams();
     //AbstractGame* game = new MGEDemo();
-<<<<<<< HEAD
-    AbstractGame* game = new MGEPaul();
-
-=======
     //AbstractGame* game = new MGEPaul();
     //AbstractGame* game = new MGEMartijn();
->>>>>>> refs/remotes/origin/master
+
     game->initialize();
     game->run();
 
