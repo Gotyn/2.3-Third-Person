@@ -39,26 +39,81 @@ void MGEPaul::_initializeScene()
     Mesh* lightBowlMesh = Mesh::load (config::MGE_MODEL_PATH+"sphere_smooth.obj");*/
 
     //LIGHTS
-    GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,3,0));
+    GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
+    spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     _world->add(spotLightGO);
-    BaseLight* testLight = new BaseLight(glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0), 0.92f);
+    BaseLight* testLight = new BaseLight(glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,0,0), 0.95f);
     spotLightGO->addBehaviour(testLight);
     testLight->setOwner(spotLightGO);
     testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
     _world->addLight(testLight);
-    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth", new ColorMaterial(glm::vec3(1,1,0)));
+    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
     spotLightGO->addBehaviour(spotLightMesh);
     spotLightMesh->setOwner(spotLightGO);
 
+    GameObject* spotLightGO2 = new GameObject("positional", glm::vec3(-3,3,-3));
+    spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+    _world->add(spotLightGO2);
+    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0));
+    spotLightGO2->addBehaviour(testLight2);
+    testLight2->setOwner(spotLightGO2);
+    testLight2->setLightPosition(testLight2->getOwner()->getWorldPosition());
+    _world->addLight(testLight2);
+    MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
+    spotLightGO2->addBehaviour(spotLightMesh2);
+    spotLightMesh2->setOwner(spotLightGO2);
+
+    //ADD PLANE GO, MESH AND MATERIAL
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
     plane->scale(glm::vec3(5, 5, 5));
     _world->add(plane);
-    MeshRenderer* planeMesh = new MeshRenderer("plane", new LitColorMaterial(glm::vec3(1,0,1), _world));
+    MeshRenderer* planeMesh = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
     planeMesh->setOwner(plane);
     plane->addBehaviour(planeMesh);
 
+    GameObject* plane2 = new GameObject ("wall left", glm::vec3(5, 2, 0));
+    plane2->rotate(glm::radians(90.0f), glm::vec3(0,0,1));
+    plane2->scale(glm::vec3(2, 1, 5));
+    _world->add(plane2);
+    MeshRenderer* planeMesh2 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    planeMesh2->setOwner(plane2);
+    plane2->addBehaviour(planeMesh2);
+
+    GameObject* plane3 = new GameObject ("wall right", glm::vec3(-5, 2, 0));
+    plane3->rotate(glm::radians(-90.0f), glm::vec3(0,0,1));
+    plane3->scale(glm::vec3(2, 1, 5));
+    _world->add(plane3);
+    MeshRenderer* planeMesh3 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    planeMesh3->setOwner(plane3);
+    plane3->addBehaviour(planeMesh3);
+
+    GameObject* plane4 = new GameObject ("wall front", glm::vec3(0, 2, -5));
+    plane4->rotate(glm::radians(90.0f), glm::vec3(1,0,0));
+    plane4->scale(glm::vec3(5, 1, 2));
+    _world->add(plane4);
+    MeshRenderer* planeMesh4 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    planeMesh4->setOwner(plane4);
+    plane4->addBehaviour(planeMesh4);
+
+    GameObject* plane5 = new GameObject ("ceiling", glm::vec3(0, 4, 0));
+    plane5->rotate(glm::radians(180.0f), glm::vec3(1,0,0));
+    plane5->scale(glm::vec3(5, 5, 5));
+    _world->add(plane5);
+    MeshRenderer* planeMesh5 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    planeMesh5->setOwner(plane5);
+    plane5->addBehaviour(planeMesh5);
+
+    GameObject* teapot = new GameObject ("ceiling", glm::vec3(3.5f, 2, 0));
+    teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
+    teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+    _world->add(teapot);
+    MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj", new LitColorMaterial(glm::vec3(0,1,0), _world));
+    teapotMesh->setOwner(teapot);
+    teapot->addBehaviour(teapotMesh);
+
+    //ADD CAMERA GO, CAMERA COMPONENT AND BEHAVIOUR
     GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 4.0f, 5.0f));
-    _world->add(spotLightGO);
+    _world->add(cameraGO);
     Camera* camera = new Camera ();
     camera->setOwner(cameraGO);
     cameraGO->addBehaviour(camera);
@@ -66,86 +121,12 @@ void MGEPaul::_initializeScene()
     OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window);
     orbit->setOwner(cameraGO);
     cameraGO->addBehaviour(orbit);
-
-    /*BaseLight* testLight2 = new BaseLight("positional", glm::vec3(-3,3,-3), glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(0,1,0));
-    testLight2->setMesh(lightBowlMesh);
-    testLight2->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
-    testLight2->scale(glm::vec3(0.2f,0.2f,0.2f));
-
-    BaseLight* testLight3 = new BaseLight("baseLight3", glm::vec3(-3,3,3), glm::vec3 (1,0,0), 0.5f, glm::vec3(0,1,1));
-    testLight3->setMesh(lightBowlMesh);
-    testLight3->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
-    testLight3->scale(glm::vec3(0.2f,0.2f,0.2f));
-
-    BaseLight* testLight4 = new BaseLight("baseLight4", glm::vec3(-4,3,-5), glm::vec3 (1,0,0), 0.5f, glm::vec3(0,1,1));
-    testLight4->setMesh(lightBowlMesh);
-    testLight4->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
-    testLight4->scale(glm::vec3(0.2f,0.2f,0.2f));
-
-    BaseLight* testLight5 = new BaseLight("baseLight5", glm::vec3(1,3,2), glm::vec3 (1,0,0), 0.5f, glm::vec3(0,1,1));
-    testLight5->setMesh(lightBowlMesh);
-    testLight5->setMaterial(new ColorMaterial(glm::vec3(1,1,0)));
-    testLight5->scale(glm::vec3(0.2f,0.2f,0.2f));*/
-
-    /*_world->add(testLight);
-    _world->add(testLight2);
-    _world->add(testLight3);
-    _world->add(testLight4);
-    _world->add(testLight5);
-    _world->addLight(testLight);
-    _world->addLight(testLight2);
-    _world->addLight(testLight3);
-    _world->addLight(testLight4);
-    _world->addLight(testLight5);
-
-    //MATERIALS
-    LitColorMaterial* litColorMaterial = new LitColorMaterial (glm::vec3(0.0f, 1.0f, 0.0f), _world);
-    LitColorMaterial* litColorMaterial_2 = new LitColorMaterial (glm::vec3(0.0f, 0.9f, 0.0f), _world);
-    //SCENE SETUP
-    GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
-    plane->scale(glm::vec3(5, 5, 5));
-    plane->setMesh(planeMeshDefault);
-    plane->setMaterial(litColorMaterial_2);
-    _world->add(plane);
-
-    GameObject* plane2 = new GameObject ("plane2", glm::vec3(5, 5, 0));
-    plane2->rotate(glm::radians(90.0f), glm::vec3(0,0,1));
-    plane2->scale(glm::vec3(5, 5, 5));
-    plane2->setMesh(planeMeshDefault);
-    plane2->setMaterial(litColorMaterial_2);
-    _world->add(plane2);
-
-    GameObject* plane3 = new GameObject ("plane3", glm::vec3(-5, 5, 0));
-    plane3->rotate(glm::radians(-90.0f), glm::vec3(0,0,1));
-    plane3->scale(glm::vec3(5, 5, 5));
-    plane3->setMesh(planeMeshDefault);
-    plane3->setMaterial(litColorMaterial_2);
-    _world->add(plane3);
-
-    GameObject* plane4 = new GameObject ("plane4", glm::vec3(0, 5, -5));
-    plane4->rotate(glm::radians(90.0f), glm::vec3(1,0,0));
-    plane4->scale(glm::vec3(5, 5, 5));
-    plane4->setMesh(planeMeshDefault);
-    plane4->setMaterial(litColorMaterial_2);
-    _world->add(plane4);
-
-    GameObject* testModel = new GameObject ("testModel", glm::vec3(0, 0.5f, 0));
-    testModel->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));
-    testModel->setMesh (testModelMesh);
-    testModel->setMaterial(litColorMaterial);
-    testModel->setBehaviour (new KeysBehaviour());
-    _world->add(testModel);
-
-    Camera* camera = new Camera ("camera", glm::vec3(0, 4.0f, 5.0f));
-    camera->setBehaviour (new OrbitBehaviourPaul(10, 0.20f, 0.99f, testModel, 0.1f, 0.1f, _window));
-    _world->add(camera);
-    _world->setMainCamera(camera);*/
 }
 
 void MGEPaul::_render() {
     AbstractGame::_render();
     _updateHud();
-    _world->renderDebugInfo();
+    //_world->renderDebugInfo();
 }
 
 void MGEPaul::_update() {
