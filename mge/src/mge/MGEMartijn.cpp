@@ -39,49 +39,12 @@ void MGEMartijn::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
-    // ==== lua testing ====
-    lua_State* L = luaL_newstate();
-    luaL_openlibs(L);
-    luaL_dofile(L, "testTable.lua");
-
-    luabridge::LuaRef t = luabridge::getGlobal(L, "window");
-    luabridge::LuaRef title = t["title"];
-
-    int width = t["width"].cast<int>();
-    int height = t["height"].cast<int>();
-
-    std::string titleString = title.cast<std::string>();
-
-    std::cout << titleString << std::endl;
-    std::cout << "width = " << width << std::endl;
-    std::cout << "height = " << height << std::endl;
-
-    // ==== end lua test =====
-
-
     // ==== AUDIO testing =====
     Audio* audio = Audio::Instance();
     audio->playSound("Gate.wav");
     audio->playSound("Pistol_DryFire.wav");
     // ==== end AUDIO test =====
 
-
-    // ==== TEST NEW OBJECT CREATION ====
-
-    GameObject* testGO = new GameObject("testGO", glm::vec3(0,0,0));
-    _world->add(testGO);
-
-    KeysBehaviour* kb = new KeysBehaviour;
-    kb->setOwner(testGO);
-//    kb->setFilename("ghost.png");
-    testGO->addBehaviour(std::type_index(typeid(KeysBehaviour)), kb);
-
-    RotatingBehaviour* rb = new RotatingBehaviour();
-    rb->setOwner(testGO);
-//    npcc->setPhrase("I'M A SCARY GHOST!!!");
-    testGO->addBehaviour(std::type_index(typeid(RotatingBehaviour)), rb);
-
-    // ==== END TEST NEW OBJECT CREATION ====
 }
 
 void MGEMartijn::_render() {
