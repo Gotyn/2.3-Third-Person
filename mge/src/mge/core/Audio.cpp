@@ -8,32 +8,33 @@ Audio* Audio::Instance() {
         instance = new Audio;
     }
     return instance;
-}
 
-void Audio::FMOD_ErrorCheck(FMOD_RESULT check){
-    if (check != FMOD_OK){
-        std::cout<<std::endl<<"FMOD ERROR: "+check<<std::endl;
-    }
 }
 
 Audio::Audio(){
     audioPath = config::MGE_AUDIO_PATH.c_str();
+
 }
 
 Audio::~Audio(){
 }
 
-void Audio::playSound(std::string fileName) {
+void Audio::Update(){
+
+}
+
+void Audio::playSound(std::string fileName, bool loop) {
     std::cout << "----playSound----" << std::endl;
-
     std::string file = config::MGE_AUDIO_PATH+fileName;
-    std::cout<< file << std::endl;
-
+    if (!buffer.loadFromFile(file)) return;
+    sound.setBuffer(buffer);
+    sound.setLoop(loop);
+    sound.play();
     std::cout << "----/playSound----" << std::endl;
 
 }
 
-void Audio::playSFX(std::string fileName) {
+void Audio::playSFX(std::string fileName, bool loop) {
     std::cout << "----playSfx----" << std::endl;
     std::cout << "----/playSfx----" << std::endl;
 }

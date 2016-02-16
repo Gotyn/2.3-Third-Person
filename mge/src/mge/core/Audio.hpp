@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <mge/config.hpp>
-#include "fmod_studio.h"
-#include "fmod_errors.h"
+
+
+#include <SFML/Audio.hpp>
 
 
 /**
- * Audio class (FMOD)
+ * Audio class (sfml)
  */
 
 
@@ -18,19 +19,19 @@ class Audio
 	    static Audio* Instance();
 
         //functions
-        void playSound(std::string filename);
-        void playSFX(std::string filename);
+        void playSound(std::string filename, bool loop = false);
+        void playSFX(std::string filename, bool loop = false);
+        void Update();
 
 	private:
 	    Audio();
 	    virtual ~Audio();
 
 	    static Audio* instance;
+        std::string audioPath;
 
-	    std::string audioPath;
-
-	    //voids
-	    void FMOD_ErrorCheck(FMOD_RESULT check);
+        sf::SoundBuffer buffer;
+        sf::Sound sound;
 
 };
 
