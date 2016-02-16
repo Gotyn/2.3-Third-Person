@@ -13,6 +13,7 @@ struct PointLight
     float coneAngles;
 };
 
+uniform sampler2D textureDiffuse;
 uniform vec3 cameraPos;
 uniform int uniformArraySize;
 uniform PointLight pointLights[MAX_LIGHTS];
@@ -20,6 +21,7 @@ uniform PointLight pointLights[MAX_LIGHTS];
 in vec3 wNormal;
 in vec3 worldPosition;
 out vec4 sColor;
+in vec2 texCoord;
 
 void main( void )
 {
@@ -69,5 +71,5 @@ void main( void )
 
         result += vec4 (ambientTerm + diffuseTerm, 1);
     }
-    sColor = result;
+    sColor = texture(textureDiffuse,texCoord) * result;
 }

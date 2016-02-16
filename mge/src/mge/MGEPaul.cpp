@@ -37,7 +37,7 @@ void MGEPaul::_initializeScene()
     GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     _world->add(spotLightGO);
-    BaseLight* testLight = new BaseLight(glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,0,0), 0.95f);
+    BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,1,1), glm::vec3(1,0,0), 0.95f);
     spotLightGO->addBehaviour(testLight);
     testLight->setOwner(spotLightGO);
     testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
@@ -49,11 +49,11 @@ void MGEPaul::_initializeScene()
     GameObject* spotLightGO2 = new GameObject("positional", glm::vec3(-3,3,-3));
     spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     _world->add(spotLightGO2);
-    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,0,0), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0));
+    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0));
     spotLightGO2->addBehaviour(testLight2);
     testLight2->setOwner(spotLightGO2);
     testLight2->setLightPosition(testLight2->getOwner()->getWorldPosition());
-    _world->addLight(testLight2);
+    //_world->addLight(testLight2);
     MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
     spotLightGO2->addBehaviour(spotLightMesh2);
     spotLightMesh2->setOwner(spotLightGO2);
@@ -62,7 +62,8 @@ void MGEPaul::_initializeScene()
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
     plane->scale(glm::vec3(5, 5, 5));
     _world->add(plane);
-    MeshRenderer* planeMesh = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    MeshRenderer* planeMesh = new MeshRenderer("plane.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), _world, Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     planeMesh->setOwner(plane);
     plane->addBehaviour(planeMesh);
 
@@ -70,7 +71,8 @@ void MGEPaul::_initializeScene()
     plane2->rotate(glm::radians(90.0f), glm::vec3(0,0,1));
     plane2->scale(glm::vec3(2, 1, 5));
     _world->add(plane2);
-    MeshRenderer* planeMesh2 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    MeshRenderer* planeMesh2 = new MeshRenderer("plane.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), _world, Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     planeMesh2->setOwner(plane2);
     plane2->addBehaviour(planeMesh2);
 
@@ -78,7 +80,8 @@ void MGEPaul::_initializeScene()
     plane3->rotate(glm::radians(-90.0f), glm::vec3(0,0,1));
     plane3->scale(glm::vec3(2, 1, 5));
     _world->add(plane3);
-    MeshRenderer* planeMesh3 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    MeshRenderer* planeMesh3 = new MeshRenderer("plane.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), _world, Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     planeMesh3->setOwner(plane3);
     plane3->addBehaviour(planeMesh3);
 
@@ -86,7 +89,8 @@ void MGEPaul::_initializeScene()
     plane4->rotate(glm::radians(90.0f), glm::vec3(1,0,0));
     plane4->scale(glm::vec3(5, 1, 2));
     _world->add(plane4);
-    MeshRenderer* planeMesh4 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    MeshRenderer* planeMesh4 = new MeshRenderer("plane.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), _world, Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     planeMesh4->setOwner(plane4);
     plane4->addBehaviour(planeMesh4);
 
@@ -94,7 +98,8 @@ void MGEPaul::_initializeScene()
     plane5->rotate(glm::radians(180.0f), glm::vec3(1,0,0));
     plane5->scale(glm::vec3(5, 5, 5));
     _world->add(plane5);
-    MeshRenderer* planeMesh5 = new MeshRenderer("plane.obj", new LitColorMaterial(glm::vec3(1,1,0), _world));
+    MeshRenderer* planeMesh5 = new MeshRenderer("plane.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), _world, Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     planeMesh5->setOwner(plane5);
     plane5->addBehaviour(planeMesh5);
 
@@ -102,7 +107,8 @@ void MGEPaul::_initializeScene()
     teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
     teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
     _world->add(teapot);
-    MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj", new LitColorMaterial(glm::vec3(0,1,0), _world));
+    MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), _world, Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")));
     teapotMesh->setOwner(teapot);
     teapot->addBehaviour(teapotMesh);
 

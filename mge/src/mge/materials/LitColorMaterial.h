@@ -2,6 +2,8 @@
 #define LITCOLORMATERIAL_H
 
 #include "mge/materials/AbstractMaterial.hpp"
+#include "mge/core/Texture.hpp"
+#include "mge/core/Mesh.hpp"
 #include <glm.hpp>
 #include <iostream>
 #include <sstream>
@@ -19,12 +21,13 @@ using namespace std;
 class LitColorMaterial : public AbstractMaterial
 {
     public:
-        LitColorMaterial(glm::vec3 pColor, World* pWorld);
+        LitColorMaterial(glm::vec3 pColor, World* pWorld, Texture* pDiffuseTexture);
         virtual ~LitColorMaterial();
         virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);
+        void setDiffuseTexture (Texture* pDiffuseTexture);
 
         static string uniName(string propertyName, int lightIndex);
 
@@ -54,6 +57,7 @@ class LitColorMaterial : public AbstractMaterial
 
         //this one is unique per instance of color material
         glm::vec3 _diffuseColor;
+        Texture* _diffuseTexture;
 
         static glm::vec3 ambientColors[];
         static float ambientIntensities[];

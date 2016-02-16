@@ -35,7 +35,7 @@ float LitColorMaterial::coneAngles[MAX_LIGHTS_NUM];
 int LitColorMaterial::tempSize = 0;
 World* LitColorMaterial::_myWorld;
 
-LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, World* pWorld)
+LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, World* pWorld, Texture * pDiffuseTexture): _diffuseTexture(pDiffuseTexture)
 {
     _diffuseColor = pDiffuseColor;
     _myWorld = pWorld;
@@ -93,8 +93,15 @@ void LitColorMaterial::_lazyInitializeShader() {
     }
 }
 
-void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
+void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
+{
+    if (!_diffuseTexture) return;
     _shader->use();
+
+    //setup texture slot 0
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getId());
+    glUniform1i (_shader->getUniformLocation("textureDiffuse"), 0);
 
     //pass in a precalculate mvp matrix (see texture material for the opposite)
     glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
@@ -132,5 +139,10 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     }
 
     //now inform mesh of where to stream its data
-    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
+    //pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
+    pMesh->streamToOpenGL(
+          _shader->getAttribLocation("vertex"),
+          _shader->getAttribLocation("normal"),
+          _shader->getAttribLocation("uv")
+                          );
 }

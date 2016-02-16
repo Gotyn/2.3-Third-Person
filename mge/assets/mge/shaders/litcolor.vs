@@ -12,10 +12,12 @@ in vec2 uv;
 
 out vec3 wNormal;
 out vec3 worldPosition;
+out vec2 texCoord; //make sure the texture coord is interpolated
 
 void main( void )
 {
 	gl_Position = perspectiveMatrix * viewMatrix * modelMatrix * vec4(vertex,1);
     worldPosition = vec3(modelMatrix * vec4(vertex,1));
     wNormal = normalize(vec3 (modelMatrix * vec4 (normal, 0)));
+    texCoord = uv;
 }
