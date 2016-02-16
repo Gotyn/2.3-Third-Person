@@ -33,6 +33,10 @@ void MGEDemo::initialize() {
 	cout << "HUD initialized." << endl << endl;
 }
 
+void MGEDemo::testFunc(int i) {
+    cout << i;
+}
+
 //build the game _world
 void MGEDemo::_initializeScene()
 {
@@ -41,6 +45,10 @@ void MGEDemo::_initializeScene()
     // ==== lua testing ====
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+
+    luabridge::getGlobalNamespace(L)
+        .addFunction("testFunction", LuaManager::testFunction);
+
     luaL_dofile(L, "testTable.lua");
 
     _loadLuaScene(L);
@@ -61,7 +69,7 @@ void MGEDemo::_loadLuaScene(lua_State* L)
 GameObject* MGEDemo::loadGameObject(lua_State* L, char* type)
 {
     GameObject* go = new GameObject("luaGO", glm::vec3(0,0,0));
-    _world->add(go);
+    World::Instance()->add(go);
 
     luabridge::LuaRef gameObjectRef = luabridge::getGlobal(L, type);
     for(int i = 0; i < gameObjectRef.length(); ++i)
@@ -83,7 +91,7 @@ GameObject* MGEDemo::loadGameObject(lua_State* L, char* type)
             Camera* camera = new Camera ();
             camera->setOwner(go);
             go->addBehaviour(camera);
-            _world->setMainCamera(camera);
+            World::Instance()->setMainCamera(camera);
         }
 
         if (componentName == "MeshRenderer")

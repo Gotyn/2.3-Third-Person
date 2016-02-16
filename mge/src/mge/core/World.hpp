@@ -11,8 +11,7 @@ class Camera;
 class World : public GameObject
 {
 	public:
-        World();
-
+        static World* Instance();
 		void setMainCamera (Camera* pCamera);
 		Camera* getMainCamera();
 
@@ -21,6 +20,12 @@ class World : public GameObject
         std::vector<BaseLight*> sceneLights() { return _lights; }
 
 	private:
+	    World();
+	    World(World const&){};             // copy constructor is private
+        World& operator=(World const&){};  // assignment operator is private
+
+        static World* _instance;
+
 	    Camera* _mainCamera;
 	    std::vector<BaseLight*> _lights;
 };
