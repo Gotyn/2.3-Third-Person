@@ -10,7 +10,7 @@ class Mesh;
 class MeshRenderer : public AbstractBehaviour
 {
     public:
-        MeshRenderer(std::string pFilename);
+        MeshRenderer(std::string pFilename, AbstractMaterial* pMaterial);
         virtual ~MeshRenderer();
 
         virtual void update( float step );

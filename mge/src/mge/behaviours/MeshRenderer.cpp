@@ -2,10 +2,11 @@
 #include "mge/config.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 
-MeshRenderer::MeshRenderer(std::string pFilename):AbstractBehaviour()
+MeshRenderer::MeshRenderer(std::string pFilename, AbstractMaterial* pMaterial):AbstractBehaviour()
 {
     _mesh = Mesh::load (config::MGE_MODEL_PATH+pFilename);
-    _material = new ColorMaterial (glm::vec3(1.0f,1.0f,1.0f));
+    //_material = new ColorMaterial (glm::vec3(1.0f,1.0f,1.0f));
+    _material = pMaterial;
 }
 
 MeshRenderer::~MeshRenderer()
