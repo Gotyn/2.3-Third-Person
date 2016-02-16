@@ -1,3 +1,5 @@
+testFunction("hello from my own lua script")
+
 camera = {
 	{
 		componentName = "Transform",

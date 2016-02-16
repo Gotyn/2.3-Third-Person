@@ -10,7 +10,7 @@ using namespace std;
 #include "mge/behaviours/RotatingBehaviour.hpp"
 
 GameObject::GameObject(std::string pName, glm::vec3 pPosition )
-:	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children(), _world(NULL)
+:	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children()
 {
 }
 
@@ -76,7 +76,6 @@ void GameObject::setParent (GameObject* pParent) {
     if (_parent != NULL) {
         _parent->_innerRemove(this);
         _parent = NULL;
-        _world = NULL;
     }
 
     //set new parent
@@ -84,7 +83,6 @@ void GameObject::setParent (GameObject* pParent) {
         _parent = pParent;
         _parent->_innerAdd(this);
         //pass on world to child
-        _world = _parent->_world;
     }
 }
 
@@ -122,11 +120,6 @@ void GameObject::remove (GameObject* pChild) {
 glm::vec3 GameObject::getWorldPosition()
 {
 	return glm::vec3(getWorldTransform()[3]);
-}
-
-World* GameObject::getWorld()
-{
-    return _world;
 }
 
 glm::mat4& GameObject::getWorldTransform()

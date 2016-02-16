@@ -36,8 +36,8 @@ class GameObject
 		void setLocalPosition (glm::vec3 pPosition);
 		glm::vec3 getLocalPosition();
 
-        //get world
-        World* getWorld();
+//        //get world
+//        World* getWorld();
 
         //get the objects world position by combining transforms
 		glm::vec3 getWorldPosition();
@@ -86,7 +86,7 @@ class GameObject
 
 //        std::string _type; //type of GameObject(eg. tree/car)
 
-		World* _world;
+//		World* _world;
 
         //update children list administration
         void _innerAdd (GameObject* pChild);
