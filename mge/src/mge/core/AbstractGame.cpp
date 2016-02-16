@@ -9,7 +9,7 @@ using namespace std;
 #include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 
-AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL),_running(false)
+AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_running(false)
 {
     //ctor
 }
@@ -19,7 +19,6 @@ AbstractGame::~AbstractGame()
     //dtor
     delete _window;
     delete _renderer;
-    delete _world;
 }
 
 void AbstractGame::initialize() {
@@ -79,19 +78,19 @@ void AbstractGame::_initializeRenderer() {
 }
 
 void AbstractGame::_initializeWorld() {
-    //setup our own renderer
-	cout << "Initializing world..." << endl;
-	_world = new World();
-    cout << "World initialized." << endl << endl;
+//    //setup our own renderer
+//	cout << "Initializing world..." << endl;
+//	_world = new World();
+//    cout << "World initialized." << endl << endl;
 }
 
 void AbstractGame::_resetWorld() {
-    if (_world != NULL)
-    {
-        delete _world;
-        _world = NULL;
-    }
-    _initializeWorld();
+//    if (_world != NULL)
+//    {
+//        delete _world;
+//        _world = NULL;
+//    }
+//    _initializeWorld();
 }
 
 ///LOOP
@@ -119,11 +118,11 @@ void AbstractGame::run()
 }
 
 void AbstractGame::_update() {
-    _world->update(Timer::deltaTime(), glm::mat4());
+    World::Instance()->update(Timer::deltaTime(), glm::mat4());
 }
 
 void AbstractGame::_render () {
-    _renderer->render(_world);
+    _renderer->render(World::Instance());
 }
 
 void AbstractGame::_processEvents()

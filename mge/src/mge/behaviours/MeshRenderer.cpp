@@ -19,7 +19,7 @@ void MeshRenderer::update( float step )
     if (_mesh == NULL || _material == NULL)
         return;
 
-    _material->render(_owner->getWorld(), _owner, _mesh, _owner->getWorld()->getMainCamera());
+    _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
 void MeshRenderer::setMaterial(AbstractMaterial* pMaterial)

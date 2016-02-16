@@ -26,8 +26,8 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
-    AbstractGame* game = new SphinxDreams();
-    //AbstractGame* game = new MGEDemo();
+//    AbstractGame* game = new SphinxDreams();
+    AbstractGame* game = new MGEDemo();
     //AbstractGame* game = new MGEPaul();
     //AbstractGame* game = new MGEMartijn();
 
