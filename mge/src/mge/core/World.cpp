@@ -7,6 +7,8 @@
 
 using namespace std;
 
+std::vector<BaseLight*> _lights;
+
 World::World():GameObject("root"), _mainCamera(0)
 {
 	//ctor
@@ -32,5 +34,10 @@ void World::renderDebugInfo() {
 //            gameObject->getMesh()->renderDebugInfo(gameObject->getWorldTransform(), this);
 //        }
     }
+}
+
+void World::addLight(BaseLight* light)
+{
+    _lights.push_back(light);
 }
 

@@ -91,7 +91,7 @@ GameObject* MGEDemo::loadGameObject(lua_State* L, char* type)
             std::string modelName = comp["modelname"].cast<std::string>();
 //            std::cout << modelName << std::endl;
 
-            MeshRenderer* mr = new MeshRenderer(modelName);
+            MeshRenderer* mr = new MeshRenderer(modelName, new ColorMaterial(glm::vec3(1,1,0)));
             mr->setOwner(go);
             go->addBehaviour(mr);
         }
