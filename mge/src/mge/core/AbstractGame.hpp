@@ -4,9 +4,12 @@
 #include <SFML/Graphics.hpp>
 #include <GL/glew.h>
 #include <string>
+
+#include "mge/core/World.hpp"
+
 using namespace std;
 
-class World;
+//class World;
 class Renderer;
 
 /**

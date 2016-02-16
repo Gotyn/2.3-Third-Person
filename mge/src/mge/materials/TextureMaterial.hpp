@@ -2,6 +2,7 @@
 #define TEXTUREMATERIAL_H
 
 #include "mge/core/Texture.hpp"
+#include "mge/core/Mesh.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 
 /**
@@ -13,7 +14,7 @@ class TextureMaterial : public AbstractMaterial
     public:
         TextureMaterial (Texture* pDiffuseTexture);
         virtual ~TextureMaterial ();
-        virtual void render(World* pWorld, GameObject* pGameObject, Camera* pCamera);
+        virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
 

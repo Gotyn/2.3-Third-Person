@@ -1,19 +1,19 @@
-#ifndef COLORMATERIAL_H
-#define COLORMATERIAL_H
+#ifndef WOBBLINGMATERIAL_H
+#define WOBBLINGMATERIAL_H
 
 #include "mge/materials/AbstractMaterial.hpp"
-#include "mge/core/Mesh.hpp"
 #include <glm.hpp>
 
 /**
  * Simple single color material.
  * This material uses no lights.
  */
-class ColorMaterial : public AbstractMaterial
+
+class WobblingMaterial : public AbstractMaterial
 {
     public:
-        ColorMaterial(glm::vec3 pColor = glm::vec3(1,0,0));
-        virtual ~ColorMaterial();
+        WobblingMaterial(glm::vec3 pColor = glm::vec3(1,1,0));
+        virtual ~WobblingMaterial();
         virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
         //in rgb values
@@ -32,9 +32,13 @@ class ColorMaterial : public AbstractMaterial
         static GLint _aVertex ;
         static GLint _aNormal;
         static GLint _aUV ;
+        static GLint _offsetIndex ;
+        static GLint _timeIndex ;
+        static GLfloat offset[];
+        static GLfloat _time[];
 
         //this one is unique per instance of color material
         glm::vec3 _diffuseColor;
 };
 
-#endif // COLORMATERIAL_H
+#endif // WOBBLINGMATERIAL_H

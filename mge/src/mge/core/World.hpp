@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "mge/core/GameObject.hpp"
+#include "mge/core/BaseLight.h"
 
 class Light;
 class Camera;
@@ -16,9 +17,12 @@ class World : public GameObject
 		Camera* getMainCamera();
 
         void renderDebugInfo();
+        void addLight(BaseLight* light);
+        std::vector<BaseLight*> sceneLights() { return _lights; }
 
 	private:
 	    Camera* _mainCamera;
+	    std::vector<BaseLight*> _lights;
 };
 
 
