@@ -5,9 +5,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-
 #include <lua.hpp>
 
+#include "mge/core/ModelViewer.hpp"
 #include "mge/lua/LuaManager.hpp"
 #include "mge/core/Renderer.hpp"
 #include "mge/core/Mesh.hpp"
@@ -60,6 +60,8 @@ class MGEDemo: public AbstractGame
         void _updateHud();
         void _loadLuaScene(lua_State* L);
         static void testFunc(int i);
+
+        ModelViewer* _modelViewer;
 };
 
 #endif // MGEDEMO_H

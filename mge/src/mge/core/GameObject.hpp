@@ -84,10 +84,6 @@ class GameObject
 		std::vector<GameObject*> _children;
         std::vector<AbstractBehaviour*> _behaviours;
 
-//        std::string _type; //type of GameObject(eg. tree/car)
-
-//		World* _world;
-
         //update children list administration
         void _innerAdd (GameObject* pChild);
 		void _innerRemove (GameObject* pChild);

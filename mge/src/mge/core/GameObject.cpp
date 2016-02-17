@@ -26,10 +26,10 @@ GameObject::~GameObject()
         delete child;
     }
 
-//    //do not forget to delete behaviour, material, mesh, collider manually if required!
-//    for (auto& c : _behaviours)
-//    {
-//        delete c.second;
+    //do not forget to delete behaviour, material, mesh, collider manually if required!
+//    while (_behaviours.size() > 0) {
+//        AbstractBehaviour* b = _behaviours[0];
+//        delete b;
 //    }
 }
 
