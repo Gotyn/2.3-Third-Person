@@ -18,6 +18,7 @@ class Camera : public AbstractBehaviour
 
         virtual void update(float pStep);
         glm::mat4& getProjection();
+        void setProjection(glm::mat4& pProjection);
 
 	private:
 		glm::mat4 _projection;

@@ -8,8 +8,7 @@
 class Texture
 {
 	public:
-		static Texture* load(const std::string pTexturePath, GLenum internalFormat = GL_RGBA, GLenum format = GL_RGBA, bool clamp = false);
-
+		static Texture* load(const std::string pTexturePath, GLenum internalFormat = GL_RGBA, GLenum format = GL_RGBA, bool clamp = false, bool shadow = false);
 		virtual ~Texture();
 
 		GLuint getId();

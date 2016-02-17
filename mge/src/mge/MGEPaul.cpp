@@ -31,6 +31,7 @@ void MGEPaul::initialize() {
 //build the game _world
 void MGEPaul::_initializeScene()
 {
+    //Texture* shadowMap = Texture::loadShadowMap("shadowMap", 1024, 1024);
     _renderer->setClearColor(0,0,0);
 
     //ADD LIGHTS

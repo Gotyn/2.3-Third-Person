@@ -20,7 +20,7 @@ GLuint Texture::getId() {
 }
 
 // importer for textures
-Texture* Texture::load(std::string pName, GLenum internalFormat, GLenum format, bool clamp)
+Texture* Texture::load(std::string pName, GLenum internalFormat, GLenum format, bool clamp, bool shadow)
 {
     Texture* texture = 0;
 
@@ -28,10 +28,14 @@ Texture* Texture::load(std::string pName, GLenum internalFormat, GLenum format, 
    	std::map<std::string, Texture*>::iterator textureIterator = _textures.find(pName);
 
    	if (textureIterator == _textures.end()) {
-        texture = _loadFromFile(pName, &internalFormat, &format, clamp);
-        std::cout << "Texture " << pName << " with id " << texture->getId() << " loaded." << std::endl;
-        std::cout << "Caching texture." << std::endl;
-        _textures[pName] = texture;
+        if(!shadow) {
+            texture = _loadFromFile(pName, &internalFormat, &format, clamp);
+            std::cout << "Texture " << pName << " with id " << texture->getId() << " loaded." << std::endl;
+            std::cout << "Caching texture." << std::endl;
+            _textures[pName] = texture;
+        } else {
+
+        }
     } else {
         std::cout << "Returning cached texture " << pName << std::endl;
         texture = textureIterator->second;
