@@ -33,11 +33,13 @@ class ModelViewer
 
     private:
         void initialize();
+        vector<string> findFilesIn(string pFolder);
 
         lua_State* _L;
         GameObject* _cameraObject;
         GameObject* _model;
-
+        vector<string> _modelNames;
+        vector<string> _textureNames;
 };
 
 #endif // MODELVIEWER_H

@@ -1,3 +1,5 @@
+#include <windows.h>
+
 #include "ModelViewer.hpp"
 
 ModelViewer::ModelViewer()
@@ -42,6 +44,14 @@ void ModelViewer::refresh()
         delete _model;
     }
 
+    _modelNames = findFilesIn("mge/models/");
+    _textureNames = findFilesIn("mge/textures/");
+
+    for(auto const& value : _textureNames)
+    {
+        std::cout << "filename: " << value << std::endl;
+    }
+
     luaL_dofile(_L, "testTable.lua");
 
     luabridge::LuaRef modelTable = luabridge::getGlobal(_L, "model");
@@ -63,6 +73,26 @@ void ModelViewer::refresh()
     _model->addBehaviour(mr);
     _model->addBehaviour(rb);
 
+}
+
+vector<string> ModelViewer::findFilesIn(string pFolder)
+{
+    vector<string> names;
+    char search_path[200];
+    sprintf(search_path, "%s/*.*", pFolder.c_str());
+    WIN32_FIND_DATA fd;
+    HANDLE hFind = ::FindFirstFile(search_path, &fd);
+    if(hFind != INVALID_HANDLE_VALUE) {
+        do {
+            // read all (real) files in current folder
+            // , delete '!' read other 2 default folder . and ..
+            if(! (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) ) {
+                names.push_back(fd.cFileName);
+            }
+        }while(::FindNextFile(hFind, &fd));
+        ::FindClose(hFind);
+    }
+    return names;
 }
 
 ModelViewer::~ModelViewer()
