@@ -10,6 +10,7 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/LookAt.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
+#include "mge/lua/LuaManager.hpp"
 
 extern "C" {
 # include "lua.h"
