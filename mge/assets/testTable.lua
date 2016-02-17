@@ -1,4 +1,8 @@
-testFunction("hello from my own lua script")
+game.testFunction("hello from my own lua script")
+newGO = game.createProp("teapot_smooth.obj", "colorMaterial", "test prop")
+
+name = newGO:getName()
+print(name)
 
 camera = {
 	{

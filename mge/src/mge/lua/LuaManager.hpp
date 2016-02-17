@@ -4,19 +4,45 @@
 #include <iostream>
 
 #include "mge/core/GameObject.hpp"
+#include "mge/behaviours/AbstractBehaviour.hpp"
+#include "mge/behaviours/MeshRenderer.hpp"
+#include "mge/materials/AbstractMaterial.hpp"
+#include "mge/materials/ColorMaterial.hpp"
 #include "mge/core/World.hpp"
 
-class LuaManager
+namespace LuaManager
 {
-    public:
-        LuaManager();
-        virtual ~LuaManager();
+    static void testFunction(std::string pMessage)
+    {
+        GameObject* go = new GameObject("lua gameObject");
+        World::Instance()->add(go);
+    }
 
-        static void testFunction(std::string pMessage);
+    static GameObject* createProp(std::string pFilename, std::string pMaterial, std::string pName)
+    {
+        GameObject* go = new GameObject(pName);
+        World::Instance()->add(go);
 
-    protected:
-    private:
+        AbstractMaterial* mb = new ColorMaterial();
+        MeshRenderer* mr = new MeshRenderer(pFilename, mb);
 
-};
+        go->addBehaviour(mr);
+
+        std::cout << pName << " created from lua!" << std::endl;
+        return go;
+    }
+}
+//class LuaManager
+//{
+//    public:
+//        LuaManager();
+//        virtual ~LuaManager();
+//
+//        static void testFunction(std::string pMessage);
+//
+//    protected:
+//    private:
+//
+//};
 
 #endif // LUAMANAGER_H

@@ -12,6 +12,7 @@ using namespace std;
 GameObject::GameObject(std::string pName, glm::vec3 pPosition )
 :	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children()
 {
+
 }
 
 GameObject::~GameObject()
@@ -66,7 +67,7 @@ glm::vec3 GameObject::getLocalPosition()
 void GameObject::addBehaviour(AbstractBehaviour* pBehaviour)
 {
     _behaviours.push_back(pBehaviour);
-
+    pBehaviour->setOwner(this);
 //    RotatingBehaviour* ab = new RotatingBehaviour;
 //    _behaviours[type] = ab;
 }
