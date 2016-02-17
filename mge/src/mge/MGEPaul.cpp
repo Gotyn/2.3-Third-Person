@@ -129,7 +129,7 @@ void MGEPaul::_initializeScene()
 void MGEPaul::_render() {
     AbstractGame::_render();
     _updateHud();
-    //_world->renderDebugInfo();
+    //World::Instance()->renderDebugInfo();
 }
 
 void MGEPaul::_update() {

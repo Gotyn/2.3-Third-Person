@@ -108,6 +108,7 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     glGenFramebuffers(1, &depthMapFBO);
 
     GLuint depthMap;
+    glActiveTexture(GL_TEXTURE1);
     glGenTextures(1, &depthMap);
     glBindTexture(GL_TEXTURE_2D, depthMap);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);

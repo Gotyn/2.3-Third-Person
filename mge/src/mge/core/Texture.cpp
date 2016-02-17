@@ -20,7 +20,7 @@ GLuint Texture::getId() {
 }
 
 // importer for textures
-Texture* Texture::load(std::string pName)
+Texture* Texture::load(std::string pName, GLenum internalFormat, GLenum format, bool clamp)
 {
     Texture* texture = 0;
 
@@ -28,7 +28,7 @@ Texture* Texture::load(std::string pName)
    	std::map<std::string, Texture*>::iterator textureIterator = _textures.find(pName);
 
    	if (textureIterator == _textures.end()) {
-        texture = _loadFromFile(pName);
+        texture = _loadFromFile(pName, &internalFormat, &format, clamp);
         std::cout << "Texture " << pName << " with id " << texture->getId() << " loaded." << std::endl;
         std::cout << "Caching texture." << std::endl;
         _textures[pName] = texture;
@@ -40,7 +40,7 @@ Texture* Texture::load(std::string pName)
     return texture;
 }
 
-Texture* Texture::_loadFromFile(std::string pName) {
+Texture* Texture::_loadFromFile(std::string pName, GLenum* internalFormat, GLenum* format, bool clamp) {
     // load from file and store in cache
     sf::Image image;
     if (image.loadFromFile(pName)) {
@@ -50,9 +50,14 @@ Texture* Texture::_loadFromFile(std::string pName) {
         //load corresponding data into opengl using this id
         Texture * texture = new Texture();
         glBindTexture (GL_TEXTURE_2D, texture->getId());
-        glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
         glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        if(clamp) {
+            glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+            glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+        }
+        //here don't really know what index should be supplied to internalFormat/format
+        glTexImage2D (GL_TEXTURE_2D, 0, internalFormat[0], image.getSize().x, image.getSize().y, 0, format[0], GL_UNSIGNED_BYTE, image.getPixelsPtr());
         glBindTexture(GL_TEXTURE_2D, 0);
         return texture;
     } else {

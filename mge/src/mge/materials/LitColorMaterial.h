@@ -55,7 +55,7 @@ class LitColorMaterial : public AbstractMaterial
         static GLint _aNormal;
         static GLint _aUV ;
 
-        //this one is unique per instance of color material
+        //this one is unique per instance of material
         glm::vec3 _diffuseColor;
         Texture* _diffuseTexture;
 
