@@ -11,7 +11,7 @@
 				<Option working_dir="assets" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_mingw-ex" />
 				<Compiler>
 					<Add option="-Wnon-virtual-dtor" />
 					<Add option="-Wunreachable-code" />

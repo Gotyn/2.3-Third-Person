@@ -8,33 +8,32 @@ Audio* Audio::Instance() {
         instance = new Audio;
     }
     return instance;
-
 }
 
 Audio::Audio(){
     audioPath = config::MGE_AUDIO_PATH.c_str();
-
 }
 
 Audio::~Audio(){
 }
 
-void Audio::Update(){
-
+// Add all sounds here! -- expose this to lua?
+void Audio::LoadSounds() {
+    LoadSound(gate, "gate.wav");
+    LoadSound(door, "door.wav");
 }
 
-void Audio::playSound(std::string fileName, bool loop) {
-    std::cout << "----playSound----" << std::endl;
-    std::string file = config::MGE_AUDIO_PATH+fileName;
-    if (!buffer.loadFromFile(file)) return;
-    sound.setBuffer(buffer);
-    sound.setLoop(loop);
-    sound.play();
-    std::cout << "----/playSound----" << std::endl;
-
+void Audio::LoadSound(SoundNames soundName, std::string fileName) {
+    Buffers[soundName].loadFromFile(config::MGE_AUDIO_PATH + fileName);
+    Sounds[soundName];
 }
 
-void Audio::playSFX(std::string fileName, bool loop) {
-    std::cout << "----playSfx----" << std::endl;
-    std::cout << "----/playSfx----" << std::endl;
+void Audio::PlaySound(SoundNames soundName) {
+    Sounds[soundName].setBuffer(Buffers[soundName]);
+    Sounds[soundName].play();
 }
+
+//void Audio::playSFX(std::string fileName, bool loop) {
+//    std::cout << "----playSfx----" << std::endl;
+//    std::cout << "----/playSfx----" << std::endl;
+//}
