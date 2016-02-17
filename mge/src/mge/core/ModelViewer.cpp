@@ -46,18 +46,23 @@ void ModelViewer::refresh()
 
     luabridge::LuaRef modelTable = luabridge::getGlobal(_L, "model");
     std::string filename = modelTable["filename"].cast<std::string>();
+    std::string textureName = modelTable["texture"].cast<std::string>();
+
+    std::cout << textureName << std::endl;
+
 
     _model = new GameObject(filename);
     World::Instance()->add(_model);
 
-    AbstractMaterial* am = new ColorMaterial();
+//    AbstractMaterial* am = new ColorMaterial();
+
+    AbstractMaterial* am = new TextureMaterial(Texture::load("mge/textures/" + textureName));
     MeshRenderer* mr = new MeshRenderer(filename, am);
     RotatingBehaviour* rb = new RotatingBehaviour();
 
     _model->addBehaviour(mr);
     _model->addBehaviour(rb);
 
-//    std::cout << filename << std::endl;
 }
 
 ModelViewer::~ModelViewer()

@@ -7,9 +7,11 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Camera.hpp"
 #include "mge/core/World.hpp"
+#include "mge/core/Texture.hpp"
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/materials/ColorMaterial.hpp"
+#include "mge/materials/TextureMaterial.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 #include "mge/lua/LuaManager.hpp"
 
