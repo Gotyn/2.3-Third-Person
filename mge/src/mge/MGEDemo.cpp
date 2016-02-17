@@ -42,20 +42,7 @@ void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
-    // ==== lua testing ====
-    lua_State* L = luaL_newstate();
-    luaL_openlibs(L);
-
-    luabridge::getGlobalNamespace(L)
-        .beginNamespace ("game")
-            .beginClass <GameObject> ("GameObject")
-                .addFunction ("getName", &GameObject::getName)
-            .endClass ()
-            .addFunction("testFunction", LuaManager::testFunction)
-            .addFunction("createProp", LuaManager::createProp)
-        .endNamespace();
-
-    luaL_dofile(L, "testTable.lua");
+    _modelViewer = new ModelViewer();
 }
 
 void MGEDemo::_render() {
@@ -65,6 +52,9 @@ void MGEDemo::_render() {
 
 void MGEDemo::_update() {
     AbstractGame::_update();
+
+    if (getKeyDown(sf::Keyboard::F1))
+        _modelViewer->refresh();
 }
 
 void MGEDemo::_processEvents() {
