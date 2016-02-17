@@ -32,6 +32,7 @@ class AbstractGame
         virtual void initialize();
         //run the actual process of updating all objects, rendering them and processing events
         virtual void run();
+        bool getKeyDown(int pKeycode);
 
     protected:
 
@@ -63,6 +64,7 @@ class AbstractGame
 		sf::RenderWindow* _window;  //sfml window to render into
 		Renderer* _renderer;        //the renderer class to render the world
 		bool _running;
+		bool _keyDown[256] {};
 
 };
 
