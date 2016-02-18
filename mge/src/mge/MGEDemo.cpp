@@ -29,7 +29,7 @@ void MGEDemo::initialize() {
     AbstractGame::initialize();
     //setup the custom part
 	cout << "Initializing HUD" << endl;
-	_hud = new DebugHud(_window);
+	_hud = new BaseHud(_window);
 	cout << "HUD initialized." << endl << endl;
 }
 
@@ -62,10 +62,30 @@ void MGEDemo::_processEvents() {
 }
 
 void MGEDemo::_updateHud() {
-    string debugInfo = "";
-    debugInfo += string ("FPS:") + std::to_string(FPS::getFPS())+"\n";
-    _hud->setDebugInfo(debugInfo);
-    _hud->draw();
+//    string debugInfo = "";
+//    debugInfo += string ("FPS:") + std::to_string(FPS::getFPS())+"\n";
+//    _hud->setDebugInfo(debugInfo);
+//    _hud->draw();
+
+    // show list of all available models
+    vector<string> modelnames = _modelViewer->getModelNames();
+    for (size_t i=0; i < modelnames.size(); i++)
+    {
+        if(_hud->Button(0, i * 25, modelnames[i]) == true)
+        {
+            _modelViewer->changeModelMesh(modelnames[i]);
+        }
+    }
+
+    // show list of all available textures
+    vector<string> texturenames = _modelViewer->getTextureNames();
+    for (size_t i=0; i < texturenames.size(); i++)
+    {
+        if(_hud->Button(155, i * 25, texturenames[i]) == true)
+        {
+            _modelViewer->changeModelTexture(texturenames[i]);
+        }
+    }
 }
 
 MGEDemo::~MGEDemo()
