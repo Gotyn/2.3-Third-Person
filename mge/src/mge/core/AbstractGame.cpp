@@ -159,12 +159,6 @@ void AbstractGame::_processEvents()
 
                 _keyDown[event.key.code] = true;
 
-//                if (event.key.code == sf::Keyboard::F1)
-//                {
-//                    _keyDown[sf::Keyboard::F1] = true;
-//                    std::cout << "F1 pressed." << std::endl;
-//                }
-
                 //-------- THIS SECTION "SENDS" KEY_PRESSED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
 //                LuaLevelManager::sendKeyPressedToLua = true;
 //                if(LuaLevelManager::sendKeyPressedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, true);
