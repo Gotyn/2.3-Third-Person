@@ -72,4 +72,5 @@ void main( void )
         result += vec4 (ambientTerm + diffuseTerm, 1);
     }
     sColor = texture(textureDiffuse,texCoord) * result;
+    //sColor = result;
 }

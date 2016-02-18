@@ -7,10 +7,12 @@
 #include "mge/core/World.hpp"
 
 ShaderProgram* LitColorMaterial::_shader = NULL;
+ShaderProgram* LitColorMaterial::_shadowShader = NULL;
 
 GLint LitColorMaterial::_uModelMatrix = 0;
 GLint LitColorMaterial::_uViewMatrix = 0;
 GLint LitColorMaterial::_uPerspectiveMatrix = 0;
+GLint LitColorMaterial::_uT_MVP = 0;
 
 GLint LitColorMaterial::uGlobalAmbientIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uDiffuseColorIndex[MAX_LIGHTS_NUM];
@@ -60,14 +62,25 @@ string LitColorMaterial::uniName(string propertyName, int lightIndex) {
 
 void LitColorMaterial::_lazyInitializeShader() {
     //this shader contains everything the material can do (it can render something in 3d using a single color)
-    if (!_shader)
+    if (!_shader && !_shadowShader)
     {
+        //create shader for lights
         _shader = new ShaderProgram();
         _shader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"litcolor.vs");
         _shader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"litcolor.fs");
         _shader->finalize();
 
-        //cachee all the uniform and attribute indexes
+        //create shader for shadows
+        _shadowShader = new ShaderProgram();
+        _shadowShader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"shadowMap.vs");
+        _shadowShader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"shadowMap.fs");
+        _shadowShader->finalize();
+
+        //SHADOW SHADER: cachee all the uniform and attribute indexes
+        _uT_MVP = _shadowShader->getUniformLocation("T_MVP");
+        _aVertex = _shadowShader->getAttribLocation("vertex");
+
+        //LIGHT SHADER: cachee all the uniform and attribute indexes
         _uModelMatrix       = _shader->getUniformLocation("modelMatrix");
         _uViewMatrix        = _shader->getUniformLocation("viewMatrix");
         _uPerspectiveMatrix = _shader->getUniformLocation("perspectiveMatrix");
@@ -96,45 +109,18 @@ void LitColorMaterial::_lazyInitializeShader() {
 void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
-    _shader->use();
 
+    _shadowShader->use();
+    // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
+
+    // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
+
+
+    _shader->use();
     //setup texture slot 0
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getId());
     glUniform1i (_shader->getUniformLocation("textureDiffuse"), 0);
-
-    // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
-    /*GLuint depthMapFBO;
-    glGenFramebuffers(1, &depthMapFBO);
-
-    GLuint depthMap;
-    glActiveTexture(GL_TEXTURE1);
-    glGenTextures(1, &depthMap);
-    glBindTexture(GL_TEXTURE_2D, depthMap);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    // 1. first render to depth map
-    glViewport(0, 0, 1024, 1024);
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-        glClear(GL_DEPTH_BUFFER_BIT);
-        //ConfigureShaderAndMatrices();
-        //RenderScene();
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    // 2. then render scene as normal with shadow mapping (using depth map)
-    glViewport(0, 0, 1024, 1024);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glBindTexture(GL_TEXTURE_2D, depthMap);*/
-    // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
 
     //pass in a precalculate mvp matrix (see texture material for the opposite)
     glm::mat4 modelMatrix       = pGameObject->getWorldTransform();

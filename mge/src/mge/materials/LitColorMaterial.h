@@ -35,12 +35,14 @@ class LitColorMaterial : public AbstractMaterial
         //all the static properties are shared between instances of ColorMaterial
         //note that they are all PRIVATE, we do not expose this static info to the outside world
         static ShaderProgram* _shader;
+        static ShaderProgram* _shadowShader;
         static void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
         static GLint _uModelMatrix;
         static GLint _uViewMatrix;
         static GLint _uPerspectiveMatrix;
+        static GLint _uT_MVP;
 
         static GLint uGlobalAmbientIndex[];
         static GLint uDiffuseColorIndex[];
