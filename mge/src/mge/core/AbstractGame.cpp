@@ -9,7 +9,7 @@ using namespace std;
 #include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 
-AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL),_running(false)
+AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_running(false)
 {
     //ctor
 }
@@ -19,7 +19,6 @@ AbstractGame::~AbstractGame()
     //dtor
     delete _window;
     delete _renderer;
-    delete _world;
 }
 
 void AbstractGame::initialize() {
@@ -79,19 +78,24 @@ void AbstractGame::_initializeRenderer() {
 }
 
 void AbstractGame::_initializeWorld() {
-    //setup our own renderer
-	cout << "Initializing world..." << endl;
-	_world = new World();
-    cout << "World initialized." << endl << endl;
+//    //setup our own renderer
+//	cout << "Initializing world..." << endl;
+//	_world = new World();
+//    cout << "World initialized." << endl << endl;
 }
 
 void AbstractGame::_resetWorld() {
-    if (_world != NULL)
-    {
-        delete _world;
-        _world = NULL;
-    }
-    _initializeWorld();
+//    if (_world != NULL)
+//    {
+//        delete _world;
+//        _world = NULL;
+//    }
+//    _initializeWorld();
+}
+
+bool AbstractGame::getKeyDown(int pKeycode)
+{
+    return _keyDown[pKeycode];
 }
 
 ///LOOP
@@ -119,17 +123,23 @@ void AbstractGame::run()
 }
 
 void AbstractGame::_update() {
-    _world->update(Timer::deltaTime(), glm::mat4());
+    World::Instance()->update(Timer::deltaTime(), glm::mat4());
 }
 
 void AbstractGame::_render () {
-    _renderer->render(_world);
+    _renderer->render(World::Instance());
 }
 
 void AbstractGame::_processEvents()
 {
 	sf::Event event;
 	bool exit = false;
+
+    //clear keyDown array
+    for (int i=0; i<sizeof(_keyDown); i++)
+    {
+        _keyDown[i] = false;
+    }
 
 	//we must empty the event queue
 	while( _window->pollEvent( event ) ) {
@@ -142,9 +152,19 @@ void AbstractGame::_processEvents()
                 exit = true;
                 break;
             case sf::Event::KeyPressed:
+                //enter value to that array here
                 if (event.key.code == sf::Keyboard::Escape) {
                     exit = true;
                 }
+
+                _keyDown[event.key.code] = true;
+
+//                if (event.key.code == sf::Keyboard::F1)
+//                {
+//                    _keyDown[sf::Keyboard::F1] = true;
+//                    std::cout << "F1 pressed." << std::endl;
+//                }
+
                 //-------- THIS SECTION "SENDS" KEY_PRESSED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
 //                LuaLevelManager::sendKeyPressedToLua = true;
 //                if(LuaLevelManager::sendKeyPressedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, true);

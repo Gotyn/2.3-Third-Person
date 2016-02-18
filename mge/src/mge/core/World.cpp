@@ -9,10 +9,21 @@ using namespace std;
 
 std::vector<BaseLight*> _lights;
 
+// Global static pointer used to ensure a single instance of the class.
+World* World::_instance = NULL;
+
+World* World::Instance()
+{
+   if (!_instance)   // Only allow one instance of class to be generated.
+      _instance = new World;
+
+   return _instance;
+}
+
+
 World::World():GameObject("root"), _mainCamera(0)
 {
-	//ctor
-	GameObject::_world = this;
+
 }
 
 void World::setMainCamera (Camera* pCamera) {
