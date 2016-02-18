@@ -68,7 +68,7 @@ Texture* Texture::_loadFromFile(std::string pName) {
     }
 }
 
-Texture* Texture::_createTextureForShadow(GLenum* internalFormat, GLenum* format, bool clamp)
+Texture* Texture::_createTextureForShadow(GLenum* internalFormat, GLenum* format)
 {
     Texture * texture = new Texture();
     glBindTexture (GL_TEXTURE_2D, texture->getId());
