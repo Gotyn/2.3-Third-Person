@@ -8,7 +8,8 @@
 class ShadowInfo
 {
 public:
-    ShadowInfo(glm::mat4& projection): m_projection(projection) {}
+    ShadowInfo(const glm::mat4& pProjection){ m_projection = pProjection; }
+    ~ShadowInfo() {}
     inline glm::mat4 GetProjection() { return m_projection; }
 protected:
 private:
@@ -33,11 +34,12 @@ class BaseLight : public AbstractBehaviour
         glm::vec3 getLightDirection() { return lightDirection; }
         float getConeAngle() { return coneAngle; }
         float getAmbientIntensity() { return ambientIntensity; }
+        ShadowInfo* getShadowInfo() { return _shadowInfo; }
 
         //------------- SETTERS ----------------//
         void setLightDirection(glm::vec3 pValue) { lightDirection = pValue; }
         void setLightPosition(glm::vec3 pValue) { lightPosition = pValue; }
-        void setShadowInfo(ShadowInfo* pValue) { m_shadowInfo = pValue; }
+        void setShadowInfo(ShadowInfo* pValue);
 
         void update(float pStep);
     private:
@@ -48,7 +50,7 @@ class BaseLight : public AbstractBehaviour
         glm::vec3 lightPosition;
         glm::vec3 lightDirection;
         float coneAngle;
-        ShadowInfo* m_shadowInfo;
+        ShadowInfo* _shadowInfo;
 };
 
 #endif // BASELIGHT_H

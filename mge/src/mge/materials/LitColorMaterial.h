@@ -60,6 +60,7 @@ class LitColorMaterial : public AbstractMaterial
         //this one is unique per instance of material
         glm::vec3 _diffuseColor;
         Texture* _diffuseTexture;
+        Texture* _shadowTexture;
 
         static glm::vec3 ambientColors[];
         static float ambientIntensities[];

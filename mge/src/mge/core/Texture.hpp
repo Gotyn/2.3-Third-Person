@@ -8,7 +8,7 @@
 class Texture
 {
 	public:
-		static Texture* load(const std::string pTexturePath, GLenum internalFormat = GL_RGBA, GLenum format = GL_RGBA, bool clamp = false, bool shadow = false);
+		static Texture* load(const std::string pTexturePath, GLenum internalFormat = GL_RGBA, GLenum format = GL_RGBA, bool shadow = false);
 		virtual ~Texture();
 
 		GLuint getId();
@@ -17,7 +17,8 @@ class Texture
 
 		//all previously loaded meshes;
 		static std::map<std::string, Texture*> _textures;
-        static Texture* _loadFromFile(const std::string pTexturePath, GLenum* internalFormat, GLenum* format, bool clamp);
+        static Texture* _loadFromFile(const std::string pTexturePath);
+        static Texture* _createTextureForShadow(GLenum* internalFormat, GLenum* format);
 
 	    //OpenGL id for texture buffer
 		GLuint _id;

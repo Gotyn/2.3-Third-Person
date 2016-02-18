@@ -13,6 +13,7 @@ extern "C" {
 }
 
 using namespace std;
+class ShadowInfo;
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 MGEPaul::MGEPaul():AbstractGame ()

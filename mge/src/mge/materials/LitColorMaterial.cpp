@@ -40,6 +40,7 @@ World* LitColorMaterial::_myWorld;
 LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, World* pWorld, Texture * pDiffuseTexture): _diffuseTexture(pDiffuseTexture)
 {
     _diffuseColor = pDiffuseColor;
+    _shadowTexture = Texture::load("", GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT, true, true);
     _myWorld = pWorld;
     _lazyInitializeShader();
 }
