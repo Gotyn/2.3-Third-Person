@@ -6,6 +6,7 @@
 
 #include <SFML/Audio.hpp>
 #include <map>
+#include <memory>
 
 
 /**
@@ -18,16 +19,22 @@ class Audio
 {
 	public:
 	    static Audio* Instance();
-
-	    enum SoundNames { gate, door };         //TIP: keep this name the same as the filename (excluding extension)
-
         //functions
-        void LoadSounds();                                           //pre-loads all sounds
-        void LoadSound(SoundNames soundName, std::string fileName);  //pre-loads a specific sound (used in LoadSounds()) -- include extension in the string.
-        void PlaySound(SoundNames soundName);
+        void LoadSounds();                                              //pre-loads all sounds
+        void AddSound(std::string soundName, std::string fileName);     //pre-loads a specific sound (used in LoadSounds()) -- include extension in the fileName.
+        sf::Sound &GetSound(std::string soundName);                     //Use getSound("...").play() to play
 
-        std::map<SoundNames, sf::SoundBuffer> Buffers;
-        std::map<SoundNames, sf::Sound> Sounds;
+        void AddMusic(std::string musicName, std::string fileName);
+        void MapMusic(std::string, std::unique_ptr<sf::Music>);         //puts the music (ptr) in a map.
+        sf::Music &GetMusic(std::string musicName);                     //Use getMusic("...").play() to play
+
+
+        //sf::Sound variables
+        std::map<std::string, sf::SoundBuffer> Buffers;
+        std::map<std::string, sf::Sound> Sounds;
+
+        std::map<std::string, std::unique_ptr<sf::Music>> Music;
+
 	private:
 	    Audio();
 	    virtual ~Audio();
