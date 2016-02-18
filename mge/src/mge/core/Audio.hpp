@@ -4,8 +4,9 @@
 #include <iostream>
 #include <mge/config.hpp>
 
-
 #include <SFML/Audio.hpp>
+#include <map>
+#include <memory>
 
 
 /**
@@ -13,15 +14,26 @@
  */
 
 
+
 class Audio
 {
 	public:
 	    static Audio* Instance();
-
         //functions
-        void playSound(std::string filename, bool loop = false);
-        void playSFX(std::string filename, bool loop = false);
-        void Update();
+        void LoadSounds();                                              //pre-loads all sounds
+        void AddSound(std::string soundName, std::string fileName);     //pre-loads a specific sound (used in LoadSounds()) -- include extension in the fileName.
+        sf::Sound &GetSound(std::string soundName);                     //Use getSound("...").play() to play
+
+        void AddMusic(std::string musicName, std::string fileName);
+        void MapMusic(std::string, std::unique_ptr<sf::Music>);         //puts the music (ptr) in a map.
+        sf::Music &GetMusic(std::string musicName);                     //Use getMusic("...").play() to play
+
+
+        //sf::Sound variables
+        std::map<std::string, sf::SoundBuffer> Buffers;
+        std::map<std::string, sf::Sound> Sounds;
+
+        std::map<std::string, std::unique_ptr<sf::Music>> Music;
 
 	private:
 	    Audio();
@@ -29,10 +41,6 @@ class Audio
 
 	    static Audio* instance;
         std::string audioPath;
-
-        sf::SoundBuffer buffer;
-        sf::Sound sound;
-
 };
 
 #endif // AUDIO_H
