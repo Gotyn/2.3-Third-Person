@@ -15,6 +15,7 @@ class MeshRenderer : public AbstractBehaviour
 
         virtual void update( float step );
 
+        void setMesh(std:: string pFilename);
         void setMesh(Mesh* pMesh);
 		Mesh* getMesh() const;
 
