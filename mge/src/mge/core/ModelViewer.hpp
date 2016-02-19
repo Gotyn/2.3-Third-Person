@@ -39,6 +39,10 @@ class ModelViewer
         {
             return _textureNames;
         }
+        GameObject* getModel()
+        {
+            return _model;
+        }
 
     protected:
 
