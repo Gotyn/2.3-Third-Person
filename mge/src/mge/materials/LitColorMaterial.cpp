@@ -127,7 +127,6 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     glm::mat4 T_MVP          = modelMat * viewMat * perspectiveMat;
 
     glUniformMatrix4fv ( _uT_MVP, 1, GL_FALSE, glm::value_ptr(T_MVP));
-    _aVertexShadow
     // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
 
 
