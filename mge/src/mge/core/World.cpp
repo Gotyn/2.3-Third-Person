@@ -21,7 +21,7 @@ World* World::Instance()
 }
 
 
-World::World():GameObject("root"), _mainCamera(0)
+World::World():GameObject("root", glm::vec3(0,0,0), false), _mainCamera(0)
 {
 
 }

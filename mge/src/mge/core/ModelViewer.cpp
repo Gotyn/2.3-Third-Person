@@ -8,7 +8,7 @@ ModelViewer::ModelViewer()
 void ModelViewer::initialize()
 {
     _cameraObject = new GameObject("camera", glm::vec3(0, 0, 5));
-    World::Instance()->add(_cameraObject);
+//    World::Instance()->add(_cameraObject);
 
     Camera* cb = new Camera();
     _cameraObject->addBehaviour(cb);
@@ -57,7 +57,7 @@ void ModelViewer::refresh()
     std::string textureName = modelTable["texture"].cast<std::string>();
 
     _model = new GameObject(filename);
-    World::Instance()->add(_model);
+//    World::Instance()->add(_model);
 
     _textureMaterial = new TextureMaterial(Texture::load("mge/textures/" + textureName));
     _meshRenderer = new MeshRenderer(filename, _textureMaterial);

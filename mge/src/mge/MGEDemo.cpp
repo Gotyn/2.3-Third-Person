@@ -46,7 +46,7 @@ void MGEDemo::_initializeScene()
     _modelViewer = new ModelViewer();
 
     PuzzleBlock* puzzleBlock = new PuzzleBlock();
-    World::Instance()->add(puzzleBlock);
+//    World::Instance()->add(puzzleBlock);
 }
 
 void MGEDemo::_render() {
