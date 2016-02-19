@@ -53,6 +53,12 @@ glm::mat4& GameObject::getTransform()
     return _transform;
 }
 
+glm::vec3 GameObject::getForward()
+{
+    glm::vec4 f = _transform * glm::vec4(0,0,-1,0);
+    return glm::vec3(f[0],f[1],f[2]);
+}
+
 void GameObject::setLocalPosition (glm::vec3 pPosition)
 {
     _transform[3] = glm::vec4 (pPosition,1);
@@ -60,7 +66,7 @@ void GameObject::setLocalPosition (glm::vec3 pPosition)
 
 glm::vec3 GameObject::getLocalPosition()
 {
-	return glm::vec3(_transform[3]);
+	return glm::normalize(glm::vec3(_transform[3]));
 }
 
 //new multiple behaviours

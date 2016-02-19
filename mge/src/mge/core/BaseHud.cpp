@@ -24,10 +24,6 @@ BaseHud::~BaseHud()
 
 bool BaseHud::Button(int x, int y, std::string caption)
 {
-//    //load font
-//    sf::Font font;
-//    font.loadFromFile("c:/Users/User/Documents/Fonts/font.ttf");
-
     //create text
     sf::Text text(caption, _font, 15);
     text.setPosition(x, y);
@@ -42,10 +38,6 @@ bool BaseHud::Button(int x, int y, std::string caption)
     sf::RectangleShape rect(sf::Vector2f(width, height));
     rect.setPosition(x, y);
     rect.setFillColor(sf::Color::Blue);
-
-    //draw button
-//    _window->draw(rect);
-//    _window->draw(text);
 
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
@@ -63,6 +55,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
     return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 }
 
+// todo: remove?
 void BaseHud::draw()
 {
 //    //glDisable( GL_CULL_FACE );
