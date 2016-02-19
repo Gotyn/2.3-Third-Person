@@ -53,14 +53,14 @@ class LitColorMaterial : public AbstractMaterial
 
         static GLint uCameraPosIndex;
         static GLint lightsUniforArraySize;
-        static GLint _aVertex ;
+        static GLint _aVertex;
         static GLint _aNormal;
         static GLint _aUV ;
 
         //this one is unique per instance of material
         glm::vec3 _diffuseColor;
         Texture* _diffuseTexture;
-        Texture* _shadowTexture;
+        static std::vector<Texture*> _shadowTextures;
 
         static glm::vec3 ambientColors[];
         static float ambientIntensities[];

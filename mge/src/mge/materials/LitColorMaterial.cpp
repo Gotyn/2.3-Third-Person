@@ -36,11 +36,12 @@ float LitColorMaterial::coneAngles[MAX_LIGHTS_NUM];
 
 int LitColorMaterial::tempSize = 0;
 World* LitColorMaterial::_myWorld;
+std::vector<Texture*> LitColorMaterial::_shadowTextures;
 
-LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, World* pWorld, Texture * pDiffuseTexture): _diffuseTexture(pDiffuseTexture)
+LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, World* pWorld, Texture * pDiffuseTexture)
 {
     _diffuseColor = pDiffuseColor;
-    _shadowTexture = Texture::load("", GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT, true);
+    _diffuseTexture = pDiffuseTexture;
     _myWorld = pWorld;
     _lazyInitializeShader();
 }
@@ -80,6 +81,10 @@ void LitColorMaterial::_lazyInitializeShader() {
         //SHADOW SHADER: cachee all the uniform and attribute indexes
         _uT_MVP = _shadowShader->getUniformLocation("T_MVP");
         _aVertex = _shadowShader->getAttribLocation("vertex");
+        for (int i = 0; i < World::Instance()->sceneLights().size(); ++i) {
+            Texture* texture = Texture::load("ShadowTexture_" + std::to_string(i), GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT, true);
+            _shadowTextures.push_back(texture);
+        }
 
         //LIGHT SHADER: cachee all the uniform and attribute indexes
         _uModelMatrix       = _shader->getUniformLocation("modelMatrix");
@@ -110,10 +115,19 @@ void LitColorMaterial::_lazyInitializeShader() {
 void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
+    //get current amount of lights
+    tempSize = pWorld->sceneLights().size();
 
     _shadowShader->use();
+    //glEnable(GL_DEPTH_TEST);
     // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
+    glm::mat4 modelMat       = pGameObject->getWorldTransform();
+    glm::mat4 viewMat        = glm::inverse(pWorld->sceneLights().at(0)->getOwner()->getWorldTransform());
+    glm::mat4 perspectiveMat = pCamera->getProjection();
+    glm::mat4 T_MVP          = modelMat * viewMat * perspectiveMat;
 
+    glUniformMatrix4fv ( _uT_MVP, 1, GL_FALSE, glm::value_ptr(T_MVP));
+    _aVertexShadow
     // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
 
 
@@ -133,8 +147,7 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     glUniformMatrix4fv ( _uViewMatrix, 1, GL_FALSE, glm::value_ptr(viewMatrix));
     glUniformMatrix4fv ( _uPerspectiveMatrix, 1, GL_FALSE, glm::value_ptr(perspectiveMatrix));
     glUniform3fv (uCameraPosIndex, 1, glm::value_ptr(cameraPos));
-    //get current amount of lights
-    tempSize = pWorld->sceneLights().size();
+
     //send current amount of lights
     glUniform1i (lightsUniforArraySize, tempSize);
     //set the material color

@@ -74,7 +74,7 @@ Texture* Texture::_createTextureForShadow(GLenum* internalFormat, GLenum* format
     glBindTexture (GL_TEXTURE_2D, texture->getId());
     glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-    glTexImage2D (GL_TEXTURE_2D, 0, internalFormat[1], 1024, 1024, 0, format[1], GL_UNSIGNED_BYTE, 0);
+    glTexImage2D (GL_TEXTURE_2D, 0, internalFormat[0], 1024, 1024, 0, format[0], GL_UNSIGNED_BYTE, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
     return texture;
 }
