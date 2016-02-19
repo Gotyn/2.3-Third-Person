@@ -15,7 +15,7 @@ class World;
 class GameObject
 {
 	public:
-		GameObject(std::string pName = NULL, glm::vec3 pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
+		GameObject(std::string pName = NULL, glm::vec3 pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ), bool pAddToWorld = true );
 		virtual ~GameObject();
 
         void setName (std::string pName);
@@ -28,6 +28,7 @@ class GameObject
         glm::vec3 getForward();
 
         //access just the local position
+        void setLocalPositionLua (float x, float y, float z);
 		void setLocalPosition (glm::vec3 pPosition);
 		glm::vec3 getLocalPosition();
 

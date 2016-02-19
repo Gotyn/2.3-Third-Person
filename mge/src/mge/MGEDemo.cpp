@@ -32,6 +32,12 @@ void MGEDemo::initialize() {
 	cout << "Initializing HUD" << endl;
 	_hud = new BaseHud(_window);
 	cout << "HUD initialized." << endl << endl;
+
+//	//lua setup
+//	_L = luaL_newstate();
+//    luaL_openlibs(_L);
+//
+////    LuaRef luaUpdate = getGlobal (_L, "same");
 }
 
 void MGEDemo::testFunc(int i) {
@@ -42,11 +48,7 @@ void MGEDemo::testFunc(int i) {
 void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
-
     _modelViewer = new ModelViewer();
-
-    PuzzleBlock* puzzleBlock = new PuzzleBlock();
-    World::Instance()->add(puzzleBlock);
 }
 
 void MGEDemo::_render() {

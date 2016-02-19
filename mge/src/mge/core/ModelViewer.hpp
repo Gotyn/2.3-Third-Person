@@ -22,12 +22,13 @@ extern "C" {
 # include "lualib.h"
 }
 
-class ModelViewer
+class ModelViewer : public GameObject
 {
     public:
         ModelViewer();
         virtual ~ModelViewer();
 
+        virtual void update(float pStep, const glm::mat4& pParentTransform);
         void refresh();
         void changeModelMesh(std::string pFilename);
         void changeModelTexture(std::string pFilename);

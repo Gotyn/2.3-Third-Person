@@ -1,6 +1,7 @@
 #include "ModelViewer.hpp"
+#include "mge/sphinx/PuzzleBlock.hpp"
 
-ModelViewer::ModelViewer()
+ModelViewer::ModelViewer() : GameObject("Model Viewer")
 {
     initialize();
 }
@@ -8,7 +9,7 @@ ModelViewer::ModelViewer()
 void ModelViewer::initialize()
 {
     _cameraObject = new GameObject("camera", glm::vec3(0, 0, 5));
-    World::Instance()->add(_cameraObject);
+//    World::Instance()->add(_cameraObject);
 
     Camera* cb = new Camera();
     _cameraObject->addBehaviour(cb);
@@ -22,15 +23,29 @@ void ModelViewer::initialize()
     luabridge::getGlobalNamespace(_L)
         .beginNamespace ("game")
             .beginClass <GameObject> ("GameObject")
-                .addFunction ("getName", &GameObject::getName)
+//                .addFunction ("getName", &GameObject::getName)
             .endClass ()
-            .addFunction("testFunction", LuaManager::testFunction)
-            .addFunction("createProp", LuaManager::createProp)
+            .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
+                .addConstructor <void (*) (void)> ()
+                .addFunction ("getName", &GameObject::getName)
+                .addFunction ("setPosition", &GameObject::setLocalPositionLua)
+                .addFunction ("getProgress", &PuzzleBlock::getProgress)
+            .endClass ()
         .endNamespace();
+
+    luaL_dofile(_L, "level.lua");
 
     // ==================
 
     refresh();
+}
+
+void ModelViewer::update(float pStep, const glm::mat4& pParentTransform)
+{
+    GameObject::update(pStep, pParentTransform);
+
+    luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
+    luaUpdate();
 }
 
 void ModelViewer::refresh()
@@ -45,22 +60,10 @@ void ModelViewer::refresh()
     _modelNames = findFilesIn("mge/models/");
     _textureNames = findFilesIn("mge/textures/");
 
-//    for(auto const& value : _textureNames)
-//    {
-//        std::cout << "filename: " << value << std::endl;
-//    }
+    _model = new GameObject(_modelNames[0]);
 
-    luaL_dofile(_L, "testTable.lua");
-
-    luabridge::LuaRef modelTable = luabridge::getGlobal(_L, "model");
-    std::string filename = modelTable["filename"].cast<std::string>();
-    std::string textureName = modelTable["texture"].cast<std::string>();
-
-    _model = new GameObject(filename);
-    World::Instance()->add(_model);
-
-    _textureMaterial = new TextureMaterial(Texture::load("mge/textures/" + textureName));
-    _meshRenderer = new MeshRenderer(filename, _textureMaterial);
+    _textureMaterial = new TextureMaterial(Texture::load("mge/textures/" + _textureNames[0]));
+    _meshRenderer = new MeshRenderer(_modelNames[0], _textureMaterial);
     RotatingBehaviour* rb = new RotatingBehaviour();
 
     _model->addBehaviour(_meshRenderer);

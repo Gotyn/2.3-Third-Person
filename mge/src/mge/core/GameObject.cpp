@@ -9,10 +9,11 @@ using namespace std;
 #include "mge/core/World.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
 
-GameObject::GameObject(std::string pName, glm::vec3 pPosition )
+GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld )
 :	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children()
 {
-
+    if (pAddToWorld == true)
+        World::Instance()->add(this);
 }
 
 GameObject::~GameObject()
@@ -62,6 +63,11 @@ glm::vec3 GameObject::getForward()
 void GameObject::setLocalPosition (glm::vec3 pPosition)
 {
     _transform[3] = glm::vec4 (pPosition,1);
+}
+
+void GameObject::setLocalPositionLua (float x, float y, float z)
+{
+    setLocalPosition(glm::vec3(x,y,z));
 }
 
 glm::vec3 GameObject::getLocalPosition()
