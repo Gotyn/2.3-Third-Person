@@ -28,6 +28,7 @@ class GameObject
         glm::vec3 getForward();
 
         //access just the local position
+        void setLocalPositionLua (float x, float y, float z);
 		void setLocalPosition (glm::vec3 pPosition);
 		glm::vec3 getLocalPosition();
 

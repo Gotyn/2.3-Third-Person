@@ -65,6 +65,11 @@ void GameObject::setLocalPosition (glm::vec3 pPosition)
     _transform[3] = glm::vec4 (pPosition,1);
 }
 
+void GameObject::setLocalPositionLua (float x, float y, float z)
+{
+    setLocalPosition(glm::vec3(x,y,z));
+}
+
 glm::vec3 GameObject::getLocalPosition()
 {
 	return glm::normalize(glm::vec3(_transform[3]));

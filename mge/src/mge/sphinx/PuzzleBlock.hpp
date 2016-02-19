@@ -2,7 +2,9 @@
 #define PUZZLEBLOCK_HPP
 
 #include <GameObject.hpp>
+#include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
+#include "mge/materials/TextureMaterial.hpp"
 
 class PuzzleBlock : public GameObject
 {
@@ -16,6 +18,8 @@ class PuzzleBlock : public GameObject
 
     private:
         RotatingBehaviour* _rotatingBehavour;
+        MeshRenderer* _meshRenderer;
+        AbstractMaterial* _material;
         glm::vec3 _targetForward;
 };
 
