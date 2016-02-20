@@ -119,7 +119,7 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     tempSize = pWorld->sceneLights().size();
 
     _shadowShader->use();
-    //glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
     // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
     glm::mat4 modelMat       = pGameObject->getWorldTransform();
     glm::mat4 viewMat        = glm::inverse(pWorld->sceneLights().at(0)->getOwner()->getWorldTransform());
