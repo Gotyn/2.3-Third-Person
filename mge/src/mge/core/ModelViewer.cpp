@@ -9,33 +9,10 @@ ModelViewer::ModelViewer() : GameObject("Model Viewer")
 void ModelViewer::initialize()
 {
     _cameraObject = new GameObject("camera", glm::vec3(0, 0, 5));
-//    World::Instance()->add(_cameraObject);
 
     Camera* cb = new Camera();
     _cameraObject->addBehaviour(cb);
     World::Instance()->setMainCamera(cb);
-
-    // ====== lua =======
-
-    _L = luaL_newstate();
-    luaL_openlibs(_L);
-
-    luabridge::getGlobalNamespace(_L)
-        .beginNamespace ("game")
-            .beginClass <GameObject> ("GameObject")
-//                .addFunction ("getName", &GameObject::getName)
-            .endClass ()
-            .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
-                .addConstructor <void (*) (void)> ()
-                .addFunction ("getName", &GameObject::getName)
-                .addFunction ("setPosition", &GameObject::setLocalPositionLua)
-                .addFunction ("getProgress", &PuzzleBlock::getProgress)
-            .endClass ()
-        .endNamespace();
-
-    luaL_dofile(_L, "level.lua");
-
-    // ==================
 
     refresh();
 }
@@ -44,8 +21,25 @@ void ModelViewer::update(float pStep, const glm::mat4& pParentTransform)
 {
     GameObject::update(pStep, pParentTransform);
 
-    luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
-    luaUpdate();
+    // show list of all available models
+//    vector<string> modelnames = getModelNames();
+//    for (size_t i=0; i < modelnames.size(); i++)
+//    {
+//        if(_hud->Button(0, i * 25, modelnames[i]) == true)
+//        {
+//            changeModelMesh(modelnames[i]);
+//        }
+//    }
+
+//    // show list of all available textures
+//    vector<string> texturenames = _modelViewer->getTextureNames();
+//    for (size_t i=0; i < texturenames.size(); i++)
+//    {
+//        if(_hud->Button(195, i * 25, texturenames[i]) == true)
+//        {
+//            _modelViewer->changeModelTexture(texturenames[i]);
+//        }
+//    }
 }
 
 void ModelViewer::refresh()

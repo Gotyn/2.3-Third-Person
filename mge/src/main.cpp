@@ -4,6 +4,7 @@
 #include "mge/MGEDemo.hpp"
 #include "mge/core/SphinxDreams.h"
 #include "mge/MGEDemo.hpp"
+#include "mge/LuaGame.hpp"
 #include "mge/MGEPaul.h"
 #include "mge/MGEMartijn.h"
 
@@ -27,7 +28,8 @@ int main()
     std::cout << "Starting Game" << std::endl;
 
 //    AbstractGame* game = new SphinxDreams();
-    AbstractGame* game = new MGEDemo();
+//    AbstractGame* game = new MGEDemo();
+    AbstractGame* game = new LuaGame();
     //AbstractGame* game = new MGEPaul();
     //AbstractGame* game = new MGEMartijn();
 
