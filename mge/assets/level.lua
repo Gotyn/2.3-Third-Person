@@ -17,7 +17,7 @@ piece3:setPosition(0,3,0)
 -- print("lua gameObject name: " .. piece1:getName())
 
 function update ()
-  print(piece2:getProgress())
+  -- print(piece2:getProgress())
   
   -- print(game.getKeyDown(0))
 

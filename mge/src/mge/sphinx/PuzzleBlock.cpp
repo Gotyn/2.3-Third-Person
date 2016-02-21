@@ -4,10 +4,7 @@
 PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName):GameObject("puzzleBlock")
 {
     _targetForward = GameObject::getForward();
-
-    //add behaviours
-//    _rotatingBehavour = new RotatingBehaviour();
-//    this->addBehaviour(_rotatingBehavour);
+    _targetUp = GameObject::getUp();
 
      _material = new TextureMaterial(Texture::load("mge/textures/" + pTextureName));
     _meshRenderer = new MeshRenderer(pModelName, _material);
@@ -21,8 +18,12 @@ PuzzleBlock::~PuzzleBlock()
 
 float PuzzleBlock::getProgress()
 {
-    glm::vec3 delta = _targetForward - GameObject::getForward();
-    return 1.0f - glm::length(delta) / 2.0f;
+    glm::vec3 forwardDelta = _targetForward - GameObject::getForward();
+    glm::vec3 upDelta = _targetUp - GameObject::getUp();
+
+    float progressFraction = (glm::length(forwardDelta) / 2.0f + glm::length(upDelta) / 2.0f) * 0.5f;
+
+    return 1.0f - progressFraction;
 }
 
 float PuzzleBlock::pitch(float pAmount)
