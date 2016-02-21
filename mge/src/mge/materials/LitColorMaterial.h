@@ -36,12 +36,15 @@ class LitColorMaterial : public AbstractMaterial
         //note that they are all PRIVATE, we do not expose this static info to the outside world
         static ShaderProgram* _shader;
         static ShaderProgram* _shadowShader;
-        static void _lazyInitializeShader();
+        void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
         static GLint _uModelMatrix;
         static GLint _uViewMatrix;
         static GLint _uPerspectiveMatrix;
+        static GLint _uModelMatrix2;
+        static GLint _uViewMatrix2;
+        static GLint _uPerspectiveMatrix2;
         static GLint _uT_MVP;
 
         static GLint uGlobalAmbientIndex[];
@@ -71,6 +74,7 @@ class LitColorMaterial : public AbstractMaterial
 
         static int tempSize;
         static World* _myWorld;
+        static glm::mat4 biasMat;
 };
 
 #endif // LITCOLORMATERIAL_H

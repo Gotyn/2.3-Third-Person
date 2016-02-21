@@ -12,6 +12,9 @@ ShaderProgram* LitColorMaterial::_shadowShader = NULL;
 GLint LitColorMaterial::_uModelMatrix = 0;
 GLint LitColorMaterial::_uViewMatrix = 0;
 GLint LitColorMaterial::_uPerspectiveMatrix = 0;
+GLint LitColorMaterial::_uModelMatrix2 = 0;
+GLint LitColorMaterial::_uViewMatrix2 = 0;
+GLint LitColorMaterial::_uPerspectiveMatrix2 = 0;
 GLint LitColorMaterial::_uT_MVP = 0;
 
 GLint LitColorMaterial::uGlobalAmbientIndex[MAX_LIGHTS_NUM];
@@ -37,6 +40,13 @@ float LitColorMaterial::coneAngles[MAX_LIGHTS_NUM];
 int LitColorMaterial::tempSize = 0;
 World* LitColorMaterial::_myWorld;
 std::vector<Texture*> LitColorMaterial::_shadowTextures;
+unsigned int FBO;
+glm::mat4 LitColorMaterial::biasMat = {
+     0.5, 0.0, 0.0, 0.0,
+     0.0, 0.5, 0.0, 0.0,
+     0.0, 0.0, 0.5, 0.0,
+     0.5, 0.5, 0.5, 1.0
+ };
 
 LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, World* pWorld, Texture * pDiffuseTexture)
 {
@@ -85,11 +95,23 @@ void LitColorMaterial::_lazyInitializeShader() {
             Texture* texture = Texture::load("ShadowTexture_" + std::to_string(i), GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT, true);
             _shadowTextures.push_back(texture);
         }
+        glEnable(GL_DEPTH_TEST);
+        glGenFramebuffers(1, &FBO);
+        glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _shadowTextures.at(0)->getId(), 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _diffuseTexture->getId(), 0);
+        int i=glCheckFramebufferStatus(GL_FRAMEBUFFER);
+        if(i!=GL_FRAMEBUFFER_COMPLETE) { std::cout << "Framebuffer is not OK, status=" << i << std::endl; }
+        glDisable(GL_DEPTH_TEST);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         //LIGHT SHADER: cachee all the uniform and attribute indexes
         _uModelMatrix       = _shader->getUniformLocation("modelMatrix");
         _uViewMatrix        = _shader->getUniformLocation("viewMatrix");
         _uPerspectiveMatrix = _shader->getUniformLocation("perspectiveMatrix");
+        _uModelMatrix2       = _shadowShader->getUniformLocation("modelMatrix");
+        _uViewMatrix2        = _shadowShader->getUniformLocation("viewMatrix");
+        _uPerspectiveMatrix2 = _shadowShader->getUniformLocation("perspectiveMatrix");
 
         uCameraPosIndex                 = _shader->getUniformLocation ("cameraPos"); //eye|camera|view position
         lightsUniforArraySize           = _shader->getUniformLocation ("uniformArraySize");
@@ -115,32 +137,43 @@ void LitColorMaterial::_lazyInitializeShader() {
 void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
+
+    //------------- GET ALL NEEDED DATA --------------//
     //get current amount of lights
     tempSize = pWorld->sceneLights().size();
+    //martixes used to render usual stuff
+    glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
+    glm::mat4 viewMatrix        = glm::inverse(pCamera->getOwner()->getWorldTransform());
+    glm::mat4 perspectiveMatrix = pCamera->getProjection();
+    glm::vec3 cameraPos         = pCamera->getOwner()->getWorldPosition();
+    //martixes used to calculate shadow map
+    glm::mat4 lightViewMat      = glm::inverse(pWorld->sceneLights().at(0)->getOwner()->getWorldTransform());
+    glm::mat4 T_MVP             = biasMat * perspectiveMatrix * lightViewMat * modelMatrix;
+    //------------- GET ALL NEEDED DATA --------------//
 
-    _shadowShader->use();
-    glEnable(GL_DEPTH_TEST);
     // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
-    glm::mat4 modelMat       = pGameObject->getWorldTransform();
-    glm::mat4 viewMat        = glm::inverse(pWorld->sceneLights().at(0)->getOwner()->getWorldTransform());
-    glm::mat4 perspectiveMat = pCamera->getProjection();
-    glm::mat4 T_MVP          = modelMat * viewMat * perspectiveMat;
-
+    glEnable(GL_DEPTH_TEST);
+    _shadowShader->use();
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _shadowTextures.at(0)->getId());
+    glUniformMatrix4fv ( _uModelMatrix2, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniformMatrix4fv ( _uViewMatrix2, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+    glUniformMatrix4fv ( _uPerspectiveMatrix2, 1, GL_FALSE, glm::value_ptr(perspectiveMatrix));
     glUniformMatrix4fv ( _uT_MVP, 1, GL_FALSE, glm::value_ptr(T_MVP));
+    glUniform1i (_shadowShader->getUniformLocation("shadowMap"), 0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glDisable(GL_DEPTH_TEST);
+
     // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
-
-
+/*
     _shader->use();
     //setup texture slot 0
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getId());
     glUniform1i (_shader->getUniformLocation("textureDiffuse"), 0);
-
-    //pass in a precalculate mvp matrix (see texture material for the opposite)
-    glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
-    glm::mat4 viewMatrix        = glm::inverse(pCamera->getOwner()->getWorldTransform());
-    glm::mat4 perspectiveMatrix = pCamera->getProjection();
-    glm::vec3 cameraPos         = pCamera->getOwner()->getWorldPosition();
 
     glUniformMatrix4fv ( _uModelMatrix, 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glUniformMatrix4fv ( _uViewMatrix, 1, GL_FALSE, glm::value_ptr(viewMatrix));
@@ -168,7 +201,7 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
             glUniform3fv (uLightDirectionIndex[i], 1, glm::value_ptr(lightDirections[i]));
             glUniform1f (uConeAnglesIndex[i], coneAngles[i]);
         }
-    }
+    }*/
     //now inform mesh of where to stream its data
     pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 }
