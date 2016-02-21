@@ -1,3 +1,5 @@
+require "keyCodes"
+
 -- print("hello from level")
 
 -- game.preloadSounds();
@@ -14,6 +16,8 @@ piece1:setPosition(0,-1,0)
 piece2:setPosition(0,1,0)
 piece3:setPosition(0,3,0)
 
+activePiece = piece2
+
 -- print("lua gameObject name: " .. piece1:getName())
 
 function update ()
@@ -21,19 +25,17 @@ function update ()
   
   -- print(game.getKeyDown(0))
 
-    if game.getKey(22) == true then
-        piece2:pitch(1.5) 
+    if game.getKey(KeyCode.W) == true then
+        activePiece:pitch(1.5) 
     end
-    if game.getKey(18) == true then
-        piece2:pitch(-1.5) 
+    if game.getKey(KeyCode.S) == true then
+        activePiece:pitch(-1.5) 
     end
 
-    if game.getKey(3) == true then
-        piece2:roll(1.5) 
+    if game.getKey(KeyCode.D) == true then
+        activePiece:roll(1.5) 
     end
-    if game.getKey(0) == true then
-        piece2:roll(-1.5) 
+    if game.getKey(KeyCode.A) == true then
+        activePiece:roll(-1.5) 
     end
 end
-
--- TODO:: if GetKeyDown
