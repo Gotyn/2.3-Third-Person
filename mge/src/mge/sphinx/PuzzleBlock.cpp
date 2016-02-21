@@ -1,6 +1,6 @@
 #include "PuzzleBlock.hpp"
 
-PuzzleBlock::PuzzleBlock():GameObject("puzzleBlock")
+PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName):GameObject("puzzleBlock")
 {
     _targetForward = GameObject::getForward();
 
@@ -8,8 +8,8 @@ PuzzleBlock::PuzzleBlock():GameObject("puzzleBlock")
     _rotatingBehavour = new RotatingBehaviour();
     this->addBehaviour(_rotatingBehavour);
 
-     _material = new TextureMaterial(Texture::load("mge/textures/bricks.jpg"));
-    _meshRenderer = new MeshRenderer("cube_flat.obj", _material);
+     _material = new TextureMaterial(Texture::load("mge/textures/" + pTextureName));
+    _meshRenderer = new MeshRenderer(pModelName, _material);
     this->addBehaviour(_meshRenderer);
 }
 
