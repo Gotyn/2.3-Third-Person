@@ -17,8 +17,23 @@ piece3:setPosition(0,3,0)
 -- print("lua gameObject name: " .. piece1:getName())
 
 function update ()
-  -- print(piece1:getProgress())
-  -- print("update from lua")
+  print(piece2:getProgress())
+  
+  -- print(game.getKeyDown(0))
+
+    if game.getKey(22) == true then
+        piece2:pitch(1.5) 
+    end
+    if game.getKey(18) == true then
+        piece2:pitch(-1.5) 
+    end
+
+    if game.getKey(3) == true then
+        piece2:roll(1.5) 
+    end
+    if game.getKey(0) == true then
+        piece2:roll(-1.5) 
+    end
 end
 
 -- TODO:: if GetKeyDown

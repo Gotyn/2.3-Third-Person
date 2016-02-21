@@ -1,4 +1,5 @@
 #include "LuaGame.hpp"
+#include "mge/core/Input.hpp"
 #include "mge/core/Audio.hpp"
 #include "mge/core/ModelViewer.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
@@ -43,6 +44,8 @@ void LuaGame::_initLua()
 
     luabridge::getGlobalNamespace(_L)
         .beginNamespace ("game")
+            .addFunction ("getKeyDown", Input::getKeyDown)
+            .addFunction ("getKey", Input::getKey)
             .addFunction ("preloadSounds", Audio::PreloadAudio)
             .addFunction ("playSound", Audio::Play)
             .beginClass <GameObject> ("GameObject")
@@ -53,6 +56,8 @@ void LuaGame::_initLua()
             .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
                 .addConstructor <void (*) (std::string pModelName, std::string pTextureName)> ()
                 .addFunction ("getProgress", &PuzzleBlock::getProgress)
+                .addFunction ("pitch", &PuzzleBlock::pitch)
+                .addFunction ("roll", &PuzzleBlock::roll)
             .endClass ()
             .deriveClass <ModelViewer, GameObject> ("ModelViewer")
                 .addConstructor <void (*) (void)> ()

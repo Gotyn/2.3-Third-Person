@@ -14,6 +14,9 @@ class PuzzleBlock : public GameObject
 
         virtual void update(float pStep, const glm::mat4& pParentTransform);
         float getProgress();
+        float pitch(float pAmount);
+        float roll(float pAmount);
+        float yaw(float pAmount);
     protected:
 
     private:
