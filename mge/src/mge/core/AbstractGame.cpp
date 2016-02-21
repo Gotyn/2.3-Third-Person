@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+#include "mge/core/Input.hpp"
 #include "mge/core/Timer.hpp"
 #include "mge/core/FPS.hpp"
 #include "mge/core/Renderer.hpp"
@@ -11,7 +12,7 @@ using namespace std;
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_running(false)
 {
-    //ctor
+
 }
 
 AbstractGame::~AbstractGame()
@@ -93,11 +94,6 @@ void AbstractGame::_resetWorld() {
 //    _initializeWorld();
 }
 
-bool AbstractGame::getKeyDown(int pKeycode)
-{
-    return _keyDown[pKeycode];
-}
-
 ///LOOP
 
 void AbstractGame::run()
@@ -136,9 +132,9 @@ void AbstractGame::_processEvents()
 	bool exit = false;
 
     //clear keyDown array
-    for (int i=0; i<sizeof(_keyDown); i++)
+    for (int i=0; i<sizeof(Input::_keyDown); i++)
     {
-        _keyDown[i] = false;
+        Input::_keyDown[i] = false;
     }
 
 	//we must empty the event queue
@@ -157,18 +153,9 @@ void AbstractGame::_processEvents()
                     exit = true;
                 }
 
-                _keyDown[event.key.code] = true;
-
-                //-------- THIS SECTION "SENDS" KEY_PRESSED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
-//                LuaLevelManager::sendKeyPressedToLua = true;
-//                if(LuaLevelManager::sendKeyPressedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, true);
-                //-------- THIS SECTION "SENDS" KEY_PRESSED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
+                Input::_keyDown[event.key.code] = true;
                 break;
             case sf::Event::KeyReleased:
-                //-------- THIS SECTION "SENDS" KEY_RELEASED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
-//                LuaLevelManager::sendKeyReleasedToLua = true;
-//                if(LuaLevelManager::sendKeyReleasedToLua) LuaLevelManager::getKeyActions(LuaLevelManager::_lua, false);
-                //-------- THIS SECTION "SENDS" KEY_RELEASED EVENT TO LUA BY CALLING LUA FUNCTION ------------//
                 break;
             case sf::Event::Resized:
                 //would be better to move this to the renderer

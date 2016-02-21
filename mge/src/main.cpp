@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "mge/core/Input.hpp"
 #include "mge/core/AbstractGame.hpp"
 #include "mge/MGEDemo.hpp"
 #include "mge/core/SphinxDreams.h"
@@ -23,6 +24,7 @@
  * All documentation is contained within the HEADER files, not the CPP files in possible.
  *
  */
+
 int main()
 {
     std::cout << "Starting Game" << std::endl;

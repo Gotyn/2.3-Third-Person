@@ -59,8 +59,8 @@ void MGEDemo::_render() {
 void MGEDemo::_update() {
     AbstractGame::_update();
 
-    if (getKeyDown(sf::Keyboard::F1))
-        _modelViewer->refresh();
+//    if (getKeyDown(sf::Keyboard::F1))
+//        _modelViewer->refresh();
 }
 
 void MGEDemo::_processEvents() {
