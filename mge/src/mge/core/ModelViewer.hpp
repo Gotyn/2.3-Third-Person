@@ -2,7 +2,6 @@
 #define MODELVIEWER_H
 
 #include <iostream>
-#include <lua.hpp>
 #include <windows.h>
 
 #include "mge/core/GameObject.hpp"
@@ -13,14 +12,6 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
-#include "mge/LuaBridge/LuaBridge.h"
-#include "mge/lua/LuaManager.hpp"
-
-extern "C" {
-# include "lua.h"
-# include "lauxlib.h"
-# include "lualib.h"
-}
 
 class ModelViewer : public GameObject
 {
@@ -49,9 +40,7 @@ class ModelViewer : public GameObject
 
     private:
         void initialize();
-        vector<string> findFilesIn(string pFolder);
 
-        lua_State* _L;
         GameObject* _cameraObject;
         GameObject* _model;
         MeshRenderer* _meshRenderer;

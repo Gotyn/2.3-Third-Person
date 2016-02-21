@@ -1,4 +1,5 @@
 #include "Audio.hpp"
+#include "Utils.hpp"
 
 Audio* Audio::instance = NULL;
 
@@ -17,13 +18,20 @@ Audio::Audio(){
 Audio::~Audio(){
 }
 
-// Add all sounds here! -- expose this to LUA?
-void Audio::LoadSounds() {
-    AddSound("gate", "gate.wav");
-    AddSound("door", "door.wav");
+void Audio::PreloadAudio()
+{
+    Instance()->LoadSounds();
+}
 
-    AddMusic("memory", "memory.ogg");
-    AddMusic("piano", "piano.ogg");
+void Audio::LoadSounds() {
+
+    std::vector<std::string> soundNames = Utils::findFilesIn(audioPath);
+
+    for (size_t i=0; i < soundNames.size(); i++)
+    {
+        AddSound(soundNames[i], soundNames[i]);
+        std::cout << soundNames[i] << " preloaded!" << std::endl;
+    }
 }
 
 void Audio::AddSound(std::string soundName, std::string fileName) {
@@ -36,6 +44,11 @@ void Audio::AddSound(std::string soundName, std::string fileName) {
 sf::Sound &Audio::GetSound(std::string soundName) {
     Sounds[soundName].setBuffer(Buffers[soundName]);
     return Sounds[soundName];
+}
+
+void Audio::Play(std::string soundName)
+{
+    Instance()->GetSound(soundName).play();
 }
 
 void Audio::AddMusic(std::string musicName, std::string fileName){
