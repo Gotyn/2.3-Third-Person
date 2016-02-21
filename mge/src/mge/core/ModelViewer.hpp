@@ -40,7 +40,6 @@ class ModelViewer : public GameObject
 
     private:
         void initialize();
-        vector<string> findFilesIn(string pFolder);
 
         GameObject* _cameraObject;
         GameObject* _model;

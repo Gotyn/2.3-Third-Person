@@ -1,8 +1,13 @@
 print("hello from level")
 
+game.preloadSounds();
+
+-- game.playSound("door.wav")
+
 modelViewer = game.ModelViewer()
 piece1 = game.PuzzleBlock()
 piece2 = game.PuzzleBlock()
+
 piece1:setPosition(0,3,0)
 
 print("lua gameObject name: " .. piece1:getName())

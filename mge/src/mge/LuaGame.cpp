@@ -1,4 +1,5 @@
 #include "LuaGame.hpp"
+#include "mge/core/Audio.hpp"
 #include "mge/core/ModelViewer.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
 
@@ -28,8 +29,6 @@ void LuaGame::initialize()
 void LuaGame::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
-
-//    ModelViewer* modelViewer = new ModelViewer();
     luaL_dofile(_L, "level.lua");
 }
 
@@ -40,7 +39,8 @@ void LuaGame::_initLua()
 
     luabridge::getGlobalNamespace(_L)
         .beginNamespace ("game")
-//            .addFunction ("getKey", getKeyDown)
+            .addFunction ("preloadSounds", Audio::PreloadAudio)
+            .addFunction ("playSound", Audio::Play)
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()
                 .addFunction ("getName", &GameObject::getName)
@@ -55,8 +55,6 @@ void LuaGame::_initLua()
             .endClass ()
 
         .endNamespace();
-
-//    luaL_dofile(_L, "level.lua");
 }
 
 void LuaGame::_render()

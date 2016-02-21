@@ -1,5 +1,6 @@
 #include "ModelViewer.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
+#include "mge/util/Utils.hpp"
 
 ModelViewer::ModelViewer() : GameObject("Model Viewer")
 {
@@ -51,8 +52,8 @@ void ModelViewer::refresh()
         delete _model;
     }
 
-    _modelNames = findFilesIn("mge/models/");
-    _textureNames = findFilesIn("mge/textures/");
+    _modelNames = Utils::findFilesIn("mge/models/");
+    _textureNames = Utils::findFilesIn("mge/textures/");
 
     _model = new GameObject(_modelNames[0]);
 
@@ -79,26 +80,6 @@ void ModelViewer::changeModelTexture(std::string pFilename)
         return;
 
     _textureMaterial->changeDiffuseTexture(pFilename);
-}
-
-vector<string> ModelViewer::findFilesIn(string pFolder)
-{
-    vector<string> names;
-    char search_path[200];
-    sprintf(search_path, "%s/*.*", pFolder.c_str());
-    WIN32_FIND_DATA fd;
-    HANDLE hFind = ::FindFirstFile(search_path, &fd);
-    if(hFind != INVALID_HANDLE_VALUE) {
-        do {
-            // read all (real) files in current folder
-            // , delete '!' read other 2 default folder . and ..
-            if(! (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) ) {
-                names.push_back(fd.cFileName);
-            }
-        }while(::FindNextFile(hFind, &fd));
-        ::FindClose(hFind);
-    }
-    return names;
 }
 
 ModelViewer::~ModelViewer()
