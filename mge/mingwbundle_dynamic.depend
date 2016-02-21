@@ -1973,8 +1973,9 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1456013421 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\main.cpp
+1456070344 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\main.cpp
 	<iostream>
+	"mge/core/Input.hpp"
 	"mge/core/AbstractGame.hpp"
 	"mge/MGEDemo.hpp"
 	"mge/core/SphinxDreams.h"
@@ -1983,7 +1984,7 @@
 	"mge/MGEPaul.h"
 	"mge/MGEMartijn.h"
 
-1455716704 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1456068533 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2306,10 +2307,11 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1455803997 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1456071951 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	"LuaLevelManger.h"
 	<iostream>
+	"mge/core/Input.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/FPS.hpp"
 	"mge/core/Renderer.hpp"
@@ -2409,7 +2411,7 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1456014445 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1456079892 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -2487,7 +2489,7 @@
 	<ctime>
 	<cmath>
 
-1455912369 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\mgedemo.cpp
+1456068982 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\mgedemo.cpp
 	<glm.hpp>
 	<iostream>
 	<string>
@@ -2539,15 +2541,17 @@
 	"Utils.hpp"
 	<windows.h>
 
-1456015973 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1456080262 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
+	"mge/core/Input.hpp"
 	"mge/core/Audio.hpp"
 	"mge/core/ModelViewer.hpp"
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1456014430 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1456079961 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
+	"mge/core/Timer.hpp"
 
 1456016030 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
 	"GameCamera.hpp"
@@ -2557,4 +2561,10 @@
 1456015090 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.hpp
 	<GameObject.hpp>
 	<core/Camera.hpp>
+
+1456079126 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
+	"Input.hpp"
+
+1456079141 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\input.hpp
+	"mge/core/AbstractGame.hpp"
 
