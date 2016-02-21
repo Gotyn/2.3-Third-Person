@@ -24,6 +24,7 @@ class PuzzleBlock : public GameObject
         MeshRenderer* _meshRenderer;
         AbstractMaterial* _material;
         glm::vec3 _targetForward;
+        glm::vec3 _targetUp;
 };
 
 #endif // PUZZLEBLOCK_HPP

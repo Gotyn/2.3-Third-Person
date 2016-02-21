@@ -60,6 +60,12 @@ glm::vec3 GameObject::getForward()
     return glm::vec3(f[0],f[1],f[2]);
 }
 
+glm::vec3 GameObject::getUp()
+{
+    glm::vec4 f = _transform * glm::vec4(0,1,0,0);
+    return glm::vec3(f[0],f[1],f[2]);
+}
+
 void GameObject::setLocalPosition (glm::vec3 pPosition)
 {
     _transform[3] = glm::vec4 (pPosition,1);

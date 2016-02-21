@@ -26,6 +26,7 @@ class GameObject
         glm::mat4& getTransform();
 
         glm::vec3 getForward();
+        glm::vec3 getUp();
 
         //access just the local position
         void setLocalPositionLua (float x, float y, float z);
