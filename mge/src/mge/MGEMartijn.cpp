@@ -17,7 +17,6 @@ extern "C" {
 
 #include "Audio.hpp"
 
-
 using namespace std;
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
@@ -45,6 +44,7 @@ void MGEMartijn::_initializeScene()
     Audio::StopSound("gate.wav");
     Audio::PlayMusic("memory.ogg");
     Audio::StopMusic("memory666.ogg");
+    Audio::PauseMusic("memory.ogg");
     // ==== end AUDIO test =====
 
 }
