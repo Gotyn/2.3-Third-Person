@@ -33,6 +33,11 @@ AbstractMaterial* MeshRenderer::getMaterial() const
     return _material;
 }
 
+void MeshRenderer::setMesh(std::string pFilename)
+{
+    _mesh = Mesh::load (config::MGE_MODEL_PATH+pFilename);
+}
+
 void MeshRenderer::setMesh(Mesh* pMesh)
 {
 	_mesh = pMesh;

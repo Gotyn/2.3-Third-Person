@@ -12,17 +12,10 @@ class AbstractCollider;
 class AbstractBehaviour;
 class World;
 
-/**
- * A GameObject wraps all data required to display an (interactive / dynamic) object, but knows nothing about OpenGL or rendering.
- * GameObject exposes both local and world transform and shows one way of how you can cache the worldtransform.
- * A nice addition for you as a student would be for example to try and add an inversetransform and inverseworldtransform (also cached).
- *
- * You will need to alter this class to add colliders etc.
- */
 class GameObject
 {
 	public:
-		GameObject(std::string pName = NULL, glm::vec3 pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
+		GameObject(std::string pName = NULL, glm::vec3 pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ), bool pAddToWorld = true );
 		virtual ~GameObject();
 
         void setName (std::string pName);
@@ -32,7 +25,11 @@ class GameObject
 		void setTransform (const glm::mat4& pTransform);
         glm::mat4& getTransform();
 
+        glm::vec3 getForward();
+        glm::vec3 getUp();
+
         //access just the local position
+        void setLocalPositionLua (float x, float y, float z);
 		void setLocalPosition (glm::vec3 pPosition);
 		glm::vec3 getLocalPosition();
 

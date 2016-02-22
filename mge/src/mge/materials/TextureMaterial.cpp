@@ -27,6 +27,11 @@ void TextureMaterial::setDiffuseTexture (Texture* pDiffuseTexture) {
     _diffuseTexture = pDiffuseTexture;
 }
 
+void TextureMaterial::changeDiffuseTexture (std::string pFilename)
+{
+    setDiffuseTexture(Texture::load("mge/textures/" + pFilename));
+}
+
 void TextureMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
     if (!_diffuseTexture) return;
 

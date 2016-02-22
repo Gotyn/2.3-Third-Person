@@ -10,6 +10,7 @@
 #include "mge/core/ModelViewer.hpp"
 #include "mge/lua/LuaManager.hpp"
 #include "mge/core/Renderer.hpp"
+#include "mge/core/BaseHud.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/FPS.hpp"
@@ -56,11 +57,13 @@ class MGEDemo: public AbstractGame
         virtual void _processEvents();
 
 	private:
-		DebugHud* _hud;                   //hud display
+//		DebugHud* _hud;                   //hud display
+        BaseHud* _hud;
         void _updateHud();
         void _loadLuaScene(lua_State* L);
         static void testFunc(int i);
 
+//        lua_State* _L;
         ModelViewer* _modelViewer;
 };
 

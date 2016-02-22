@@ -11,7 +11,7 @@
 				<Option working_dir="assets" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gnu_gcc_compiler_mingw-ex" />
+				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-Wnon-virtual-dtor" />
 					<Add option="-Wunreachable-code" />
@@ -20,6 +20,7 @@
 					<Add option="-g" />
 					<Add directory="src" />
 					<Add directory="src/mge/core" />
+					<Add directory="src/mge/sphinx" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32" />
@@ -35,8 +36,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="assets/mge/audio/door.wav" />
-		<Unit filename="assets/mge/audio/gate.wav" />
 		<Unit filename="assets/mge/fonts/arial.ttf" />
 		<Unit filename="assets/mge/models/cone_flat.obj" />
 		<Unit filename="assets/mge/models/cone_smooth.obj" />
@@ -89,6 +88,8 @@
 		<Unit filename="src/mge/core/AbstractGame.hpp" />
 		<Unit filename="src/mge/core/Audio.cpp" />
 		<Unit filename="src/mge/core/Audio.hpp" />
+		<Unit filename="src/mge/core/BaseHud.cpp" />
+		<Unit filename="src/mge/core/BaseHud.hpp" />
 		<Unit filename="src/mge/core/BaseLight.cpp" />
 		<Unit filename="src/mge/core/BaseLight.h" />
 		<Unit filename="src/mge/core/Camera.cpp" />
@@ -125,6 +126,8 @@
 		<Unit filename="src/mge/materials/TextureMaterial.hpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.cpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.h" />
+		<Unit filename="src/mge/sphinx/PuzzleBlock.cpp" />
+		<Unit filename="src/mge/sphinx/PuzzleBlock.hpp" />
 		<Unit filename="src/mge/util/DebugHud.cpp" />
 		<Unit filename="src/mge/util/DebugHud.hpp" />
 		<Extensions>

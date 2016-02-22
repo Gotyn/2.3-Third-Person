@@ -1,6 +1,8 @@
 #include "ModelViewer.hpp"
+#include "mge/sphinx/PuzzleBlock.hpp"
+#include "mge/util/Utils.hpp"
 
-ModelViewer::ModelViewer()
+ModelViewer::ModelViewer() : GameObject("Model Viewer")
 {
     initialize();
 }
@@ -8,29 +10,37 @@ ModelViewer::ModelViewer()
 void ModelViewer::initialize()
 {
     _cameraObject = new GameObject("camera", glm::vec3(0, 0, 5));
-    World::Instance()->add(_cameraObject);
 
     Camera* cb = new Camera();
     _cameraObject->addBehaviour(cb);
     World::Instance()->setMainCamera(cb);
 
-    // ====== lua =======
-
-    _L = luaL_newstate();
-    luaL_openlibs(_L);
-
-    luabridge::getGlobalNamespace(_L)
-        .beginNamespace ("game")
-            .beginClass <GameObject> ("GameObject")
-                .addFunction ("getName", &GameObject::getName)
-            .endClass ()
-            .addFunction("testFunction", LuaManager::testFunction)
-            .addFunction("createProp", LuaManager::createProp)
-        .endNamespace();
-
-    // ==================
-
     refresh();
+}
+
+void ModelViewer::update(float pStep, const glm::mat4& pParentTransform)
+{
+    GameObject::update(pStep, pParentTransform);
+
+    // show list of all available models
+//    vector<string> modelnames = getModelNames();
+//    for (size_t i=0; i < modelnames.size(); i++)
+//    {
+//        if(_hud->Button(0, i * 25, modelnames[i]) == true)
+//        {
+//            changeModelMesh(modelnames[i]);
+//        }
+//    }
+
+//    // show list of all available textures
+//    vector<string> texturenames = _modelViewer->getTextureNames();
+//    for (size_t i=0; i < texturenames.size(); i++)
+//    {
+//        if(_hud->Button(195, i * 25, texturenames[i]) == true)
+//        {
+//            _modelViewer->changeModelTexture(texturenames[i]);
+//        }
+//    }
 }
 
 void ModelViewer::refresh()
@@ -42,27 +52,34 @@ void ModelViewer::refresh()
         delete _model;
     }
 
-    luaL_dofile(_L, "testTable.lua");
+    _modelNames = Utils::findFilesIn("mge/models/");
+    _textureNames = Utils::findFilesIn("mge/textures/");
 
-    luabridge::LuaRef modelTable = luabridge::getGlobal(_L, "model");
-    std::string filename = modelTable["filename"].cast<std::string>();
-    std::string textureName = modelTable["texture"].cast<std::string>();
+    _model = new GameObject(_modelNames[0]);
 
-    std::cout << textureName << std::endl;
-
-
-    _model = new GameObject(filename);
-    World::Instance()->add(_model);
-
-//    AbstractMaterial* am = new ColorMaterial();
-
-    AbstractMaterial* am = new TextureMaterial(Texture::load("mge/textures/" + textureName));
-    MeshRenderer* mr = new MeshRenderer(filename, am);
+    _textureMaterial = new TextureMaterial(Texture::load("mge/textures/" + _textureNames[0]));
+    _meshRenderer = new MeshRenderer(_modelNames[0], _textureMaterial);
     RotatingBehaviour* rb = new RotatingBehaviour();
 
-    _model->addBehaviour(mr);
+    _model->addBehaviour(_meshRenderer);
     _model->addBehaviour(rb);
 
+}
+
+void ModelViewer::changeModelMesh(std::string pFilename)
+{
+    if (_meshRenderer == NULL)
+        return;
+
+    _meshRenderer->setMesh(pFilename);
+}
+
+void ModelViewer::changeModelTexture(std::string pFilename)
+{
+    if (_meshRenderer == NULL)
+        return;
+
+    _textureMaterial->changeDiffuseTexture(pFilename);
 }
 
 ModelViewer::~ModelViewer()
