@@ -21,7 +21,7 @@ using namespace std;
 class LitColorMaterial : public AbstractMaterial
 {
     public:
-        LitColorMaterial(glm::vec3 pColor, World* pWorld, Texture* pDiffuseTexture);
+        LitColorMaterial(glm::vec3 pColor, Texture* pDiffuseTexture);
         virtual ~LitColorMaterial();
         virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
@@ -35,17 +35,15 @@ class LitColorMaterial : public AbstractMaterial
         //all the static properties are shared between instances of ColorMaterial
         //note that they are all PRIVATE, we do not expose this static info to the outside world
         static ShaderProgram* _shader;
-        static ShaderProgram* _shadowShader;
+        static ShaderProgram* _shaderSS;
         void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
         static GLint _uModelMatrix;
         static GLint _uViewMatrix;
         static GLint _uPerspectiveMatrix;
-        static GLint _uModelMatrix2;
-        static GLint _uViewMatrix2;
-        static GLint _uPerspectiveMatrix2;
-        static GLint _uT_MVP;
+        static GLint _light_MVP;
+        static GLint _light_MVP2;
 
         static GLint uGlobalAmbientIndex[];
         static GLint uDiffuseColorIndex[];
@@ -57,6 +55,7 @@ class LitColorMaterial : public AbstractMaterial
         static GLint uCameraPosIndex;
         static GLint lightsUniforArraySize;
         static GLint _aVertex;
+        static GLint _aVertex2;
         static GLint _aNormal;
         static GLint _aUV ;
 
@@ -65,15 +64,7 @@ class LitColorMaterial : public AbstractMaterial
         Texture* _diffuseTexture;
         static std::vector<Texture*> _shadowTextures;
 
-        static glm::vec3 ambientColors[];
-        static float ambientIntensities[];
-        static glm::vec3 lightColors[];
-        static glm::vec3 lightPositions[];
-        static glm::vec3 lightDirections[];
-        static float coneAngles[];
-
         static int tempSize;
-        static World* _myWorld;
         static glm::mat4 biasMat;
 };
 

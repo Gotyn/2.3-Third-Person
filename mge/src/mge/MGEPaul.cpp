@@ -34,18 +34,20 @@ void MGEPaul::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
 
+
     //ADD LIGHTS
     GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+    spotLightGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
     World::Instance()->add(spotLightGO);
     BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,1,1), glm::vec3(1,0,0), 0.95f);
     spotLightGO->addBehaviour(testLight);
-    testLight->setOwner(spotLightGO);
     testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
     World::Instance()->addLight(testLight);
     MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
     spotLightGO->addBehaviour(spotLightMesh);
-    spotLightMesh->setOwner(spotLightGO);
+    KeysBehaviour* kb = new KeysBehaviour();
+    spotLightGO->addBehaviour(kb);
 
     /*
     GameObject* spotLightGO2 = new GameObject("positional", glm::vec3(-3,3,-3));
@@ -53,21 +55,28 @@ void MGEPaul::_initializeScene()
     World::Instance()->add(spotLightGO2);
     BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0));
     spotLightGO2->addBehaviour(testLight2);
-    testLight2->setOwner(spotLightGO2);
     testLight2->setLightPosition(testLight2->getOwner()->getWorldPosition());
     World::Instance()->addLight(testLight2);
     MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
     spotLightGO2->addBehaviour(spotLightMesh2);
-    spotLightMesh2->setOwner(spotLightGO2);
     */
 
     //ADD PLANE GO, MESH AND MATERIAL
+    GameObject* teapot = new GameObject ("ceiling", glm::vec3(3.5f, 2, 0));
+    teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
+    teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+    World::Instance()->add(teapot);
+    MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")));
+    teapot->addBehaviour(teapotMesh);
+    RotatingBehaviour* rb = new RotatingBehaviour();
+    teapot->addBehaviour(rb);
+
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
     plane->scale(glm::vec3(5, 5, 5));
     World::Instance()->add(plane);
     MeshRenderer* planeMesh = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), World::Instance(), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
-    planeMesh->setOwner(plane);
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     plane->addBehaviour(planeMesh);
 
     GameObject* plane2 = new GameObject ("wall left", glm::vec3(5, 2, 0));
@@ -75,8 +84,7 @@ void MGEPaul::_initializeScene()
     plane2->scale(glm::vec3(2, 1, 5));
     World::Instance()->add(plane2);
     MeshRenderer* planeMesh2 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), World::Instance(), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
-    planeMesh2->setOwner(plane2);
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     plane2->addBehaviour(planeMesh2);
 
     GameObject* plane3 = new GameObject ("wall right", glm::vec3(-5, 2, 0));
@@ -84,8 +92,7 @@ void MGEPaul::_initializeScene()
     plane3->scale(glm::vec3(2, 1, 5));
     World::Instance()->add(plane3);
     MeshRenderer* planeMesh3 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), World::Instance(), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
-    planeMesh3->setOwner(plane3);
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     plane3->addBehaviour(planeMesh3);
 
     GameObject* plane4 = new GameObject ("wall front", glm::vec3(0, 2, -5));
@@ -93,8 +100,7 @@ void MGEPaul::_initializeScene()
     plane4->scale(glm::vec3(5, 1, 2));
     World::Instance()->add(plane4);
     MeshRenderer* planeMesh4 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), World::Instance(), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
-    planeMesh4->setOwner(plane4);
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     plane4->addBehaviour(planeMesh4);
 
     GameObject* plane5 = new GameObject ("ceiling", glm::vec3(0, 4, 0));
@@ -102,29 +108,18 @@ void MGEPaul::_initializeScene()
     plane5->scale(glm::vec3(5, 5, 5));
     World::Instance()->add(plane5);
     MeshRenderer* planeMesh5 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), World::Instance(), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
-    planeMesh5->setOwner(plane5);
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")));
     plane5->addBehaviour(planeMesh5);
 
-    GameObject* teapot = new GameObject ("ceiling", glm::vec3(3.5f, 2, 0));
-    teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
-    teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
-    World::Instance()->add(teapot);
-    MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), World::Instance(), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")));
-    teapotMesh->setOwner(teapot);
-    teapot->addBehaviour(teapotMesh);
-
     //ADD CAMERA GO, CAMERA COMPONENT AND BEHAVIOUR
-    GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 4.0f, 5.0f));
+    GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 2.0f, 5.0f));
+    cameraGO->rotate(glm::radians(-45.0f),glm::vec3(0,1,0));
     World::Instance()->add(cameraGO);
     Camera* camera = new Camera ();
     camera->setOwner(cameraGO);
-    cameraGO->addBehaviour(camera);
     World::Instance()->setMainCamera(camera);
-    OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window);
-    orbit->setOwner(cameraGO);
-    cameraGO->addBehaviour(orbit);
+    //OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window);
+    //cameraGO->addBehaviour(orbit);
 }
 
 void MGEPaul::_render() {

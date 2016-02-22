@@ -1,9 +1,18 @@
-#version 330 // for glsl version (12 is for older versions , say opengl 2.1
-uniform sampler2DShadow shadowMap;
-verying vec4 LightVertexPos;
+#version 330 core
+out vec4 color;
+in vec2 TexCoords;
 
-void main( void )
+uniform sampler2D depthMap;
+
+float LinearizeDepth(float depth)
 {
-    float shadowValue = shadow2DProj(shadowMap, LightVertexPos).r;
-    gl_FragColor = vec4(shadowValue, shadowValue, shadowValue, 1.0);
+    float z = depth * 2.0 - 1.0; // Back to NDC
+    return (2.0 * 1.0 * 7.5) / (7.5 + 1.0 - z * (7.5 - 1.0));
+}
+
+void main()
+{
+    float depthValue = texture(depthMap, TexCoords).r;
+    color = vec4(vec3(LinearizeDepth(depthValue) / 7.5), 1.0); // perspective
+    // color = vec4(vec3(depthValue), 1.0); // orthographic
 }

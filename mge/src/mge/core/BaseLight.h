@@ -5,17 +5,6 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
 
-class ShadowInfo
-{
-public:
-    ShadowInfo(const glm::mat4& pProjection){ m_projection = pProjection; }
-    ~ShadowInfo() {}
-    inline glm::mat4 GetProjection() { return m_projection; }
-protected:
-private:
-    glm::mat4 m_projection;
-};
-
 /**
  * Base is just a GameObject with all basic values for the basic light implementation:
  * ambientColor, ambientIntensity, directionalLightVector, directionalLightColor
@@ -34,12 +23,10 @@ class BaseLight : public AbstractBehaviour
         glm::vec3 getLightDirection() { return lightDirection; }
         float getConeAngle() { return coneAngle; }
         float getAmbientIntensity() { return ambientIntensity; }
-        ShadowInfo* getShadowInfo() { return _shadowInfo; }
 
         //------------- SETTERS ----------------//
         void setLightDirection(glm::vec3 pValue) { lightDirection = pValue; }
         void setLightPosition(glm::vec3 pValue) { lightPosition = pValue; }
-        void setShadowInfo(ShadowInfo* pValue);
 
         void update(float pStep);
     private:
@@ -50,7 +37,6 @@ class BaseLight : public AbstractBehaviour
         glm::vec3 lightPosition;
         glm::vec3 lightDirection;
         float coneAngle;
-        ShadowInfo* _shadowInfo;
 };
 
 #endif // BASELIGHT_H

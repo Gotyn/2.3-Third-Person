@@ -56,6 +56,8 @@
 		<Unit filename="assets/mge/shaders/color.vs" />
 		<Unit filename="assets/mge/shaders/litcolor.fs" />
 		<Unit filename="assets/mge/shaders/litcolor.vs" />
+		<Unit filename="assets/mge/shaders/shadowMap.fs" />
+		<Unit filename="assets/mge/shaders/shadowMap.vs" />
 		<Unit filename="assets/mge/shaders/texture.fs" />
 		<Unit filename="assets/mge/shaders/texture.vs" />
 		<Unit filename="assets/mge/shaders/wobble.fs" />
