@@ -2,7 +2,7 @@ require "keyCodes"
 
 -- print("hello from level")
 
--- Audio.playSound("door.wav")
+-- Audio.playSound("gate.wav")
 
 -- modelViewer = game.ModelViewer()
 
