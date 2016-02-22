@@ -40,16 +40,17 @@ void MGEMartijn::_initializeScene()
     _renderer->setClearColor(0,0,0);
 
     // ==== AUDIO testing =====
-    Audio* audio = Audio::Instance();
+    //Audio* audio = Audio::Instance();
     //audio->LoadSounds();
 
     //audio->GetMusic("memory").play();
-    //audio->GetMusic("piano").play();
+    //audio->GetMusic("piano.ogg").play();
 
     //audio->GetSound("gate.wav").play();
     //audio->GetSound("door.wav").play();
 
-    Audio::Play("gate.wav");
+    Audio::PlaySound("gate.wav");
+    Audio::PlayMusic("memory.ogg");
     // ==== end AUDIO test =====
 
 }
