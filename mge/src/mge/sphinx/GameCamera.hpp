@@ -2,7 +2,7 @@
 #define GAMECAMERA_H
 
 #include <GameObject.hpp>
-#include <core/Camera.hpp>
+#include "mge/core/Camera.hpp"
 
 class GameCamera : public GameObject
 {

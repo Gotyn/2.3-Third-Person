@@ -22,8 +22,8 @@ class Audio
         sf::Sound &GetSound(std::string fileName);                      //Use getSound("...").play() to play
 
         static void PreloadAudio();
-        static void PlaySound (std::string fileName);
-        static void StopSound (std::string fileName);
+        static void PlayEffect (std::string fileName);
+        static void StopEffect (std::string fileName);
         static void PlayMusic (std::string fileName, bool loop = true);
         static void StopMusic (std::string fileName);
         static void PauseMusic(std::string filename);

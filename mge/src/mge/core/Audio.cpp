@@ -53,7 +53,7 @@ sf::Sound &Audio::GetSound(std::string fileName) {
     return Sounds[fileName];
 }
 
-void Audio::PlaySound(std::string fileName) {
+void Audio::PlayEffect(std::string fileName) {
     instance = Instance();
 
     // Check if sound is loaded
@@ -68,7 +68,7 @@ void Audio::PlaySound(std::string fileName) {
 
 // StopSound does not care about whether a sound is actually loaded/playing.
 // It shows no errors.
-void Audio::StopSound(std::string fileName) {
+void Audio::StopEffect(std::string fileName) {
     instance = Instance();
 
     if(instance->Sounds.find(fileName) == instance->Sounds.end()) {

@@ -39,9 +39,9 @@ void MGEMartijn::_initializeScene()
     _renderer->setClearColor(0,0,0);
 
     // ==== AUDIO testing =====
-    Audio::StopSound("door.wav");
-    Audio::PlaySound("gate.wav");
-    Audio::StopSound("gate.wav");
+    Audio::StopEffect("door.wav");
+    Audio::PlayEffect("gate.wav");
+    Audio::StopEffect("gate.wav");
     Audio::PlayMusic("memory.ogg");
     Audio::StopMusic("memory666.ogg");
     Audio::PauseMusic("memory.ogg");
