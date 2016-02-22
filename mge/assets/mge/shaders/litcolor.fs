@@ -7,10 +7,9 @@ struct PointLight
 {
     vec3 globalAmbient;
     vec3 diffuseColor;
-    vec3 directionalLightColor;
     vec3 lightPosition;
-    vec3 lightDirection;
-    float coneAngles;
+    vec3 coneDirection;
+    float coneAngle;
 };
 
 uniform sampler2D shadowMap;
@@ -18,7 +17,7 @@ uniform sampler2D textureDiffuse;
 uniform vec3 cameraPos;
 uniform int uniformArraySize;
 uniform PointLight pointLights[MAX_LIGHTS];
-vec3 L;
+vec3 lightDir;
 
 in vec3 wNormal;
 in vec3 worldPosition;
@@ -29,6 +28,7 @@ out vec4 sColor;
 
 float ShadowCalculation(vec4 fragPosLightSpace)
 {
+    // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
     // Transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
@@ -38,7 +38,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     float currentDepth = projCoords.z;
     // Check whether current frag pos is in shadow
     // PCF or percentage-closer filtering
-    float bias = max(0.05 * (1.0 - dot(wNormal, L)), 0.005); // slight shift
+    float bias = max(0.05 * (1.0 - dot(wNormal, lightDir)), 0.005); // slight shift
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
     for(int x = -1; x <= 1; ++x)
@@ -85,12 +85,12 @@ void main( void )
         //------------------- FIRST IMPLEMENTATION END --------------/*/
 
         //------------------- SECOND IMPLEMENTATION START ----------------//
-        L = normalize(pointLights[i].lightPosition - worldPosition); //light direction
-        vec3 V = normalize(cameraPos - worldPosition); //view direction
+        lightDir = normalize(pointLights[i].lightPosition - worldPosition); //light direction
+        vec3 viewDir = normalize(cameraPos - worldPosition); //view direction
         vec3 color = pointLights[i].globalAmbient;
-        float theta = dot(-L, normalize(pointLights[i].lightDirection));
+        float theta = dot(-lightDir, normalize(pointLights[i].coneDirection));
 
-        float LdotN = max(0, dot(L, wNormal));
+        float LdotN = max(0, dot(lightDir, wNormal));
 
         float diffuse = 0.4f * LdotN; //material diffuse coeff
 
@@ -101,32 +101,33 @@ void main( void )
 
         if(LdotN > 0.0f)
         {
-            vec3 R = -normalize(reflect(L, wNormal)); //Reflection
-            specular = 0.77f * pow(max(0.0f, dot(R, V)), 128.0f); //material specular coeff and shininess
+            vec3 R = -normalize(reflect(lightDir, wNormal)); //Reflection
+            specular = 0.77f * pow(max(0.0f, dot(R, viewDir)), 128.0f); //material specular coeff and shininess
         }
         //attenuation based on distance
         float d = distance(pointLights[i].lightPosition, worldPosition);
         float att = 1.0f  / (1.0f + (d * 0.00004f) + (d * d * 0.0005f));
         float shadow = ShadowCalculation(lightVertexPos);
-        if(pointLights[i].coneAngles > 0)
+
+        if(pointLights[i].coneAngle > 0)
         {
-            if (theta > pointLights[i].coneAngles)
+            if (theta > pointLights[i].coneAngle)
             {
-                light = att * diffuse + att * specular;
+                light = att * (diffuse + specular);
                 ambientTerm = color * pointLights[i].diffuseColor;
-                diffuseTerm = light * pointLights[i].directionalLightColor * pointLights[i].diffuseColor * shadow;
+                diffuseTerm = light * pointLights[i].diffuseColor * shadow; // * shadow
             }
             else {
                 ambientTerm = color * pointLights[i].diffuseColor;
             }
         } else {
-            light = att * diffuse + att * specular;
+            light = att * (diffuse + specular);
             ambientTerm = color * pointLights[i].diffuseColor;
-            diffuseTerm = light * pointLights[i].directionalLightColor * pointLights[i].diffuseColor * shadow;
+            diffuseTerm = light * pointLights[i].diffuseColor * shadow; // * shadow
         }
 
         result += vec4 (ambientTerm + diffuseTerm, 1);
-        //------------------- SECOND IMPLEMENTATION END ----------------//
+        //------------------- SECOND IMPLEMENTATION END ----------------/*/
     }
     sColor = texture(textureDiffuse,texCoord) * result;
     //sColor = result;

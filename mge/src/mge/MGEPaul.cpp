@@ -40,7 +40,7 @@ void MGEPaul::_initializeScene()
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     spotLightGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
     World::Instance()->add(spotLightGO);
-    BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,1,1), glm::vec3(1,0,0), 0.95f);
+    BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,0,0), 0.95f);
     spotLightGO->addBehaviour(testLight);
     testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
     World::Instance()->addLight(testLight);
@@ -48,18 +48,21 @@ void MGEPaul::_initializeScene()
     spotLightGO->addBehaviour(spotLightMesh);
     KeysBehaviour* kb = new KeysBehaviour();
     spotLightGO->addBehaviour(kb);
+    /*Camera* camera = new Camera ();
+    spotLightGO->addBehaviour(camera);
+    World::Instance()->setMainCamera(camera);*/
 
-    /*
+
     GameObject* spotLightGO2 = new GameObject("positional", glm::vec3(-3,3,-3));
     spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     World::Instance()->add(spotLightGO2);
-    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,1,1), glm::vec3(1,-1,0));
+    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,-1,0));
     spotLightGO2->addBehaviour(testLight2);
     testLight2->setLightPosition(testLight2->getOwner()->getWorldPosition());
     World::Instance()->addLight(testLight2);
     MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
     spotLightGO2->addBehaviour(spotLightMesh2);
-    */
+
 
     //ADD PLANE GO, MESH AND MATERIAL
     GameObject* teapot = new GameObject ("ceiling", glm::vec3(3.5f, 2, 0));
@@ -114,9 +117,10 @@ void MGEPaul::_initializeScene()
     //ADD CAMERA GO, CAMERA COMPONENT AND BEHAVIOUR
     GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 2.0f, 5.0f));
     cameraGO->rotate(glm::radians(-45.0f),glm::vec3(0,1,0));
+    //cameraGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
     World::Instance()->add(cameraGO);
     Camera* camera = new Camera ();
-    camera->setOwner(cameraGO);
+    cameraGO->addBehaviour(camera);
     World::Instance()->setMainCamera(camera);
     //OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window);
     //cameraGO->addBehaviour(orbit);

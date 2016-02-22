@@ -7,37 +7,35 @@
 #include "mge/core/World.hpp"
 
 ShaderProgram* LitColorMaterial::_shader = NULL;
-ShaderProgram* LitColorMaterial::_shaderSS = NULL;
 
 GLint LitColorMaterial::_uModelMatrix = 0;
 GLint LitColorMaterial::_uViewMatrix = 0;
 GLint LitColorMaterial::_uPerspectiveMatrix = 0;
 GLint LitColorMaterial::_light_MVP = 0;
-GLint LitColorMaterial::_light_MVP2 = 0;
 
 GLint LitColorMaterial::uGlobalAmbientIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uDiffuseColorIndex[MAX_LIGHTS_NUM];
-GLint LitColorMaterial::uDirectionalLightColorIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uLightPositionIndex[MAX_LIGHTS_NUM];
-GLint LitColorMaterial::uLightDirectionIndex[MAX_LIGHTS_NUM];
+GLint LitColorMaterial::uConeDirectionIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uConeAnglesIndex[MAX_LIGHTS_NUM];
 
 GLint LitColorMaterial::uCameraPosIndex = 0;
 GLint LitColorMaterial::_aVertex = 0;
-GLint LitColorMaterial::_aVertex2 = 0;
 GLint LitColorMaterial::_aNormal = 0;
 GLint LitColorMaterial::_aUV = 0;
 GLint LitColorMaterial::lightsUniforArraySize = 0;
 
 int LitColorMaterial::tempSize = 0;
 std::vector<Texture*> LitColorMaterial::_shadowTextures;
+
+// ---------------- SRUFF FOR SHADOW IMPLEMENTATION ------------------ //
+ShaderProgram* LitColorMaterial::_shaderSS = NULL;
+GLint LitColorMaterial::_light_MVP2 = 0;
+GLint LitColorMaterial::_aVertex2 = 0;
+GLint LitColorMaterial::_aUV2 = 0;
 GLuint FBO = 0;
-glm::mat4 LitColorMaterial::biasMat = {
-     0.5, 0.0, 0.0, 0.0,
-     0.0, 0.5, 0.0, 0.0,
-     0.0, 0.0, 0.5, 0.0,
-     0.5, 0.5, 0.5, 1.0
- };
+glm::mat4 LitColorMaterial::biasMat = { 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, 0.5, 0.5, 1.0 };
+// ---------------- SRUFF FOR SHADOW IMPLEMENTATION ------------------ //
 
 LitColorMaterial::LitColorMaterial(glm::vec3 pDiffuseColor, Texture * pDiffuseTexture)
 {
@@ -66,7 +64,7 @@ void LitColorMaterial::_lazyInitializeShader() {
     //this shader contains everything the material can do (it can render something in 3d using a single color)
     if (!_shader)
     {
-        //create shader for lights and shaderSS for shadows
+        //create _shader for lights and _shaderSS for shadows START
         _shader = new ShaderProgram();
         _shader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"litcolor.vs");
         _shader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"litcolor.fs");
@@ -78,6 +76,8 @@ void LitColorMaterial::_lazyInitializeShader() {
         _shaderSS->finalize();
         _light_MVP2         = _shaderSS->getUniformLocation("light_MVP");
         _aVertex2           = _shaderSS->getAttribLocation("vertex");
+        _aUV2               = _shaderSS->getAttribLocation("uv");
+        //create _shader for lights and _shaderSS for shadows END
 
         //SHADOW SHADER: cachee all the uniform and attribute indexes
         glEnable(GL_DEPTH_TEST);
@@ -113,10 +113,9 @@ void LitColorMaterial::_lazyInitializeShader() {
             {
                 uGlobalAmbientIndex[i]          = _shader->getUniformLocation (uniName("globalAmbient",i));
                 uDiffuseColorIndex[i]           = _shader->getUniformLocation (uniName("diffuseColor",i));
-                uDirectionalLightColorIndex[i]  = _shader->getUniformLocation (uniName("directionalLightColor",i));
                 uLightPositionIndex[i]          = _shader->getUniformLocation (uniName("lightPosition",i));
-                uLightDirectionIndex[i]         = _shader->getUniformLocation (uniName("lightDirection",i));
-                uConeAnglesIndex[i]             = _shader->getUniformLocation (uniName("coneAngles",i));
+                uConeDirectionIndex[i]          = _shader->getUniformLocation (uniName("coneDirection",i));
+                uConeAnglesIndex[i]             = _shader->getUniformLocation (uniName("coneAngle",i));
             }
         }
     }
@@ -125,14 +124,14 @@ void LitColorMaterial::_lazyInitializeShader() {
 void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
-    tempSize = pWorld->sceneLights().size();
+    tempSize = pWorld->sceneLights().size(); //extract number of lights here
     // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
-    GameObject* tempGO = pCamera->getOwner();
-    pCamera->setOwner(pWorld->sceneLights().at(0)->getOwner());
+    GameObject* tempGO = pCamera->getOwner(); // save previous owner GO to assign back to it back later
+    if(tempGO != pWorld->sceneLights().at(0)->getOwner()) pCamera->setOwner(pWorld->sceneLights().at(0)->getOwner()); //'move' cam to light's position
     glm::mat4 modelMat          = pGameObject->getWorldTransform();
     glm::mat4 viewMat           = glm::inverse(pCamera->getOwner()->getWorldTransform());
-    //glm::mat4 perspectiveMat    = pCamera->getProjection();
-    glm::mat4 perspectiveMat    = glm::ortho(-40.0f, 40.0f, -40.0f, 40.0f, 1.0f, 7.5f);
+    glm::mat4 perspectiveMat    = pCamera->getProjection();
+    //glm::mat4 perspectiveMat    = glm::ortho(-40.0f, 40.0f, -40.0f, 40.0f, 1.0f, 7.5f);
     glm::mat4 light_MVP         = biasMat * perspectiveMat * viewMat * modelMat;
 
     _shaderSS->use();
@@ -140,14 +139,18 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     glBindFramebuffer(GL_FRAMEBUFFER, FBO);
     glClear(GL_DEPTH_BUFFER_BIT);
     glUniformMatrix4fv ( _light_MVP2, 1, GL_FALSE, glm::value_ptr(light_MVP));
-    glUniform1i (_shaderSS->getUniformLocation("shadowMap"), 1);
+    glUniform1i (_shaderSS->getUniformLocation("shadowMap"), 2);
     glBindFramebuffer(GL_FRAMEBUFFER,0);
     glViewport(0, 0, 800, 600);
-
     pCamera->setOwner(tempGO);
-    // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- //
+
+    // --------------- UNCOMMENT TO RENDER SHADOW MAP ----------------//
+    //glActiveTexture(GL_TEXTURE0);
+    //glBindTexture(GL_TEXTURE_2D, _shadowTextures.at(0)->getId());
+    // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- /*/
 
     //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     _shader->use();
     //martixes used to render usual stuff
     glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
@@ -175,9 +178,8 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
             glUniform3fv (uGlobalAmbientIndex[i], 1,
                           glm::value_ptr(pWorld->sceneLights().at(i)->getAmbientColor() * pWorld->sceneLights().at(i)->getAmbientIntensity()));
             glUniform3fv (uDiffuseColorIndex[i], 1, glm::value_ptr(_diffuseColor));
-            glUniform3fv (uDirectionalLightColorIndex[i], 1, glm::value_ptr(pWorld->sceneLights().at(i)->getDirectionalLightColor()));
             glUniform3fv (uLightPositionIndex[i], 1, glm::value_ptr(pWorld->sceneLights().at(i)->getLightPosition()));
-            glUniform3fv (uLightDirectionIndex[i], 1, glm::value_ptr(pWorld->sceneLights().at(i)->getLightDirection()));
+            glUniform3fv (uConeDirectionIndex[i], 1, glm::value_ptr(pWorld->sceneLights().at(i)->getConeDirection()));
             glUniform1f (uConeAnglesIndex[i], pWorld->sceneLights().at(i)->getConeAngle());
         }
     }

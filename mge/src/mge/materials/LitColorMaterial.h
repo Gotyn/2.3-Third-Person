@@ -35,7 +35,6 @@ class LitColorMaterial : public AbstractMaterial
         //all the static properties are shared between instances of ColorMaterial
         //note that they are all PRIVATE, we do not expose this static info to the outside world
         static ShaderProgram* _shader;
-        static ShaderProgram* _shaderSS;
         void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
@@ -43,27 +42,32 @@ class LitColorMaterial : public AbstractMaterial
         static GLint _uViewMatrix;
         static GLint _uPerspectiveMatrix;
         static GLint _light_MVP;
-        static GLint _light_MVP2;
+
 
         static GLint uGlobalAmbientIndex[];
         static GLint uDiffuseColorIndex[];
-        static GLint uDirectionalLightColorIndex[];
         static GLint uLightPositionIndex[];
-        static GLint uLightDirectionIndex[];
+        static GLint uConeDirectionIndex[];
         static GLint uConeAnglesIndex[];
 
         static GLint uCameraPosIndex;
         static GLint lightsUniforArraySize;
         static GLint _aVertex;
-        static GLint _aVertex2;
         static GLint _aNormal;
-        static GLint _aUV ;
+        static GLint _aUV;
+
+        // ----------- STUFF FOR 2-ND SHADER TO SHOW SHADOW MAP ----------- //
+        static ShaderProgram* _shaderSS;
+        static GLint _light_MVP2;
+        static GLint _aVertex2;
+        static GLint _aUV2;
+        // ----------- STUFF FOR 2-ND SHADER TO SHOW SHADOW MAP ----------- //
 
         //this one is unique per instance of material
         glm::vec3 _diffuseColor;
         Texture* _diffuseTexture;
-        static std::vector<Texture*> _shadowTextures;
 
+        static std::vector<Texture*> _shadowTextures;
         static int tempSize;
         static glm::mat4 biasMat;
 };

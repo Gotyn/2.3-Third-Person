@@ -24,5 +24,5 @@ void main( void )
     wNormal = normalize(vec3 (modelMatrix * vec4 (normal,0)));
     texCoord = uv;
     //lightVertexPos = vec3(light_MVP * vec4(worldPosition,1));
-    lightVertexPos = light_MVP * vec4(worldPosition,1);
+    lightVertexPos = light_MVP * vec4(worldPosition,1); //or should be vertex here instead of worldPosition?
 }
