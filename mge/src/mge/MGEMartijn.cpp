@@ -15,7 +15,7 @@ extern "C" {
 # include "lualib.h"
 }
 
-#include "Audio.hpp"
+#include "mge/core/Audio.hpp"
 
 
 using namespace std;

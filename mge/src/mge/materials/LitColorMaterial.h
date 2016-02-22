@@ -6,7 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <ostream>
-#include "BaseLight.h"
+#include "mge/core/BaseLight.h"
 
 #define MAX_LIGHTS_NUM 5
 /**

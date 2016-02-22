@@ -1,8 +1,8 @@
 #ifndef GAMECAMERA_H
 #define GAMECAMERA_H
 
-#include <GameObject.hpp>
-#include <core/Camera.hpp>
+#include "mge/core/GameObject.hpp"
+#include "mge/core/Camera.hpp"
 
 class GameCamera : public GameObject
 {

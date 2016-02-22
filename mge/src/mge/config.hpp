@@ -9,5 +9,6 @@ namespace config {
     const std::string MGE_FONT_PATH ("mge/fonts/");
     const std::string MGE_SOUNDS_PATH ("mge/audio/sounds/");
     const std::string MGE_MUSIC_PATH ("mge/audio/music/");
+    const std::string MGE_LUA_PATH ("mge/lua/");
 }
 #endif // CONFIG_H

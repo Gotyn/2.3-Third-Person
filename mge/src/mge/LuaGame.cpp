@@ -4,6 +4,7 @@
 #include "mge/core/ModelViewer.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
 #include "mge/sphinx/GameCamera.hpp"
+#include "mge/config.hpp"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ void LuaGame::_initializeScene()
 
     GameCamera* gameCam = new GameCamera();
 
-    luaL_dofile(_L, "level.lua");
+    luaL_dofile(_L, "main.lua");
 }
 
 void LuaGame::_initLua()
@@ -59,9 +60,9 @@ void LuaGame::_initLua()
                 .addFunction ("pitch", &PuzzleBlock::pitch)
                 .addFunction ("roll", &PuzzleBlock::roll)
             .endClass ()
-            .deriveClass <ModelViewer, GameObject> ("ModelViewer")
-                .addConstructor <void (*) (void)> ()
-            .endClass ()
+//            .deriveClass <ModelViewer, GameObject> ("ModelViewer")
+//                .addConstructor <void (*) (void)> ()
+//            .endClass ()
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions

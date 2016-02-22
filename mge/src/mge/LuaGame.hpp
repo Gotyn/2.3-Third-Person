@@ -2,7 +2,7 @@
 #define LUAGAME_H
 
 #include <lua.hpp>
-#include <AbstractGame.hpp>
+#include "mge/core/AbstractGame.hpp"
 
 #include "mge/core/Renderer.hpp"
 #include "mge/core/BaseHud.hpp"

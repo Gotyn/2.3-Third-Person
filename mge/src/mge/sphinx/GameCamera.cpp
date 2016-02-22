@@ -1,6 +1,6 @@
 #include "GameCamera.hpp"
-#include "core/World.hpp"
-#include "behaviours/RotatingBehaviour.hpp"
+#include "mge/core/World.hpp"
+#include "mge/behaviours/RotatingBehaviour.hpp"
 
 GameCamera::GameCamera(): GameObject("camera", glm::vec3(0, 0, 5))
 {
