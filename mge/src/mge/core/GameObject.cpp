@@ -9,10 +9,11 @@ using namespace std;
 #include "mge/core/World.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
 
-GameObject::GameObject(std::string pName, glm::vec3 pPosition )
+GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld )
 :	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children()
 {
-
+    if (pAddToWorld == true)
+        World::Instance()->add(this);
 }
 
 GameObject::~GameObject()
@@ -53,14 +54,31 @@ glm::mat4& GameObject::getTransform()
     return _transform;
 }
 
+glm::vec3 GameObject::getForward()
+{
+    glm::vec4 f = _transform * glm::vec4(0,0,-1,0);
+    return glm::vec3(f[0],f[1],f[2]);
+}
+
+glm::vec3 GameObject::getUp()
+{
+    glm::vec4 f = _transform * glm::vec4(0,1,0,0);
+    return glm::vec3(f[0],f[1],f[2]);
+}
+
 void GameObject::setLocalPosition (glm::vec3 pPosition)
 {
     _transform[3] = glm::vec4 (pPosition,1);
 }
 
+void GameObject::setLocalPositionLua (float x, float y, float z)
+{
+    setLocalPosition(glm::vec3(x,y,z));
+}
+
 glm::vec3 GameObject::getLocalPosition()
 {
-	return glm::vec3(_transform[3]);
+	return glm::normalize(glm::vec3(_transform[3]));
 }
 
 //new multiple behaviours

@@ -63,6 +63,7 @@ class MGEDemo: public AbstractGame
         void _loadLuaScene(lua_State* L);
         static void testFunc(int i);
 
+//        lua_State* _L;
         ModelViewer* _modelViewer;
 };
 

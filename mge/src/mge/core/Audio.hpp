@@ -2,31 +2,34 @@
 #define AUDIO_H
 
 #include <iostream>
-#include <mge/config.hpp>
-
-#include <SFML/Audio.hpp>
 #include <map>
 #include <memory>
 
+#include <mge/config.hpp>
+#include <SFML/Audio.hpp>
 
 /**
- * Audio class (sfml)
+ * Audio class (SFML)
  */
-
-
 
 class Audio
 {
 	public:
 	    static Audio* Instance();
         //functions
-        void LoadSounds();                                              //pre-loads all sounds
-        void AddSound(std::string soundName, std::string fileName);     //pre-loads a specific sound (used in LoadSounds()) -- include extension in the fileName.
-        sf::Sound &GetSound(std::string soundName);                     //Use getSound("...").play() to play
+        void LoadAudio();                                               //pre-loads/index all sounds/music
+        void AddSound(std::string fileName);                            //pre-loads a specific sound (used in LoadAudio())
+        sf::Sound &GetSound(std::string fileName);                      //Use getSound("...").play() to play
 
-        void AddMusic(std::string musicName, std::string fileName);
+        static void PreloadAudio();
+        static void PlaySound(std::string fileName);
+        static void StopSound(std::string fileName);
+        static void PlayMusic(std::string fileName, bool loop = true);
+        static void StopMusic(std::string fileName);
+
+        void AddMusic(std::string fileName);                            //Indexes a specific music (used in LoadAudio())
         void MapMusic(std::string, std::unique_ptr<sf::Music>);         //puts the music (ptr) in a map.
-        sf::Music &GetMusic(std::string musicName);                     //Use getMusic("...").play() to play
+        sf::Music &GetMusic(std::string fileName);                      //Use getMusic("...").play() to play
 
 
         //sf::Sound variables
@@ -40,7 +43,8 @@ class Audio
 	    virtual ~Audio();
 
 	    static Audio* instance;
-        std::string audioPath;
+        std::string soundsPath;
+        std::string musicPath;
 };
 
 #endif // AUDIO_H
