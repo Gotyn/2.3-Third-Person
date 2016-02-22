@@ -36,6 +36,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="assets/mge/audio/music/memory.ogg" />
+		<Unit filename="assets/mge/audio/music/piano.ogg" />
+		<Unit filename="assets/mge/audio/sounds/door.wav" />
+		<Unit filename="assets/mge/audio/sounds/gate.wav" />
 		<Unit filename="assets/mge/fonts/arial.ttf" />
 		<Unit filename="assets/mge/models/cone_flat.obj" />
 		<Unit filename="assets/mge/models/cone_smooth.obj" />
