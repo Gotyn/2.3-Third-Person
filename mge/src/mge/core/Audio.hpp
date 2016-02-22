@@ -22,11 +22,11 @@ class Audio
         sf::Sound &GetSound(std::string fileName);                      //Use getSound("...").play() to play
 
         static void PreloadAudio();
-        static void PlaySound(std::string fileName);
-        static void StopSound(std::string fileName);
-        static void PlayMusic(std::string fileName, bool loop = true);
-        static void StopMusic(std::string fileName);
-
+        static void PlaySound (std::string fileName);
+        static void StopSound (std::string fileName);
+        static void PlayMusic (std::string fileName, bool loop = true);
+        static void StopMusic (std::string fileName);
+        static void PauseMusic(std::string filename);
         void AddMusic(std::string fileName);                            //Indexes a specific music (used in LoadAudio())
         void MapMusic(std::string, std::unique_ptr<sf::Music>);         //puts the music (ptr) in a map.
         sf::Music &GetMusic(std::string fileName);                      //Use getMusic("...").play() to play
