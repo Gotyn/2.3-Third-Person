@@ -23,7 +23,9 @@ class Audio
 
         static void PreloadAudio();
         static void PlaySound(std::string fileName);
+        static void StopSound(std::string fileName);
         static void PlayMusic(std::string fileName, bool loop = true);
+        static void StopMusic(std::string fileName);
 
         void AddMusic(std::string fileName);                            //Indexes a specific music (used in LoadAudio())
         void MapMusic(std::string, std::unique_ptr<sf::Music>);         //puts the music (ptr) in a map.

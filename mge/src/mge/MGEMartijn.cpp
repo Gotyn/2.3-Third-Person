@@ -51,6 +51,7 @@ void MGEMartijn::_initializeScene()
 
     Audio::PlaySound("gate.wav");
     Audio::PlayMusic("memory.ogg");
+    Audio::StopMusic("memory.ogg");
     // ==== end AUDIO test =====
 
 }

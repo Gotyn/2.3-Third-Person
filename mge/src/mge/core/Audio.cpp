@@ -57,23 +57,33 @@ void Audio::PlaySound(std::string fileName) {
     instance = Instance();
 
     // Check if sound is loaded
-    if(instance->Sounds.find(fileName) == Instance()->Sounds.end()) {   // Sound not loaded.
-        instance->AddSound(fileName);                                   // Load sound.
+    if(instance->Sounds.find(fileName) == Instance()->Sounds.end()) {       // Sound not loaded.
+        instance->AddSound(fileName);                                       // Load sound.
     }
 
-    instance->GetSound(fileName).play();                              // Play sound.
+    instance->GetSound(fileName).play();                                    // Play sound.
+}
+
+void Audio::StopSound(std::string fileName) {
+    Instance()->GetSound(fileName).stop();
 }
 
 void Audio::PlayMusic(std::string fileName, bool loop) {
     instance = Instance();
 
     // Check if music is indexed
-    if(instance->Music.find(fileName) == Instance()->Music.end()) {     // Music not indexed.
-        instance->AddMusic(fileName);                                   // Load music.
+    if(instance->Music.find(fileName) == Instance()->Music.end()) {         // Music not indexed.
+        instance->AddMusic(fileName);                                       // Load music.
     }
 
     instance->GetMusic(fileName).setLoop(loop);
-    instance->GetMusic(fileName).play();                              // Play music.
+    instance->GetMusic(fileName).play();                                    // Play music.
+    std::cout << "NOTE: Playing music '" << fileName << "'." << std::endl;
+}
+
+void Audio::StopMusic(std::string fileName) {
+    Instance()->GetMusic(fileName).stop();
+    std::cout << "NOTE: Stopped music '" << fileName << "'." << std::endl;
 }
 
 void Audio::AddMusic(std::string fileName) {
