@@ -41,13 +41,15 @@ void MGEMartijn::_initializeScene()
 
     // ==== AUDIO testing =====
     Audio* audio = Audio::Instance();
-    audio->LoadSounds();
+    //audio->LoadSounds();
 
-    audio->GetMusic("memory").play();
-    audio->GetMusic("piano").play();
+    //audio->GetMusic("memory").play();
+    //audio->GetMusic("piano").play();
 
-    audio->GetSound("gate").play();
-    audio->GetSound("door").play();
+    //audio->GetSound("gate.wav").play();
+    //audio->GetSound("door.wav").play();
+
+    Audio::Play("gate.wav");
     // ==== end AUDIO test =====
 
 }
