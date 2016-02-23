@@ -86,8 +86,11 @@ void GameObject::addBehaviour(AbstractBehaviour* pBehaviour)
 {
     _behaviours.push_back(pBehaviour);
     pBehaviour->setOwner(this);
-//    RotatingBehaviour* ab = new RotatingBehaviour;
-//    _behaviours[type] = ab;
+
+    if (_behavioursTry.count(&typeid(*pBehaviour)) == 0)
+        _behavioursTry[&typeid(*pBehaviour)] = pBehaviour;
+    else
+        std::cout << "Component already exists!" << std::endl;
 }
 
 void GameObject::setParent (GameObject* pParent) {
