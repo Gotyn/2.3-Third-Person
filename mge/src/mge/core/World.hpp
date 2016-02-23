@@ -3,10 +3,9 @@
 
 #include <vector>
 #include "mge/core/GameObject.hpp"
-#include "mge/core/BaseLight.h"
 
-class Light;
 class Camera;
+class BaseLight;
 
 class World : public GameObject
 {

@@ -10,7 +10,7 @@
 class LookAt : public AbstractBehaviour
 {
     public:
-        LookAt (GameObject * pTarget);
+        LookAt (GameObject * pTarget, GameObject* pOwner = nullptr);
         virtual ~LookAt();
 
         virtual void update( float step );

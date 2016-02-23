@@ -3,7 +3,10 @@
 #include "mge/behaviours/AbstractBehaviour.hpp"
 #include "mge/core/GameObject.hpp"
 
-AbstractBehaviour::AbstractBehaviour():_owner(NULL) {}
+AbstractBehaviour::AbstractBehaviour(GameObject* pGameObject):_owner(NULL)
+{
+    pGameObject->addBehaviour(this);
+}
 
 AbstractBehaviour::~AbstractBehaviour()
 {

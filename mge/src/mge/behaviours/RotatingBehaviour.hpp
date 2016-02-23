@@ -9,7 +9,7 @@
 class RotatingBehaviour : public AbstractBehaviour
 {
 	public:
-		RotatingBehaviour();
+		RotatingBehaviour(GameObject* pOwner = nullptr);
 		virtual ~RotatingBehaviour();
 
 		virtual void update( float step );

@@ -132,7 +132,7 @@ void AbstractGame::_processEvents()
 	bool exit = false;
 
     //clear keyDown array
-    for (int i=0; i<sizeof(Input::_keyDown); i++)
+    for (unsigned int i=0; i<sizeof(Input::_keyDown); i++)
     {
         Input::_keyDown[i] = false;
     }
