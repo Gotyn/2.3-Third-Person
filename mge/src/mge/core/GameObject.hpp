@@ -50,8 +50,8 @@ class GameObject
 
         template <typename T>
         T* getBehaviour() {
-            if(_behavioursTry.count(&typeid(T))!=0) {
-                return static_cast<T*>(_behavioursTry[&typeid(T)]);
+            if(_behaviours.count(&typeid(T))!=0) {
+                return static_cast<T*>(_behaviours[&typeid(T)]);
             }
             return nullptr;
         }
@@ -78,8 +78,7 @@ class GameObject
 
         GameObject* _parent;
 		std::vector<GameObject*> _children;
-        std::vector<AbstractBehaviour*> _behaviours;
-        std::unordered_map<const std::type_info* , AbstractBehaviour *> _behavioursTry;
+        std::unordered_map<const std::type_info* , AbstractBehaviour *> _behaviours;
 
         //update children list administration
         void _innerAdd (GameObject* pChild);
