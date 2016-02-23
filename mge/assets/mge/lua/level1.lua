@@ -1,7 +1,7 @@
 pieces = {  
-    Game.PuzzleBlock("cube_flat.obj", "land.jpg"),
-    Game.PuzzleBlock("teapot_smooth.obj", "bricks.jpg"),
-    Game.PuzzleBlock("teapot_smooth.obj", "land.jpg")
+    Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece1"),
+    Game.PuzzleBlock("teapot_smooth.obj", "bricks.jpg", "piece2"),
+    Game.PuzzleBlock("teapot_smooth.obj", "land.jpg", "piece3")
 }
 
 pieces[1]:setPosition(0,-1,0)
@@ -14,8 +14,18 @@ function update()
     handleControl()
 
     handleSelection()
-
+    -- print(pieces[activePiece]:getName())
     -- print(checkProgress())
+
+    if Game.getKeyDown(KeyCode.P) == true then
+        printPuzzleBlocksStates() 
+    end
+end
+
+function printPuzzleBlocksStates()
+    for i, v in ipairs(pieces) do 
+        v:printStatus() 
+    end
 end
 
 -- checks the total progress of the puzzle between 0 and 1
