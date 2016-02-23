@@ -4,12 +4,11 @@
 #include <string>
 #include <fstream>
 
-using namespace std;
-
-#include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/Camera.hpp"
 #include "glm.hpp"
+
+using namespace std;
 
 Mesh::Mesh(string pId)
 :	_id(pId), _indexBufferId(0), _vertexBufferId(0), _normalBufferId(0), _uvBufferId(0)

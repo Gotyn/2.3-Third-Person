@@ -4,7 +4,6 @@
 #include <lua.hpp>
 #include <AbstractGame.hpp>
 
-#include "mge/core/Renderer.hpp"
 #include "mge/core/BaseHud.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 
@@ -23,7 +22,6 @@ class LuaGame : public AbstractGame
 
 	protected:
         virtual void _initializeScene();
-	    virtual void _render();
         virtual void _update();
         virtual void _processEvents();
 

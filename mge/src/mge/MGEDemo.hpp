@@ -9,7 +9,6 @@
 
 #include "mge/core/ModelViewer.hpp"
 #include "mge/lua/LuaManager.hpp"
-#include "mge/core/Renderer.hpp"
 #include "mge/core/BaseHud.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
