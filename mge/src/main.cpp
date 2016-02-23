@@ -6,6 +6,7 @@
 #include "mge/MGEDemo.hpp"
 #include "mge/MGEPaul.h"
 #include "mge/MGEMartijn.h"
+#include "mge/LuaGame.hpp"
 
 /**
  * Main entry point for the Micro Engine.
@@ -26,9 +27,10 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
+    AbstractGame* game = new LuaGame();
     //AbstractGame* game = new SphinxDreams();
     //AbstractGame* game = new MGEDemo();
-    AbstractGame* game = new MGEPaul();
+    //AbstractGame* game = new MGEPaul();
     //AbstractGame* game = new MGEMartijn();
 
     game->initialize();
