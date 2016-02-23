@@ -2,21 +2,21 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-//#include <lua.hpp>
+#include <lua.hpp>
 
 #include "mge/MGEDemo.hpp"
-#include "mge/sphinx/PuzzleBlock.hpp"
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/LookAt.hpp"
-//#include "mge/LuaBridge/LuaBridge.h"
+#include "mge/LuaBridge/LuaBridge.h"
+#include "mge/lua/LuaManager.hpp"
 
-//extern "C" {
-//# include "lua.h"
-//# include "lauxlib.h"
-//# include "lualib.h"
-//}
+extern "C" {
+# include "lua.h"
+# include "lauxlib.h"
+# include "lualib.h"
+}
 
 using namespace std;
 
@@ -32,12 +32,6 @@ void MGEDemo::initialize() {
 	cout << "Initializing HUD" << endl;
 	_hud = new BaseHud(_window);
 	cout << "HUD initialized." << endl << endl;
-
-//	//lua setup
-//	_L = luaL_newstate();
-//    luaL_openlibs(_L);
-//
-////    LuaRef luaUpdate = getGlobal (_L, "same");
 }
 
 void MGEDemo::testFunc(int i) {
@@ -48,6 +42,7 @@ void MGEDemo::testFunc(int i) {
 void MGEDemo::_initializeScene()
 {
     _renderer->setClearColor(0,0,0);
+
     _modelViewer = new ModelViewer();
 }
 
@@ -58,9 +53,6 @@ void MGEDemo::_render() {
 
 void MGEDemo::_update() {
     AbstractGame::_update();
-
-//    if (getKeyDown(sf::Keyboard::F1))
-//        _modelViewer->refresh();
 }
 
 void MGEDemo::_processEvents() {
@@ -68,6 +60,11 @@ void MGEDemo::_processEvents() {
 }
 
 void MGEDemo::_updateHud() {
+//    string debugInfo = "";
+//    debugInfo += string ("FPS:") + std::to_string(FPS::getFPS())+"\n";
+//    _hud->setDebugInfo(debugInfo);
+//    _hud->draw();
+
     // show list of all available models
     vector<string> modelnames = _modelViewer->getModelNames();
     for (size_t i=0; i < modelnames.size(); i++)
@@ -82,7 +79,7 @@ void MGEDemo::_updateHud() {
     vector<string> texturenames = _modelViewer->getTextureNames();
     for (size_t i=0; i < texturenames.size(); i++)
     {
-        if(_hud->Button(195, i * 25, texturenames[i]) == true)
+        if(_hud->Button(155, i * 25, texturenames[i]) == true)
         {
             _modelViewer->changeModelTexture(texturenames[i]);
         }

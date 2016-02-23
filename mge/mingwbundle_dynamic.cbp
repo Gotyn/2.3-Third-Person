@@ -20,7 +20,6 @@
 					<Add option="-g" />
 					<Add directory="src" />
 					<Add directory="src/mge/core" />
-					<Add directory="src/mge/sphinx" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32" />
@@ -36,10 +35,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="assets/mge/audio/music/memory.ogg" />
-		<Unit filename="assets/mge/audio/music/piano.ogg" />
-		<Unit filename="assets/mge/audio/sounds/door.wav" />
-		<Unit filename="assets/mge/audio/sounds/gate.wav" />
+		<Unit filename="assets/mge/audio/Gate.wav" />
+		<Unit filename="assets/mge/audio/door.wav" />
 		<Unit filename="assets/mge/fonts/arial.ttf" />
 		<Unit filename="assets/mge/models/cone_flat.obj" />
 		<Unit filename="assets/mge/models/cone_smooth.obj" />
@@ -59,6 +56,8 @@
 		<Unit filename="assets/mge/shaders/color.vs" />
 		<Unit filename="assets/mge/shaders/litcolor.fs" />
 		<Unit filename="assets/mge/shaders/litcolor.vs" />
+		<Unit filename="assets/mge/shaders/shadowMap.fs" />
+		<Unit filename="assets/mge/shaders/shadowMap.vs" />
 		<Unit filename="assets/mge/shaders/texture.fs" />
 		<Unit filename="assets/mge/shaders/texture.vs" />
 		<Unit filename="assets/mge/shaders/wobble.fs" />
@@ -67,8 +66,6 @@
 		<Unit filename="assets/mge/textures/land.jpg" />
 		<Unit filename="src/glm.hpp" />
 		<Unit filename="src/main.cpp" />
-		<Unit filename="src/mge/LuaGame.cpp" />
-		<Unit filename="src/mge/LuaGame.hpp" />
 		<Unit filename="src/mge/MGEDemo.cpp" />
 		<Unit filename="src/mge/MGEDemo.hpp" />
 		<Unit filename="src/mge/MGEMartijn.cpp" />
@@ -104,8 +101,6 @@
 		<Unit filename="src/mge/core/FPS.hpp" />
 		<Unit filename="src/mge/core/GameObject.cpp" />
 		<Unit filename="src/mge/core/GameObject.hpp" />
-		<Unit filename="src/mge/core/Input.cpp" />
-		<Unit filename="src/mge/core/Input.hpp" />
 		<Unit filename="src/mge/core/LuaLevelManger.cpp" />
 		<Unit filename="src/mge/core/LuaLevelManger.h" />
 		<Unit filename="src/mge/core/Mesh.cpp" />
@@ -124,6 +119,8 @@
 		<Unit filename="src/mge/core/Timer.hpp" />
 		<Unit filename="src/mge/core/World.cpp" />
 		<Unit filename="src/mge/core/World.hpp" />
+		<Unit filename="src/mge/lua/LuaManager.cpp" />
+		<Unit filename="src/mge/lua/LuaManager.hpp" />
 		<Unit filename="src/mge/materials/AbstractMaterial.cpp" />
 		<Unit filename="src/mge/materials/AbstractMaterial.hpp" />
 		<Unit filename="src/mge/materials/ColorMaterial.cpp" />
@@ -134,14 +131,8 @@
 		<Unit filename="src/mge/materials/TextureMaterial.hpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.cpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.h" />
-		<Unit filename="src/mge/sphinx/GameCamera.cpp" />
-		<Unit filename="src/mge/sphinx/GameCamera.hpp" />
-		<Unit filename="src/mge/sphinx/PuzzleBlock.cpp" />
-		<Unit filename="src/mge/sphinx/PuzzleBlock.hpp" />
 		<Unit filename="src/mge/util/DebugHud.cpp" />
 		<Unit filename="src/mge/util/DebugHud.hpp" />
-		<Unit filename="src/mge/util/Utils.cpp" />
-		<Unit filename="src/mge/util/Utils.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -27,6 +27,4 @@
 *.out
 *.app
 *.layout
-*.layout
-mge/mingwbundle_dynamic.layout
-*.layout
+
