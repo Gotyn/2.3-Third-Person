@@ -32,9 +32,6 @@ void MGEPaul::initialize() {
 //build the game _world
 void MGEPaul::_initializeScene()
 {
-    _renderer->setClearColor(0,0,0);
-
-
     //ADD LIGHTS
     GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
@@ -92,12 +89,6 @@ void MGEPaul::_initializeScene()
     cameraGO->rotate(glm::radians(-45.0f),glm::vec3(0,1,0));
     Camera* camera = new Camera (glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f), cameraGO);
     //OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window, camera);
-}
-
-void MGEPaul::_render() {
-    AbstractGame::_render();
-    _updateHud();
-    //World::Instance()->renderDebugInfo();
 }
 
 void MGEPaul::_update() {

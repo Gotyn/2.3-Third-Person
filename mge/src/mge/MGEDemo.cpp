@@ -46,11 +46,6 @@ void MGEDemo::_initializeScene()
     _modelViewer = new ModelViewer();
 }
 
-void MGEDemo::_render() {
-//    AbstractGame::_render();
-    _updateHud();
-}
-
 void MGEDemo::_update() {
     AbstractGame::_update();
 }

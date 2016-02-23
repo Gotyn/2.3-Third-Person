@@ -115,8 +115,6 @@ void AbstractGame::run()
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
         _update();
-        //collision loop over here?
-//        _render();
 
         //swap colorbuffer to screen
         _window->display();
@@ -128,10 +126,6 @@ void AbstractGame::run()
 void AbstractGame::_update() {
     World::Instance()->update(Timer::deltaTime(), glm::mat4());
 }
-
-//void AbstractGame::_render () {
-////    _renderer->render(World::Instance());
-//}
 
 void AbstractGame::_processEvents()
 {
