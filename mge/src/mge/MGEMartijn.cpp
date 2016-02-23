@@ -36,7 +36,7 @@ void MGEMartijn::initialize() {
 //build the game _world
 void MGEMartijn::_initializeScene()
 {
-    _renderer->setClearColor(0,0,0);
+//    _renderer->setClearColor(0,0,0);
 
     // ==== AUDIO testing =====
     Audio::StopEffect("door.wav");
@@ -50,7 +50,7 @@ void MGEMartijn::_initializeScene()
 }
 
 void MGEMartijn::_render() {
-    AbstractGame::_render();
+//    AbstractGame::_render();
     _updateHud();
 }
 

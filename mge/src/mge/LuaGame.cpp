@@ -30,7 +30,7 @@ void LuaGame::initialize()
 //build the game _world
 void LuaGame::_initializeScene()
 {
-    _renderer->setClearColor(0,0,0);
+//    _renderer->setClearColor(0,0,0);
 
     GameCamera* gameCam = new GameCamera();
 
@@ -66,11 +66,11 @@ void LuaGame::_initLua()
         .endNamespace();
 }
 
-void LuaGame::_render()
-{
-    AbstractGame::_render();
-    _updateHud();
-}
+//void LuaGame::_render()
+//{
+////    AbstractGame::_render();
+//    _updateHud();
+//}
 
 void LuaGame::_update()
 {

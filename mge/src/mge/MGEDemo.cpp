@@ -41,13 +41,13 @@ void MGEDemo::testFunc(int i) {
 //build the game _world
 void MGEDemo::_initializeScene()
 {
-    _renderer->setClearColor(0,0,0);
+//    _renderer->setClearColor(0,0,0);
 
     _modelViewer = new ModelViewer();
 }
 
 void MGEDemo::_render() {
-    AbstractGame::_render();
+//    AbstractGame::_render();
     _updateHud();
 }
 

@@ -32,22 +32,22 @@ void MGEPaul::initialize() {
 //build the game _world
 void MGEPaul::_initializeScene()
 {
-    _renderer->setClearColor(0,0,0);
+//    _renderer->setClearColor(0,0,0);
 
 
     //ADD LIGHTS
-    GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
-    spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
-    spotLightGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
-    World::Instance()->add(spotLightGO);
-    BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,0,0), 0.95f);
-    spotLightGO->addBehaviour(testLight);
-    testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
-    World::Instance()->addLight(testLight);
-    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
-    spotLightGO->addBehaviour(spotLightMesh);
-    KeysBehaviour* kb = new KeysBehaviour();
-    spotLightGO->addBehaviour(kb);
+//    GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
+//    spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+//    spotLightGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
+//    World::Instance()->add(spotLightGO);
+//    BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,0,0), 0.95f);
+//    spotLightGO->addBehaviour(testLight);
+//    testLight->setLightPosition(testLight->getOwner()->getWorldPosition());
+//    World::Instance()->addLight(testLight);
+//    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)));
+//    spotLightGO->addBehaviour(spotLightMesh);
+//    KeysBehaviour* kb = new KeysBehaviour();
+//    spotLightGO->addBehaviour(kb);
     /*Camera* camera = new Camera ();
     spotLightGO->addBehaviour(camera);
     World::Instance()->setMainCamera(camera);*/
@@ -55,7 +55,7 @@ void MGEPaul::_initializeScene()
 
     GameObject* spotLightGO2 = new GameObject("positional", glm::vec3(-3,3,-3));
     spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
-    World::Instance()->add(spotLightGO2);
+//    World::Instance()->add(spotLightGO2);
     BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,-1,0));
     spotLightGO2->addBehaviour(testLight2);
     testLight2->setLightPosition(testLight2->getOwner()->getWorldPosition());
@@ -127,7 +127,7 @@ void MGEPaul::_initializeScene()
 }
 
 void MGEPaul::_render() {
-    AbstractGame::_render();
+//    AbstractGame::_render();
     _updateHud();
     //World::Instance()->renderDebugInfo();
 }
