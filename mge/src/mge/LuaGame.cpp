@@ -34,7 +34,7 @@ void LuaGame::_initializeScene()
 
     GameCamera* gameCam = new GameCamera();
 
-    luaL_dofile(_L, "main.lua");
+    luaL_dofile(_L, "mge/lua/main.lua");
 }
 
 void LuaGame::_initLua()
