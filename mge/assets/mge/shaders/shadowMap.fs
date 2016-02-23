@@ -7,7 +7,7 @@ uniform sampler2D shadowMap;
 float LinearizeDepth(float depth)
 {
     float z = depth * 2.0 - 1.0; // Back to NDC 0.0 - 1.0
-    return (2.0 * 1.0 * 7.5) / (7.5 + 1.0 - z * (7.5 - 1.0));
+    return (2.0 * 1.0 * 7.5) / (7.5 + 1.0 - z * (7.5 - 1.0)); //1.0 - near plane; 7.5 - far plane
 }
 
 void main()

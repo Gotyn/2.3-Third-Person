@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-LookAt::LookAt(GameObject * pTarget): AbstractBehaviour(), _target(pTarget)
+LookAt::LookAt(GameObject * pTarget, GameObject* pOwner): AbstractBehaviour(pOwner), _target(pTarget)
 {
 }
 

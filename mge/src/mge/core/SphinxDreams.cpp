@@ -22,8 +22,8 @@ void SphinxDreams::initialize()
 
 void SphinxDreams::_initializeScene()
 {
-    _renderer->setClearColor(0,0,0);
-    _loadSceneFromLua();
+//    _renderer->setClearColor(0,0,0);
+//    _loadSceneFromLua();
 }
 
 void SphinxDreams::_loadSceneFromLua()
@@ -33,7 +33,7 @@ void SphinxDreams::_loadSceneFromLua()
 
 void SphinxDreams::_render()
 {
-    AbstractGame::_render();
+//    AbstractGame::_render();
     _updateHud();
 }
 

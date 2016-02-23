@@ -6,8 +6,8 @@
 
 using namespace std;
 
-OrbitBehaviour::OrbitBehaviour(GameObject* pTarget, float distance, float speed, float maxAngle)
-    : AbstractBehaviour(), _target(pTarget), _distance(distance), _speed(speed), _maxAngle(maxAngle)
+OrbitBehaviour::OrbitBehaviour(GameObject* pTarget, float distance, float speed, float maxAngle, GameObject* pOwner)
+    : AbstractBehaviour(pOwner), _target(pTarget), _distance(distance), _speed(speed), _maxAngle(maxAngle)
 {
     _tilt = 0;
     _orbitPosition = glm::vec3(0,0,0);

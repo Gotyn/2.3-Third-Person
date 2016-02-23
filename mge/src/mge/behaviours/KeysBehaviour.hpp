@@ -10,7 +10,7 @@
 class KeysBehaviour : public AbstractBehaviour
 {
 	public:
-		KeysBehaviour(float moveSpeed = 5, float turnSpeed = 45);
+		KeysBehaviour(float moveSpeed = 5, float turnSpeed = 45, GameObject* pOwner = nullptr);
 		virtual ~KeysBehaviour();
 		virtual void update( float step );
 
