@@ -84,10 +84,12 @@ glm::vec3 GameObject::getLocalPosition()
 //new multiple behaviours
 void GameObject::addBehaviour(AbstractBehaviour* pBehaviour)
 {
-    _behaviours.push_back(pBehaviour);
     pBehaviour->setOwner(this);
-//    RotatingBehaviour* ab = new RotatingBehaviour;
-//    _behaviours[type] = ab;
+
+    if (_behaviours.count(&typeid(*pBehaviour)) == 0)
+        _behaviours[&typeid(*pBehaviour)] = pBehaviour;
+    else
+        std::cout << "Component already exists!" << std::endl;
 }
 
 void GameObject::setParent (GameObject* pParent) {
@@ -169,7 +171,7 @@ void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 
     for (auto const& value: _behaviours)
     {
-        value->update(pStep);
+        value.second->update(pStep);
     }
 
     for (int i = _children.size()-1; i >= 0; --i ) {

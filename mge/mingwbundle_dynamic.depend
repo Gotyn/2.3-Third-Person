@@ -2738,7 +2738,7 @@
 	"mge/core/GameObject.hpp"
 	"mge/core/BaseLight.h"
 
-1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
+1456226866 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
 	<vector>
 	<string>
 	<iostream>
@@ -3291,4 +3291,32 @@
 	"mge/core/FPS.hpp"
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
+
+1456223883 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
+	"Input.hpp"
+
+1456223883 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+	"LuaGame.hpp"
+	"mge/core/Input.hpp"
+	"mge/core/Audio.hpp"
+	"mge/core/ModelViewer.hpp"
+	"mge/sphinx/PuzzleBlock.hpp"
+	"mge/sphinx/GameCamera.hpp"
+
+1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.hpp
+	<GameObject.hpp>
+	"mge/core/Camera.hpp"
+
+1456223883 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
+	"GameCamera.hpp"
+	"mge/core/World.hpp"
+	"mge/behaviours/RotatingBehaviour.hpp"
+
+1456223883 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+	"PuzzleBlock.hpp"
+	"mge/core/Timer.hpp"
+
+1456223883 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\utils.cpp
+	"Utils.hpp"
+	<windows.h>
 
