@@ -51,7 +51,6 @@ class MGEDemo: public AbstractGame
 	protected:
         virtual void _initializeScene();
 	    //override render to render the hud as well.
-	    virtual void _render();
         virtual void _update();
         virtual void _processEvents();
 

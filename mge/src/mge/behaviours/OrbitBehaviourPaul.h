@@ -15,7 +15,7 @@ class OrbitBehaviourPaul : public AbstractBehaviour
 {
     public:
         OrbitBehaviourPaul(float pDistance, float pMinXrot, float pMaxXrot, GameObject* pTarget,
-                       float moveSpeed, float turnSpeed, sf::Window* pWindow);
+                       float moveSpeed, float turnSpeed, sf::Window* pWindow, GameObject* pOwner = nullptr);
         virtual ~OrbitBehaviourPaul();
 
         virtual void update( float pStep );

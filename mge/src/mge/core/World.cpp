@@ -4,6 +4,7 @@
 #include "mge/core/World.hpp"
 #include "mge/core/Camera.hpp"
 #include "mge/core/Mesh.hpp"
+#include "mge/core/BaseLight.h"
 
 using namespace std;
 

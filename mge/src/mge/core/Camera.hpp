@@ -11,9 +11,7 @@
 class Camera : public AbstractBehaviour
 {
 	public:
-		Camera(
-            glm::mat4 pProjectionMatrix = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f  )
-        );
+		Camera(glm::mat4 pProjectionMatrix = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f), GameObject* pOwner = nullptr);
 		virtual ~Camera();
 
         virtual void update(float pStep);

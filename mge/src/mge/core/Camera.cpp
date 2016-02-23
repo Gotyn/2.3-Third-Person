@@ -3,9 +3,11 @@ using namespace std;
 
 #include <glm.hpp>
 #include "mge/core/Camera.hpp"
+#include "mge/core/World.hpp"
 
-Camera::Camera(glm::mat4 pProjectionMatrix) : _projection(pProjectionMatrix)
+Camera::Camera(glm::mat4 pProjectionMatrix, GameObject* pOwner) : AbstractBehaviour(pOwner), _projection(pProjectionMatrix)
 {
+    if(World::Instance()->getMainCamera() == nullptr) World::Instance()->setMainCamera(this);
 }
 
 Camera::~Camera()
