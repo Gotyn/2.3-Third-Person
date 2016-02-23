@@ -34,7 +34,7 @@ void LuaGame::_initializeScene()
 
     GameCamera* gameCam = new GameCamera();
 
-    luaL_dofile(_L, "level.lua");
+    luaL_dofile(_L, "main.lua");
 }
 
 void LuaGame::_initLua()
@@ -43,11 +43,11 @@ void LuaGame::_initLua()
     luaL_openlibs(_L);
 
     luabridge::getGlobalNamespace(_L)
-        .beginNamespace ("game")
+        .beginNamespace ("Game")
+            //game functions
             .addFunction ("getKeyDown", Input::getKeyDown)
             .addFunction ("getKey", Input::getKey)
-            .addFunction ("preloadSounds", Audio::PreloadAudio)
-            .addFunction ("playSound", Audio::Play)
+            //game classes
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()
                 .addFunction ("getName", &GameObject::getName)
@@ -59,10 +59,10 @@ void LuaGame::_initLua()
                 .addFunction ("pitch", &PuzzleBlock::pitch)
                 .addFunction ("roll", &PuzzleBlock::roll)
             .endClass ()
-            .deriveClass <ModelViewer, GameObject> ("ModelViewer")
-                .addConstructor <void (*) (void)> ()
-            .endClass ()
-
+        .endNamespace()
+        .beginNamespace ("Audio")
+            //audio functions
+            .addFunction ("playSound", Audio::PlayEffect)
         .endNamespace();
 }
 

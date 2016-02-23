@@ -53,7 +53,7 @@ sf::Sound &Audio::GetSound(std::string fileName) {
     return Sounds[fileName];
 }
 
-void Audio::PlaySound(std::string fileName) {
+void Audio::PlayEffect(std::string fileName) {
     instance = Instance();
 
     // Check if sound is loaded
@@ -68,11 +68,11 @@ void Audio::PlaySound(std::string fileName) {
 
 // StopSound does not care about whether a sound is actually loaded/playing.
 // It shows no errors.
-void Audio::StopSound(std::string fileName) {
+void Audio::StopEffect(std::string fileName) {
     instance = Instance();
 
     if(instance->Sounds.find(fileName) == instance->Sounds.end()) {
-        std::cout << "NOTE: Could not stop sound '" << fileName << "'." << std::endl;
+        std::cout << "ERROR: Could not stop sound '" << fileName << "'." << std::endl;
         return;
     }
 
@@ -91,19 +91,30 @@ void Audio::PlayMusic(std::string fileName, bool loop) {
 
     instance->GetMusic(fileName).setLoop(loop);
     instance->GetMusic(fileName).play();                                                        // Play music.
-    std::cout << "NOTE: Playing music '" << fileName << "'." << std::endl;
+    std::cout << "NOTE: Playing/Resuming music '" << fileName << "'." << std::endl;
 }
 
 // StopMusic cares about if a music is indexed! Not whether its playing or not.
 void Audio::StopMusic(std::string fileName) {
     instance = Instance();
     if(instance->Music.find(fileName) == instance->Music.end()) {
-        std::cout << "NOTE: Could not stop music '" << fileName << "'." << std::endl;
+        std::cout << "ERROR: Could not stop music '" << fileName << "'." << std::endl;
         return;
     }
 
     instance->GetMusic(fileName).stop();
     std::cout << "NOTE: Stopped music '" << fileName << "'." << std::endl;
+}
+
+void Audio::PauseMusic(std::string fileName) {
+    instance = Instance();
+    if(instance->Music.find(fileName) == instance->Music.end()) {
+        std::cout << "ERROR: Could not pause music '" << fileName << "'." << std::endl;
+        return;
+    }
+
+    instance->GetMusic(fileName).pause();
+    std::cout << "NOTE: Paused music '" << fileName << "'." << std::endl;
 }
 
 void Audio::AddMusic(std::string fileName) {
