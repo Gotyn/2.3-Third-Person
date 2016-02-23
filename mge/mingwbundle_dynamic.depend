@@ -1497,7 +1497,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1456221635 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\main.cpp
+1456222554 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\main.cpp
 	<iostream>
 	"mge/core/AbstractGame.hpp"
 	"mge/MGEDemo.hpp"
@@ -1505,6 +1505,7 @@
 	"mge/MGEDemo.hpp"
 	"mge/MGEPaul.h"
 	"mge/MGEMartijn.h"
+	"mge/LuaGame.hpp"
 
 1456146801 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
@@ -1568,7 +1569,7 @@
 
 1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\fps.hpp
 
-1456221635 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\camera.hpp
+1456222381 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\camera.hpp
 	<string>
 	"mge/core/GameObject.hpp"
 	"mge/behaviours/AbstractBehaviour.hpp"
@@ -1592,7 +1593,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1456221635 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\texture.hpp
+1456222381 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\texture.hpp
 	<map>
 	<string>
 	<GL/glew.h>
@@ -1673,7 +1674,7 @@
 1449670562 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\timer.hpp
 	<SFML/System.hpp>
 
-1456221635 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\camera.cpp
+1456222381 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\camera.cpp
 	<iostream>
 	<glm.hpp>
 	"mge/core/Camera.hpp"
@@ -1747,7 +1748,7 @@
 	<iostream>
 	<fstream>
 
-1456221635 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\texture.cpp
+1456222381 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\texture.cpp
 	<iostream>
 	<string>
 	<SFML/Graphics.hpp>
@@ -1812,7 +1813,7 @@
 	"mge/core/Renderer.hpp"
 	"mge/core/FPS.hpp"
 
-1456221888 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\mgedemo.cpp
+1456222381 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\mgedemo.cpp
 	<glm.hpp>
 	<iostream>
 	<string>
@@ -1875,15 +1876,15 @@
 
 1455269680 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luabridge\detail\namespace.h
 
-1456221635 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\baselight.cpp
+1456222381 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\baselight.cpp
 	"BaseLight.h"
 
-1456221635 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\baselight.h
+1456222381 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\baselight.h
 	<string>
 	"mge/core/GameObject.hpp"
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1456221635 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
+1456222381 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
 	<glm.hpp>
 	"mge/materials/LitColorMaterial.h"
 	"mge/config.hpp"
@@ -1891,7 +1892,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/core/World.hpp"
 
-1456221635 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\litcolormaterial.h
+1456222381 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\materials\litcolormaterial.h
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
@@ -1944,7 +1945,7 @@
 	<GL/glew.h>
 	<SFML/Graphics.hpp>
 
-1456221635 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\mgepaul.cpp
+1456223668 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\mgepaul.cpp
 	<glm.hpp>
 	<iostream>
 	<string>

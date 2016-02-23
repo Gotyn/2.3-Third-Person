@@ -66,6 +66,8 @@
 		<Unit filename="assets/mge/textures/land.jpg" />
 		<Unit filename="src/glm.hpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/mge/LuaGame.cpp" />
+		<Unit filename="src/mge/LuaGame.hpp" />
 		<Unit filename="src/mge/MGEDemo.cpp" />
 		<Unit filename="src/mge/MGEDemo.hpp" />
 		<Unit filename="src/mge/MGEMartijn.cpp" />
@@ -101,6 +103,8 @@
 		<Unit filename="src/mge/core/FPS.hpp" />
 		<Unit filename="src/mge/core/GameObject.cpp" />
 		<Unit filename="src/mge/core/GameObject.hpp" />
+		<Unit filename="src/mge/core/Input.cpp" />
+		<Unit filename="src/mge/core/Input.hpp" />
 		<Unit filename="src/mge/core/LuaLevelManger.cpp" />
 		<Unit filename="src/mge/core/LuaLevelManger.h" />
 		<Unit filename="src/mge/core/Mesh.cpp" />
@@ -131,8 +135,14 @@
 		<Unit filename="src/mge/materials/TextureMaterial.hpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.cpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.h" />
+		<Unit filename="src/mge/sphinx/GameCamera.cpp" />
+		<Unit filename="src/mge/sphinx/GameCamera.hpp" />
+		<Unit filename="src/mge/sphinx/PuzzleBlock.cpp" />
+		<Unit filename="src/mge/sphinx/PuzzleBlock.hpp" />
 		<Unit filename="src/mge/util/DebugHud.cpp" />
 		<Unit filename="src/mge/util/DebugHud.hpp" />
+		<Unit filename="src/mge/util/Utils.cpp" />
+		<Unit filename="src/mge/util/Utils.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
