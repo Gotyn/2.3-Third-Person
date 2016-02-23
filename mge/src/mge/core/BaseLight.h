@@ -12,26 +12,27 @@
 class BaseLight : public AbstractBehaviour
 {
     public:
-        BaseLight(glm::vec3 ambientColor = glm::vec3 (1,0,0), float ambientIntensity = 0.2f,
-                  glm::vec3 directionalLightColor = glm::vec3(1,0,0), glm::vec3 pLightDirection = glm::vec3 (0,-1,0),
+        BaseLight(glm::vec3 ambientColor = glm::vec3 (1,0,0), float ambientIntensity = 0.2f, glm::vec3 pConeDirection = glm::vec3 (0,-1,0),
                   float pConeAngle = 0.0f);
         virtual ~BaseLight();
+        //------------- GETTERS ----------------//
         glm::vec3 getAmbientColor() { return ambientColor; }
-        float getAmbientIntensity() { return ambientIntensity; }
-        glm::vec3 getDirectionalLightColor() { return directionalLightColor; }
         glm::vec3 getLightPosition() { return getOwner()->getWorldPosition(); }
-        void setLightDirection(glm::vec3 pValue) { lightDirection = pValue; }
-        void setLightPosition(glm::vec3 pValue) { lightPosition = pValue; }
-        glm::vec3 getLightDirection() { return lightDirection; }
+        glm::vec3 getConeDirection() { return coneDirection; }
         float getConeAngle() { return coneAngle; }
+        float getAmbientIntensity() { return ambientIntensity; }
+
+        //------------- SETTERS ----------------//
+        void setConeDirection(glm::vec3 pValue) { coneDirection = pValue; }
+        void setLightPosition(glm::vec3 pValue) { lightPosition = pValue; }
+
         void update(float pStep);
     private:
         //values for the uniforms
         glm::vec3 ambientColor;
         float ambientIntensity;
-        glm::vec3 directionalLightColor;
         glm::vec3 lightPosition;
-        glm::vec3 lightDirection;
+        glm::vec3 coneDirection;
         float coneAngle;
 };
 

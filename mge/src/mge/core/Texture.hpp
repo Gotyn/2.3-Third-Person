@@ -8,8 +8,7 @@
 class Texture
 {
 	public:
-		static Texture* load(const std::string pTexturePath);
-
+		static Texture* load(const std::string pTexturePath, bool shadow = false);
 		virtual ~Texture();
 
 		GLuint getId();
@@ -19,6 +18,7 @@ class Texture
 		//all previously loaded meshes;
 		static std::map<std::string, Texture*> _textures;
         static Texture* _loadFromFile(const std::string pTexturePath);
+        static Texture* _createTextureForShadow();
 
 	    //OpenGL id for texture buffer
 		GLuint _id;

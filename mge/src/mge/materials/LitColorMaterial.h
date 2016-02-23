@@ -2,6 +2,8 @@
 #define LITCOLORMATERIAL_H
 
 #include "mge/materials/AbstractMaterial.hpp"
+#include "mge/core/Texture.hpp"
+#include "mge/core/Mesh.hpp"
 #include <glm.hpp>
 #include <iostream>
 #include <sstream>
@@ -19,12 +21,13 @@ using namespace std;
 class LitColorMaterial : public AbstractMaterial
 {
     public:
-        LitColorMaterial(glm::vec3 pColor, World* pWorld);
+        LitColorMaterial(glm::vec3 pColor, Texture* pDiffuseTexture);
         virtual ~LitColorMaterial();
         virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);
+        void setDiffuseTexture (Texture* pDiffuseTexture);
 
         static string uniName(string propertyName, int lightIndex);
 
@@ -32,38 +35,41 @@ class LitColorMaterial : public AbstractMaterial
         //all the static properties are shared between instances of ColorMaterial
         //note that they are all PRIVATE, we do not expose this static info to the outside world
         static ShaderProgram* _shader;
-        static void _lazyInitializeShader();
+        void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
         static GLint _uModelMatrix;
         static GLint _uViewMatrix;
         static GLint _uPerspectiveMatrix;
+        static GLint _light_MVP;
+
 
         static GLint uGlobalAmbientIndex[];
         static GLint uDiffuseColorIndex[];
-        static GLint uDirectionalLightColorIndex[];
         static GLint uLightPositionIndex[];
-        static GLint uLightDirectionIndex[];
+        static GLint uConeDirectionIndex[];
         static GLint uConeAnglesIndex[];
 
         static GLint uCameraPosIndex;
         static GLint lightsUniforArraySize;
-        static GLint _aVertex ;
+        static GLint _aVertex;
         static GLint _aNormal;
-        static GLint _aUV ;
+        static GLint _aUV;
 
-        //this one is unique per instance of color material
+        // ----------- STUFF FOR 2-ND SHADER TO SHOW SHADOW MAP ----------- //
+        static ShaderProgram* _shaderSS;
+        static GLint _light_MVP2;
+        static GLint _aVertex2;
+        static GLint _aUV2;
+        // ----------- STUFF FOR 2-ND SHADER TO SHOW SHADOW MAP ----------- //
+
+        //this one is unique per instance of material
         glm::vec3 _diffuseColor;
+        Texture* _diffuseTexture;
 
-        static glm::vec3 ambientColors[];
-        static float ambientIntensities[];
-        static glm::vec3 lightColors[];
-        static glm::vec3 lightPositions[];
-        static glm::vec3 lightDirections[];
-        static float coneAngles[];
-
+        static std::vector<Texture*> _shadowTextures;
         static int tempSize;
-        static World* _myWorld;
+        static glm::mat4 biasMat;
 };
 
 #endif // LITCOLORMATERIAL_H
