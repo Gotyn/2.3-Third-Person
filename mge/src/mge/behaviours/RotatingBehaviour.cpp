@@ -1,7 +1,7 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/core/GameObject.hpp"
 
-RotatingBehaviour::RotatingBehaviour():AbstractBehaviour()
+RotatingBehaviour::RotatingBehaviour(GameObject* pOwner):AbstractBehaviour(pOwner)
 {
 	//ctor
 }

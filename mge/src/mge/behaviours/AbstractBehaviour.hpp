@@ -14,7 +14,7 @@ class GameObject;
 class AbstractBehaviour
 {
 	public:
-		AbstractBehaviour();
+		AbstractBehaviour(GameObject* pGameObject);
 		virtual ~AbstractBehaviour() = 0;
 
         //we would like to have this private and only accessible by GameObject, but this

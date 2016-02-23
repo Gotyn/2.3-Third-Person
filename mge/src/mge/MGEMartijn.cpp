@@ -49,11 +49,6 @@ void MGEMartijn::_initializeScene()
 
 }
 
-void MGEMartijn::_render() {
-//    AbstractGame::_render();
-    _updateHud();
-}
-
 void MGEMartijn::_update() {
     AbstractGame::_update();
 }

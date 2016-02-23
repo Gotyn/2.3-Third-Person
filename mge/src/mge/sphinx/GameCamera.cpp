@@ -4,9 +4,7 @@
 
 GameCamera::GameCamera(): GameObject("camera", glm::vec3(0, 0, 5))
 {
-    Camera* cb = new Camera();
-    addBehaviour(cb);
-    World::Instance()->setMainCamera(cb);
+    Camera* cb = new Camera(glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f), this);
 
     std::cout << "game camera created" << std::endl;
 }

@@ -7,7 +7,7 @@
 class OrbitBehaviour : public AbstractBehaviour
 {
     public:
-        OrbitBehaviour(GameObject* pTarget, float distance, float speed, float maxAngle);
+        OrbitBehaviour(GameObject* pTarget, float distance, float speed, float maxAngle, GameObject* pOwner = nullptr);
         virtual ~OrbitBehaviour();
 
         virtual void update( float step );

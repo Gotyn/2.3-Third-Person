@@ -82,7 +82,7 @@ void LitColorMaterial::_lazyInitializeShader() {
         //SHADOW SHADER: cachee all the uniform and attribute indexes
         glEnable(GL_DEPTH_TEST);
         glGenFramebuffers(1, &FBO);
-        for (int i = 0; i < World::Instance()->sceneLights().size(); ++i) {
+        for (unsigned int i = 0; i < World::Instance()->sceneLights().size(); ++i) {
             Texture* texture = Texture::load("ShadowTexture_" + std::to_string(i), true);
             _shadowTextures.push_back(texture);
         }
