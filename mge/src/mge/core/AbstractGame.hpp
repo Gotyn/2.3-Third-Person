@@ -10,7 +10,7 @@
 using namespace std;
 
 //class World;
-class Renderer;
+//class Renderer;
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -43,8 +43,8 @@ class AbstractGame
         virtual void _printVersionInfo();
         //initialize the extension wrangler
         virtual void _initializeGlew();
-        //create our own custom renderer instance
-        virtual void _initializeRenderer();
+        //initialize our OpenGL settings
+        virtual void _initializeOpenGL();
         //initialize a scene root to which we can attach/add objects
         virtual void _initializeWorld();
         //delete existing world and initialize a new one
@@ -56,12 +56,12 @@ class AbstractGame
         //call update on all game objects in the display root
         virtual void _update();
         //render all game objects in the display root
-        virtual void _render();
+//        virtual void _render();
         //process any sfml window events (see SystemEventDispatcher/Listener)
         virtual void _processEvents();
 
 		sf::RenderWindow* _window;  //sfml window to render into
-		Renderer* _renderer;        //the renderer class to render the world
+//		Renderer* _renderer;        //the renderer class to render the world
 		bool _running;
 };
 

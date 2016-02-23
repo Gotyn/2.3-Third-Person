@@ -1,16 +1,16 @@
 #include "AbstractGame.hpp"
-#include "LuaLevelManger.h"
 
 #include <iostream>
-using namespace std;
 
 #include "mge/core/Input.hpp"
 #include "mge/core/Timer.hpp"
 #include "mge/core/FPS.hpp"
-#include "mge/core/Renderer.hpp"
+//#include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 
-AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_running(false)
+using namespace std;
+
+AbstractGame::AbstractGame():_window(NULL),_running(false)
 {
 
 }
@@ -19,7 +19,7 @@ AbstractGame::~AbstractGame()
 {
     //dtor
     delete _window;
-    delete _renderer;
+//    delete _renderer;
 }
 
 void AbstractGame::initialize() {
@@ -27,7 +27,7 @@ void AbstractGame::initialize() {
     _initializeWindow();
     _printVersionInfo();
     _initializeGlew();
-    _initializeRenderer();
+    _initializeOpenGL();
     _initializeWorld();
     _initializeScene();
     cout << endl << "Engine initialized." << endl << endl;
@@ -46,7 +46,7 @@ void AbstractGame::_printVersionInfo() {
 	cout << "Context info:" << endl;
     cout << "----------------------------------" << endl;
     //print some debug stats for whoever cares
-    const GLubyte *renderer = glGetString( GL_RENDERER );
+//    const GLubyte *renderer = glGetString( GL_RENDERER );
     const GLubyte *vendor = glGetString( GL_VENDOR );
     const GLubyte *version = glGetString( GL_VERSION );
     const GLubyte *glslVersion = glGetString( GL_SHADING_LANGUAGE_VERSION );
@@ -56,7 +56,7 @@ void AbstractGame::_printVersionInfo() {
     glGetIntegerv(GL_MINOR_VERSION, &minor);
 
     printf("GL Vendor : %s\n", vendor);
-    printf("GL Renderer : %s\n", renderer);
+//    printf("GL Renderer : %s\n", renderer);
     printf("GL Version (string) : %s\n", version);
     printf("GL Version (integer) : %d.%d\n", major, minor);
     printf("GLSL Version : %s\n", glslVersion);
@@ -71,14 +71,21 @@ void AbstractGame::_initializeGlew() {
 	cout << "Initialized GLEW, status (1 == OK, 0 == FAILED):" << (glewStatus == GLEW_OK) << endl << endl;
 }
 
-void AbstractGame::_initializeRenderer() {
-    //setup our own renderer
-	cout << "Initializing renderer..." << endl;
-	_renderer = new Renderer();
-    cout << "Renderer done." << endl << endl;
+void AbstractGame::_initializeOpenGL() {
+//    //setup openGL settings
+	cout << "Initializing render settings..." << endl;
+
+    glEnable( GL_DEPTH_TEST );
+	glEnable( GL_CULL_FACE ); // default GL_BACK
+    glEnable (GL_BLEND);
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glClearColor((float)0x2d/0xff, (float)0x6b/0xff, (float)0xce/0xff, 1.0f );
+
+    cout << "Render settings loaded." << endl << endl;
 }
 
 void AbstractGame::_initializeWorld() {
+
 //    //setup our own renderer
 //	cout << "Initializing world..." << endl;
 //	_world = new World();
@@ -109,7 +116,7 @@ void AbstractGame::run()
 
         _update();
         //collision loop over here?
-        _render();
+//        _render();
 
         //swap colorbuffer to screen
         _window->display();
@@ -122,9 +129,9 @@ void AbstractGame::_update() {
     World::Instance()->update(Timer::deltaTime(), glm::mat4());
 }
 
-void AbstractGame::_render () {
-    _renderer->render(World::Instance());
-}
+//void AbstractGame::_render () {
+////    _renderer->render(World::Instance());
+//}
 
 void AbstractGame::_processEvents()
 {

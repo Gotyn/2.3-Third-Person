@@ -3,7 +3,6 @@
 
 #include <AbstractGame.hpp>
 #include "mge/util/DebugHud.hpp"
-#include "mge/core/Renderer.hpp"
 #include "mge/core/FPS.hpp"
 
 class SphinxDreams : public AbstractGame

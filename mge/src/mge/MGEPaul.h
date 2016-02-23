@@ -10,7 +10,6 @@
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/behaviours/LookAt.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
-#include "mge/core/Renderer.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/FPS.hpp"

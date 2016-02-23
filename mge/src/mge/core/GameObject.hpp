@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include <glm.hpp>
-#include <map>
+#include <unordered_map>
 #include <typeindex>
 
 class AbstractCollider;
@@ -48,12 +48,11 @@ class GameObject
 		//new multiple behaviours:
 		void addBehaviour(AbstractBehaviour* pBehaviour);
 
-        template <typename T> T* getBehaviour()
-        {
-//            auto it = _behaviours.find(std::type_index(typeid(T)));
-//            if (it != _behaviours.end()) {
-//                return dynamic_cast<T*>(it->second);
-//            }
+        template <typename T>
+        T* getBehaviour() {
+            if(_behaviours.count(&typeid(T))!=0) {
+                return static_cast<T*>(_behaviours[&typeid(T)]);
+            }
             return nullptr;
         }
 
@@ -79,7 +78,7 @@ class GameObject
 
         GameObject* _parent;
 		std::vector<GameObject*> _children;
-        std::vector<AbstractBehaviour*> _behaviours;
+        std::unordered_map<const std::type_info* , AbstractBehaviour *> _behaviours;
 
         //update children list administration
         void _innerAdd (GameObject* pChild);

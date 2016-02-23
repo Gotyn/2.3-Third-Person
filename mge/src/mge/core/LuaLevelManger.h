@@ -7,7 +7,6 @@
 #include <vector>
 using namespace std;
 
-#include "mge/core/Renderer.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/FPS.hpp"
