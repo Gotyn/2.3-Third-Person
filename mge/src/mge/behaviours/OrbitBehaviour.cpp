@@ -4,24 +4,24 @@
 #include "mge/core/GameObject.hpp"
 #include <iostream>
 
-using namespace std;
-
 OrbitBehaviour::OrbitBehaviour(GameObject* pTarget, float distance, float speed, float maxAngle, GameObject* pOwner)
-    : AbstractBehaviour(pOwner), _target(pTarget), _distance(distance), _speed(speed), _maxAngle(maxAngle)
-{
+    : AbstractBehaviour(), _target(pTarget), _distance(distance), _speed(speed), _maxAngle(maxAngle) {
+    addBehaviourToGO(pOwner);
     _tilt = 0;
     _orbitPosition = glm::vec3(0,0,0);
     _mouseOld = glm::vec2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
     _mouseDelta = glm::vec2(sf::Mouse::getPosition().x - _mouseOld.x, sf::Mouse::getPosition().y - _mouseOld.y);
 }
 
-OrbitBehaviour::~OrbitBehaviour()
-{
+OrbitBehaviour::~OrbitBehaviour() {
     //dtor
 }
 
-void OrbitBehaviour::update(float step)
-{
+void OrbitBehaviour::addBehaviourToGO(GameObject* pGameObject) {
+    pGameObject->addBehaviour(this);
+}
+
+void OrbitBehaviour::update(float step) {
     //mouse movement
     _mouseDelta = glm::vec2(sf::Mouse::getPosition().x - _mouseOld.x, sf::Mouse::getPosition().y - _mouseOld.y);
     _mouseOld = glm::vec2(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
@@ -32,9 +32,9 @@ void OrbitBehaviour::update(float step)
     _tilt += _mouseDelta.y * step *0.3f;
     _tilt = glm::clamp(_tilt, -_maxAngle, _maxAngle);
 
-    _orbitPosition.x = cos(_theta);
-    _orbitPosition.z = sin(_theta);
-    _orbitPosition.y = sin(_tilt);
+    _orbitPosition.x = std::cos(_theta);
+    _orbitPosition.z = std::sin(_theta);
+    _orbitPosition.y = std::sin(_tilt);
     _orbitPosition = glm::normalize(_orbitPosition);
     _orbitPosition *= _distance;
 

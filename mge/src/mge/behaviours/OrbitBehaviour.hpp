@@ -11,6 +11,7 @@ class OrbitBehaviour : public AbstractBehaviour
         virtual ~OrbitBehaviour();
 
         virtual void update( float step );
+        void addBehaviourToGO(GameObject* pGameObject);
 
     protected:
 

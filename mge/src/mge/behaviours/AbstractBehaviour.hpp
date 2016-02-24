@@ -14,8 +14,10 @@ class GameObject;
 class AbstractBehaviour
 {
 	public:
-		AbstractBehaviour(GameObject* pGameObject);
+		AbstractBehaviour();
 		virtual ~AbstractBehaviour() = 0;
+        virtual void addBehaviourToGO(GameObject* pGameObject) = 0;
+        bool enabled = true;
 
         //we would like to have this private and only accessible by GameObject, but this
         //doesnt work out for the CompositeBehaviour, we would have to declare both of them

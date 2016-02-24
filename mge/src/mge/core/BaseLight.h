@@ -27,6 +27,7 @@ class BaseLight : public AbstractBehaviour
         void setConeDirection(glm::vec3 pValue) { coneDirection = pValue; }
 
         void update(float pStep);
+        void addBehaviourToGO(GameObject* pGameObject);
     private:
         //values for the uniforms
         glm::vec3 ambientColor;
