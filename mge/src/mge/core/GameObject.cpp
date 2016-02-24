@@ -171,7 +171,8 @@ void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 
     for (auto const& value: _behaviours)
     {
-        value.second->update(pStep);
+        if (value.second->enabled == true)
+            value.second->update(pStep);
     }
 
     for (int i = _children.size()-1; i >= 0; --i ) {
