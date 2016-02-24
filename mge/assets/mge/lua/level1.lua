@@ -17,6 +17,10 @@ function update()
     -- print(pieces[activePiece]:getName())
     -- print(checkProgress())
 
+    -- test lookAt
+    pieces[2]:lookAt(pieces[2])
+    print(pieces[2]:printStatus())
+
     if Game.getKeyDown(KeyCode.P) == true then
         printPuzzleBlocksStates() 
     end

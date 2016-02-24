@@ -82,6 +82,23 @@ glm::vec3 GameObject::getLocalPosition()
 	return glm::normalize(glm::vec3(_transform[3]));
 }
 
+void GameObject::LookAt(GameObject* pTarget)
+{
+    setTransform(
+        glm::inverse (
+            glm::lookAt (getWorldPosition(), pTarget->getWorldPosition(), glm::vec3(0,1,0))
+        )
+    );
+
+//    glm::vec3 forward = glm::normalize(getLocalPosition() - pTarget->getLocalPosition());
+//    glm::vec3 right = glm::cross (glm::vec3(0,1,0), forward);
+//    glm::vec3 up = glm::cross (forward, right);
+//
+//    setTransform(
+//      glm::mat4 (glm::vec4(right,0), glm::vec4(up,0), glm::vec4(forward,0), glm::vec4(getLocalPosition(),1) )
+//    );
+}
+
 //new multiple behaviours
 void GameObject::addBehaviour(AbstractBehaviour* pBehaviour)
 {

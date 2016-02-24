@@ -44,6 +44,8 @@ class GameObject
 		void scale(glm::vec3 pScale);
 		void scaleLua(float x, float y, float z);
 
+		void LookAt(GameObject* pTarget);
+
 		//new multiple behaviours:
 		void addBehaviour(AbstractBehaviour* pBehaviour);
 
