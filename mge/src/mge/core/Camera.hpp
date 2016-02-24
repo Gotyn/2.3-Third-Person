@@ -15,6 +15,7 @@ class Camera : public AbstractBehaviour
 		virtual ~Camera();
 
         virtual void update(float pStep);
+        void addBehaviourToGO(GameObject* pGameObject);
         glm::mat4& getProjection();
         void setProjection(const glm::mat4& pProjection);
 

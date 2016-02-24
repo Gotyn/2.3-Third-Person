@@ -13,6 +13,7 @@ class RotatingBehaviour : public AbstractBehaviour
 		virtual ~RotatingBehaviour();
 
 		virtual void update( float step );
+		void addBehaviourToGO(GameObject* pGameObject);
 
 };
 

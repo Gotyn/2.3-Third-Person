@@ -14,6 +14,7 @@ class MeshRenderer : public AbstractBehaviour
         virtual ~MeshRenderer();
 
         virtual void update( float step );
+        void addBehaviourToGO(GameObject* pGameObject);
 
         void setMesh(std:: string pFilename);
         void setMesh(Mesh* pMesh);

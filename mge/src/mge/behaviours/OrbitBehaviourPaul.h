@@ -19,6 +19,7 @@ class OrbitBehaviourPaul : public AbstractBehaviour
         virtual ~OrbitBehaviourPaul();
 
         virtual void update( float pStep );
+        void addBehaviourToGO(GameObject* pGameObject);
         sf::Event event;
         float prevX;
         float prevY;

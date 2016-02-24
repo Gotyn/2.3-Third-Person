@@ -12,15 +12,20 @@ using namespace std;
 
 OrbitBehaviourPaul::OrbitBehaviourPaul(float pDistance, float pMinXrot, float pMaxXrot, GameObject* pTarget,
                                float pMoveSpeed, float pTurnSpeed, sf::Window* pWindow, GameObject* pOwner):
-AbstractBehaviour(pOwner), _distance(pDistance), _minXrot(pMinXrot), _maxXrot(pMaxXrot), _target(pTarget),
+AbstractBehaviour(), _distance(pDistance), _minXrot(pMinXrot), _maxXrot(pMaxXrot), _target(pTarget),
 _moveSpeed(pMoveSpeed), _turnSpeed(pTurnSpeed), _myWindow(pWindow)
 {
-    //ctor
+    addBehaviourToGO(pOwner);
 }
 
 OrbitBehaviourPaul::~OrbitBehaviourPaul()
 {
     //dtor
+}
+
+void OrbitBehaviourPaul::addBehaviourToGO(GameObject* pGameObject)
+{
+    pGameObject->addBehaviour(this);
 }
 
 void OrbitBehaviourPaul::updateCameraMovement(glm::mat4& pMatrix, bool mouse)

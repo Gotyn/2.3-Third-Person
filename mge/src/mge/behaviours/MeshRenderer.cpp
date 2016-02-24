@@ -2,16 +2,21 @@
 #include "mge/config.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 
-MeshRenderer::MeshRenderer(std::string pFilename, AbstractMaterial* pMaterial, GameObject* pOwner):AbstractBehaviour(pOwner)
+MeshRenderer::MeshRenderer(std::string pFilename, AbstractMaterial* pMaterial, GameObject* pOwner):AbstractBehaviour()
 {
+     addBehaviourToGO(pOwner);
     _mesh = Mesh::load (config::MGE_MODEL_PATH+pFilename);
-    //_material = new ColorMaterial (glm::vec3(1.0f,1.0f,1.0f));
     _material = pMaterial;
 }
 
 MeshRenderer::~MeshRenderer()
 {
     delete _material;
+}
+
+void MeshRenderer::addBehaviourToGO(GameObject* pGameObject)
+{
+    pGameObject->addBehaviour(this);
 }
 
 void MeshRenderer::update( float step )

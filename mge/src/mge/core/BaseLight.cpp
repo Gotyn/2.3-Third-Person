@@ -1,8 +1,9 @@
 #include "BaseLight.h"
 
 BaseLight::BaseLight(glm::vec3 pAmbientColor, float pAmbientIntensity, glm::vec3 pConeDirection,
-                     float pConeAngle, GameObject* pOwner): AbstractBehaviour(pOwner)
+                     float pConeAngle, GameObject* pOwner): AbstractBehaviour()
 {
+    addBehaviourToGO(pOwner);
     ambientColor = pAmbientColor;
     ambientIntensity = pAmbientIntensity;
     coneDirection = pConeDirection;
@@ -13,6 +14,11 @@ BaseLight::BaseLight(glm::vec3 pAmbientColor, float pAmbientIntensity, glm::vec3
 BaseLight::~BaseLight()
 {
     //dtor
+}
+
+void BaseLight::addBehaviourToGO(GameObject* pGameObject)
+{
+    pGameObject->addBehaviour(this);
 }
 
 void BaseLight::update(float pStep)
