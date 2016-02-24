@@ -21,11 +21,13 @@ void MeshRenderer::addBehaviourToGO(GameObject* pGameObject)
 
 void MeshRenderer::update( float step )
 {
-    if (_mesh == NULL || _material == NULL)
-        return;
+    if (enabled) {
+        if (_mesh == NULL || _material == NULL)
+            return;
 
-    if (World::Instance()->getMainCamera() != NULL)
-        _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+        if (World::Instance()->getMainCamera() != NULL)
+            _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+    }
 }
 
 void MeshRenderer::setMaterial(AbstractMaterial* pMaterial)
