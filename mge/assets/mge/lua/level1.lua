@@ -26,6 +26,11 @@ function printPuzzleBlocksStates()
     for i, v in ipairs(pieces) do 
         v:printStatus() 
     end
+
+    -- file = io.open("snapshot.txt", "w")
+    -- io.output(file)
+    -- io.write("-- End of the test.lua file")
+    -- io.close(file)
 end
 
 -- checks the total progress of the puzzle between 0 and 1
@@ -38,6 +43,7 @@ function checkProgress()
 end
 
 function handleControl()
+    -- rotation
     if Game.getKey(KeyCode.W) == true then
         pieces[activePiece]:pitch(1.5) 
     end
@@ -50,6 +56,26 @@ function handleControl()
     end
     if Game.getKey(KeyCode.A) == true then
         pieces[activePiece]:roll(-1.5) 
+    end
+
+    -- movement
+    if Game.getKey(KeyCode.Up) == true then
+        pieces[activePiece]:move(0, 0, -1)
+    end  
+    if Game.getKey(KeyCode.Down) == true then
+        pieces[activePiece]:move(0, 0, 1) 
+    end
+    if Game.getKey(KeyCode.Left) == true then
+        pieces[activePiece]:move(-1, 0, 0) 
+    end
+    if Game.getKey(KeyCode.Right) == true then
+        pieces[activePiece]:move(1, 0, 0) 
+    end
+    if Game.getKey(KeyCode.RShift) == true then
+        pieces[activePiece]:move(0, 1, 0) 
+    end
+    if Game.getKey(KeyCode.RControl) == true then
+        pieces[activePiece]:move(0, -1, 0) 
     end
 end 
 

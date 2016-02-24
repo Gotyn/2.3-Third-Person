@@ -1,4 +1,5 @@
 #include "LuaGame.hpp"
+#include "mge/core/Timer.hpp"
 #include "mge/core/Input.hpp"
 #include "mge/core/Audio.hpp"
 #include "mge/core/ModelViewer.hpp"
@@ -45,6 +46,8 @@ void LuaGame::_initLua()
     luabridge::getGlobalNamespace(_L)
         .beginNamespace ("Game")
             //game functions
+            .addFunction ("time", Timer::now)
+            .addFunction ("deltaTime", Timer::deltaTime)
             .addFunction ("getKeyDown", Input::getKeyDown)
             .addFunction ("getKey", Input::getKey)
             //game classes
@@ -52,6 +55,8 @@ void LuaGame::_initLua()
                 .addConstructor <void (*) (void)> ()
                 .addFunction ("getName", &GameObject::getName)
                 .addFunction ("setPosition", &GameObject::setLocalPositionLua)
+                .addFunction ("move", &GameObject::move)
+                .addFunction ("scale", &GameObject::scaleLua)
             .endClass ()
             .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
                 .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
@@ -66,12 +71,6 @@ void LuaGame::_initLua()
             .addFunction ("playSound", Audio::PlayEffect)
         .endNamespace();
 }
-
-//void LuaGame::_render()
-//{
-////    AbstractGame::_render();
-//    _updateHud();
-//}
 
 void LuaGame::_update()
 {

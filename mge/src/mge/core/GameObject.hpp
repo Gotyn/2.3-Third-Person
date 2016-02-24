@@ -33,17 +33,16 @@ class GameObject
 		void setLocalPosition (glm::vec3 pPosition);
 		glm::vec3 getLocalPosition();
 
-//        //get world
-//        World* getWorld();
-
         //get the objects world position by combining transforms
 		glm::vec3 getWorldPosition();
 		virtual glm::mat4& getWorldTransform();
 
         //change local position, rotation, scaling
 		void translate(glm::vec3 pTranslation);
+		void move(float x, float y, float z);
 		void rotate(float pAngle, glm::vec3 pAxis);
 		void scale(glm::vec3 pScale);
+		void scaleLua(float x, float y, float z);
 
 		//new multiple behaviours:
 		void addBehaviour(AbstractBehaviour* pBehaviour);

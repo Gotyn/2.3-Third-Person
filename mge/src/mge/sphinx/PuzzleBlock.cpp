@@ -41,6 +41,7 @@ void PuzzleBlock::printStatus()
     std::cout << "puzzleBlock status of: " << getName() << std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
     std::cout << "position:          " << getWorldPosition() << std::endl;
+    std::cout << "TODO: print scale" << std::endl;
     std::cout << "forward direction: " << getForward() << std::endl;
     std::cout << "up direction:      " << getUp() << std::endl;
     std::cout << std::endl;

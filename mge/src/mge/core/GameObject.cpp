@@ -4,6 +4,7 @@ using namespace std;
 
 #include <glm.hpp>
 
+#include "mge/core/Timer.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
@@ -155,9 +156,19 @@ void GameObject::translate(glm::vec3 pTranslation)
 	setTransform(glm::translate(_transform, pTranslation));
 }
 
+void GameObject::move(float x, float y, float z)
+{
+    translate(glm::vec3(x, y, z) * Timer::deltaTime());
+}
+
 void GameObject::scale(glm::vec3 pScale)
 {
 	setTransform(glm::scale(_transform, pScale));
+}
+
+void GameObject::scaleLua(float x, float y, float z)
+{
+    setTransform(glm::scale(_transform, glm::vec3(x, y, z)));
 }
 
 void GameObject::rotate(float pAngle, glm::vec3 pAxis)
