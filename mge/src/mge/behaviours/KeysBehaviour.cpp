@@ -4,12 +4,18 @@
 #include <sfml/window/event.hpp>
 
 KeysBehaviour::KeysBehaviour(float moveSpeed, float turnSpeed, GameObject* pOwner):
-    AbstractBehaviour(pOwner), _moveSpeed(moveSpeed), _turnSpeed(turnSpeed)
+    AbstractBehaviour(), _moveSpeed(moveSpeed), _turnSpeed(turnSpeed)
 {
+    addBehaviourToGO(pOwner);
 }
 
 KeysBehaviour::~KeysBehaviour()
 {
+}
+
+void KeysBehaviour::addBehaviourToGO(GameObject* pGameObject)
+{
+    pGameObject->addBehaviour(this);
 }
 
 void KeysBehaviour::update( float pStep )

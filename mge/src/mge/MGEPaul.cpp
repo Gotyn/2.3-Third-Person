@@ -32,6 +32,13 @@ void MGEPaul::initialize() {
 //build the game _world
 void MGEPaul::_initializeScene()
 {
+/*
+    GameObject* positional = new GameObject("positional", glm::vec3(-3,3,-3));
+    spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
+    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,-1,0), positional);
+    MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)), positional);
+*/
+
     //ADD LIGHTS
     GameObject* spotLightGO = new GameObject("spot", glm::vec3(0,2.0f,0));
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
@@ -40,18 +47,13 @@ void MGEPaul::_initializeScene()
     MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)), spotLightGO);
     KeysBehaviour* kb = new KeysBehaviour(5, 45, spotLightGO);
 
-/*
-    GameObject* positional = new GameObject("positional", glm::vec3(-3,3,-3));
-    spotLightGO2->scale(glm::vec3(0.2f, 0.2f, 0.2f));
-    BaseLight* testLight2 = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,-1,0), positional);
-    MeshRenderer* spotLightMesh2 = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)), positional);
-*/
-
     //ADD PLANE GO, MESH AND MATERIAL
     GameObject* teapot = new GameObject ("ceiling", glm::vec3(3.5f, 2, 0));
     teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
     teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
     MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot);
+    MeshRenderer* teapotMesh2 = new MeshRenderer("teapot_smooth.obj",
            new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot);
     RotatingBehaviour* rb = new RotatingBehaviour(teapot);
 
@@ -88,7 +90,6 @@ void MGEPaul::_initializeScene()
     GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 2.0f, 5.0f));
     cameraGO->rotate(glm::radians(-45.0f),glm::vec3(0,1,0));
     Camera* camera = new Camera (glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f), cameraGO);
-    //OrbitBehaviourPaul* orbit = new OrbitBehaviourPaul(10, 0.20f, 0.99f, plane, 0.1f, 0.1f, _window, camera);
 }
 
 void MGEPaul::_update() {

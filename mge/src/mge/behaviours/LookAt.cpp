@@ -5,13 +5,19 @@
 #include <iostream>
 using namespace std;
 
-LookAt::LookAt(GameObject * pTarget, GameObject* pOwner): AbstractBehaviour(pOwner), _target(pTarget)
+LookAt::LookAt(GameObject * pTarget, GameObject* pOwner): AbstractBehaviour(), _target(pTarget)
 {
+    addBehaviourToGO(pOwner);
 }
 
 LookAt::~LookAt()
 {
     //dtor
+}
+
+void LookAt::addBehaviourToGO(GameObject* pGameObject)
+{
+    pGameObject->addBehaviour(this);
 }
 
 /**

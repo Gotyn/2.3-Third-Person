@@ -14,6 +14,7 @@ class LookAt : public AbstractBehaviour
         virtual ~LookAt();
 
         virtual void update( float step );
+        void addBehaviourToGO(GameObject* pGameObject);
 
     private:
         GameObject * _target;   //what are we looking at?
