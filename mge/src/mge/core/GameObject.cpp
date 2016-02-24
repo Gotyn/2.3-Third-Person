@@ -84,11 +84,14 @@ glm::vec3 GameObject::getLocalPosition()
 
 void GameObject::LookAt(GameObject* pTarget)
 {
-    setTransform(
-        glm::inverse (
-            glm::lookAt (getWorldPosition(), pTarget->getWorldPosition(), glm::vec3(0,1,0))
-        )
-    );
+    std::cout << pTarget->getWorldPosition() << std::endl;
+//    std::cout << getWorldPosition() << std::endl;
+
+//    setTransform(
+//        glm::inverse (
+//            glm::lookAt (getWorldPosition(), pTarget->getWorldPosition(), glm::vec3(0,1,0))
+//        )
+//    );
 
 //    glm::vec3 forward = glm::normalize(getLocalPosition() - pTarget->getLocalPosition());
 //    glm::vec3 right = glm::cross (glm::vec3(0,1,0), forward);
