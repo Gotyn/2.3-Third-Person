@@ -23,5 +23,5 @@ void BaseLight::addBehaviourToGO(GameObject* pGameObject)
 
 void BaseLight::update(float pStep)
 {
-
+    if (enabled) {}
 }
