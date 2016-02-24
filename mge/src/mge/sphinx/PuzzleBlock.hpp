@@ -9,7 +9,7 @@
 class PuzzleBlock : public GameObject
 {
     public:
-        PuzzleBlock(std::string pModelName, std::string pTextureName);
+        PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName);
         virtual ~PuzzleBlock();
 
         virtual void update(float pStep, const glm::mat4& pParentTransform);
@@ -17,6 +17,7 @@ class PuzzleBlock : public GameObject
         float pitch(float pAmount);
         float roll(float pAmount);
         float yaw(float pAmount);
+        void printStatus();
     protected:
 
     private:

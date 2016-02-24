@@ -5,7 +5,6 @@
 #include "mge/core/Input.hpp"
 #include "mge/core/Timer.hpp"
 #include "mge/core/FPS.hpp"
-//#include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 
 using namespace std;
@@ -17,9 +16,7 @@ AbstractGame::AbstractGame():_window(NULL),_running(false)
 
 AbstractGame::~AbstractGame()
 {
-    //dtor
     delete _window;
-//    delete _renderer;
 }
 
 void AbstractGame::initialize() {
@@ -85,6 +82,8 @@ void AbstractGame::_initializeOpenGL() {
 }
 
 void AbstractGame::_initializeWorld() {
+
+    //note: replaced by private Instance constructor
 
 //    //setup our own renderer
 //	cout << "Initializing world..." << endl;

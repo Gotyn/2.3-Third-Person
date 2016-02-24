@@ -34,7 +34,7 @@ void LuaGame::_initializeScene()
 
     GameCamera* gameCam = new GameCamera();
 
-    luaL_dofile(_L, "main.lua");
+    luaL_dofile(_L, "mge/lua/main.lua");
 }
 
 void LuaGame::_initLua()
@@ -54,10 +54,11 @@ void LuaGame::_initLua()
                 .addFunction ("setPosition", &GameObject::setLocalPositionLua)
             .endClass ()
             .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
-                .addConstructor <void (*) (std::string pModelName, std::string pTextureName)> ()
+                .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
                 .addFunction ("getProgress", &PuzzleBlock::getProgress)
                 .addFunction ("pitch", &PuzzleBlock::pitch)
                 .addFunction ("roll", &PuzzleBlock::roll)
+                .addFunction ("printStatus", &PuzzleBlock::printStatus)
             .endClass ()
         .endNamespace()
         .beginNamespace ("Audio")
