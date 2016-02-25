@@ -8,10 +8,17 @@ pieces[1]:setPosition(0,-1,0)
 pieces[2]:setPosition(0,1,0)
 pieces[3]:setPosition(0,3,0)
 
+-- props / scenery
+prop1 = Game.Prop("OfficeChair.obj", "bricks.jpg", "prop1")
+prop1:setPosition(2, 0.5, 0)
+
 activePiece = 1
 
 function update()
-    handleControl()
+    handleControl(pieces[activePiece])
+
+    -- test placement for placing prop
+    handleControl(prop1)
 
     handleSelection()
     -- print(pieces[activePiece]:getName())
@@ -27,7 +34,7 @@ function update()
 end
 
 function updateGUI()
-    -- print("update GUI in lua")
+    -- button test
     if Hud.button(50, 50, "lua button") == true then
         print("lua button clicked!")
     end 
@@ -53,45 +60,45 @@ function checkProgress()
     return totalProgress / #pieces
 end
 
-function handleControl()
+function handleControl(gameObject)
     -- rotation
     if Game.getKey(KeyCode.W) == true then
-        pieces[activePiece]:pitch(1.5) 
+        gameObject:pitch(1.5) 
     end
     if Game.getKey(KeyCode.S) == true then
-        pieces[activePiece]:pitch(-1.5) 
+        gameObject:pitch(-1.5) 
     end
     if Game.getKey(KeyCode.D) == true then
-        pieces[activePiece]:roll(1.5) 
+        gameObject:roll(1.5) 
     end
     if Game.getKey(KeyCode.A) == true then
-        pieces[activePiece]:roll(-1.5) 
+        gameObject:roll(-1.5) 
     end
     if Game.getKey(KeyCode.Q) == true then
-        pieces[activePiece]:yaw(1.5) 
+        gameObject:yaw(1.5) 
     end
     if Game.getKey(KeyCode.E) == true then
-        pieces[activePiece]:yaw(-1.5) 
+        gameObject:yaw(-1.5) 
     end
 
     -- movement
     if Game.getKey(KeyCode.Up) == true then
-        pieces[activePiece]:move(0, 0, -1)
+        gameObject:move(0, 0, -1)
     end  
     if Game.getKey(KeyCode.Down) == true then
-        pieces[activePiece]:move(0, 0, 1) 
+        gameObject:move(0, 0, 1) 
     end
     if Game.getKey(KeyCode.Left) == true then
-        pieces[activePiece]:move(-1, 0, 0) 
+        gameObject:move(-1, 0, 0) 
     end
     if Game.getKey(KeyCode.Right) == true then
-        pieces[activePiece]:move(1, 0, 0) 
+        gameObject:move(1, 0, 0) 
     end
     if Game.getKey(KeyCode.RShift) == true then
-        pieces[activePiece]:move(0, 1, 0) 
+        gameObject:move(0, 1, 0) 
     end
     if Game.getKey(KeyCode.RControl) == true then
-        pieces[activePiece]:move(0, -1, 0) 
+        gameObject:move(0, -1, 0) 
     end
 end 
 

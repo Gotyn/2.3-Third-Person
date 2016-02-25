@@ -25,21 +25,6 @@ float PuzzleBlock::getProgress()
     return 1.0f - progressFraction;
 }
 
-float PuzzleBlock::pitch(float pAmount)
-{
-    rotate(pAmount * Timer::deltaTime(), glm::vec3(1,0,0));
-}
-
-float PuzzleBlock::roll(float pAmount)
-{
-    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,1));
-}
-
-float PuzzleBlock::yaw(float pAmount)
-{
-    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,1,0));
-}
-
 void PuzzleBlock::printStatus()
 {
     std::cout << "===================================================" << std::endl;

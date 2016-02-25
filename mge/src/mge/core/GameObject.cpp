@@ -67,6 +67,21 @@ glm::vec3 GameObject::getUp()
     return glm::vec3(f[0],f[1],f[2]);
 }
 
+float GameObject::pitch(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(1,0,0));
+}
+
+float GameObject::roll(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,1));
+}
+
+float GameObject::yaw(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,1,0));
+}
+
 void GameObject::setLocalPosition (glm::vec3 pPosition)
 {
     _transform[3] = glm::vec4 (pPosition,1);

@@ -4,6 +4,7 @@
 #include "mge/core/Audio.hpp"
 #include "mge/core/ModelViewer.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
+#include "mge/sphinx/Prop.hpp"
 #include "mge/sphinx/GameCamera.hpp"
 
 using namespace std;
@@ -60,16 +61,19 @@ void LuaGame::_initLua()
                 .addFunction ("getName", &GameObject::getName)
                 .addFunction ("setPosition", &GameObject::setLocalPositionLua)
                 .addFunction ("move", &GameObject::move)
+                .addFunction ("pitch", &GameObject::pitch)
+                .addFunction ("roll", &GameObject::roll)
+                .addFunction ("yaw", &GameObject::yaw)
                 .addFunction ("scale", &GameObject::scaleLua)
                 .addFunction ("lookAt", &GameObject::LookAt)
             .endClass ()
             .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
                 .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
                 .addFunction ("getProgress", &PuzzleBlock::getProgress)
-                .addFunction ("pitch", &PuzzleBlock::pitch)
-                .addFunction ("roll", &PuzzleBlock::roll)
-                .addFunction ("yaw", &PuzzleBlock::yaw)
                 .addFunction ("printStatus", &PuzzleBlock::printStatus)
+            .endClass ()
+            .deriveClass <Prop, GameObject> ("Prop")
+                .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
             .endClass ()
         .endNamespace()
         .beginNamespace ("Hud")
