@@ -2547,12 +2547,13 @@
 	"Utils.hpp"
 	<windows.h>
 
-1456437623 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1456439045 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
 	"mge/core/Audio.hpp"
 	"mge/core/ModelViewer.hpp"
+	"mge/util/UpdateListener.hpp"
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
@@ -3364,4 +3365,8 @@
 1252957884 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherwin32.cpp
 	<FileWatcher/FileWatcherWin32.h>
 	<windows.h>
+
+1456439081 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.hpp
+	<FileWatcher/FileWatcher.h>
+	"mge/LuaGame.hpp"
 

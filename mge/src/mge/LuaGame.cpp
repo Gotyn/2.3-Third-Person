@@ -3,28 +3,12 @@
 #include "mge/core/Input.hpp"
 #include "mge/core/Audio.hpp"
 #include "mge/core/ModelViewer.hpp"
+#include "mge/util/UpdateListener.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
 #include "mge/sphinx/Prop.hpp"
 #include "mge/sphinx/GameCamera.hpp"
 
 using namespace std;
-
-class UpdateListener : public FW::FileWatchListener
-{
-public:
-	UpdateListener(LuaGame* pLuaGame) : _luaGame(pLuaGame) {}
-	void handleFileAction(FW::WatchID watchid, const FW::String& dir, const FW::String& filename,
-		FW::Action action)
-	{
-		std::cout << "DIR (" << dir + ") FILE (" + filename + ") has event " << action << std::endl;
-
-		//reload the hud Lua module
-		_luaGame->reloadHud();
-	}
-
-protected:
-    LuaGame* _luaGame;
-};
 
 LuaGame::LuaGame()
 {
