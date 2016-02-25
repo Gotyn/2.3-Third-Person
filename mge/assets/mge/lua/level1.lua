@@ -26,6 +26,13 @@ function update()
     end
 end
 
+function updateGUI()
+    -- print("update GUI in lua")
+    if Hud.button(50, 50, "lua button") == true then
+        print("lua button clicked!")
+    end 
+end
+
 function printPuzzleBlocksStates()
     for i, v in ipairs(pieces) do 
         v:printStatus() 
@@ -54,12 +61,17 @@ function handleControl()
     if Game.getKey(KeyCode.S) == true then
         pieces[activePiece]:pitch(-1.5) 
     end
-
     if Game.getKey(KeyCode.D) == true then
         pieces[activePiece]:roll(1.5) 
     end
     if Game.getKey(KeyCode.A) == true then
         pieces[activePiece]:roll(-1.5) 
+    end
+    if Game.getKey(KeyCode.Q) == true then
+        pieces[activePiece]:yaw(1.5) 
+    end
+    if Game.getKey(KeyCode.E) == true then
+        pieces[activePiece]:yaw(-1.5) 
     end
 
     -- movement

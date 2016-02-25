@@ -8,6 +8,9 @@
 
 using namespace std;
 
+//// init statics, to be removed
+//BaseHud* LuaGame::hudStaticRef = 0;
+
 LuaGame::LuaGame()
 {
     _initLua();
@@ -25,6 +28,7 @@ void LuaGame::initialize()
     //setup the custom part
 	cout << "Initializing HUD" << endl;
 	_hud = new BaseHud(_window);
+//	hudStaticRef = _hud; // TODO: needs a better way to access the hud statically for lua
 	cout << "HUD initialized." << endl << endl;
 }
 
@@ -64,8 +68,12 @@ void LuaGame::_initLua()
                 .addFunction ("getProgress", &PuzzleBlock::getProgress)
                 .addFunction ("pitch", &PuzzleBlock::pitch)
                 .addFunction ("roll", &PuzzleBlock::roll)
+                .addFunction ("yaw", &PuzzleBlock::yaw)
                 .addFunction ("printStatus", &PuzzleBlock::printStatus)
             .endClass ()
+        .endNamespace()
+        .beginNamespace ("Hud")
+            .addFunction ("button", BaseHud::Button)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
@@ -80,6 +88,9 @@ void LuaGame::_update()
     //call lua update function
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
+
+    //update GUI
+    _updateGUI();
 }
 
 void LuaGame::_processEvents()
@@ -87,7 +98,8 @@ void LuaGame::_processEvents()
     AbstractGame::_processEvents();
 }
 
-void LuaGame::_updateHud()
+void LuaGame::_updateGUI()
 {
-
+    luabridge::LuaRef luaUpdateGUI = luabridge::getGlobal (_L, "updateGUI");
+    luaUpdateGUI();
 }

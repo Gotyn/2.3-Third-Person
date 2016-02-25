@@ -32,7 +32,12 @@ float PuzzleBlock::pitch(float pAmount)
 
 float PuzzleBlock::roll(float pAmount)
 {
-    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,-1));
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,1));
+}
+
+float PuzzleBlock::yaw(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,1,0));
 }
 
 void PuzzleBlock::printStatus()

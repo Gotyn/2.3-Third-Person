@@ -20,6 +20,8 @@ class LuaGame : public AbstractGame
 		virtual ~LuaGame();
         virtual void initialize();
 
+//        static BaseHud* hudStaticRef;
+
 	protected:
         virtual void _initializeScene();
         virtual void _update();
@@ -27,7 +29,7 @@ class LuaGame : public AbstractGame
 
 	private:
 	    void _initLua();
-        void _updateHud();
+        void _updateGUI();
 
         lua_State* _L;
         BaseHud* _hud;
