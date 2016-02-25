@@ -45,10 +45,7 @@ void LuaGame::reloadHud()
 //build the game _world
 void LuaGame::_initializeScene()
 {
-//    _renderer->setClearColor(0,0,0);
-
     GameCamera* gameCam = new GameCamera();
-
     luaL_dofile(_L, "mge/lua/main.lua");
 }
 
