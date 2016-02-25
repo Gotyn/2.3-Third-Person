@@ -15,4 +15,6 @@ function draw()
     if Hud.button(50, 50, "show tip") == true then
         print("lua button clicked!")
     end
+
+    Hud.label(50, 350, "this is a test tip")
 end

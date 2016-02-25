@@ -17,7 +17,7 @@ prop1:setPosition(2, 0.5, 0)
 activePiece = 1
 
 function update()
-    handleControl(pieces[activePiece])
+    -- handleControl(pieces[activePiece])
 
     -- -- test placement for placing prop
     -- handleControl(prop1)

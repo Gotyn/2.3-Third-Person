@@ -87,6 +87,7 @@ void LuaGame::_initLua()
         .endNamespace()
         .beginNamespace ("Hud")
             .addFunction ("button", BaseHud::Button)
+            .addFunction ("label", BaseHud::Label)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
