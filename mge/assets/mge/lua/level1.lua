@@ -34,10 +34,12 @@ function update()
 end
 
 function updateGUI()
-    -- button test
-    if Hud.button(50, 50, "lua button") == true then
-        print("lua button clicked!")
-    end 
+    -- -- button test
+    -- if Hud.button(50, 50, "lua button") == true then
+    --     print("lua button clicked!")
+    -- end 
+    require "mge/lua/hud"
+    hud.draw()
 end
 
 function printPuzzleBlocksStates()
