@@ -1,3 +1,5 @@
+gameHud = require "mge/lua/hud"
+
 pieces = {  
     Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece1"),
     Game.PuzzleBlock("teapot_smooth.obj", "bricks.jpg", "piece2"),
@@ -15,10 +17,10 @@ prop1:setPosition(2, 0.5, 0)
 activePiece = 1
 
 function update()
-    handleControl(pieces[activePiece])
+    -- handleControl(pieces[activePiece])
 
-    -- test placement for placing prop
-    handleControl(prop1)
+    -- -- test placement for placing prop
+    -- handleControl(prop1)
 
     handleSelection()
     -- print(pieces[activePiece]:getName())
@@ -31,13 +33,25 @@ function update()
     if Game.getKeyDown(KeyCode.P) == true then
         printPuzzleBlocksStates() 
     end
+
+    if Game.getKeyDown(KeyCode.F5) == true then
+        refreshHud()
+    end
 end
 
 function updateGUI()
-    -- button test
-    if Hud.button(50, 50, "lua button") == true then
-        print("lua button clicked!")
-    end 
+    -- -- button test
+    -- if Hud.button(50, 50, "lua button") == true then
+    --     print("lua button clicked!")
+    -- end 
+    
+    hud.draw()
+end
+
+function refreshHud()
+    package.loaded["mge/lua/hud"] = nil
+    gameHud = require "mge/lua/hud"
+    print("hud reloaded!")
 end
 
 function printPuzzleBlocksStates()

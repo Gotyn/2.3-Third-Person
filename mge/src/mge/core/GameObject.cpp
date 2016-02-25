@@ -67,17 +67,17 @@ glm::vec3 GameObject::getUp()
     return glm::vec3(f[0],f[1],f[2]);
 }
 
-float GameObject::pitch(float pAmount)
+void GameObject::pitch(float pAmount)
 {
     rotate(pAmount * Timer::deltaTime(), glm::vec3(1,0,0));
 }
 
-float GameObject::roll(float pAmount)
+void GameObject::roll(float pAmount)
 {
     rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,1));
 }
 
-float GameObject::yaw(float pAmount)
+void GameObject::yaw(float pAmount)
 {
     rotate(pAmount * Timer::deltaTime(), glm::vec3(0,1,0));
 }
