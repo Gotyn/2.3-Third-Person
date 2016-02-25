@@ -19,7 +19,7 @@ function update()
 
     handleSelection()
     -- print(pieces[activePiece]:getName())
-    if checkProgress() > 0.66 then print(checkProgress()) end
+    -- if checkProgress() > 0.66 then print(checkProgress()) end
 
     if Game.getKeyDown(KeyCode.P) == true then
         printPuzzleBlocksStates()
