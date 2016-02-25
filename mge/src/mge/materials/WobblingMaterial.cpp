@@ -58,7 +58,7 @@ void WobblingMaterial::setDiffuseColor(glm::vec3 pDiffuseColor) {
     _diffuseColor = pDiffuseColor;
 }
 
-void WobblingMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
+void WobblingMaterial::render(World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera) {
     _shader->use();
     _time[0] = clock();
     _time[1] = clock();

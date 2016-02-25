@@ -17,15 +17,15 @@ class MeshRenderer : public AbstractBehaviour
         void addBehaviourToGO(GameObject* pGameObject);
 
         void setMesh(std:: string pFilename);
-        void setMesh(Mesh* pMesh);
-		Mesh* getMesh() const;
+        void setMesh(std::shared_ptr<Mesh> pMesh);
+		std::shared_ptr<Mesh> getMesh() const;
 
 		void setMaterial (std::shared_ptr<AbstractMaterial> pMaterial);
 		std::shared_ptr<AbstractMaterial> getMaterial() const;
 
     protected:
-        Mesh* _mesh;
-        std::shared_ptr<AbstractMaterial>  _material;
+        std::shared_ptr<Mesh> _mesh;
+        std::shared_ptr<AbstractMaterial> _material;
 
     private:
 };

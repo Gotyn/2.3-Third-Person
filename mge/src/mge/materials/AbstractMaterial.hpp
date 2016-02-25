@@ -29,7 +29,7 @@ class AbstractMaterial
          * Render the given game object within the given world, with the given camera.
          * The world provides access to the lights.
          */
-        virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) = 0;
+        virtual void render(World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera) = 0;
 };
 
 #endif // ABSTRACTMATERIAL_H

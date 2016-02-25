@@ -7,6 +7,7 @@
 #include <glm.hpp>
 #include <unordered_map>
 #include <typeindex>
+#include <memory>
 
 class AbstractCollider;
 class AbstractBehaviour;

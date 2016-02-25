@@ -4,7 +4,7 @@
 
 MeshRenderer::MeshRenderer(std::string pFilename, std::shared_ptr<AbstractMaterial> pMaterial, GameObject* pOwner) : AbstractBehaviour() {
      addBehaviourToGO(pOwner);
-    _mesh = Mesh::load (config::MGE_MODEL_PATH+pFilename);
+    _mesh = std::shared_ptr<Mesh>(Mesh::load (config::MGE_MODEL_PATH+pFilename));
     _material = pMaterial;
 }
 
@@ -33,13 +33,13 @@ std::shared_ptr<AbstractMaterial> MeshRenderer::getMaterial() const {
 }
 
 void MeshRenderer::setMesh(std::string pFilename) {
-    _mesh = Mesh::load (config::MGE_MODEL_PATH+pFilename);
+    _mesh = std::shared_ptr<Mesh>(Mesh::load (config::MGE_MODEL_PATH+pFilename));
 }
 
-void MeshRenderer::setMesh(Mesh* pMesh) {
+void MeshRenderer::setMesh(std::shared_ptr<Mesh> pMesh) {
 	_mesh = pMesh;
 }
 
-Mesh * MeshRenderer::getMesh() const {
+std::shared_ptr<Mesh> MeshRenderer::getMesh() const {
     return _mesh;
 }
