@@ -18,7 +18,7 @@ function update()
     -- print(checkProgress())
 
     -- test lookAt
-    pieces[2]:lookAt(pieces[1])
+    -- pieces[2]:lookAt(pieces[1])
     -- print(pieces[2]:printStatus())
 
     if Game.getKeyDown(KeyCode.P) == true then

@@ -84,22 +84,17 @@ glm::vec3 GameObject::getLocalPosition()
 
 void GameObject::LookAt(GameObject* pTarget)
 {
-    std::cout << pTarget->getWorldPosition() << std::endl;
+//    std::cout << getName() << " look at: " << pTarget->getName() << std::endl;
+//    std::cout << pTarget->getWorldPosition() << std::endl;
 //    std::cout << getWorldPosition() << std::endl;
 
-//    setTransform(
-//        glm::inverse (
-//            glm::lookAt (getWorldPosition(), pTarget->getWorldPosition(), glm::vec3(0,1,0))
-//        )
-//    );
+    glm::vec3 forward = glm::normalize(GameObject::getLocalPosition() - pTarget->getLocalPosition());
+    glm::vec3 right = glm::normalize(glm::cross (glm::vec3(0,1,0), forward));
+    glm::vec3 up = glm::normalize(glm::cross (forward, right));
 
-//    glm::vec3 forward = glm::normalize(getLocalPosition() - pTarget->getLocalPosition());
-//    glm::vec3 right = glm::cross (glm::vec3(0,1,0), forward);
-//    glm::vec3 up = glm::cross (forward, right);
-//
-//    setTransform(
-//      glm::mat4 (glm::vec4(right,0), glm::vec4(up,0), glm::vec4(forward,0), glm::vec4(getLocalPosition(),1) )
-//    );
+    GameObject::setTransform(
+      glm::mat4 (glm::vec4(right,0), glm::vec4(up,0), glm::vec4(forward,0), glm::vec4(GameObject::getLocalPosition(),1) )
+    );
 }
 
 //new multiple behaviours
