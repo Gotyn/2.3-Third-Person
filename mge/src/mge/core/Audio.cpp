@@ -1,12 +1,12 @@
 #include "Audio.hpp"
 #include "mge/util/Utils.hpp"
 
-Audio* Audio::instance = NULL;
+std::shared_ptr<Audio> Audio::instance = NULL;
 
 //Make it a Singleton -- Only one instance allowed.
-Audio* Audio::Instance() {
+std::shared_ptr<Audio> Audio::Instance() {
     if (!instance) {
-        instance = new Audio;
+        instance = std::shared_ptr<Audio>(new Audio);
     }
     return instance;
 }
