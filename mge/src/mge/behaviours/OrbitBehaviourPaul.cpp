@@ -8,62 +8,48 @@
 #include <ctime>
 #include <cmath>
 
-using namespace std;
-
 OrbitBehaviourPaul::OrbitBehaviourPaul(float pDistance, float pMinXrot, float pMaxXrot, GameObject* pTarget,
                                float pMoveSpeed, float pTurnSpeed, sf::Window* pWindow, GameObject* pOwner):
 AbstractBehaviour(), _distance(pDistance), _minXrot(pMinXrot), _maxXrot(pMaxXrot), _target(pTarget),
-_moveSpeed(pMoveSpeed), _turnSpeed(pTurnSpeed), _myWindow(pWindow)
-{
+_moveSpeed(pMoveSpeed), _turnSpeed(pTurnSpeed), _myWindow(pWindow) {
     addBehaviourToGO(pOwner);
 }
 
-OrbitBehaviourPaul::~OrbitBehaviourPaul()
-{
+OrbitBehaviourPaul::~OrbitBehaviourPaul() {
     //dtor
 }
 
-void OrbitBehaviourPaul::addBehaviourToGO(GameObject* pGameObject)
-{
+void OrbitBehaviourPaul::addBehaviourToGO(GameObject* pGameObject) {
     pGameObject->addBehaviour(this);
 }
 
-void OrbitBehaviourPaul::updateCameraMovement(glm::mat4& pMatrix, bool mouse)
-{
-    if(mouse)
-    {
+void OrbitBehaviourPaul::updateCameraMovement(glm::mat4& pMatrix, bool mouse) {
+    if(mouse) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) pMatrix = pMatrix * glm::translate (glm::vec3(0, 0, -_moveSpeed));
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) pMatrix = pMatrix * glm::translate (glm::vec3(0, 0, _moveSpeed));
         else if (prevX - curX > 0) pMatrix = pMatrix * glm::translate (glm::vec3(-_turnSpeed, 0, 0));
         else if (prevX - curX < 0) pMatrix = pMatrix * glm::translate (glm::vec3(_turnSpeed, 0, 0));
-        else if (prevY - curY > 0)
-        {
+        else if (prevY - curY > 0) {
             if(pMatrix[2].y < _maxXrot) pMatrix = pMatrix * glm::translate (glm::vec3(0, _turnSpeed, 0));
         }
-        else if (prevY - curY < 0)
-        {
+        else if (prevY - curY < 0) {
             if(pMatrix[2].y > _minXrot) pMatrix = pMatrix * glm::translate (glm::vec3(0, -_turnSpeed, 0));
         }
-    } else
-    {
+    } else {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) pMatrix = pMatrix * glm::translate (glm::vec3(0, 0, -_moveSpeed));
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) pMatrix = pMatrix * glm::translate (glm::vec3(0, 0, _moveSpeed));
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) pMatrix = pMatrix * glm::translate (glm::vec3(-_turnSpeed, 0, 0));
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) pMatrix = pMatrix * glm::translate (glm::vec3(_turnSpeed, 0, 0));
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
             if(pMatrix[2].y < 0.99f) pMatrix = pMatrix * glm::translate (glm::vec3(0, _turnSpeed, 0));
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-        {
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
             if(pMatrix[2].y > 0.20f) pMatrix = pMatrix * glm::translate (glm::vec3(0, -_turnSpeed, 0));
         }
     }
-
 }
 
-void OrbitBehaviourPaul::update(float pStep)
-{
+void OrbitBehaviourPaul::update(float pStep) {
     prevX = (float)sf::Mouse::getPosition(*_myWindow).x;
     prevY = (float)sf::Mouse::getPosition(*_myWindow).y;
 
@@ -74,10 +60,10 @@ void OrbitBehaviourPaul::update(float pStep)
     //--------------------------------------------------------------------------
     //          first way to get up, right and forward vectors
     //--------------------------------------------------------------------------
-	/*glm::mat4 myTransform = _owner->getTransform();
-	glm::vec3 camRight = glm::vec3(myTransform[0].x, myTransform[0].y, myTransform[0].z);
-	glm::vec3 camUp = glm::vec3(myTransform[1].x, myTransform[1].y, myTransform[1].z);
-	glm::vec3 camForward = glm::vec3(myTransform[2].x, myTransform[2].y, myTransform[2].z);*/
+    /*glm::mat4 myTransform = _owner->getTransform();
+    glm::vec3 camRight = glm::vec3(myTransform[0].x, myTransform[0].y, myTransform[0].z);
+    glm::vec3 camUp = glm::vec3(myTransform[1].x, myTransform[1].y, myTransform[1].z);
+    glm::vec3 camForward = glm::vec3(myTransform[2].x, myTransform[2].y, myTransform[2].z);*/
 
     //--------------------------------------------------------------------------
     //          second way to get up, right and forward vectors

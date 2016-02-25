@@ -4,6 +4,7 @@ using namespace std;
 
 #include <glm.hpp>
 
+#include "mge/core/Timer.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
@@ -66,6 +67,21 @@ glm::vec3 GameObject::getUp()
     return glm::vec3(f[0],f[1],f[2]);
 }
 
+float GameObject::pitch(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(1,0,0));
+}
+
+float GameObject::roll(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,1));
+}
+
+float GameObject::yaw(float pAmount)
+{
+    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,1,0));
+}
+
 void GameObject::setLocalPosition (glm::vec3 pPosition)
 {
     _transform[3] = glm::vec4 (pPosition,1);
@@ -79,6 +95,21 @@ void GameObject::setLocalPositionLua (float x, float y, float z)
 glm::vec3 GameObject::getLocalPosition()
 {
 	return glm::normalize(glm::vec3(_transform[3]));
+}
+
+void GameObject::LookAt(GameObject* pTarget)
+{
+//    std::cout << getName() << " look at: " << pTarget->getName() << std::endl;
+//    std::cout << pTarget->getWorldPosition() << std::endl;
+//    std::cout << getWorldPosition() << std::endl;
+
+    glm::vec3 forward = glm::normalize(GameObject::getLocalPosition() - pTarget->getLocalPosition());
+    glm::vec3 right = glm::normalize(glm::cross (glm::vec3(0,1,0), forward));
+    glm::vec3 up = glm::normalize(glm::cross (forward, right));
+
+    GameObject::setTransform(
+      glm::mat4 (glm::vec4(right,0), glm::vec4(up,0), glm::vec4(forward,0), glm::vec4(GameObject::getLocalPosition(),1) )
+    );
 }
 
 //new multiple behaviours
@@ -155,9 +186,19 @@ void GameObject::translate(glm::vec3 pTranslation)
 	setTransform(glm::translate(_transform, pTranslation));
 }
 
+void GameObject::move(float x, float y, float z)
+{
+    translate(glm::vec3(x, y, z) * Timer::deltaTime());
+}
+
 void GameObject::scale(glm::vec3 pScale)
 {
 	setTransform(glm::scale(_transform, pScale));
+}
+
+void GameObject::scaleLua(float x, float y, float z)
+{
+    setTransform(glm::scale(_transform, glm::vec3(x, y, z)));
 }
 
 void GameObject::rotate(float pAngle, glm::vec3 pAxis)
@@ -171,7 +212,8 @@ void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 
     for (auto const& value: _behaviours)
     {
-        value.second->update(pStep);
+        if (value.second->enabled == true)
+            value.second->update(pStep);
     }
 
     for (int i = _children.size()-1; i >= 0; --i ) {

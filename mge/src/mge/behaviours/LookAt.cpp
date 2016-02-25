@@ -3,31 +3,25 @@
 #include "mge/core/GameObject.hpp"
 
 #include <iostream>
-using namespace std;
 
-LookAt::LookAt(GameObject * pTarget, GameObject* pOwner): AbstractBehaviour(), _target(pTarget)
-{
+LookAt::LookAt(GameObject * pTarget, GameObject* pOwner): AbstractBehaviour(), _target(pTarget) {
     addBehaviourToGO(pOwner);
 }
 
-LookAt::~LookAt()
-{
+LookAt::~LookAt() {
     //dtor
 }
 
-void LookAt::addBehaviourToGO(GameObject* pGameObject)
-{
+void LookAt::addBehaviourToGO(GameObject* pGameObject) {
     pGameObject->addBehaviour(this);
 }
 
 /**
  * Looks at the given target
  */
-void LookAt::update( float step )
-{
+
+void LookAt::update( float step ) {
     //two ways of doing the same thing:
-
-
     //Through GLM
     /*
     _owner->setTransform(

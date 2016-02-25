@@ -7,8 +7,14 @@
 #include <SFML/Graphics/Text.hpp>
 #include "mge/config.hpp"
 
-BaseHud::BaseHud(sf::RenderWindow* aWindow) : _window(aWindow)
+// init static members
+sf::RenderWindow* BaseHud::_window = 0;
+sf::Font BaseHud::_font;
+
+BaseHud::BaseHud(sf::RenderWindow* aWindow)
 {
+    _window = aWindow;
+
     assert (_window != NULL);
 
     if (!_font.loadFromFile(config::MGE_FONT_PATH+ "arial.ttf")) {
@@ -24,6 +30,9 @@ BaseHud::~BaseHud()
 
 bool BaseHud::Button(int x, int y, std::string caption)
 {
+//    std::cout << "button testing" << std::endl;
+//    return false;
+
     //create text
     sf::Text text(caption, _font, 15);
     text.setPosition(x, y);
