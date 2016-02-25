@@ -9,8 +9,22 @@
 
 using namespace std;
 
-//// init statics, to be removed
-//BaseHud* LuaGame::hudStaticRef = 0;
+class UpdateListener : public FW::FileWatchListener
+{
+public:
+	UpdateListener(LuaGame* pLuaGame) : _luaGame(pLuaGame) {}
+	void handleFileAction(FW::WatchID watchid, const FW::String& dir, const FW::String& filename,
+		FW::Action action)
+	{
+		std::cout << "DIR (" << dir + ") FILE (" + filename + ") has event " << action << std::endl;
+
+		//reload the hud Lua module
+		_luaGame->reloadHud();
+	}
+
+protected:
+    LuaGame* _luaGame;
+};
 
 LuaGame::LuaGame()
 {
@@ -31,6 +45,17 @@ void LuaGame::initialize()
 	_hud = new BaseHud(_window);
 //	hudStaticRef = _hud; // TODO: needs a better way to access the hud statically for lua
 	cout << "HUD initialized." << endl << endl;
+
+	// add a watch to the system
+    FW::WatchID watchID = _fileWatcher.addWatch("./mge/lua", new UpdateListener(this));
+}
+
+void LuaGame::reloadHud()
+{
+    std::cout << "reload hud call from c++" << std::endl;
+
+    luabridge::LuaRef luaRefreshHud = luabridge::getGlobal (_L, "refreshHud");
+    luaRefreshHud();
 }
 
 //build the game _world
@@ -92,6 +117,9 @@ void LuaGame::_update()
     //call lua update function
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
+
+    //update folder watcher
+    _fileWatcher.update();
 
     //update GUI
     _updateGUI();

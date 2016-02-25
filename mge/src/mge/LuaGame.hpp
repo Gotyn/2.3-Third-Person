@@ -2,6 +2,7 @@
 #define LUAGAME_H
 
 #include <lua.hpp>
+#include <FileWatcher/FileWatcher.h>
 #include <AbstractGame.hpp>
 
 #include "mge/core/BaseHud.hpp"
@@ -19,6 +20,7 @@ class LuaGame : public AbstractGame
 		LuaGame();
 		virtual ~LuaGame();
         virtual void initialize();
+        virtual void reloadHud();
 
 //        static BaseHud* hudStaticRef;
 
@@ -33,6 +35,7 @@ class LuaGame : public AbstractGame
 
         lua_State* _L;
         BaseHud* _hud;
+        FW::FileWatcher _fileWatcher;
 };
 
 #endif // LUAGAME_H
