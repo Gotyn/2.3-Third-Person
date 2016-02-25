@@ -28,9 +28,9 @@ class GameObject
         glm::vec3 getForward();
         glm::vec3 getUp();
 
-        float pitch(float pAmount);
-        float roll(float pAmount);
-        float yaw(float pAmount);
+        void pitch(float pAmount);
+        void roll(float pAmount);
+        void yaw(float pAmount);
 
         //access just the local position
         void setLocalPositionLua (float x, float y, float z);

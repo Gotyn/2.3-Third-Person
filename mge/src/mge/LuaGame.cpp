@@ -3,14 +3,12 @@
 #include "mge/core/Input.hpp"
 #include "mge/core/Audio.hpp"
 #include "mge/core/ModelViewer.hpp"
+#include "mge/util/UpdateListener.hpp"
 #include "mge/sphinx/PuzzleBlock.hpp"
 #include "mge/sphinx/Prop.hpp"
 #include "mge/sphinx/GameCamera.hpp"
 
 using namespace std;
-
-//// init statics, to be removed
-//BaseHud* LuaGame::hudStaticRef = 0;
 
 LuaGame::LuaGame()
 {
@@ -31,6 +29,17 @@ void LuaGame::initialize()
 	_hud = new BaseHud(_window);
 //	hudStaticRef = _hud; // TODO: needs a better way to access the hud statically for lua
 	cout << "HUD initialized." << endl << endl;
+
+	// add a watch to the system
+    FW::WatchID watchID = _fileWatcher.addWatch("./mge/lua", new UpdateListener(this));
+}
+
+void LuaGame::reloadHud()
+{
+    std::cout << "reload hud call from c++" << std::endl;
+
+    luabridge::LuaRef luaRefreshHud = luabridge::getGlobal (_L, "refreshHud");
+    luaRefreshHud();
 }
 
 //build the game _world
@@ -75,6 +84,7 @@ void LuaGame::_initLua()
         .endNamespace()
         .beginNamespace ("Hud")
             .addFunction ("button", BaseHud::Button)
+            .addFunction ("label", BaseHud::Label)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
@@ -89,6 +99,9 @@ void LuaGame::_update()
     //call lua update function
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
+
+    //update folder watcher
+    _fileWatcher.update();
 
     //update GUI
     _updateGUI();
