@@ -10,15 +10,21 @@ pieces[3]:setPosition(0,3,0)
 
 activePiece = 1
 
+local hints = require("mge/lua/hintsystem")
+testtt = true
+
 function update()
+    updateGameStatus()
     handleControl()
 
     handleSelection()
     -- print(pieces[activePiece]:getName())
-    -- print(checkProgress())
+    if checkProgress() > 0.66 then print(checkProgress()) end
 
     if Game.getKeyDown(KeyCode.P) == true then
-        printPuzzleBlocksStates() 
+        printPuzzleBlocksStates()
+    elseif Game.getKeyDown(KeyCode.H) == true then
+        hints.showHint()
     end
 end
 
@@ -65,4 +71,23 @@ function handleSelection()
     if Game.getKey(KeyCode.Num3) == true then
         activePiece = 3
     end
-end 
+end
+
+-- draft start
+function getGameState()
+    if Game.getKey(KeyCode.K) == true then
+        return "G"
+    end
+end
+-- draft end
+
+function updateGameStatus()
+    if checkProgress() < 0.66 and testtt == true then 
+        print("level completed! proceeding to next level...")
+        -- os.execute("CHOICE /n /d: /c: /t:3")
+        -- cleanLevel()
+        testtt = false
+    end
+end
+        
+
