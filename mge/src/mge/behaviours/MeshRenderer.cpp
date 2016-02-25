@@ -2,14 +2,14 @@
 #include "mge/config.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 
-MeshRenderer::MeshRenderer(std::string pFilename, AbstractMaterial* pMaterial, GameObject* pOwner) : AbstractBehaviour() {
+MeshRenderer::MeshRenderer(std::string pFilename, std::shared_ptr<AbstractMaterial> pMaterial, GameObject* pOwner) : AbstractBehaviour() {
      addBehaviourToGO(pOwner);
     _mesh = Mesh::load (config::MGE_MODEL_PATH+pFilename);
     _material = pMaterial;
 }
 
 MeshRenderer::~MeshRenderer() {
-    delete _material;
+    //delete _material;  //smart pointer takes care of this...
 }
 
 void MeshRenderer::addBehaviourToGO(GameObject* pGameObject) {
@@ -24,11 +24,11 @@ void MeshRenderer::update( float step ) {
         _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
-void MeshRenderer::setMaterial(AbstractMaterial* pMaterial) {
+void MeshRenderer::setMaterial(std::shared_ptr<AbstractMaterial> pMaterial) {
     _material = pMaterial;
 }
 
-AbstractMaterial* MeshRenderer::getMaterial() const {
+std::shared_ptr<AbstractMaterial> MeshRenderer::getMaterial() const {
     return _material;
 }
 

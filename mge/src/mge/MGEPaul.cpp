@@ -44,7 +44,7 @@ void MGEPaul::_initializeScene()
     spotLightGO->scale(glm::vec3(0.2f, 0.2f, 0.2f));
     spotLightGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
     BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,0,0), 0.95f, spotLightGO);
-    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)), spotLightGO);
+    MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", std::shared_ptr<ColorMaterial>(new ColorMaterial(glm::vec3(1,1,0))), spotLightGO);
     KeysBehaviour* kb = new KeysBehaviour(5, 45, spotLightGO);
 
     //ADD PLANE GO, MESH AND MATERIAL
@@ -52,39 +52,39 @@ void MGEPaul::_initializeScene()
     teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
     teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
     MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg"))), teapot);
     MeshRenderer* teapotMesh2 = new MeshRenderer("teapot_smooth.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg"))), teapot);
     RotatingBehaviour* rb = new RotatingBehaviour(teapot);
 
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
     plane->scale(glm::vec3(5, 5, 5));
     MeshRenderer* planeMesh = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")), plane);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg"))), plane);
 
     GameObject* plane2 = new GameObject ("wall left", glm::vec3(5, 2, 0));
     plane2->rotate(glm::radians(90.0f), glm::vec3(0,0,1));
     plane2->scale(glm::vec3(2, 1, 5));
     MeshRenderer* planeMesh2 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")), plane2);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg"))), plane2);
 
     GameObject* plane3 = new GameObject ("wall right", glm::vec3(-5, 2, 0));
     plane3->rotate(glm::radians(-90.0f), glm::vec3(0,0,1));
     plane3->scale(glm::vec3(2, 1, 5));
     MeshRenderer* planeMesh3 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")), plane3);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg"))), plane3);
 
     GameObject* plane4 = new GameObject ("wall front", glm::vec3(0, 2, -5));
     plane4->rotate(glm::radians(90.0f), glm::vec3(1,0,0));
     plane4->scale(glm::vec3(5, 1, 2));
     MeshRenderer* planeMesh4 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")), plane4);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg"))), plane4);
 
     GameObject* plane5 = new GameObject ("ceiling", glm::vec3(0, 4, 0));
     plane5->rotate(glm::radians(180.0f), glm::vec3(1,0,0));
     plane5->scale(glm::vec3(5, 5, 5));
     MeshRenderer* planeMesh5 = new MeshRenderer("plane.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg")), plane5);
+           std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"land.jpg"))), plane5);
 
     //ADD CAMERA GO, CAMERA COMPONENT AND BEHAVIOUR
     GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 2.0f, 5.0f));
