@@ -70,10 +70,12 @@ void BaseHud::Label(int x, int y, std::string caption)
     text.setOrigin(0, 0);
     text.setColor(sf::Color::White);
 
-    //sprite
-//    sf::Sprite* tipSprite;
-//    sf::Texture& tex = Texture::load("mge/textures/bricks.jpg");
-//    tipSprite->setTexture(tex);
+////    //sprite
+    sf::Sprite* tipSprite;
+//    Texture* myTexture = Texture::load("mge/textures/bricks.jpg");
+//    sf::Texture st = sf::Texture ();
+//    st.loadFromFile()
+//    tipSprite->setTexture(*myTexture);
 
     //get width/height
     int width = text.getLocalBounds().width + 5;

@@ -19,7 +19,7 @@ tips = {
 tipText = "tip text"
 
 function draw()
-    if Hud.button(50, 50, "show tip") == true then
+    if Hud.button(50, 30, "show tip") == true then
         tipText = tips[1]
     end
 
