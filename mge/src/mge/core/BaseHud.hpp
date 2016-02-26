@@ -19,6 +19,9 @@ class BaseHud
     private:
         static sf::RenderWindow* _window;
         static sf::Font _font;
+
+        //all previously loaded sprites;
+		static std::map<std::string, sf::Sprite*> _sprites;
 };
 
 #endif // BASEHUD_H

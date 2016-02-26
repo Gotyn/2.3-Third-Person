@@ -31,9 +31,6 @@ BaseHud::~BaseHud()
 
 bool BaseHud::Button(int x, int y, std::string caption)
 {
-//    std::cout << "button testing" << std::endl;
-//    return false;
-
     //create text
     sf::Text text(caption, _font, 15);
     text.setPosition(x, y);
@@ -74,8 +71,9 @@ void BaseHud::Label(int x, int y, std::string caption)
     text.setColor(sf::Color::White);
 
     //sprite
-    sf::Sprite* tipSprite;
-//    tipSprite->setTexture(*&Texture::load("mge/textures/bricks.jpg"));
+//    sf::Sprite* tipSprite;
+//    sf::Texture& tex = Texture::load("mge/textures/bricks.jpg");
+//    tipSprite->setTexture(tex);
 
     //get width/height
     int width = text.getLocalBounds().width + 5;
@@ -84,7 +82,7 @@ void BaseHud::Label(int x, int y, std::string caption)
     //create rectangle
     sf::RectangleShape rect(sf::Vector2f(width, height));
     rect.setPosition(x, y);
-    rect.setFillColor(sf::Color::Green);
+    rect.setFillColor(sf::Color::Black);
 
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();

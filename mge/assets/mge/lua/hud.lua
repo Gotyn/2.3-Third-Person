@@ -11,10 +11,17 @@
 
 module("hud", package.seeall)
 
+tips = {
+    "tip 1 placeholder text to be put in later",
+    "tip 2 text",
+}
+
+tipText = "tip text"
+
 function draw()
     if Hud.button(50, 50, "show tip") == true then
-        print("lua button clicked!")
+        tipText = tips[1]
     end
 
-    Hud.label(50, 350, "this is a test tip")
+    Hud.label(50, 350, tipText)
 end
