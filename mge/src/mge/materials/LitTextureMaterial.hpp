@@ -18,9 +18,12 @@ class LitTextureMaterial : public AbstractMaterial
     protected:
     private:
         static ShaderProgram* _shader;
+        static ShaderProgram* _depthShader;
         static void _lazyInitializeShader();
+        void renderScene(ShaderProgram* pShader);
 
         Texture* _diffuseTexture;
+
 };
 
 #endif // LITTEXTUREMATERIAL_H
