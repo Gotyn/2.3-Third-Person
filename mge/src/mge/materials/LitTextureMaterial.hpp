@@ -19,11 +19,13 @@ class LitTextureMaterial : public AbstractMaterial
     private:
         static ShaderProgram* _shader;
         static ShaderProgram* _depthShader;
+        static ShaderProgram* _depthPreview;
         static void _lazyInitializeShader();
-        void renderScene(ShaderProgram* pShader);
 
+        const GLuint SHADOW_WIDTH = 512, SHADOW_HEIGHT = 512;
         Texture* _diffuseTexture;
-
+        GLuint _depthMapFBO;
+        GLuint _depthMap;
 };
 
 #endif // LITTEXTUREMATERIAL_H
