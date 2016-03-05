@@ -76,8 +76,12 @@ void LitTextureMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pM
 
     _depthShader->use();
 
+    //with the generated depth texture we can attach it as the framebuffer's depth buffer
+    glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
+    glClear(GL_DEPTH_BUFFER_BIT);
+
     //light space transform
-    GLfloat near_plane = 1.0f, far_plane = 10.0f;
+    GLfloat near_plane = 1.0f, far_plane = 20.0f;
     glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
     glm::mat4 lightView = glm::lookAt(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f), glm::vec3(1.0));
 
@@ -95,9 +99,7 @@ void LitTextureMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pM
 
     glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 
-    //with the generated depth texture we can attach it as the framebuffer's depth buffer
-    glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
-    glClear(GL_DEPTH_BUFFER_BIT);
+
 
     glBindTexture(GL_TEXTURE_2D, _depthMap);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _depthMap, 0);
@@ -153,10 +155,12 @@ void LitTextureMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pM
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
 
+    glEnable(GL_DEPTH_TEST);
+
     // ------------------------------ //
 
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+//
 //    _shader->use();
 //
 //    //setup texture slot 0
