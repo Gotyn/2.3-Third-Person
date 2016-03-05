@@ -1989,11 +1989,12 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1457152265 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1457214081 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
 	"mge/core/World.hpp"
+	"mge/core/RenderPipeline.hpp"
 
 1457152266 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\world.hpp
 	<vector>
@@ -2309,7 +2310,7 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1457152265 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1457214311 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	"mge/core/Input.hpp"
@@ -3396,7 +3397,7 @@
 	<map>
 	<sys/types.h>
 
-1457154041 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1457154126 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/materials/LitTextureMaterial.hpp"
 	"mge/core/Texture.hpp"
@@ -3407,5 +3408,15 @@
 1457153321 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
+	"mge/materials/AbstractMaterial.hpp"
+
+1457214828 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
+
+1457215441 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+	<iostream>
+	<GL/glew.h>
+	"RenderPipeline.hpp"
+	"World.hpp"
+	"mge/behaviours/MeshRenderer.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
