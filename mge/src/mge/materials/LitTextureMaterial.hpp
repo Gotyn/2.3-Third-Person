@@ -22,7 +22,7 @@ class LitTextureMaterial : public AbstractMaterial
         static ShaderProgram* _depthPreview;
         static void _lazyInitializeShader();
 
-        const GLuint SHADOW_WIDTH = 512, SHADOW_HEIGHT = 512;
+        const GLuint SHADOW_WIDTH = 800, SHADOW_HEIGHT = 600;
         Texture* _diffuseTexture;
         GLuint _depthMapFBO;
         GLuint _depthMap;
