@@ -8,7 +8,6 @@ out vec2 TexCoords;
 
 void main( void )
 {
-//	gl_Position = light_MVP * vec4(vertex,1);
-    gl_Position = vec4(vertex,1);
+	gl_Position = light_MVP * vec4(vertex,1);
 	TexCoords = uv;
 }
