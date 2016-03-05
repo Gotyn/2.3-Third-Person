@@ -18,14 +18,9 @@ class LitTextureMaterial : public AbstractMaterial
     protected:
     private:
         static ShaderProgram* _shader;
-        static ShaderProgram* _depthShader;
-        static ShaderProgram* _depthPreview;
         static void _lazyInitializeShader();
 
-        const GLuint SHADOW_WIDTH = 800, SHADOW_HEIGHT = 600;
         Texture* _diffuseTexture;
-        GLuint _depthMapFBO;
-        GLuint _depthMap;
 };
 
 #endif // LITTEXTUREMATERIAL_H

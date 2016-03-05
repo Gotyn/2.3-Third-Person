@@ -16,7 +16,15 @@ void MeshRenderer::addBehaviourToGO(GameObject* pGameObject) {
     pGameObject->addBehaviour(this);
 }
 
-void MeshRenderer::update( float step ) {
+void MeshRenderer::update( float step )
+{
+
+}
+
+void MeshRenderer::render()
+{
+//    std::cout << "render called on meshRenderer for " << _owner->getName() << std::endl;
+
     if (_mesh == NULL || _material == NULL)
         return;
 

@@ -5,6 +5,9 @@ class World;
 class GameObject;
 class Camera;
 
+#include "mge/behaviours/MeshRenderer.hpp"
+#include "mge/core/ShaderProgram.hpp"
+
 class RenderPipeline
 {
     public:
@@ -18,7 +21,15 @@ class RenderPipeline
         void render (World* pWorld, GameObject* pGameObject, Camera* pCamera, bool pRecursive);
 
     protected:
+
     private:
+        void initializeDepthmap();
+
+        const GLuint SHADOW_WIDTH = 800, SHADOW_HEIGHT = 600;
+        ShaderProgram* _depthShader;
+        ShaderProgram* _depthPreview;
+        GLuint _depthMapFBO;
+        GLuint _depthMap;
 };
 
 #endif // RENDERPIPELINE_H
