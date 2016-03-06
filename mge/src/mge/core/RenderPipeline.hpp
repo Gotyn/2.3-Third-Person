@@ -22,6 +22,8 @@ class RenderPipeline
         //render specific game object within the world (using world's light settings etc)
         void render (World* pWorld, GameObject* pGameObject, Camera* pCamera, bool pRecursive, bool pShadowMap);
 
+        GLuint getShadowMap();
+
         glm::mat4 lightSpaceMatrix;
     protected:
 
@@ -30,7 +32,7 @@ class RenderPipeline
         void initializeDepthmap();
         void showShadowMap();
 
-        const GLuint SHADOW_WIDTH = 800, SHADOW_HEIGHT = 600;
+        const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
         AbstractMaterial* _depthMapperMaterial;
         ShaderProgram* _depthPreview;
         GLuint _depthMapFBO;

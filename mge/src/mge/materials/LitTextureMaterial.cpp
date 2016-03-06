@@ -53,6 +53,17 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getId());
     glUniform1i (_shader->getUniformLocation("diffuseTexture"), 0);
 
+    //setup texture slot 1 (shadowMap)
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, pRenderPipeline->getShadowMap());
+    glUniform1i (_shader->getUniformLocation("shadowMap"), 1);
+
+    GLuint lightPos = _shader->getUniformLocation("lightPos");
+    GLuint viewPos = _shader->getUniformLocation("viewPos");
+
+    glUniform3fv(lightPos, 1, glm::value_ptr(glm::vec3(0.0f,0.0f,10.0f)));
+    glUniform3fv(viewPos, 1, glm::value_ptr(pCamera->getOwner()->getWorldPosition()));
+
     //pass in all MVP matrices separately
     glUniformMatrix4fv ( _shader->getUniformLocation("projection"),   1, GL_FALSE, glm::value_ptr(pCamera->getProjection()));
     glUniformMatrix4fv ( _shader->getUniformLocation("view"),         1, GL_FALSE, glm::value_ptr(glm::inverse(pCamera->getOwner()->getWorldTransform())));

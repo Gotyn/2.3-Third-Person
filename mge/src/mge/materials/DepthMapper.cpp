@@ -30,6 +30,8 @@ void DepthMapper::_lazyInitializeShader()
 
 void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
+    glViewport(0, 0, _shadowWidth, _shadowHeight);
+
 //    std::cout << "depthMapper render call" << std::endl;
     _shader->use();
 
@@ -45,8 +47,6 @@ void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObj
         _shader->getAttribLocation("normal"),
         _shader->getAttribLocation("uv")
     );
-
-    glViewport(0, 0, _shadowWidth, _shadowHeight);
 
     glBindTexture(GL_TEXTURE_2D, _depthMap);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _depthMap, 0);

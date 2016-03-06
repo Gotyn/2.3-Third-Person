@@ -2550,7 +2550,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457280182 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457299738 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3398,8 +3398,9 @@
 	<map>
 	<sys/types.h>
 
-1457295714 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1457298598 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
+	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
 	"mge/core/Texture.hpp"
 	"mge/core/Camera.hpp"
@@ -3411,13 +3412,13 @@
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1457295828 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
+1457299312 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
 	"mge/materials/DepthMapper.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457295892 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1457299397 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3429,7 +3430,7 @@
 1457294498 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.hpp
 	"mge/materials/AbstractMaterial.hpp"
 
-1457296017 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
+1457299933 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
 	"DepthMapper.hpp"
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"

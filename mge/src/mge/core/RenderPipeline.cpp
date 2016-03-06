@@ -28,10 +28,15 @@ RenderPipeline::~RenderPipeline()
     glDeleteFramebuffers(1, &_depthMapFBO);
 }
 
+GLuint RenderPipeline::getShadowMap()
+{
+    return _depthMap;
+}
+
 void RenderPipeline::initializeLightSpaceMatrix()
 {
     //light space transform
-    GLfloat near_plane = 1.0f, far_plane = 10.0f;
+    GLfloat near_plane = 1.0f, far_plane = 50.0f;
     glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
     glm::mat4 lightView = glm::lookAt(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
@@ -69,12 +74,12 @@ void RenderPipeline::render (World* pWorld)
     render (pWorld, pWorld, pWorld->getMainCamera(), true, true);
 
     //show shadowMap (testing only)
-//    showShadowMap();
+    showShadowMap();
 
     //render world normally
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
+//    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
 }
 
 void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive, bool pShadowMap)
