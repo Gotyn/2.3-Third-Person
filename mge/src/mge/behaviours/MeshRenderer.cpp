@@ -32,6 +32,11 @@ void MeshRenderer::render()
         _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
+void MeshRenderer::render(AbstractMaterial* pMaterial)
+{
+    pMaterial->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+}
+
 void MeshRenderer::setMaterial(AbstractMaterial* pMaterial) {
     _material = pMaterial;
 }

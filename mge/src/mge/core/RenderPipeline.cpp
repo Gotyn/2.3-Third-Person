@@ -31,11 +31,6 @@ RenderPipeline::~RenderPipeline()
 void RenderPipeline::initializeDepthmap()
 {
     //create depthmap shader programs
-    _depthShader = new ShaderProgram();
-    _depthShader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"simpleDepthShader.vs");
-    _depthShader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"simpleDepthShader.fs");
-    _depthShader->finalize();
-
     _depthPreview = new ShaderProgram();
     _depthPreview->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"shadowMap.vs");
     _depthPreview->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"shadowMap.fs");
@@ -52,23 +47,34 @@ void RenderPipeline::initializeDepthmap()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    _depthMapperMaterial = new DepthMapper(_depthMapFBO, _depthMap, SHADOW_WIDTH, SHADOW_HEIGHT);
 }
 
 void RenderPipeline::render (World* pWorld)
 {
-    //TODO: render world to depth map
+    //render world to depth map
+    glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    render (pWorld, pWorld, pWorld->getMainCamera(), true, true);
+
+    //show shadowMap (testing only)
+    showShadowMap();
 
     //render world normally
-    render (pWorld, pWorld, pWorld->getMainCamera(), true);
+//    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
 }
 
-void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive)
+void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive, bool pShadowMap)
 {
     MeshRenderer* meshRenderer = pGameObject->getBehaviour<MeshRenderer>();
 
     if (meshRenderer != NULL)
     {
-        meshRenderer->render();
+        if (pShadowMap)
+            meshRenderer->render(_depthMapperMaterial);
+        else
+            meshRenderer->render();
     }
 
     if (!pRecursive) return;
@@ -78,6 +84,51 @@ void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * p
 
     //note that with a loop like this, deleting children during rendering is not a good idea :)
     for (int i = 0; i < childCount; i++) {
-        render (pWorld, pGameObject->getChildAt(i), pCamera, pRecursive);
+        render (pWorld, pGameObject->getChildAt(i), pCamera, pRecursive, pShadowMap);
     }
+}
+
+void RenderPipeline::showShadowMap()
+{
+    // --- depth map preview quad ---
+
+    GLfloat quadVertices[] = {   // Vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
+        // Positions   // TexCoords
+        -1.0f,  1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f,  0.0f, 0.0f,
+         1.0f, -1.0f,  1.0f, 0.0f,
+
+        -1.0f,  1.0f,  0.0f, 1.0f,
+         1.0f, -1.0f,  1.0f, 0.0f,
+         1.0f,  1.0f,  1.0f, 1.0f
+    };
+
+    // Setup screen VAO
+    GLuint quadVAO, quadVBO;
+    glGenVertexArrays(1, &quadVAO);
+    glGenBuffers(1, &quadVBO);
+    glBindVertexArray(quadVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+    glBindVertexArray(0);
+
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // Clear all relevant buffers
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set clear color to white (not really necessery actually, since we won't be able to see behind the quad anyways)
+    glClear(GL_COLOR_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST); // We don't care about depth information when rendering a single quad
+
+    // Draw Screen
+    _depthPreview->use();
+    glBindVertexArray(quadVAO);
+    glBindTexture(GL_TEXTURE_2D, _depthMap);	// Use the color attachment texture as the texture of the quad plane
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+
+    glEnable(GL_DEPTH_TEST);
 }
