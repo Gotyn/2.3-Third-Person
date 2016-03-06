@@ -6,7 +6,8 @@ pieces = {
 }
 
 pieces[1]:setPosition(0,0,0)
-pieces[2]:setPosition(0,1,0)
+pieces[2]:setPosition(0,1,-6)
+pieces[2]:scale(4,4,4)
 
 activePiece = 1
 
