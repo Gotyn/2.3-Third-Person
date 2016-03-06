@@ -15,7 +15,7 @@ out VS_OUT {
 uniform mat4 projection; //d
 uniform mat4 view; //d
 uniform mat4 model; //d
-uniform mat4 lightSpaceMatrix;
+uniform mat4 lightSpaceMatrix; //d
 
 void main()
 {

@@ -2466,7 +2466,7 @@
 	"mge/core/Camera.hpp"
 	"mge/core/Mesh.hpp"
 
-1456238358 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
+1457295009 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
 	<glm.hpp>
 	"mge/materials/LitColorMaterial.h"
 	"mge/config.hpp"
@@ -3398,7 +3398,7 @@
 	<map>
 	<sys/types.h>
 
-1457294906 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1457295714 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/materials/LitTextureMaterial.hpp"
 	"mge/core/Texture.hpp"
@@ -3411,13 +3411,13 @@
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1457294729 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
+1457295828 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
 	"mge/materials/DepthMapper.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457294856 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1457295892 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3429,7 +3429,8 @@
 1457294498 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.hpp
 	"mge/materials/AbstractMaterial.hpp"
 
-1457294510 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
+1457296017 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
 	"DepthMapper.hpp"
 	"config.hpp"
+	"mge/core/RenderPipeline.hpp"
 

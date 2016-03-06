@@ -1,5 +1,6 @@
 #include <glm.hpp>
 
+#include "mge/core/RenderPipeline.hpp"
 #include "mge/materials/LitTextureMaterial.hpp"
 #include "mge/core/Texture.hpp"
 #include "mge/core/Camera.hpp"
@@ -56,6 +57,7 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     glUniformMatrix4fv ( _shader->getUniformLocation("projection"),   1, GL_FALSE, glm::value_ptr(pCamera->getProjection()));
     glUniformMatrix4fv ( _shader->getUniformLocation("view"),         1, GL_FALSE, glm::value_ptr(glm::inverse(pCamera->getOwner()->getWorldTransform())));
     glUniformMatrix4fv ( _shader->getUniformLocation("model"),        1, GL_FALSE, glm::value_ptr(pGameObject->getWorldTransform() ) );
+    glUniformMatrix4fv ( _shader->getUniformLocation("lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(pRenderPipeline->lightSpaceMatrix ) );
 
     //now inform mesh of where to stream its data
     pMesh->streamToOpenGL(

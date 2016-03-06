@@ -1,5 +1,7 @@
 #include "DepthMapper.hpp"
+
 #include "config.hpp"
+#include "mge/core/RenderPipeline.hpp"
 
 //init static members
 ShaderProgram* DepthMapper::_shader = NULL;
@@ -34,15 +36,8 @@ void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObj
     //with the generated depth texture we can attach it as the framebuffer's depth buffer
     glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
 
-    //light space transform
-    GLfloat near_plane = 1.0f, far_plane = 10.0f;
-    glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
-    glm::mat4 lightView = glm::lookAt(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
-    glm::mat4 lightSpaceMatrix = lightProjection * lightView;
-
     //pass in matrices
-    glUniformMatrix4fv(_shader->getUniformLocation("lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
+    glUniformMatrix4fv(_shader->getUniformLocation("lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(pRenderPipeline->lightSpaceMatrix));
     glUniformMatrix4fv (_shader->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pGameObject->getWorldTransform() ) );
 
         pMesh->streamToOpenGL(

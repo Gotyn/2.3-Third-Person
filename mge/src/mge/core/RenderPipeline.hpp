@@ -22,9 +22,11 @@ class RenderPipeline
         //render specific game object within the world (using world's light settings etc)
         void render (World* pWorld, GameObject* pGameObject, Camera* pCamera, bool pRecursive, bool pShadowMap);
 
+        glm::mat4 lightSpaceMatrix;
     protected:
 
     private:
+        void initializeLightSpaceMatrix();
         void initializeDepthmap();
         void showShadowMap();
 
