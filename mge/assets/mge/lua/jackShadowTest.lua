@@ -1,12 +1,12 @@
 gameHud = require "mge/lua/hud"
 
 pieces = {  
-    Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece1"),
+    Game.PuzzleBlock("suzanna_smooth.obj", "land.jpg", "piece1"),
     Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece2")
 }
 
 pieces[1]:setPosition(0,0,0)
-pieces[1]:setPosition(0,2,0)
+pieces[2]:setPosition(0,1,0)
 
 activePiece = 1
 
