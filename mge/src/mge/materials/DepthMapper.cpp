@@ -26,7 +26,7 @@ void DepthMapper::_lazyInitializeShader()
     }
 }
 
-void DepthMapper::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
+void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
 //    std::cout << "depthMapper render call" << std::endl;
     _shader->use();

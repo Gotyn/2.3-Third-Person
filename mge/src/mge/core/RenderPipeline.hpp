@@ -8,6 +8,7 @@ class Camera;
 #include "mge/materials/DepthMapper.hpp"
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/core/ShaderProgram.hpp"
+#include "mge/core/RenderPipeline.hpp"
 
 class RenderPipeline
 {

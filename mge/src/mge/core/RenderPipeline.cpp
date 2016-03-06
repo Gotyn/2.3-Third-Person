@@ -74,9 +74,9 @@ void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * p
     if (meshRenderer != NULL)
     {
         if (pShadowMap)
-            meshRenderer->render(_depthMapperMaterial);
+            meshRenderer->render(this, _depthMapperMaterial);
         else
-            meshRenderer->render();
+            meshRenderer->render(this);
     }
 
     if (!pRecursive) return;

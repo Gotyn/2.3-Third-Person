@@ -21,7 +21,7 @@ void MeshRenderer::update( float step )
 
 }
 
-void MeshRenderer::render()
+void MeshRenderer::render(RenderPipeline* pRenderPipeline)
 {
 //    std::cout << "render called on meshRenderer for " << _owner->getName() << std::endl;
 
@@ -29,12 +29,12 @@ void MeshRenderer::render()
         return;
 
     if (World::Instance()->getMainCamera() != NULL)
-        _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+        _material->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
-void MeshRenderer::render(AbstractMaterial* pMaterial)
+void MeshRenderer::render(RenderPipeline* pRenderPipeline, AbstractMaterial* pMaterial)
 {
-    pMaterial->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+    pMaterial->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
 void MeshRenderer::setMaterial(AbstractMaterial* pMaterial) {

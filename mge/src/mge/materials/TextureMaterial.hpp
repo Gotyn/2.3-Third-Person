@@ -14,7 +14,7 @@ class TextureMaterial : public AbstractMaterial
     public:
         TextureMaterial (Texture* pDiffuseTexture);
         virtual ~TextureMaterial ();
-        virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
+        virtual void render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
         void changeDiffuseTexture (std::string pFilename);
