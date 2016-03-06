@@ -23,8 +23,6 @@ void MeshRenderer::update( float step )
 
 void MeshRenderer::render(RenderPipeline* pRenderPipeline)
 {
-//    std::cout << "render called on meshRenderer for " << _owner->getName() << std::endl;
-
     if (_mesh == NULL || _material == NULL)
         return;
 

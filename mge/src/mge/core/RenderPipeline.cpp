@@ -74,12 +74,12 @@ void RenderPipeline::render (World* pWorld)
     render (pWorld, pWorld, pWorld->getMainCamera(), true, true);
 
     //show shadowMap (testing only)
-    showShadowMap();
+//    showShadowMap();
 
     //render world normally
-//    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
 }
 
 void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive, bool pShadowMap)
