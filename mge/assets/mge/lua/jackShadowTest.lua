@@ -40,12 +40,12 @@ function update()
 end
 
 function updateGUI()
-    -- -- button test
+    -- button test
     -- if Hud.button(50, 50, "lua button") == true then
     --     print("lua button clicked!")
     -- end 
     
-    -- hud.draw()
+    hud.draw()
 end
 
 function refreshHud()
