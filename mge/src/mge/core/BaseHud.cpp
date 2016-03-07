@@ -87,7 +87,7 @@ void BaseHud::Label(int x, int y, std::string caption)
     rect.setFillColor(sf::Color::Green);
 
     glActiveTexture(GL_TEXTURE0);
-    _window->pushGLStates();
+    _window->pushGLStates(); //console openGL Error here
     _window->draw(rect);
     _window->draw(text);
 	_window->popGLStates();

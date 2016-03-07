@@ -16,6 +16,7 @@ hintsToggled = false
 riddleToggled = false
 
 function draw()
+<<<<<<< HEAD
     --print("test")
     if Hud.button(50, 50, "show tip") == true then
         print("lua button clicked!")
@@ -23,6 +24,12 @@ function draw()
     end
     
     displayButtons()
+=======
+    -- if Hud.button(50, 50, "show tip") == true then
+    --     print("lua button clicked!")
+    --     tip = "now showing tip 2 biatch!"
+    -- end
+>>>>>>> refs/remotes/origin/master
 
     updateButtonsStatus()
     
