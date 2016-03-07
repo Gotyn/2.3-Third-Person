@@ -33,7 +33,8 @@ ShaderProgram* LitColorMaterial::_shaderSS = NULL;
 GLint LitColorMaterial::_light_MVP2 = 0;
 GLint LitColorMaterial::_aVertex2 = 0;
 GLint LitColorMaterial::_aUV2 = 0;
-GLuint FBO = 0;
+GLuint LitColorMaterial::FBO = 0;
+GLuint LitColorMaterial::depthMap = 0;
 glm::mat4 LitColorMaterial::biasMat = { 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, 0.5, 0.5, 1.0 };
 // ---------------- SRUFF FOR SHADOW IMPLEMENTATION ------------------ //
 
@@ -69,6 +70,8 @@ void LitColorMaterial::_lazyInitializeShader() {
         _shader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"litcolor.vs");
         _shader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"litcolor.fs");
         _shader->finalize();
+        glUniform1i(_shader->getUniformLocation("diffuseTexture"), 0);
+        glUniform1i(_shader->getUniformLocation("shadowMap"), 1);
 
         _shaderSS = new ShaderProgram();
         _shaderSS->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"shadowMap.vs");
@@ -77,20 +80,26 @@ void LitColorMaterial::_lazyInitializeShader() {
         _light_MVP2         = _shaderSS->getUniformLocation("light_MVP");
         _aVertex2           = _shaderSS->getAttribLocation("vertex");
         _aUV2               = _shaderSS->getAttribLocation("uv");
+        glUniform1i (_shaderSS->getUniformLocation("shadowMap"), 0);
         //create _shader for lights and _shaderSS for shadows END
 
         //SHADOW SHADER: cachee all the uniform and attribute indexes
+        const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
         glEnable(GL_DEPTH_TEST);
         glGenFramebuffers(1, &FBO);
-        for (unsigned int i = 0; i < World::Instance()->sceneLights().size(); ++i) {
-            Texture* texture = Texture::load("ShadowTexture_" + std::to_string(i), true);
-            _shadowTextures.push_back(texture);
-        }
-        glBindTexture(GL_TEXTURE_2D, _shadowTextures.at(0)->getId());
+        glGenTextures(1, &depthMap);
+        glBindTexture(GL_TEXTURE_2D, depthMap);
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
         glBindFramebuffer(GL_FRAMEBUFFER, FBO);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _shadowTextures.at(0)->getId(), 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
         glDrawBuffer(GL_NONE);
-        glReadBuffer(GL_NONE);
+        //glReadBuffer(GL_NONE);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         int i = glCheckFramebufferStatus(GL_FRAMEBUFFER);
         if(i != GL_FRAMEBUFFER_COMPLETE) { std::cout << "Framebuffer is not OK, status=" << i << std::endl; }
@@ -126,31 +135,30 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     if (!_diffuseTexture) return;
     tempSize = pWorld->sceneLights().size(); //extract number of lights here
     // --------------------- SHADOW IMPLEMENTATION STARTS HERE ----------------------- //
-    GameObject* tempGO = pCamera->getOwner(); // save previous owner GO to assign back to it back later
-    if(tempGO != pWorld->sceneLights().at(0)->getOwner()) pCamera->setOwner(pWorld->sceneLights().at(0)->getOwner()); //'move' cam to light's position
-    glm::mat4 modelMat          = pGameObject->getWorldTransform();
-    glm::mat4 viewMat           = glm::inverse(pCamera->getOwner()->getWorldTransform());
-    glm::mat4 perspectiveMat    = pCamera->getProjection();
-    //glm::mat4 perspectiveMat    = glm::ortho(-40.0f, 40.0f, -40.0f, 40.0f, 1.0f, 7.5f);
+    //glm::mat4 tempTransform = pCamera->getOwner()->getWorldTransform();
+    //pCamera->getOwner()->setTransform(pWorld->sceneLights().at(0)->getOwner()->getWorldTransform());
+
+    //get all needed matrices BEGIN
+    //glm::mat4 modelMat          = pGameObject->getWorldTransform();
+    //glm::mat4 viewMat           = glm::inverse(pCamera->getOwner()->getWorldTransform());
+    //glm::mat4 perspectiveMat    = pCamera->getProjection();
     glm::mat4 light_MVP         = biasMat * perspectiveMat * viewMat * modelMat;
+    //get all needed matrices END
 
     _shaderSS->use();
+    glUniformMatrix4fv ( _light_MVP2, 1, GL_FALSE, glm::value_ptr(light_MVP));
     glViewport(0, 0, 1024, 1024);
     glBindFramebuffer(GL_FRAMEBUFFER, FBO);
     glClear(GL_DEPTH_BUFFER_BIT);
-    glUniformMatrix4fv ( _light_MVP2, 1, GL_FALSE, glm::value_ptr(light_MVP));
-    glUniform1i (_shaderSS->getUniformLocation("shadowMap"), 2);
     glBindFramebuffer(GL_FRAMEBUFFER,0);
     glViewport(0, 0, 800, 600);
-    pCamera->setOwner(tempGO);
 
     // --------------- UNCOMMENT TO RENDER SHADOW MAP ----------------//
     //glActiveTexture(GL_TEXTURE0);
-    //glBindTexture(GL_TEXTURE_2D, _shadowTextures.at(0)->getId());
+    //glBindTexture(GL_TEXTURE_2D, depthMap);
     // --------------------- SHADOW IMPLEMENTATION ENDS HERE ----------------------- /*/
 
-    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+    pCamera->getOwner()->setTransform(tempTransform);
     _shader->use();
     //martixes used to render usual stuff
     glm::mat4 modelMatrix       = pGameObject->getWorldTransform();
@@ -185,4 +193,5 @@ void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMes
     }
     //now inform mesh of where to stream its data*/
     pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
+
 }

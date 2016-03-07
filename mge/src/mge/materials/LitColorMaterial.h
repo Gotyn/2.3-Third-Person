@@ -61,6 +61,8 @@ class LitColorMaterial : public AbstractMaterial
         static GLint _light_MVP2;
         static GLint _aVertex2;
         static GLint _aUV2;
+        static GLuint FBO;
+        static GLuint depthMap;
         // ----------- STUFF FOR 2-ND SHADER TO SHOW SHADOW MAP ----------- //
 
         //this one is unique per instance of material

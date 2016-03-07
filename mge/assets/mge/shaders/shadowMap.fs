@@ -2,7 +2,7 @@
 out vec4 color;
 in vec2 TexCoords;
 
-uniform sampler2D shadowMap;
+uniform sampler2DShadow shadowMap;
 
 float LinearizeDepth(float depth)
 {

@@ -4,7 +4,9 @@
 #include <string>
 #include "mge/core/GameObject.hpp"
 #include "mge/core/World.hpp"
+#include "mge/core/ShadowInfo.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
+
 
 /**
  * Base is just a GameObject with all basic values for the basic light implementation:
@@ -22,9 +24,11 @@ class BaseLight : public AbstractBehaviour
         glm::vec3 getConeDirection() { return coneDirection; }
         float getConeAngle() { return coneAngle; }
         float getAmbientIntensity() { return ambientIntensity; }
+        ShadowInfo* getShadowInfo() { return shadowInfo; }
 
         //------------- SETTERS ----------------//
         void setConeDirection(glm::vec3 pValue) { coneDirection = pValue; }
+        void setShadowInfo(ShadowInfo* pValue);
 
         void update(float pStep);
         void addBehaviourToGO(GameObject* pGameObject);
@@ -34,6 +38,7 @@ class BaseLight : public AbstractBehaviour
         float ambientIntensity;
         glm::vec3 coneDirection;
         float coneAngle;
+        ShadowInfo* shadowInfo;
 };
 
 #endif // BASELIGHT_H

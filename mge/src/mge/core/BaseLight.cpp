@@ -1,7 +1,10 @@
 #include "BaseLight.h"
+class ShadowInfo;
 
 BaseLight::BaseLight(glm::vec3 pAmbientColor, float pAmbientIntensity, glm::vec3 pConeDirection,
-                     float pConeAngle, GameObject* pOwner): AbstractBehaviour() {
+                     float pConeAngle, GameObject* pOwner): AbstractBehaviour()
+{
+    shadowInfo = nullptr;
     addBehaviourToGO(pOwner);
     ambientColor = pAmbientColor;
     ambientIntensity = pAmbientIntensity;
@@ -11,7 +14,7 @@ BaseLight::BaseLight(glm::vec3 pAmbientColor, float pAmbientIntensity, glm::vec3
 }
 
 BaseLight::~BaseLight() {
-    //dtor
+    if(shadowInfo) delete shadowInfo;
 }
 
 void BaseLight::addBehaviourToGO(GameObject* pGameObject) {
@@ -19,4 +22,10 @@ void BaseLight::addBehaviourToGO(GameObject* pGameObject) {
 }
 
 void BaseLight::update(float pStep) {
+}
+
+void BaseLight::setShadowInfo(ShadowInfo* pValue)
+{
+    if(shadowInfo) delete shadowInfo;
+    shadowInfo = pValue;
 }

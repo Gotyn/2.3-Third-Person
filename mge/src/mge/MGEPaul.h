@@ -54,6 +54,8 @@ class MGEPaul: public AbstractGame
         //lua_State* _lua;
         void _updateHud();
         void _initializeSceneFromLua();
+        GameObject* teapot_model;
+        GameObject* teapot_shadow;
 };
 
 #endif // MGEPaul_H

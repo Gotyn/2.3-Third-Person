@@ -45,15 +45,26 @@ void MGEPaul::_initializeScene()
     spotLightGO->rotate(glm::radians(-90.0f), glm::vec3(0,1.0f,0));
     BaseLight* testLight = new BaseLight(glm::vec3 (1,1,1), 0.5f, glm::vec3(1,0,0), 0.95f, spotLightGO);
     MeshRenderer* spotLightMesh = new MeshRenderer("sphere_smooth.obj", new ColorMaterial(glm::vec3(1,1,0)), spotLightGO);
-    KeysBehaviour* kb = new KeysBehaviour(5, 45, spotLightGO);
+    KeysBehaviour* kb = new KeysBehaviour(5,45,spotLightGO);
+    glm::mat4 viewMat           = glm::inverse(spotLightGO->getWorldTransform());
+    glm::mat4 perspectiveMat    = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 100.0f);
 
     //ADD PLANE GO, MESH AND MATERIAL
-    GameObject* teapot = new GameObject ("teapot", glm::vec3(3.5f, 2, 0));
-    teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
-    teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+    teapot_model = new GameObject ("teapot_model", glm::vec3(3.0f, 2, 0));
+    teapot_model->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
+    teapot_model->scale(glm::vec3(0.5f, 0.5f, 0.5f));
     MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
-           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot);
-    RotatingBehaviour* rb = new RotatingBehaviour(teapot);
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot_model);
+    RotatingBehaviour* rb = new RotatingBehaviour(teapot_model);
+
+/*    GameObject* emptyGO = new GameObject ("teapot_shadow_holder", glm::vec3(4.99f, 2, 0));
+    teapot_shadow = new GameObject ("teapot_shadow", glm::vec3(0.0f, 0, 0));
+    emptyGO->add(teapot_shadow);
+    emptyGO->scale(glm::vec3(0.8f, 0.8f, 0.8f));
+    teapot_shadow->scale(glm::vec3(0.000001f, 1.0f, 1.0f));
+    MeshRenderer* shadowMesh = new MeshRenderer("teapot_smooth.obj", new ColorMaterial(glm::vec3(0.05f, 0.05f, 0.05f)), teapot_shadow);
+    RotatingBehaviour* rb2 = new RotatingBehaviour(teapot_shadow);
+*/
 
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));
     plane->scale(glm::vec3(5, 5, 5));
@@ -87,7 +98,8 @@ void MGEPaul::_initializeScene()
     //ADD CAMERA GO, CAMERA COMPONENT AND BEHAVIOUR
     GameObject* cameraGO = new GameObject("camera", glm::vec3(0, 2.0f, 5.0f));
     cameraGO->rotate(glm::radians(-45.0f),glm::vec3(0,1,0));
-    Camera* camera = new Camera (glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f), cameraGO);
+    Camera* camera = new Camera (glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 100.0f), cameraGO);
+    //KeysBehaviour* kbb = new KeysBehaviour(5,45,cameraGO);
 }
 
 void MGEPaul::_update() {
