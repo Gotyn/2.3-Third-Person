@@ -69,16 +69,9 @@ void AbstractGame::_initializeGlew() {
 }
 
 void AbstractGame::_initializeOpenGL() {
-//    //setup openGL settings
-	cout << "Initializing render settings..." << endl;
 
-    glEnable( GL_DEPTH_TEST );
-	glEnable( GL_CULL_FACE ); // default GL_BACK
-    glEnable (GL_BLEND);
-    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glClearColor((float)0x2d/0xff, (float)0x6b/0xff, (float)0xce/0xff, 1.0f );
-
-    cout << "Render settings loaded." << endl << endl;
+    _renderPipeline = new RenderPipeline();
+    cout << "RenderPipeline initialized..." << endl;
 }
 
 void AbstractGame::_initializeWorld() {
@@ -114,6 +107,8 @@ void AbstractGame::run()
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
         _update();
+
+        _renderPipeline->render(World::Instance());
 
         //swap colorbuffer to screen
         _window->display();

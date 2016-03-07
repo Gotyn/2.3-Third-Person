@@ -1,12 +1,13 @@
 #include "PuzzleBlock.hpp"
 #include "mge/core/Timer.hpp"
+#include "mge/Materials/LitTextureMaterial.hpp"
 
 PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName):GameObject(pObjectName)
 {
     _targetForward = GameObject::getForward();
     _targetUp = GameObject::getUp();
 
-     _material = new TextureMaterial(Texture::load("mge/textures/" + pTextureName));
+     _material = new LitTextureMaterial(Texture::load("mge/textures/" + pTextureName));
     _meshRenderer = new MeshRenderer(pModelName, _material, this);
 }
 

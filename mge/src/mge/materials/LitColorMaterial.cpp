@@ -130,7 +130,7 @@ void LitColorMaterial::_lazyInitializeShader() {
     }
 }
 
-void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
+void LitColorMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
     tempSize = pWorld->sceneLights().size(); //extract number of lights here
