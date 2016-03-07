@@ -1979,7 +1979,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1456233910 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\main.cpp
+1457387902 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\main.cpp
 	<iostream>
 	"mge/core/AbstractGame.hpp"
 	"mge/MGEDemo.hpp"
@@ -2358,7 +2358,7 @@
 	<SFML/Audio.hpp>
 	<memory>
 
-1456013421 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\util\utils.hpp
+1457387652 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\util\utils.hpp
 	<vector>
 	<string>
 
@@ -2417,7 +2417,7 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1457387234 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -2549,7 +2549,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1456013421 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\util\utils.cpp
+1457388149 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\util\utils.cpp
 	"Utils.hpp"
 	<windows.h>
 
@@ -2564,10 +2564,11 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457388400 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
+	"mge/util/Utils.hpp"
 
 1457309039 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
 	"GameCamera.hpp"

@@ -9,7 +9,7 @@ pieces[1]:scale(0.3,0.3,0.3)
 
 activePiece = 1
 
-wall = Game.Prop("cube_flat.obj", "land.jpg", "piece2")
+wall = Game.Prop("cube_flat.obj", "bricks.jpg", "piece2")
 wall:setPosition(0,1,-3)
 wall:scale(5,5,1)
 
