@@ -10,7 +10,7 @@ class LitTextureMaterial : public AbstractMaterial
     public:
         LitTextureMaterial (Texture* pDiffuseTexture);
         virtual ~LitTextureMaterial ();
-        virtual void render(RenderPipeline* pRenderPipe, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
+        virtual void render(RenderPipeline* pRenderPipe, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera);
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
         void changeDiffuseTexture (std::string pFilename);

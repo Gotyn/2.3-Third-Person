@@ -11,23 +11,23 @@ class Mesh;
 class MeshRenderer : public AbstractBehaviour
 {
     public:
-        MeshRenderer(std::string pFilename, AbstractMaterial* pMaterial, GameObject* pOwner = nullptr);
+        MeshRenderer(std::string pFilename, std::shared_ptr<AbstractMaterial> pMaterial, GameObject* pOwner = nullptr);
         virtual ~MeshRenderer();
         virtual void update( float step );
         void render(RenderPipeline* pRenderPipeline);
-        void render(RenderPipeline* pRenderPipeline, AbstractMaterial* pMaterial);
+        void render(RenderPipeline* pRenderPipeline, std::shared_ptr<AbstractMaterial> pMaterial);
         void addBehaviourToGO(GameObject* pGameObject);
 
         void setMesh(std:: string pFilename);
-        void setMesh(Mesh* pMesh);
-		Mesh* getMesh() const;
+        void setMesh(std::shared_ptr<Mesh> pMesh);
+		std::shared_ptr<Mesh> getMesh() const;
 
-		void setMaterial (AbstractMaterial* pMaterial);
-		AbstractMaterial* getMaterial() const;
+		void setMaterial (std::shared_ptr<AbstractMaterial> pMaterial);
+		std::shared_ptr<AbstractMaterial> getMaterial() const;
 
     protected:
-        Mesh* _mesh;
-        AbstractMaterial* _material;
+        std::shared_ptr<Mesh> _mesh;
+        std::shared_ptr<AbstractMaterial> _material;
 
     private:
 };

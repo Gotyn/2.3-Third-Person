@@ -9,7 +9,7 @@ class DepthMapper : public AbstractMaterial
         DepthMapper(GLuint pDepthMapFBO, GLuint pDepthMap, int pShadowWidth, int pShadowHeight);
         virtual ~DepthMapper();
 
-        virtual void render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
+        virtual void render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera);
 
     protected:
         static ShaderProgram* _shader;

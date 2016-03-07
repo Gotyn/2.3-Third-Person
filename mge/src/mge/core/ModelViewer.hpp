@@ -44,7 +44,7 @@ class ModelViewer : public GameObject
         GameObject* _cameraObject;
         GameObject* _model;
         MeshRenderer* _meshRenderer;
-        TextureMaterial* _textureMaterial;
+        std::shared_ptr<TextureMaterial> _textureMaterial;
         vector<string> _modelNames;
         vector<string> _textureNames;
 };

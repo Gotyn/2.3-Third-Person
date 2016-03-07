@@ -14,7 +14,7 @@ class WobblingMaterial : public AbstractMaterial
     public:
         WobblingMaterial(glm::vec3 pColor = glm::vec3(1,1,0));
         virtual ~WobblingMaterial();
-        virtual void render(World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
+        virtual void render(World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera);
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);

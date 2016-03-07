@@ -57,7 +57,7 @@ void ModelViewer::refresh()
 
     _model = new GameObject(_modelNames[0]);
 
-    _textureMaterial = new TextureMaterial(Texture::load("mge/textures/" + _textureNames[0]));
+    _textureMaterial = std::shared_ptr<TextureMaterial>(new TextureMaterial(Texture::load("mge/textures/" + _textureNames[0])));
     _meshRenderer = new MeshRenderer(_modelNames[0], _textureMaterial);
     RotatingBehaviour* rb = new RotatingBehaviour();
 
