@@ -2142,12 +2142,13 @@
 	"mge/util/DebugHud.hpp"
 	"mge/core/FPS.hpp"
 
-1457355095 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
+1457390664 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
 	<lua.hpp>
 	<FileWatcher/FileWatcher.h>
 	<AbstractGame.hpp>
 	"mge/core/BaseHud.hpp"
 	"mge/LuaBridge/LuaBridge.h"
+	"mge/sphinx/StoryWall.hpp"
 	"lua.h"
 	"lauxlib.h"
 	"lualib.h"
@@ -2553,7 +2554,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457355095 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457391530 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3540,4 +3541,13 @@
 	"DepthMapper.hpp"
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"
+
+1457391166 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
+	"StoryWall.hpp"
+
+1457391100 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.hpp
+	<GameObject.hpp>
+	"mge/materials/AbstractMaterial.hpp"
+	"mge/materials/LitTextureMaterial.hpp"
+	"mge/behaviours/MeshRenderer.hpp"
 
