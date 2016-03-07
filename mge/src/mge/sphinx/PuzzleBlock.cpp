@@ -7,11 +7,8 @@ PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::
     _targetForward = GameObject::getForward();
     _targetUp = GameObject::getUp();
 
-<<<<<<< HEAD
-     _material = std::shared_ptr<TextureMaterial>(new TextureMaterial(Texture::load("mge/textures/" + pTextureName)));
-=======
-     _material = new LitTextureMaterial(Texture::load("mge/textures/" + pTextureName));
->>>>>>> refs/remotes/origin/master
+    _material = std::shared_ptr<TextureMaterial>(new TextureMaterial(Texture::load("mge/textures/" + pTextureName)));
+
     _meshRenderer = new MeshRenderer(pModelName, _material, this);
 }
 

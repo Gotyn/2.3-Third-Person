@@ -33,7 +33,7 @@ class RenderPipeline
         void showShadowMap();
 
         const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
-        AbstractMaterial* _depthMapperMaterial;
+        std::shared_ptr<AbstractMaterial> _depthMapperMaterial;
         ShaderProgram* _depthPreview;
         GLuint _depthMapFBO;
         GLuint _depthMap;

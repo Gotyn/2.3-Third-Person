@@ -30,7 +30,7 @@ void MeshRenderer::render(RenderPipeline* pRenderPipeline)
         _material->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
-void MeshRenderer::render(RenderPipeline* pRenderPipeline, AbstractMaterial* pMaterial)
+void MeshRenderer::render(RenderPipeline* pRenderPipeline, std::shared_ptr<AbstractMaterial> pMaterial)
 {
     pMaterial->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }

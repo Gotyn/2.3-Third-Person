@@ -121,11 +121,7 @@ void LitColorMaterial::_lazyInitializeShader() {
     }
 }
 
-<<<<<<< HEAD
-void LitColorMaterial::render(World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera)
-=======
-void LitColorMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
->>>>>>> refs/remotes/origin/master
+void LitColorMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
     tempSize = pWorld->sceneLights().size(); //extract number of lights here
