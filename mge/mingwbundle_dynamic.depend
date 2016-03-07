@@ -1989,7 +1989,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1457309039 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1457353929 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2024,7 +2024,7 @@
 1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.hpp
 	<memory>
 
-1456238358 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\mgedemo.hpp
+1457354502 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\mgedemo.hpp
 	<mge/core/AbstractGame.hpp>
 	<SFML/Graphics.hpp>
 	<vector>
@@ -2142,7 +2142,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/core/FPS.hpp"
 
-1456440759 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
+1457354050 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
 	<lua.hpp>
 	<FileWatcher/FileWatcher.h>
 	<AbstractGame.hpp>
@@ -2313,7 +2313,7 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1457349617 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1457354362 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	"mge/core/Input.hpp"
@@ -2362,7 +2362,7 @@
 	<vector>
 	<string>
 
-1457349917 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1457354938 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2553,7 +2553,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457350017 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457354653 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3336,7 +3336,7 @@
 1456397185 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\geometry.hpp
 	<glm.hpp>
 
-1457348983 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\prop.cpp
+1457350496 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\prop.cpp
 	"Prop.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
 
@@ -3426,7 +3426,7 @@
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1457351772 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"

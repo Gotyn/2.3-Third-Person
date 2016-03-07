@@ -56,6 +56,7 @@ class AbstractGame
 
         //call update on all game objects in the display root
         virtual void _update();
+        virtual void _lateUpdate();
         //render all game objects in the display root
 //        virtual void _render();
         //process any sfml window events (see SystemEventDispatcher/Listener)
