@@ -41,7 +41,7 @@ void LitTextureMaterial::changeDiffuseTexture (std::string pFilename)
     setDiffuseTexture(Texture::load("mge/textures/" + pFilename));
 }
 
-void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
+void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera)
 {
     if (!_diffuseTexture) return;
 
