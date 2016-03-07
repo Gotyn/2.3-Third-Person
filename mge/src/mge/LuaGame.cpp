@@ -45,7 +45,7 @@ void LuaGame::reloadHud()
 //build the game _world
 void LuaGame::_initializeScene()
 {
-    GameCamera* gameCam = new GameCamera();
+    GameCamera* gameCam = new GameCamera(glm::vec3(-4, 3, 10));
     luaL_dofile(_L, "mge/lua/main.lua");
 }
 

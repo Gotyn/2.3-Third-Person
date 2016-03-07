@@ -2,4 +2,4 @@ require "mge/lua/keyCodes"
 
 print("main.lua running, version: " .. _VERSION)
 
-dofile("mge/lua/level1.lua")
+dofile("mge/lua/jackShadowTest.lua")

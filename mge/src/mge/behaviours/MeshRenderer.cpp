@@ -16,12 +16,23 @@ void MeshRenderer::addBehaviourToGO(GameObject* pGameObject) {
     pGameObject->addBehaviour(this);
 }
 
-void MeshRenderer::update( float step ) {
+void MeshRenderer::update( float step )
+{
+
+}
+
+void MeshRenderer::render(RenderPipeline* pRenderPipeline)
+{
     if (_mesh == NULL || _material == NULL)
         return;
 
     if (World::Instance()->getMainCamera() != NULL)
-        _material->render(World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+        _material->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
+}
+
+void MeshRenderer::render(RenderPipeline* pRenderPipeline, AbstractMaterial* pMaterial)
+{
+    pMaterial->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
 }
 
 void MeshRenderer::setMaterial(AbstractMaterial* pMaterial) {
