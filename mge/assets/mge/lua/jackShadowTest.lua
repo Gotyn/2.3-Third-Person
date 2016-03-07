@@ -41,7 +41,7 @@ function updateGUI()
     --     print("lua button clicked!")
     -- end 
     
-    -- hud.draw()
+    hud.draw()
 end
 
 function refreshHud()
