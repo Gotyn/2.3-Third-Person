@@ -13,6 +13,8 @@ class BaseHud
         virtual void draw();
         static bool Button(int x, int y, std::string caption);
         static void Label(int x, int y, std::string caption);
+        static void Hints();
+        static void Riddle();
 
     protected:
 

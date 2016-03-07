@@ -93,6 +93,19 @@ void BaseHud::Label(int x, int y, std::string caption)
 	_window->popGLStates();
 }
 
+void BaseHud::Hints() {
+    //addlabel
+
+    //addbutton1
+    //addbutton2
+    //addbutton3
+}
+
+void BaseHud::Riddle() {
+    //addlabel
+}
+
+
 // todo: remove?
 void BaseHud::draw()
 {
