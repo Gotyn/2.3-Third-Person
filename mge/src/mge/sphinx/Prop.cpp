@@ -1,8 +1,10 @@
 #include "Prop.hpp"
 
+#include "mge/Materials/LitTextureMaterial.hpp"
+
 Prop::Prop(std::string pModelName, std::string pTextureName, std::string pObjectName):GameObject(pObjectName)
 {
-    _material = new TextureMaterial(Texture::load("mge/textures/" + pTextureName));
+    _material = new LitTextureMaterial(Texture::load("mge/textures/" + pTextureName));
     _meshRenderer = new MeshRenderer(pModelName, _material, this);
 }
 
