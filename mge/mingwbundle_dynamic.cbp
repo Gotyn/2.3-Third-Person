@@ -21,6 +21,7 @@
 					<Add directory="src" />
 					<Add directory="src/mge" />
 					<Add directory="src/mge/core" />
+					<Add directory="src/mge/materials" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32" />
@@ -55,10 +56,14 @@
 		<Unit filename="assets/mge/models/teapot_smooth.obj" />
 		<Unit filename="assets/mge/shaders/color.fs" />
 		<Unit filename="assets/mge/shaders/color.vs" />
+		<Unit filename="assets/mge/shaders/litTexture.fs" />
+		<Unit filename="assets/mge/shaders/litTexture.vs" />
 		<Unit filename="assets/mge/shaders/litcolor.fs" />
 		<Unit filename="assets/mge/shaders/litcolor.vs" />
 		<Unit filename="assets/mge/shaders/shadowMap.fs" />
 		<Unit filename="assets/mge/shaders/shadowMap.vs" />
+		<Unit filename="assets/mge/shaders/simpleDepthShader.fs" />
+		<Unit filename="assets/mge/shaders/simpleDepthShader.vs" />
 		<Unit filename="assets/mge/shaders/texture.fs" />
 		<Unit filename="assets/mge/shaders/texture.vs" />
 		<Unit filename="assets/mge/shaders/wobble.fs" />
@@ -121,6 +126,8 @@
 		<Unit filename="src/mge/core/Mesh.hpp" />
 		<Unit filename="src/mge/core/ModelViewer.cpp" />
 		<Unit filename="src/mge/core/ModelViewer.hpp" />
+		<Unit filename="src/mge/core/RenderPipeline.cpp" />
+		<Unit filename="src/mge/core/RenderPipeline.hpp" />
 		<Unit filename="src/mge/core/ShaderProgram.cpp" />
 		<Unit filename="src/mge/core/ShaderProgram.hpp" />
 		<Unit filename="src/mge/core/SphinxDreams.cpp" />
@@ -137,8 +144,12 @@
 		<Unit filename="src/mge/materials/AbstractMaterial.hpp" />
 		<Unit filename="src/mge/materials/ColorMaterial.cpp" />
 		<Unit filename="src/mge/materials/ColorMaterial.hpp" />
+		<Unit filename="src/mge/materials/DepthMapper.cpp" />
+		<Unit filename="src/mge/materials/DepthMapper.hpp" />
 		<Unit filename="src/mge/materials/LitColorMaterial.cpp" />
 		<Unit filename="src/mge/materials/LitColorMaterial.h" />
+		<Unit filename="src/mge/materials/LitTextureMaterial.cpp" />
+		<Unit filename="src/mge/materials/LitTextureMaterial.hpp" />
 		<Unit filename="src/mge/materials/TextureMaterial.cpp" />
 		<Unit filename="src/mge/materials/TextureMaterial.hpp" />
 		<Unit filename="src/mge/materials/WobblingMaterial.cpp" />
