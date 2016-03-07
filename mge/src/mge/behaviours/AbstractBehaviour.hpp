@@ -1,6 +1,7 @@
 #ifndef ABSTRACTBEHAVIOUR_H
 #define ABSTRACTBEHAVIOUR_H
 
+#include <memory>
 class GameObject;
 
 /**

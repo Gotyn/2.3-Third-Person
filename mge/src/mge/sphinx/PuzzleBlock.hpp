@@ -20,7 +20,7 @@ class PuzzleBlock : public GameObject
     private:
         RotatingBehaviour* _rotatingBehavour;
         MeshRenderer* _meshRenderer;
-        AbstractMaterial* _material;
+        std::shared_ptr<AbstractMaterial> _material;
         glm::vec3 _targetForward;
         glm::vec3 _targetUp;
 };

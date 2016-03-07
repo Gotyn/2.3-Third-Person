@@ -16,8 +16,8 @@ class Prop : public GameObject
 
     protected:
     private:
-        MeshRenderer* _meshRenderer;
-        AbstractMaterial* _material;
+        std::shared_ptr<MeshRenderer> _meshRenderer;
+        std::shared_ptr<AbstractMaterial> _material;
 };
 
 #endif // PROP_H

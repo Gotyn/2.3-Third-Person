@@ -64,7 +64,7 @@ void RenderPipeline::initializeDepthmap()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-    _depthMapperMaterial = new DepthMapper(_depthMapFBO, _depthMap, SHADOW_WIDTH, SHADOW_HEIGHT);
+    _depthMapperMaterial = std::shared_ptr<AbstractMaterial>(new DepthMapper(_depthMapFBO, _depthMap, SHADOW_WIDTH, SHADOW_HEIGHT));
 }
 
 void RenderPipeline::render (World* pWorld)

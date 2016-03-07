@@ -7,7 +7,7 @@
 
 #include <mge/config.hpp>
 #include <SFML/Audio.hpp>
-
+#include <memory>
 /**
  * Audio class (SFML)
  */
@@ -15,7 +15,7 @@
 class Audio
 {
 	public:
-	    static Audio* Instance();
+	    static std::shared_ptr<Audio> Instance();
         //functions
         void LoadAudio();                                               //pre-loads/index all sounds/music
         void AddSound(std::string fileName);                            //pre-loads a specific sound (used in LoadAudio())
@@ -38,11 +38,12 @@ class Audio
 
         std::map<std::string, std::unique_ptr<sf::Music>> Music;
 
+        virtual ~Audio();
 	private:
 	    Audio();
-	    virtual ~Audio();
 
-	    static Audio* instance;
+
+	    static std::shared_ptr<Audio> instance;
         std::string soundsPath;
         std::string musicPath;
 };

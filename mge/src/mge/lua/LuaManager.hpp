@@ -23,7 +23,7 @@ namespace LuaManager
         GameObject* go = new GameObject(pName);
         World::Instance()->add(go);
 
-        AbstractMaterial* mb = new ColorMaterial();
+        std::shared_ptr<AbstractMaterial> mb = std::shared_ptr<AbstractMaterial>(new ColorMaterial());
         MeshRenderer* mr = new MeshRenderer(pFilename, mb);
 
         go->addBehaviour(mr);

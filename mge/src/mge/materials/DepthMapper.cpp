@@ -28,7 +28,7 @@ void DepthMapper::_lazyInitializeShader()
     }
 }
 
-void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera)
+void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera)
 {
     glViewport(0, 0, _shadowWidth, _shadowHeight);
 

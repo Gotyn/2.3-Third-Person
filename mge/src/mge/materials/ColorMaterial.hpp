@@ -14,7 +14,8 @@ class ColorMaterial : public AbstractMaterial
     public:
         ColorMaterial(glm::vec3 pColor = glm::vec3(1,0,0));
         virtual ~ColorMaterial();
-        virtual void render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera);
+
+        virtual void render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera);
 
         //in rgb values
         void setDiffuseColor (glm::vec3 pDiffuseColor);
