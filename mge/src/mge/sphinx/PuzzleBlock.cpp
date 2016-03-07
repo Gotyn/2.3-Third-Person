@@ -1,6 +1,7 @@
 #include "PuzzleBlock.hpp"
 #include "mge/core/Timer.hpp"
 #include "mge/Materials/LitTextureMaterial.hpp"
+#include "mge/util/Utils.hpp"
 
 PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName):GameObject(pObjectName)
 {
@@ -10,11 +11,21 @@ PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::
     _material = std::shared_ptr<LitTextureMaterial>(new LitTextureMaterial(Texture::load("mge/textures/" + pTextureName)));
 
     _meshRenderer = new MeshRenderer(pModelName, _material, this);
+
+    //randomize block rotation
+    randomize();
 }
 
 PuzzleBlock::~PuzzleBlock()
 {
     //dtor
+}
+
+void PuzzleBlock::randomize()
+{
+    rotate(Utils::randomRange(0.0f, 6.28319f), glm::vec3(1,0,0));
+    rotate(Utils::randomRange(0.0f, 6.28319f), glm::vec3(0,1,0));
+    rotate(Utils::randomRange(0.0f, 6.28319f), glm::vec3(0,0,1));
 }
 
 float PuzzleBlock::getProgress()
