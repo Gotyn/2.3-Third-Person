@@ -104,6 +104,11 @@ void LuaGame::_update()
 
     //update folder watcher
     _fileWatcher.update();
+}
+
+void LuaGame::_lateUpdate()
+{
+    AbstractGame::_lateUpdate();
 
     //update GUI
     _updateGUI();

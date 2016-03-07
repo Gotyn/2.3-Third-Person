@@ -110,6 +110,8 @@ void AbstractGame::run()
 
         _renderPipeline->render(World::Instance());
 
+        _lateUpdate();
+
         //swap colorbuffer to screen
         _window->display();
 
@@ -119,6 +121,11 @@ void AbstractGame::run()
 
 void AbstractGame::_update() {
     World::Instance()->update(Timer::deltaTime(), glm::mat4());
+}
+
+void AbstractGame::_lateUpdate()
+{
+
 }
 
 void AbstractGame::_processEvents()

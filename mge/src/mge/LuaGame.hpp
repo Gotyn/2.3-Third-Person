@@ -27,6 +27,7 @@ class LuaGame : public AbstractGame
 	protected:
         virtual void _initializeScene();
         virtual void _update();
+        virtual void _lateUpdate();
         virtual void _processEvents();
 
 	private:

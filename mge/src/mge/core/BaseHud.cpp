@@ -74,7 +74,7 @@ void BaseHud::Label(int x, int y, std::string caption)
     text.setColor(sf::Color::White);
 
     //sprite
-    sf::Sprite* tipSprite;
+//    sf::Sprite* tipSprite;
 //    tipSprite->setTexture(*&Texture::load("mge/textures/bricks.jpg"));
 
     //get width/height
