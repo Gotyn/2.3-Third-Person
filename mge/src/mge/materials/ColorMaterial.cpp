@@ -47,7 +47,11 @@ void ColorMaterial::setDiffuseColor(glm::vec3 pDiffuseColor) {
     _diffuseColor = pDiffuseColor;
 }
 
+<<<<<<< HEAD
 void ColorMaterial::render(World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera) {
+=======
+void ColorMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
+>>>>>>> refs/remotes/origin/master
     _shader->use();
 
     //pass in a precalculate mvp matrix (see texture material for the opposite)

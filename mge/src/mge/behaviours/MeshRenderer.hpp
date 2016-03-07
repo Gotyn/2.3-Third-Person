@@ -4,6 +4,7 @@
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
 #include "mge/core/World.hpp"
+#include "mge/core/RenderPipeline.hpp"
 
 class Mesh;
 
@@ -12,8 +13,9 @@ class MeshRenderer : public AbstractBehaviour
     public:
         MeshRenderer(std::string pFilename, std::shared_ptr<AbstractMaterial> pMaterial, GameObject* pOwner = nullptr);
         virtual ~MeshRenderer();
-
         virtual void update( float step );
+        void render(RenderPipeline* pRenderPipeline);
+        void render(RenderPipeline* pRenderPipeline, AbstractMaterial* pMaterial);
         void addBehaviourToGO(GameObject* pGameObject);
 
         void setMesh(std:: string pFilename);

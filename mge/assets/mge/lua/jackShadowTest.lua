@@ -1,22 +1,18 @@
 gameHud = require "mge/lua/hud"
 
 pieces = {  
-    Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece1"),
-    Game.PuzzleBlock("teapot_smooth.obj", "bricks.jpg", "piece2"),
-    Game.PuzzleBlock("teapot_smooth.obj", "land.jpg", "piece3")
+    Game.PuzzleBlock("suzanna_smooth.obj", "bricks.jpg", "piece1"),
+    Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece2")
 }
 
-pieces[1]:setPosition(0,-1,0)
-pieces[2]:setPosition(0,1,0)
-pieces[3]:setPosition(0,3,0)
+pieces[1]:setPosition(2,2,4)
+pieces[2]:setPosition(0,1,-3)
+pieces[2]:scale(5,5,1)
 
 activePiece = 1
 
-local hints = require("mge/lua/hintsystem")
-testtt = true
-
 function update()
-    updateGameStatus()
+    -- updateGameStatus()
     handleControl()
 
     -- handleControl(pieces[activePiece])
@@ -28,15 +24,15 @@ function update()
     -- print(pieces[activePiece]:getName())
     -- if checkProgress() > 0.66 then print(checkProgress()) end
 
-    if Game.getKeyDown(KeyCode.P) == true then
-        printPuzzleBlocksStates()
-    elseif Game.getKeyDown(KeyCode.H) == true then
-        hints.showHint()
-    end
+    -- if Game.getKeyDown(KeyCode.P) == true then
+    --     printPuzzleBlocksStates()
+    -- elseif Game.getKeyDown(KeyCode.H) == true then
+    --     hints.showHint()
+    -- end
 
-    if Game.getKeyDown(KeyCode.F5) == true then
-        refreshHud()
-    end
+    -- if Game.getKeyDown(KeyCode.F5) == true then
+    --     refreshHud()
+    -- end
 end
 
 function updateGUI()
@@ -45,7 +41,7 @@ function updateGUI()
     --     print("lua button clicked!")
     -- end 
     
-    hud.draw()
+    -- hud.draw()
 end
 
 function refreshHud()

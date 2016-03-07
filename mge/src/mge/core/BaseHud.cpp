@@ -4,11 +4,18 @@
 #include <GL/glew.h>
 
 #include "BaseHud.hpp"
+#include "Texture.hpp"
 #include <SFML/Graphics/Text.hpp>
 #include "mge/config.hpp"
 
-BaseHud::BaseHud(sf::RenderWindow* aWindow) : _window(aWindow)
+// init static members
+sf::RenderWindow* BaseHud::_window = 0;
+sf::Font BaseHud::_font;
+
+BaseHud::BaseHud(sf::RenderWindow* aWindow)
 {
+    _window = aWindow;
+
     assert (_window != NULL);
 
     if (!_font.loadFromFile(config::MGE_FONT_PATH+ "arial.ttf")) {
@@ -24,6 +31,9 @@ BaseHud::~BaseHud()
 
 bool BaseHud::Button(int x, int y, std::string caption)
 {
+//    std::cout << "button testing" << std::endl;
+//    return false;
+
     //create text
     sf::Text text(caption, _font, 15);
     text.setPosition(x, y);
@@ -53,6 +63,34 @@ bool BaseHud::Button(int x, int y, std::string caption)
     if (mousePos.y > y + height) return false;
 
     return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+}
+
+void BaseHud::Label(int x, int y, std::string caption)
+{
+    //create text
+    sf::Text text(caption, _font, 15);
+    text.setPosition(x, y);
+    text.setOrigin(0, 0);
+    text.setColor(sf::Color::White);
+
+    //sprite
+    sf::Sprite* tipSprite;
+//    tipSprite->setTexture(*&Texture::load("mge/textures/bricks.jpg"));
+
+    //get width/height
+    int width = text.getLocalBounds().width + 5;
+    int height =  text.getLocalBounds().height + 5;
+
+    //create rectangle
+    sf::RectangleShape rect(sf::Vector2f(width, height));
+    rect.setPosition(x, y);
+    rect.setFillColor(sf::Color::Green);
+
+    glActiveTexture(GL_TEXTURE0);
+    _window->pushGLStates();
+    _window->draw(rect);
+    _window->draw(text);
+	_window->popGLStates();
 }
 
 // todo: remove?

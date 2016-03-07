@@ -48,13 +48,17 @@ void MGEPaul::_initializeScene()
     KeysBehaviour* kb = new KeysBehaviour(5, 45, spotLightGO);
 
     //ADD PLANE GO, MESH AND MATERIAL
-    GameObject* teapot = new GameObject ("ceiling", glm::vec3(3.5f, 2, 0));
+    GameObject* teapot = new GameObject ("teapot", glm::vec3(3.5f, 2, 0));
     teapot->rotate(glm::radians(0.0f), glm::vec3(1,0,0));
     teapot->scale(glm::vec3(0.5f, 0.5f, 0.5f));
     MeshRenderer* teapotMesh = new MeshRenderer("teapot_smooth.obj",
+<<<<<<< HEAD
            std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg"))), teapot);
     MeshRenderer* teapotMesh2 = new MeshRenderer("teapot_smooth.obj",
            std::shared_ptr<LitColorMaterial>(new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg"))), teapot);
+=======
+           new LitColorMaterial(glm::vec3(1,1,1), Texture::load (config::MGE_TEXTURE_PATH+"bricks.jpg")), teapot);
+>>>>>>> refs/remotes/origin/master
     RotatingBehaviour* rb = new RotatingBehaviour(teapot);
 
     GameObject* plane = new GameObject ("plane", glm::vec3(0, 0, 0));

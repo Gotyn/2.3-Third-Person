@@ -7,7 +7,7 @@
 class GameCamera : public GameObject
 {
     public:
-        GameCamera();
+        GameCamera(glm::vec3 pPosition);
         virtual ~GameCamera();
 
         virtual void update(float pStep, const glm::mat4& pParentTransform);

@@ -19,6 +19,7 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="src" />
+					<Add directory="src/mge" />
 					<Add directory="src/mge/core" />
 				</Compiler>
 				<Linker>
@@ -66,6 +67,15 @@
 		<Unit filename="assets/mge/textures/land.jpg" />
 		<Unit filename="src/glm.hpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/mge/FileWatcher/FileWatcher.cpp" />
+		<Unit filename="src/mge/FileWatcher/FileWatcher.h" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherImpl.h" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherLinux.cpp" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherLinux.h" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherOSX.cpp" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherOSX.h" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherWin32.cpp" />
+		<Unit filename="src/mge/FileWatcher/FileWatcherWin32.h" />
 		<Unit filename="src/mge/LuaGame.cpp" />
 		<Unit filename="src/mge/LuaGame.hpp" />
 		<Unit filename="src/mge/MGEDemo.cpp" />
@@ -135,10 +145,14 @@
 		<Unit filename="src/mge/materials/WobblingMaterial.h" />
 		<Unit filename="src/mge/sphinx/GameCamera.cpp" />
 		<Unit filename="src/mge/sphinx/GameCamera.hpp" />
+		<Unit filename="src/mge/sphinx/Prop.cpp" />
+		<Unit filename="src/mge/sphinx/Prop.hpp" />
 		<Unit filename="src/mge/sphinx/PuzzleBlock.cpp" />
 		<Unit filename="src/mge/sphinx/PuzzleBlock.hpp" />
 		<Unit filename="src/mge/util/DebugHud.cpp" />
 		<Unit filename="src/mge/util/DebugHud.hpp" />
+		<Unit filename="src/mge/util/UpdateListener.cpp" />
+		<Unit filename="src/mge/util/UpdateListener.hpp" />
 		<Unit filename="src/mge/util/Utils.cpp" />
 		<Unit filename="src/mge/util/Utils.hpp" />
 		<Extensions>

@@ -32,7 +32,11 @@ void TextureMaterial::changeDiffuseTexture (std::string pFilename)
     setDiffuseTexture(Texture::load("mge/textures/" + pFilename));
 }
 
+<<<<<<< HEAD
 void TextureMaterial::render(World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera) {
+=======
+void TextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObject* pGameObject, Mesh* pMesh, Camera* pCamera) {
+>>>>>>> refs/remotes/origin/master
     if (!_diffuseTexture) return;
 
     _shader->use();

@@ -11,13 +11,14 @@ class BaseHud
         virtual ~BaseHud();
 
         virtual void draw();
-        bool Button(int x, int y, std::string caption);
+        static bool Button(int x, int y, std::string caption);
+        static void Label(int x, int y, std::string caption);
 
     protected:
 
     private:
-        sf::RenderWindow* _window;
-        sf::Font _font;
+        static sf::RenderWindow* _window;
+        static sf::Font _font;
 };
 
 #endif // BASEHUD_H

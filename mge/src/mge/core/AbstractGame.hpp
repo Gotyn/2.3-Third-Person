@@ -6,6 +6,7 @@
 #include <string>
 
 #include "mge/core/World.hpp"
+#include "mge/core/RenderPipeline.hpp"
 
 using namespace std;
 
@@ -61,7 +62,7 @@ class AbstractGame
         virtual void _processEvents();
 
 		sf::RenderWindow* _window;  //sfml window to render into
-//		Renderer* _renderer;        //the renderer class to render the world
+		RenderPipeline* _renderPipeline;        //the renderer class to render the world
 		bool _running;
 };
 
