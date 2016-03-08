@@ -2288,7 +2288,7 @@
 	"mge/core/GameObject.hpp"
 	<iostream>
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.cpp
+1457432012 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.cpp
 	"MeshRenderer.hpp"
 	"mge/config.hpp"
 	"mge/materials/ColorMaterial.hpp"
@@ -2418,10 +2418,11 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1457391748 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1457434314 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
+	"mge/behaviours/ColorFlasher.hpp"
 	"mge/materials/TextureMaterial.hpp"
 
 1455557663 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderer.cpp
@@ -2554,7 +2555,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457391748 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457434387 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -2565,7 +2566,7 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1457391748 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457434348 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
@@ -3408,7 +3409,7 @@
 	<map>
 	<sys/types.h>
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1457430098 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
@@ -3417,7 +3418,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/config.hpp"
 
-1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
+1457428948 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
@@ -3551,4 +3552,14 @@
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
+
+1457434221 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.cpp
+	"ColorFlasher.hpp"
+	<iostream>
+	"mge/core/GameObject.hpp"
+	"mge/core/Timer.hpp"
+
+1457433915 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.hpp
+	<AbstractBehaviour.hpp>
+	"mge/materials/LitTextureMaterial.hpp"
 

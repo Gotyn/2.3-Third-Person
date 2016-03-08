@@ -10,6 +10,8 @@ pieces[1]:scale(0.3,0.3,0.3)
 activePiece = 1
 solved = false
 
+pieces[activePiece]:flash(1.6)
+
 storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
 -- storyWall:changeTexture("land.jpg")
 -- wall:setPosition(0,1,-3)

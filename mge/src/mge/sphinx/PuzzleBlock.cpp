@@ -11,6 +11,8 @@ PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::
     _material = std::shared_ptr<LitTextureMaterial>(new LitTextureMaterial(Texture::load("mge/textures/" + pTextureName)));
 
     _meshRenderer = new MeshRenderer(pModelName, _material, this);
+    _colorFlasher = new ColorFlasher(this);
+    _colorFlasher->setMaterial(_material);
 
     //randomize block rotation
     randomize();
@@ -19,6 +21,11 @@ PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::
 PuzzleBlock::~PuzzleBlock()
 {
     //dtor
+}
+
+float PuzzleBlock::flash(float pDuration)
+{
+    _colorFlasher->flash(glm::vec3(1.0f, 1.0f, 0.0f), pDuration);
 }
 
 void PuzzleBlock::randomize()
