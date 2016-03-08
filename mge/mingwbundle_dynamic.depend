@@ -1638,7 +1638,7 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1457355095 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1457438722 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	"mge/core/Input.hpp"
@@ -2591,7 +2591,7 @@
 1456080712 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\input.hpp
 	"mge/core/AbstractGame.hpp"
 
-1457401579 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.cpp
+1457440026 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2600,8 +2600,9 @@
 	"Texture.hpp"
 	<SFML/Graphics/Text.hpp>
 	"mge/config.hpp"
+	"mge/core/Timer.hpp"
 
-1457401964 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.hpp
+1457440375 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -2697,7 +2698,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457401515 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luagame.cpp
+1457438547 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
