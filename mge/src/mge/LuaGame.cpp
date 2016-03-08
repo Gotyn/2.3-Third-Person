@@ -73,6 +73,10 @@ void LuaGame::_initLua()
                 .addFunction ("scale", &GameObject::scaleLua)
                 .addFunction ("lookAt", &GameObject::LookAt)
             .endClass ()
+            .deriveClass <StoryWall, GameObject> ("StoryWall")
+                .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
+                .addFunction ("changeTexture", &StoryWall::setTexture)
+            .endClass ()
             .deriveClass <PuzzleBlock, GameObject> ("PuzzleBlock")
                 .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
                 .addFunction ("getProgress", &PuzzleBlock::getProgress)
@@ -89,6 +93,10 @@ void LuaGame::_initLua()
         .beginNamespace ("Audio")
             //audio functions
             .addFunction ("playSound", Audio::PlayEffect)
+            .addFunction ("stopSound", Audio::StopEffect)
+            .addFunction ("playMusic", Audio::PlayMusic)
+            .addFunction ("pauseMusic", Audio::PauseMusic)
+            .addFunction ("stopMusic", Audio::StopMusic)
         .endNamespace();
 }
 
