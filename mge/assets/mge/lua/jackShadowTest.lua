@@ -5,7 +5,7 @@ pieces = {
 }
 
 pieces[1]:setPosition(2,2,4)
-pieces[1]:scale(0.3,0.3,0.3) -- scale breaks check progress!
+pieces[1]:scale(0.3,0.3,0.3)
 
 activePiece = 1
 
