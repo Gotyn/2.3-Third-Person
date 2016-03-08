@@ -11,18 +11,13 @@
 
 module("hud", package.seeall)
 
-hint = "this is the next hint"
-progress = "0" 											-- update this in the levels update function!
+tip = "this is the next tip"
 
 function draw()
-    --Hint Button--
-	if Hud.button(50, 50, "show hint") == true then
+    if Hud.button(50, 50, "show tip") == true then
         print("lua button clicked!")
-        hint = "now showing tip 2 biatch!"
+        tip = "now showing tip 2 biatch!"
     end
 
-    Hud.label(50, 350, hint)
-	
-	--Progress Bar--
-	Hud.label(50,100, progress)
+    Hud.label(50, 350, tip)
 end
