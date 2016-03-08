@@ -198,7 +198,7 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     hintsBoxText->setString(caption);
     hintsBoxText->setFont(_font);
     hintsBoxText->setCharacterSize(fontSize);
-    hintsBoxText->setColor(sf::Color::White);
+    hintsBoxText->setColor(sf::Color::Black);
 
     //sprite
     hintsBoxTexture->setRepeated(true);
