@@ -15,6 +15,8 @@ class LitTextureMaterial : public AbstractMaterial
         void setDiffuseTexture (Texture* pDiffuseTexture);
         void changeDiffuseTexture (std::string pFilename);
 
+        glm::vec3 diffuseColor;
+
     protected:
     private:
         static ShaderProgram* _shader;
