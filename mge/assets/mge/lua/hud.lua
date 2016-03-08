@@ -1,23 +1,43 @@
--- hud = {}
-
--- function hud.draw()
---     -- if Hud.button(50, 50, "lua button") == true then
---     --     print("lua button clicked!")
---     -- end
---     print("hud module test")
--- end
-
--- return Hud;
-
 module("hud", package.seeall)
 
-tip = "this is the next tip"
+riddle = "this is riddle"
+hint = "this is hint"
+showRiddleBox = false
+showHintsBox = false
 
 function draw()
-    if Hud.button(50, 50, "show tip") == true then
-        print("lua button clicked!")
-        tip = "now showing tip 2 biatch!"
-    end
+    handleRiddleButtonClick()
+    handleHintsButtonClick()
+    updateRiddleBox()
+    updateHintsBox()
+end
 
-    Hud.label(50, 350, tip)
+function handleRiddleButtonClick()
+    if Hud.interactiveButton(600, 30, 80, 40, 15, "show riddle", "land") == true then
+        print("clicked riddle!")
+        if showRiddleBox == false then showRiddleBox = true
+        elseif showRiddleBox == true then showRiddleBox = false
+        end
+    end
+end
+
+function handleHintsButtonClick()
+    if Hud.interactiveButton(700, 30, 80, 40, 15, "show hint", "bricks") == true then
+        print("clicked hints!")
+        if showHintsBox == false then showHintsBox = true
+        elseif showHintsBox == true then showHintsBox = false
+        end
+    end
+end
+
+function updateRiddleBox()
+    if showRiddleBox == true then
+        Hud.riddleBox(250, 480, 300, 100, 30, riddle, "bricks")
+    end
+end
+
+function updateHintsBox()
+    if showHintsBox == true then
+        Hud.hintsBox(280, 150, 250, 300, 30, hint, "land")
+    end
 end
