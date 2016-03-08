@@ -12,8 +12,8 @@ solved = false
 
 pieces[activePiece]:flash(1.6)
 
---storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
--- storyWall:changeTexture("land.jpg")
+storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
+storyWall:changeTexture("land.jpg")
 -- wall:setPosition(0,1,-3)
 -- wall:scale(5,5,1)
 
@@ -86,6 +86,12 @@ function handleControl()
     end
     if Game.getKey(KeyCode.A) == true then
         pieces[activePiece]:roll(-1.5) 
+    end
+    if Game.getKey(KeyCode.Q) == true then
+        pieces[activePiece]:yaw(1.5) 
+    end
+    if Game.getKey(KeyCode.E) == true then
+        pieces[activePiece]:yaw(-1.5) 
     end
 end 
 

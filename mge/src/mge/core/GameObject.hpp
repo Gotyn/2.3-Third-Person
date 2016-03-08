@@ -22,6 +22,9 @@ class GameObject
         void setName (std::string pName);
         std::string getName() const;
 
+        void setActive(bool pActive);
+        bool getActive() const;
+
         //contains local rotation, scale, position
 		void setTransform (const glm::mat4& pTransform);
         glm::mat4& getTransform();
@@ -79,6 +82,8 @@ class GameObject
 
 	protected:
 		std::string _name;
+		bool _active = true;
+        bool _rotateWithCamera;
 		glm::mat4 _transform;
 		glm::mat4 _worldTransform;
 
@@ -89,6 +94,7 @@ class GameObject
         //update children list administration
         void _innerAdd (GameObject* pChild);
 		void _innerRemove (GameObject* pChild);
+
 };
 
 #endif // GAMEOBJECT_H

@@ -87,6 +87,9 @@ void RenderPipeline::render (World* pWorld)
 
 void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive, bool pShadowMap)
 {
+    if (!pGameObject->getActive())
+        return;
+
     MeshRenderer* meshRenderer = pGameObject->getBehaviour<MeshRenderer>();
 
     if (meshRenderer != NULL)
