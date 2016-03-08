@@ -17,7 +17,7 @@ activePiece = 1
 function update()
     -- updateGameStatus()
     handleControl()
-
+	hud.progress = checkProgress()
     -- print(checkProgress())
 
     -- handleControl(pieces[activePiece])
@@ -38,6 +38,8 @@ function update()
     -- if Game.getKeyDown(KeyCode.F5) == true then
     --     refreshHud()
     -- end
+	
+	--print(checkProgress())
 end
 
 function updateGUI()
