@@ -25,6 +25,9 @@
  */
 int main()
 {
+    /* initialize random seed: */
+    srand (time(NULL));
+
     std::cout << "Starting Game" << std::endl;
 
     AbstractGame* game = new LuaGame();

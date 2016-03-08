@@ -31,3 +31,8 @@ std::vector<std::string> Utils::findFilesIn(std::string pFolder)
     }
     return names;
 }
+
+float Utils::randomRange(float minimum, float maximum)
+{
+    return minimum + static_cast <float> (rand()) / ( static_cast <float> (RAND_MAX/(maximum-minimum)));
+}

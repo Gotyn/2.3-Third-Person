@@ -9,9 +9,10 @@ pieces[1]:scale(0.3,0.3,0.3)
 
 activePiece = 1
 
-wall = Game.Prop("cube_flat.obj", "land.jpg", "piece2")
-wall:setPosition(0,1,-3)
-wall:scale(5,5,1)
+--storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
+-- storyWall:changeTexture("land.jpg")
+-- wall:setPosition(0,1,-3)
+-- wall:scale(5,5,1)
 
 function update()
     -- updateGameStatus()
