@@ -8,6 +8,7 @@ pieces[1]:setPosition(2,2,4)
 pieces[1]:scale(0.3,0.3,0.3)
 
 activePiece = 1
+solved = false
 
 storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
 -- storyWall:changeTexture("land.jpg")
@@ -18,7 +19,12 @@ function update()
     -- updateGameStatus()
     handleControl()
 
-    -- print(checkProgress())
+    if checkProgress() > 0.9 then
+        if solved == false then
+            solved = true
+            Audio.playSound("door.wav")
+        end
+    end
 
     -- handleControl(pieces[activePiece])
 

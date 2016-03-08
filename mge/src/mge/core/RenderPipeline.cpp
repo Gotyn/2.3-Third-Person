@@ -72,7 +72,9 @@ void RenderPipeline::render (World* pWorld)
     //render world to depth map
     glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
     glClear(GL_DEPTH_BUFFER_BIT);
+    glCullFace(GL_FRONT);
     render (pWorld, pWorld, pWorld->getMainCamera(), true, true);
+    glCullFace(GL_BACK);
 
     //show shadowMap (testing only)
 //    showShadowMap();
