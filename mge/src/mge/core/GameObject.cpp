@@ -58,13 +58,13 @@ glm::mat4& GameObject::getTransform()
 glm::vec3 GameObject::getForward()
 {
     glm::vec4 f = _transform * glm::vec4(0,0,-1,0);
-    return glm::vec3(f[0],f[1],f[2]);
+    return glm::normalize(glm::vec3(f[0],f[1],f[2]));
 }
 
 glm::vec3 GameObject::getUp()
 {
     glm::vec4 f = _transform * glm::vec4(0,1,0,0);
-    return glm::vec3(f[0],f[1],f[2]);
+    return glm::normalize(glm::vec3(f[0],f[1],f[2]));
 }
 
 void GameObject::pitch(float pAmount)
