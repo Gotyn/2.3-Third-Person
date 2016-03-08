@@ -12,7 +12,7 @@ solved = false
 
 pieces[activePiece]:flash(1.6)
 
-storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
+--storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
 -- storyWall:changeTexture("land.jpg")
 -- wall:setPosition(0,1,-3)
 -- wall:scale(5,5,1)

@@ -94,6 +94,10 @@ void LuaGame::_initLua()
         .beginNamespace ("Audio")
             //audio functions
             .addFunction ("playSound", Audio::PlayEffect)
+            .addFunction ("stopSound", Audio::StopEffect)
+            .addFunction ("playMusic", Audio::PlayMusic)
+            .addFunction ("pauseMusic", Audio::PauseMusic)
+            .addFunction ("stopMusic", Audio::StopMusic)
         .endNamespace();
 }
 
