@@ -13,6 +13,7 @@ class PuzzleBlock : public GameObject
         virtual ~PuzzleBlock();
 
         virtual void update(float pStep, const glm::mat4& pParentTransform);
+        void randomize();
         float getProgress();
         void printStatus();
     protected:

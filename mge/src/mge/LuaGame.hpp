@@ -7,6 +7,7 @@
 
 #include "mge/core/BaseHud.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
+#include "mge/sphinx/StoryWall.hpp"
 
 extern "C" {
 # include "lua.h"
@@ -36,6 +37,7 @@ class LuaGame : public AbstractGame
 
         lua_State* _L;
         BaseHud* _hud;
+        StoryWall* _storyWall;
         FW::FileWatcher _fileWatcher;
 };
 

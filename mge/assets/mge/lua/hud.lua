@@ -41,7 +41,11 @@ hints_box_text = "this is hint"
 showRiddleBox = false
 showHintsBox = false
 
+progress = 0
+
 function draw()
+	Hud.hintsBox(hints_box_x, hints_box_y, hints_box_width, hints_box_height, hints_box_font, progress, hud_textures[4])
+
     handleRiddleButtonClick()
     handleHintsButtonClick()
     updateRiddleBox()
