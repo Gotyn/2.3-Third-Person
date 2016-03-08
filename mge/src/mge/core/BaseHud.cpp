@@ -137,6 +137,34 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
     return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 }
 
+void BaseHud::TextLabel(int x, int y, std::string caption)
+{
+    //create text
+    sf::Text text(caption, _font, 15);
+    text.setPosition(x, y);
+    text.setOrigin(0, 0);
+    text.setColor(sf::Color::White);
+
+    //sprite
+//    sf::Sprite* tipSprite;
+//    tipSprite->setTexture(*&Texture::load("mge/textures/bricks.jpg"));
+
+    //get width/height
+    int width = text.getLocalBounds().width + 5;
+    int height =  text.getLocalBounds().height + 5;
+
+    //create rectangle
+    sf::RectangleShape rect(sf::Vector2f(width, height));
+    rect.setPosition(x, y);
+    rect.setFillColor(sf::Color::Green);
+
+    glActiveTexture(GL_TEXTURE0);
+    _window->pushGLStates(); //console openGL Error here
+    _window->draw(rect);
+    _window->draw(text);
+	_window->popGLStates();
+}
+
 bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
 {
     //create text

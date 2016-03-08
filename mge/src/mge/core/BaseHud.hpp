@@ -12,6 +12,7 @@ class BaseHud
 
         virtual void draw();
         static bool Button(int x, int y, std::string caption);
+        static void TextLabel(int x, int y, std::string caption);
         static bool RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static bool HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
