@@ -145,10 +145,6 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     text.setOrigin(0, 0);
     text.setColor(sf::Color::White);
 
-    //sprite
-//    sf::Sprite* tipSprite;
-//    tipSprite->setTexture(*&Texture::load("mge/textures/bricks.jpg"));
-
     //get width/height
     int width = text.getLocalBounds().width + 5;
     int height =  text.getLocalBounds().height + 5;
@@ -159,10 +155,30 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     rect.setFillColor(sf::Color::Green);
 
     glActiveTexture(GL_TEXTURE0);
-    _window->pushGLStates(); //console openGL Error here
     _window->draw(rect);
     _window->draw(text);
-	_window->popGLStates();
+}
+
+void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+{
+    //create text
+    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
+    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintsBoxText->setString(caption);
+    hintsBoxText->setFont(_font);
+    hintsBoxText->setCharacterSize(fontSize);
+    hintsBoxText->setColor(sf::Color::Black);
+
+    //sprite
+    hintsBoxTexture->setRepeated(true);
+
+    hintsBoxSprite->setTexture(*hintsBoxTexture);
+    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+
+    _window->draw(*hintsBoxSprite);
+    _window->draw(*hintsBoxText);
 }
 
 bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
