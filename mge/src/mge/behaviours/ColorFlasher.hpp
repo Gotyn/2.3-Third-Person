@@ -1,7 +1,7 @@
 #ifndef COLORFLASHER_H
 #define COLORFLASHER_H
 
-#include <AbstractBehaviour.hpp>
+#include "mge/behaviours/AbstractBehaviour.hpp"
 
 #include "mge/materials/LitTextureMaterial.hpp"
 

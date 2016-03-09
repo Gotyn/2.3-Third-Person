@@ -1,5 +1,10 @@
 gameHud = require "mge/lua/hud"
 
+dofile("mge/lua/story1.lua")
+getSomething()
+print(story[1].wallImage)
+print(story[1].blocks[1]:getName())
+
 pieces = {  
     Game.PuzzleBlock("Ship.obj", "bricks.jpg", "piece1")
 }
