@@ -1,5 +1,6 @@
 #include "DepthMapper.hpp"
 
+#include "mge/core/AbstractGame.hpp"
 #include "config.hpp"
 #include "mge/core/RenderPipeline.hpp"
 
@@ -55,6 +56,6 @@ void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObj
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    glViewport(0, 0, 800, 600); //todo: change to screen size variables
+    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT); //todo: change to screen size variables
 }
 

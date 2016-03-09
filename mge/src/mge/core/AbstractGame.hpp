@@ -8,6 +8,10 @@
 #include "mge/core/World.hpp"
 #include "mge/core/RenderPipeline.hpp"
 
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 710
+#define MSAA 4
+
 using namespace std;
 
 //class World;
