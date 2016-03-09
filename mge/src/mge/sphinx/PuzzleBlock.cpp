@@ -3,7 +3,8 @@
 #include "mge/Materials/LitTextureMaterial.hpp"
 #include "mge/util/Utils.hpp"
 
-PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName):GameObject(pObjectName)
+PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName,
+                         float x, float y, float z):GameObject(pObjectName)
 {
     _targetForward = GameObject::getForward();
     _targetUp = GameObject::getUp();
@@ -13,6 +14,9 @@ PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::
     _meshRenderer = new MeshRenderer(pModelName, _material, this);
     _colorFlasher = new ColorFlasher(this);
     _colorFlasher->setMaterial(_material);
+
+    //set position
+    setLocalPosition(glm::vec3(x, y, z));
 
     //randomize block rotation
     randomize();
