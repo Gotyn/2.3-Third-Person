@@ -29,9 +29,9 @@ sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
 std::string BaseHud::riddleButtonTextureName = "bricks";
-std::string BaseHud::hintsButtonTextureName = "bricks";
+std::string BaseHud::hintsButtonTextureName = "land";
 std::string BaseHud::riddleBoxTextureName = "bricks";
-std::string BaseHud::hintsBoxTextureName = "bricks";
+std::string BaseHud::hintsBoxTextureName = "land";
 
 BaseHud::BaseHud(sf::RenderWindow* aWindow)
 {
@@ -95,7 +95,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
     _window->pushGLStates();
     _window->draw(rect);
     _window->draw(text);
-	_window->popGLStates();
+    _window->popGLStates();
 
     //text mouse
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
@@ -119,6 +119,11 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
     riddleButtonText->setColor(sf::Color::White);
 
     riddleButtonTexture->setRepeated(true);
+    if (!riddleButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleButtonTextureName + ".jpg"))
+    {
+        std::cout << "Could not load texture for riddle button" << std::endl;
+        return false;
+    }
 
     riddleButtonSprite->setTexture(*riddleButtonTexture);
     riddleButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
@@ -149,6 +154,11 @@ bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std
     hintsButtonText->setColor(sf::Color::White);
 
     hintsButtonTexture->setRepeated(true);
+    if (!hintsButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsButtonTextureName + ".jpg"))
+    {
+        std::cout << "Could not load texture for hints button" << std::endl;
+        return false;
+    }
 
     hintsButtonSprite->setTexture(*hintsButtonTexture);
     hintsButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
@@ -180,6 +190,11 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
 
     //sprite
     riddleBoxTexture->setRepeated(true);
+    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName + ".jpg"))
+    {
+        std::cout << "Could not load texture for label" << std::endl;
+        return;
+    }
 
     riddleBoxSprite->setTexture(*riddleBoxTexture);
     riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
@@ -203,6 +218,12 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     //sprite
     hintsBoxTexture->setRepeated(true);
 
+    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName + ".jpg"))
+    {
+        std::cout << "Could not load texture for label" << std::endl;
+        return;
+    }
+
     hintsBoxSprite->setTexture(*hintsBoxTexture);
     hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
     hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
@@ -215,4 +236,24 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
 void BaseHud::draw()
 {
 
+}
+
+void BaseHud::setRiddleButtonTextureName(const std::string name)
+{
+    riddleButtonTextureName = name;
+}
+
+void BaseHud::setHintsButtonTextureName(const std::string name)
+{
+    hintsButtonTextureName = name;
+}
+
+void BaseHud::setRiddleBoxTextureName(const std::string name)
+{
+    riddleBoxTextureName = name;
+}
+
+void BaseHud::setHintsBoxTextureName(const std::string name)
+{
+    hintsBoxTextureName = name;
 }

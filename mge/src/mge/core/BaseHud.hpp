@@ -17,6 +17,10 @@ class BaseHud
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void loadTextures();
+        static void setRiddleButtonTextureName(const std::string name);
+        static void setHintsButtonTextureName(const std::string name);
+        static void setRiddleBoxTextureName(const std::string name);
+        static void setHintsBoxTextureName(const std::string name);
 
     protected:
 

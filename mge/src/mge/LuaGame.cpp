@@ -132,7 +132,7 @@ void LuaGame::_updateGUI()
 {
     luabridge::LuaRef luaUpdateGUI = luabridge::getGlobal (_L, "updateGUI");
 
-     glActiveTexture(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
     luaUpdateGUI();
     _window->popGLStates();
