@@ -246,7 +246,7 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     sf::Text text(caption, _font, 15);
     text.setPosition(x, y);
     text.setOrigin(0, 0);
-    text.setColor(sf::Color::White);
+    text.setColor(sf::Color::Black);
 
     //get width/height
     int width = text.getLocalBounds().width + 5;
@@ -255,7 +255,7 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     //create rectangle
     sf::RectangleShape rect(sf::Vector2f(width, height));
     rect.setPosition(x, y);
-    rect.setFillColor(sf::Color::Green);
+    rect.setFillColor(sf::Color::White);
 
     glActiveTexture(GL_TEXTURE0);
     _window->draw(rect);

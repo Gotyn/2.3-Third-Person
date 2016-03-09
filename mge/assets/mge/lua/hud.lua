@@ -9,6 +9,11 @@ hud_textures =
     "bricks"    -- hints_box_texture
 }
 
+hud_progress_sprites =
+{
+	1, 2, 3, 4, 5, 6, 7
+}
+
 riddle_button_x = 600
 riddle_button_y = 30
 riddle_button_width = 80
@@ -44,11 +49,18 @@ showHintsBox = false
 progress = 0
 
 function draw()
-	--Hud.hintsBox(hints_box_x, hints_box_y, hints_box_width, hints_box_height, hints_box_font, progress, hud_textures[4])
+	-- Progress Label --
 	Hud.label(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
-	--Hud.textLabel(100, 100, "yer a wizard Harry!")
+	
+	-- Progress Labels --
+	updateProgressBar()
+	
+	-- Test Label --
 	Hud.label(100,100,100,100, 20, "123", hud_textures[1])
-    handleRiddleButtonClick()
+    
+	
+	
+	handleRiddleButtonClick()
     handleHintsButtonClick()
     updateRiddleBox()
     updateHintsBox()
@@ -70,6 +82,17 @@ function handleHintsButtonClick()
         elseif showHintsBox == true then showHintsBox = false
         end
     end
+end
+
+function updateProgressBar()
+	-- Using TextLabels for now
+	if (progress > 0.10) then Hud.textLabel(50 ,400, "||  1") end
+	if (progress > 0.20) then Hud.textLabel(80,400, "| 2") end
+	if (progress > 0.35) then Hud.textLabel(105,400, "| 3") end
+	if (progress > 0.50) then Hud.textLabel(130,400, "| 4") end
+	if (progress > 0.65) then Hud.textLabel(155,400, "| 5") end
+	if (progress > 0.80) then Hud.textLabel(180,400, "| 6") end
+	if (progress > 0.90) then Hud.textLabel(205,400, "| 7  ||") end
 end
 
 function updateRiddleBox()
