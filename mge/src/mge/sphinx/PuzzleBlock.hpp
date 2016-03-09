@@ -18,7 +18,7 @@ class PuzzleBlock : public GameObject
         void randomize();
         float getProgress();
         float flash(float pDuration);
-        void printStatus();
+
     protected:
 
     private:
