@@ -2000,7 +2000,7 @@
 	<vector>
 	"mge/core/GameObject.hpp"
 
-1457442530 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
+1457558915 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
 	<vector>
 	<string>
 	<iostream>
@@ -2388,7 +2388,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1457442530 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1457559147 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<glm.hpp>
@@ -2420,7 +2420,7 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1457522794 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1457557820 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -2557,7 +2557,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457522797 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457558806 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -2568,13 +2568,13 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1457522794 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457557808 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
 	"mge/util/Utils.hpp"
 
-1457309039 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
+1457559412 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
 	"GameCamera.hpp"
 	"mge/core/World.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -3431,7 +3431,7 @@
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457442530 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1457559629 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3546,7 +3546,7 @@
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457391748 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
+1457527532 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
 	"StoryWall.hpp"
 
 1457391748 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.hpp

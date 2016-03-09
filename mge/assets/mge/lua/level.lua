@@ -8,7 +8,7 @@ activePiece = 1
 solvedThreshold = 0.9
 
 storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
-storyWall:changeTexture("land.jpg")
+storyWall:rotateAroundAxis(10, 0, 1, 0)
 
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
@@ -33,6 +33,7 @@ function selectPuzzle(puzzleIndex)
     end
 
     activePuzzle = puzzleIndex
+    storyWall:changeTexture(story[puzzleIndex].wallImage)
     selectBlock(activePuzzle, 1)
 end
 
@@ -43,6 +44,30 @@ function nextPuzzle()
         print("completed!!")
     else
         selectPuzzle(nextPuzzleIndex)
+    end
+end
+
+function handlePlacement(gameObject)
+    if Game.getKeyDown(KeyCode.P) == true then
+        gameObject:printStatus(gameObject) 
+    end
+    if Game.getKey(KeyCode.Up) == true then
+        gameObject:move(0, 0, -1) 
+    end
+    if Game.getKey(KeyCode.Down) == true then
+        gameObject:move(0, 0, 1) 
+    end
+    if Game.getKey(KeyCode.Left) == true then
+        gameObject:move(-1, 0, 0) 
+    end
+    if Game.getKey(KeyCode.Right) == true then
+        gameObject:move(1, 0, 0) 
+    end
+    if Game.getKey(KeyCode.RShift) == true then
+        gameObject:move(0, 1, 0) 
+    end
+    if Game.getKey(KeyCode.RControl) == true then
+        gameObject:move(0, -1, 0) 
     end
 end
 
@@ -61,6 +86,8 @@ function update()
         end
 
         handleControl()
+        handlePlacement(storyWall)
+        -- handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
             nextPuzzle()

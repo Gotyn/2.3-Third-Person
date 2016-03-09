@@ -25,6 +25,8 @@ class GameObject
         void setActive(bool pActive);
         bool getActive() const;
 
+        void printStatus();
+
         //contains local rotation, scale, position
 		void setTransform (const glm::mat4& pTransform);
         glm::mat4& getTransform();
@@ -49,6 +51,7 @@ class GameObject
 		void translate(glm::vec3 pTranslation);
 		void move(float x, float y, float z);
 		void rotate(float pAngle, glm::vec3 pAxis);
+		void rotateAroundAxis(float pAngle, float x, float y, float z);
 		void scale(glm::vec3 pScale);
 		void scaleLua(float x, float y, float z);
 

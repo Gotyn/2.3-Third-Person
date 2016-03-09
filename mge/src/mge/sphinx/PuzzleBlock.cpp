@@ -49,18 +49,6 @@ float PuzzleBlock::getProgress()
     return 1.0f - progressFraction;
 }
 
-void PuzzleBlock::printStatus()
-{
-    std::cout << "===================================================" << std::endl;
-    std::cout << "puzzleBlock status of: " << getName() << std::endl;
-    std::cout << "---------------------------------------------------" << std::endl;
-    std::cout << "position:          " << getWorldPosition() << std::endl;
-    std::cout << "TODO: print scale" << std::endl;
-    std::cout << "forward direction: " << getForward() << std::endl;
-    std::cout << "up direction:      " << getUp() << std::endl;
-    std::cout << std::endl;
-}
-
 void PuzzleBlock::update(float pStep, const glm::mat4& pParentTransform)
 {
     GameObject::update(pStep, pParentTransform);
