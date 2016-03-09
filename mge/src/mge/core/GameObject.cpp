@@ -8,6 +8,7 @@ using namespace std;
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
+#include "mge/core/Camera.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
 
 GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld )
@@ -15,6 +16,8 @@ GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld 
 {
     if (pAddToWorld == true)
         World::Instance()->add(this);
+
+    _rotateWithCamera = true;
 }
 
 GameObject::~GameObject()
@@ -43,6 +46,16 @@ void GameObject::setName (std::string pName)
 std::string GameObject::getName() const
 {
 	return _name;
+}
+
+void GameObject::setActive(bool pActive)
+{
+    _active = pActive;
+}
+
+bool GameObject::getActive() const
+{
+    return _active;
 }
 
 void GameObject::setTransform (const glm::mat4& pTransform)
@@ -74,7 +87,17 @@ void GameObject::pitch(float pAmount)
 
 void GameObject::roll(float pAmount)
 {
-    rotate(pAmount * Timer::deltaTime(), glm::vec3(0,0,1));
+    glm::vec4 axis = glm::vec4(0,0,1,0);
+
+//    if (_rotateWithCamera)
+//    {
+//        glm::vec3 camZ = World::Instance()->getMainCamera()->getOwner()->getForward();
+//        axis = glm::vec4(camZ, 0);
+//    }
+
+    glm::vec3 relativeAxis = glm::normalize(glm::vec3(axis[0], axis[1], axis[2]));
+
+    rotate(pAmount * Timer::deltaTime(), relativeAxis);
 }
 
 void GameObject::yaw(float pAmount)
@@ -208,6 +231,9 @@ void GameObject::rotate(float pAngle, glm::vec3 pAxis)
 
 void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 {
+    if (!_active)
+        return;
+
     _worldTransform = pParentTransform * _transform;
 
     for (auto const& value: _behaviours)
