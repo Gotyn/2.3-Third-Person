@@ -76,6 +76,10 @@ void BaseHud::loadTextures()
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
+    riddleButtonTexture->setRepeated(true);
+    hintsButtonTexture->setRepeated(true);
+    riddleBoxTexture->setRepeated(true);
+    hintsBoxTexture->setRepeated(true);
     _window->popGLStates();
 }
 
@@ -114,8 +118,6 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
     riddleButtonText->setCharacterSize(fontSize);
     riddleButtonText->setColor(sf::Color::White);
 
-    riddleButtonTexture->setRepeated(true);
-
     riddleButtonSprite->setTexture(*riddleButtonTexture);
     riddleButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
     riddleButtonSprite->setPosition(sf::Vector2f(x, y)); // absolute position
@@ -137,8 +139,6 @@ bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std
     hintsButtonText->setFont(_font);
     hintsButtonText->setCharacterSize(fontSize);
     hintsButtonText->setColor(sf::Color::White);
-
-    hintsButtonTexture->setRepeated(true);
 
     hintsButtonSprite->setTexture(*hintsButtonTexture);
     hintsButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
@@ -162,9 +162,6 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
     riddleBoxText->setCharacterSize(fontSize);
     riddleBoxText->setColor(sf::Color::White);
 
-    //sprite
-    riddleBoxTexture->setRepeated(true);
-
     riddleBoxSprite->setTexture(*riddleBoxTexture);
     riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
     riddleBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
@@ -183,9 +180,6 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     hintsBoxText->setFont(_font);
     hintsBoxText->setCharacterSize(fontSize);
     hintsBoxText->setColor(sf::Color::Black);
-
-    //sprite
-    hintsBoxTexture->setRepeated(true);
 
     hintsBoxSprite->setTexture(*hintsBoxTexture);
     hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
@@ -233,7 +227,6 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     rect.setPosition(x, y);
     rect.setFillColor(sf::Color::Green);
 
-    glActiveTexture(GL_TEXTURE0);
     _window->draw(rect);
     _window->draw(text);
 }
@@ -255,13 +248,6 @@ bool BaseHud::CheckMouseOnButton(int x, int y, int width, int height)
     if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
         lmbPressedLastFrame = false;
     }
-}
-
-
-// todo: remove?
-void BaseHud::draw()
-{
-
 }
 
 void BaseHud::setRiddleButtonTextureName(const std::string name)

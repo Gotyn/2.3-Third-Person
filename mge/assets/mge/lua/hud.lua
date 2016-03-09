@@ -56,7 +56,6 @@ end
 
 function handleRiddleButtonClick()
     if Hud.riddleButton(riddle_button_x, riddle_button_y, riddle_button_width, riddle_button_height, riddle_button_font, riddle_button_text, hud_textures[1]) == true then
-        print("clicked riddle!")
         if showRiddleBox == false then showRiddleBox = true
         elseif showRiddleBox == true then showRiddleBox = false
         end
@@ -65,7 +64,6 @@ end
 
 function handleHintsButtonClick()
     if Hud.hintsButton(hints_button_x, hints_button_y, hints_button_width, hints_button_height, hints_button_font, hints_button_text, hud_textures[2]) == true then
-        print("clicked hints!")
         if showHintsBox == false then showHintsBox = true
         elseif showHintsBox == true then showHintsBox = false
         end

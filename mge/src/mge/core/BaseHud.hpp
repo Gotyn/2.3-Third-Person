@@ -10,7 +10,6 @@ class BaseHud
         BaseHud(sf::RenderWindow* aWindow);
         virtual ~BaseHud();
 
-        virtual void draw();
         static bool Button(int x, int y, std::string caption);
         static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
         static void Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
