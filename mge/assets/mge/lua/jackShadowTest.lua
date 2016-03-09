@@ -12,14 +12,17 @@ solved = false
 
 pieces[activePiece]:flash(1.6)
 
-storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
-storyWall:changeTexture("land.jpg")
+--storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
+--storyWall:changeTexture("land.jpg")
 -- wall:setPosition(0,1,-3)
 -- wall:scale(5,5,1)
 
 function update()
     -- updateGameStatus()
     handleControl()
+
+	hud.progress = checkProgress() 
+    -- print(checkProgress())
 
     if checkProgress() > 0.9 then
         if solved == false then
@@ -46,6 +49,8 @@ function update()
     -- if Game.getKeyDown(KeyCode.F5) == true then
     --     refreshHud()
     -- end
+	
+	--print(checkProgress())
 end
 
 function updateGUI()

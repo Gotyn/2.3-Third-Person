@@ -43,7 +43,6 @@ void AbstractGame::_printVersionInfo() {
 	cout << "Context info:" << endl;
     cout << "----------------------------------" << endl;
     //print some debug stats for whoever cares
-//    const GLubyte *renderer = glGetString( GL_RENDERER );
     const GLubyte *vendor = glGetString( GL_VENDOR );
     const GLubyte *version = glGetString( GL_VERSION );
     const GLubyte *glslVersion = glGetString( GL_SHADING_LANGUAGE_VERSION );
@@ -53,7 +52,6 @@ void AbstractGame::_printVersionInfo() {
     glGetIntegerv(GL_MINOR_VERSION, &minor);
 
     printf("GL Vendor : %s\n", vendor);
-//    printf("GL Renderer : %s\n", renderer);
     printf("GL Version (string) : %s\n", version);
     printf("GL Version (integer) : %d.%d\n", major, minor);
     printf("GLSL Version : %s\n", glslVersion);
@@ -78,10 +76,10 @@ void AbstractGame::_initializeWorld() {
 
     //note: replaced by private Instance constructor
 
-//    //setup our own renderer
+    //setup our own renderer
 //	cout << "Initializing world..." << endl;
 //	_world = new World();
-//    cout << "World initialized." << endl << endl;
+//  cout << "World initialized." << endl << endl;
 }
 
 void AbstractGame::_resetWorld() {
