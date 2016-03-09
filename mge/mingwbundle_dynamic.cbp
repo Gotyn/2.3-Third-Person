@@ -92,6 +92,8 @@
 		<Unit filename="src/mge/MGEPaul.h" />
 		<Unit filename="src/mge/behaviours/AbstractBehaviour.cpp" />
 		<Unit filename="src/mge/behaviours/AbstractBehaviour.hpp" />
+		<Unit filename="src/mge/behaviours/ColorFlasher.cpp" />
+		<Unit filename="src/mge/behaviours/ColorFlasher.hpp" />
 		<Unit filename="src/mge/behaviours/KeysBehaviour.cpp" />
 		<Unit filename="src/mge/behaviours/KeysBehaviour.hpp" />
 		<Unit filename="src/mge/behaviours/LookAt.cpp" />
