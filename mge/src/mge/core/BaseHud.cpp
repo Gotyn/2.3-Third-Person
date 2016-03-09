@@ -44,7 +44,7 @@ BaseHud::BaseHud(sf::RenderWindow* aWindow)
         std::cout << "Could not load font, exiting..." << std::endl;
         return;
     }
-    //loadTextures();
+    loadTextures();
 }
 
 BaseHud::~BaseHud()
@@ -54,6 +54,8 @@ BaseHud::~BaseHud()
 
 void BaseHud::loadTextures()
 {
+    glActiveTexture(GL_TEXTURE0);
+    _window->pushGLStates();
     if (!riddleButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleButtonTextureName + ".jpg"))
     {
         std::cout << "Could not load texture for button" << std::endl;
@@ -74,6 +76,7 @@ void BaseHud::loadTextures()
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
+    _window->popGLStates();
 }
 
 bool BaseHud::Button(int x, int y, std::string caption)
@@ -115,11 +118,11 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
     riddleButtonText->setColor(sf::Color::White);
 
     riddleButtonTexture->setRepeated(true);
-    if (!riddleButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleButtonTextureName + ".jpg"))
-    {
-        std::cout << "Could not load texture for riddle button" << std::endl;
-        return false;
-    }
+//    if (!riddleButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleButtonTextureName + ".jpg"))
+//    {
+//        std::cout << "Could not load texture for riddle button" << std::endl;
+//        return false;
+//    }
 
     riddleButtonSprite->setTexture(*riddleButtonTexture);
     riddleButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
@@ -130,6 +133,117 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
 
 	//text mouse
     return CheckMouseOnButton(x,y,width,height);
+}
+
+bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+{
+    //create text
+    sf::FloatRect textRect = hintsButtonText->getLocalBounds();
+    hintsButtonText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    hintsButtonText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintsButtonText->setString(caption);
+    hintsButtonText->setFont(_font);
+    hintsButtonText->setCharacterSize(fontSize);
+    hintsButtonText->setColor(sf::Color::White);
+
+    hintsButtonTexture->setRepeated(true);
+//    if (!hintsButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsButtonTextureName + ".jpg"))
+//    {
+//        std::cout << "Could not load texture for hints button" << std::endl;
+//        return false;
+//    }
+
+    hintsButtonSprite->setTexture(*hintsButtonTexture);
+    hintsButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintsButtonSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+
+    _window->draw(*hintsButtonSprite);
+    _window->draw(*hintsButtonText);
+
+	//text mouse
+    return CheckMouseOnButton(x,y,width,height);
+}
+
+void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+{
+    //create text
+    sf::FloatRect textRect = riddleBoxText->getLocalBounds();
+    riddleBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    riddleBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    riddleBoxText->setString(caption);
+    riddleBoxText->setFont(_font);
+    riddleBoxText->setCharacterSize(fontSize);
+    riddleBoxText->setColor(sf::Color::White);
+
+    //sprite
+    riddleBoxTexture->setRepeated(true);
+//    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName + ".jpg"))
+//    {
+//        std::cout << "Could not load texture for label" << std::endl;
+//        return;
+//    }
+
+    riddleBoxSprite->setTexture(*riddleBoxTexture);
+    riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    riddleBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+
+    _window->draw(*riddleBoxSprite);
+    _window->draw(*riddleBoxText);
+}
+
+void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+{
+    //create text
+    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
+    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintsBoxText->setString(caption);
+    hintsBoxText->setFont(_font);
+    hintsBoxText->setCharacterSize(fontSize);
+    hintsBoxText->setColor(sf::Color::Black);
+
+    //sprite
+    hintsBoxTexture->setRepeated(true);
+
+//    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName + ".jpg"))
+//    {
+//        std::cout << "Could not load texture for label" << std::endl;
+//        return;
+//    }
+
+    hintsBoxSprite->setTexture(*hintsBoxTexture);
+    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+
+    _window->draw(*hintsBoxSprite);
+    _window->draw(*hintsBoxText);
+}
+
+void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+{
+    //create text
+    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
+    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintsBoxText->setString(caption);
+    hintsBoxText->setFont(_font);
+    hintsBoxText->setCharacterSize(fontSize);
+    hintsBoxText->setColor(sf::Color::Black);
+
+    //sprite
+    hintsBoxTexture->setRepeated(true);
+    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName + ".jpg"))
+    {
+        std::cout << "Could not load texture for label" << std::endl;
+        return;
+    }
+
+    hintsBoxSprite->setTexture(*hintsBoxTexture);
+    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+
+    _window->draw(*hintsBoxSprite);
+    _window->draw(*hintsBoxText);
 }
 
 void BaseHud::TextLabel(int x, int y, std::string caption)
@@ -154,117 +268,7 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     _window->draw(text);
 }
 
-void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
-{
-    //create text
-    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
-    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
-    hintsBoxText->setString(caption);
-    hintsBoxText->setFont(_font);
-    hintsBoxText->setCharacterSize(fontSize);
-    hintsBoxText->setColor(sf::Color::Black);
-
-    //sprite
-    hintsBoxTexture->setRepeated(true);
-
-    hintsBoxSprite->setTexture(*hintsBoxTexture);
-    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
-
-    _window->draw(*hintsBoxSprite);
-    _window->draw(*hintsBoxText);
-}
-
-bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
-{
-    //create text
-    sf::FloatRect textRect = hintsButtonText->getLocalBounds();
-    hintsButtonText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintsButtonText->setPosition(sf::Vector2f(x + width/2, y + height/2));
-    hintsButtonText->setString(caption);
-    hintsButtonText->setFont(_font);
-    hintsButtonText->setCharacterSize(fontSize);
-    hintsButtonText->setColor(sf::Color::White);
-
-    hintsButtonTexture->setRepeated(true);
-    if (!hintsButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsButtonTextureName + ".jpg"))
-    {
-        std::cout << "Could not load texture for hints button" << std::endl;
-        return false;
-    }
-
-    hintsButtonSprite->setTexture(*hintsButtonTexture);
-    hintsButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintsButtonSprite->setPosition(sf::Vector2f(x, y)); // absolute position
-
-    _window->draw(*hintsButtonSprite);
-    _window->draw(*hintsButtonText);
-
-	//text mouse
-    return CheckMouseOnButton(x,y,width,height);
-
-
-
-}
-
-void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
-{
-    //create text
-    sf::FloatRect textRect = riddleBoxText->getLocalBounds();
-    riddleBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    riddleBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
-    riddleBoxText->setString(caption);
-    riddleBoxText->setFont(_font);
-    riddleBoxText->setCharacterSize(fontSize);
-    riddleBoxText->setColor(sf::Color::White);
-
-    //sprite
-    riddleBoxTexture->setRepeated(true);
-    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName + ".jpg"))
-    {
-        std::cout << "Could not load texture for label" << std::endl;
-        return;
-    }
-
-    riddleBoxSprite->setTexture(*riddleBoxTexture);
-    riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    riddleBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
-
-    _window->draw(*riddleBoxSprite);
-    _window->draw(*riddleBoxText);
-}
-
-void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
-{
-    //create text
-    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
-    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
-    hintsBoxText->setString(caption);
-    hintsBoxText->setFont(_font);
-    hintsBoxText->setCharacterSize(fontSize);
-    hintsBoxText->setColor(sf::Color::Black);
-
-    //sprite
-    hintsBoxTexture->setRepeated(true);
-
-    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName + ".jpg"))
-    {
-        std::cout << "Could not load texture for label" << std::endl;
-        return;
-    }
-
-    hintsBoxSprite->setTexture(*hintsBoxTexture);
-    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
-
-    _window->draw(*hintsBoxSprite);
-    _window->draw(*hintsBoxText);
-}
-
 bool BaseHud::CheckMouseOnButton(int x, int y, int width, int height){
-    std::cout << "start of check: " << lmbPressedLastFrame << std::endl;
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
     if (mousePos.x < x) { return false; }
     if (mousePos.y < y) { return false; }

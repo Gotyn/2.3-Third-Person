@@ -2591,7 +2591,7 @@
 1456080712 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\input.hpp
 	"mge/core/AbstractGame.hpp"
 
-1457470095 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.cpp
+1457518029 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2602,7 +2602,7 @@
 	"mge/config.hpp"
 	"mge/core/Timer.hpp"
 
-1457514009 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.hpp
+1457516100 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -2698,7 +2698,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457470198 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luagame.cpp
+1457515671 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3557,7 +3557,7 @@
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457345890 D
+1457442211 D
 
 1457348574 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
 	"mge/materials/DepthMapper.hpp"
@@ -3677,11 +3677,15 @@
 	"mge/materials/LitTextureMaterial.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 
-<<<<<<< HEAD
-1457391100 s/remotes/origin/hud2
+1457442211 s/remotes/origin/hud2
+	<GameObject.hpp>
+	"mge/materials/AbstractMaterial.hpp"
+	"mge/materials/LitTextureMaterial.hpp"
+	"mge/behaviours/MeshRenderer.hpp"
+	"StoryWall.hpp"
 
 1457442261 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\sphinx\storywall.hpp
-=======
+
 1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
@@ -3692,16 +3696,8 @@
 	"mge/config.hpp"
 
 1457442211 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.hpp
->>>>>>> refs/remotes/origin/hud2
-	<GameObject.hpp>
-	"mge/materials/AbstractMaterial.hpp"
-	"mge/materials/LitTextureMaterial.hpp"
-	"mge/behaviours/MeshRenderer.hpp"
 
-<<<<<<< HEAD
 1457442261 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
-=======
+
 1457442211 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
->>>>>>> refs/remotes/origin/hud2
-	"StoryWall.hpp"
 
