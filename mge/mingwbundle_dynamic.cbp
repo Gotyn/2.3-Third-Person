@@ -160,6 +160,8 @@
 		<Unit filename="src/mge/sphinx/Prop.hpp" />
 		<Unit filename="src/mge/sphinx/PuzzleBlock.cpp" />
 		<Unit filename="src/mge/sphinx/PuzzleBlock.hpp" />
+		<Unit filename="src/mge/sphinx/StoryWall.cpp" />
+		<Unit filename="src/mge/sphinx/StoryWall.hpp" />
 		<Unit filename="src/mge/util/DebugHud.cpp" />
 		<Unit filename="src/mge/util/DebugHud.hpp" />
 		<Unit filename="src/mge/util/UpdateListener.cpp" />
