@@ -197,14 +197,13 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
 
 void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
 {
+
     //create text
-    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
-    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
-    hintsBoxText->setString(caption);
-    hintsBoxText->setFont(_font);
-    hintsBoxText->setCharacterSize(fontSize);
-    hintsBoxText->setColor(sf::Color::Black);
+    sf::Text text(caption,_font,fontSize);
+    sf::FloatRect textRect = text.getLocalBounds();
+    text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    text.setPosition(sf::Vector2f(x + width/2, y + height/2));
+    text.setColor(sf::Color::Black);
 
     //sprite
     hintsBoxTexture->setRepeated(true);
@@ -214,7 +213,7 @@ void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::stri
     hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*hintsBoxSprite);
-    _window->draw(*hintsBoxText);
+    _window->draw(text);
 }
 
 void BaseHud::TextLabel(int x, int y, std::string caption)
