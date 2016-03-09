@@ -2117,7 +2117,7 @@
 
 1455012284 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1456799384 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1457522797 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -2314,7 +2314,7 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1457442530 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1457522797 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	"mge/core/Input.hpp"
@@ -2363,7 +2363,7 @@
 	<vector>
 	<string>
 
-1457355095 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1457522797 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2372,6 +2372,7 @@
 	"Texture.hpp"
 	<SFML/Graphics/Text.hpp>
 	"mge/config.hpp"
+	"mge/core/Timer.hpp"
 
 1456319322 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\baselight.cpp
 	"BaseLight.h"
@@ -2419,7 +2420,7 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1457516798 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1457522794 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -2556,7 +2557,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457516982 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457522797 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -2567,7 +2568,7 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1457516915 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457522794 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"

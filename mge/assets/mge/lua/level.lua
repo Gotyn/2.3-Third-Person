@@ -5,7 +5,7 @@ dofile("mge/lua/story1.lua")
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 0.8
+solvedThreshold = 0.9
 
 storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
 storyWall:changeTexture("land.jpg")
@@ -62,8 +62,6 @@ function update()
 
         handleControl()
 
-        print(checkProgress())
-
         if checkProgress() >= solvedThreshold then
             nextPuzzle()
         end
@@ -71,6 +69,7 @@ function update()
 end
 
 function updateGUI()
+    hud.progress = checkProgress()
     hud.draw()
 end
 
