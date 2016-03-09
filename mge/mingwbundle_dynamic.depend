@@ -2745,7 +2745,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1457355095 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1457518717 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2756,7 +2756,7 @@
 	<vector>
 	"mge/core/GameObject.hpp"
 
-1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
+1457518717 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
 	<vector>
 	<string>
 	<iostream>
@@ -2873,7 +2873,7 @@
 
 1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1457443071 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1457518781 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -3070,7 +3070,7 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1457440798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1457518717 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	"mge/core/Input.hpp"
@@ -3122,7 +3122,7 @@
 	<vector>
 	<string>
 
-1457344298 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1457519043 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -3131,6 +3131,7 @@
 	"Texture.hpp"
 	<SFML/Graphics/Text.hpp>
 	"mge/config.hpp"
+	"mge/core/Timer.hpp"
 
 1456319322 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\baselight.cpp
 	"BaseLight.h"
@@ -3146,7 +3147,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1457429115 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1457518717 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<glm.hpp>
@@ -3177,7 +3178,7 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1457442211 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1457518717 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -3314,7 +3315,7 @@
 1456080712 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
 	"Input.hpp"
 
-1457442211 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457518781 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3334,7 +3335,7 @@
 	"mge/core/World.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
 
-1457442211 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457518717 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
@@ -3459,7 +3460,7 @@
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
+1457518717 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
 	"mge/materials/DepthMapper.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/core/ShaderProgram.hpp"
@@ -3535,7 +3536,7 @@
 	"Prop.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
 
-1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
+1457518717 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
@@ -3543,7 +3544,7 @@
 1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.cpp
 	"UpdateListener.hpp"
 
-1457351772 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1457518717 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3552,7 +3553,7 @@
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
+1457518717 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
 	"DepthMapper.hpp"
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"
@@ -3686,7 +3687,7 @@
 
 1457442261 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\sphinx\storywall.hpp
 
-1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1457518717 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
