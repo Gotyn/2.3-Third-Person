@@ -44,7 +44,13 @@ showHintsBox = false
 progress = 0
 
 function draw()
+<<<<<<< HEAD
 	--Hud.hintsBox(hints_box_x, hints_box_y, hints_box_width, hints_box_height, hints_box_font, progress, hud_textures[4])
+=======
+	Hud.hintsBox(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
+	--Hud.textLabel(100, 100, "yer a wizard Harry!")
+	Hud.label(100,100,100,100, 20, "123", hud_textures[1])
+>>>>>>> refs/remotes/origin/hud2
     handleRiddleButtonClick()
     handleHintsButtonClick()
     updateRiddleBox()

@@ -12,16 +12,22 @@ class BaseHud
 
         virtual void draw();
         static bool Button(int x, int y, std::string caption);
+        static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
+        static void Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName = "");
         static bool RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static bool HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void loadTextures();
+<<<<<<< HEAD
         static void setRiddleButtonTextureName(const std::string name);
         static void setHintsButtonTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
         static void setHintsBoxTextureName(const std::string name);
 
+=======
+        static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
+>>>>>>> refs/remotes/origin/hud2
     protected:
 
     private:
@@ -47,6 +53,9 @@ class BaseHud
         static std::string hintsButtonTextureName;
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
+
+
+        static bool CheckMouseOnButton(int x, int y, int width, int height);
 };
 
 #endif // BASEHUD_H
