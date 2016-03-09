@@ -1,15 +1,20 @@
 gameHud = require "mge/lua/hud"
 
 dofile("mge/lua/story1.lua")
-getSomething()
-print(story[1].wallImage)
-print(story[1].blocks[1]:getName())
+-- getSomething()
+-- print(story[1].wallImage)
+-- print(story[1].blocks[1]:getName())
+-- story[1].blocks[1]:setActive(false)
+-- story[1].blocks[2]:setActive(false)
+-- story[2].blocks[1]:setActive(false)
+-- story[2].blocks[2]:setActive(false)
+-- story[1].blocks[1]:setActive(true)
 
 pieces = {  
-    Game.PuzzleBlock("Ship.obj", "bricks.jpg", "piece1")
+    Game.PuzzleBlock("Ship.obj", "bricks.jpg", "piece1", 2, 2, 4)
 }
 
-pieces[1]:setPosition(2,2,4)
+-- pieces[1]:setPosition(2,2,4)
 pieces[1]:scale(0.3,0.3,0.3)
 
 activePiece = 1
