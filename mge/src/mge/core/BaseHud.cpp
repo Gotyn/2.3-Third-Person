@@ -33,6 +33,8 @@ std::string BaseHud::hintsButtonTextureName = "bricks";
 std::string BaseHud::riddleBoxTextureName = "bricks";
 std::string BaseHud::hintsBoxTextureName = "bricks";
 
+bool BaseHud::lmbPressedLastFrame = false;
+
 BaseHud::BaseHud(sf::RenderWindow* aWindow)
 {
     _window = aWindow;
@@ -98,13 +100,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
 	_window->popGLStates();
 
     //text mouse
-    sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
-    if (mousePos.x < x) return false;
-    if (mousePos.y < y) return false;
-    if (mousePos.x > x + width) return false;
-    if (mousePos.y > y + height) return false;
-
-    return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+    return CheckMouseOnButton(x,y,width,height);
 }
 
 bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
@@ -128,13 +124,51 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
     _window->draw(*riddleButtonText);
 
 	//text mouse
-    sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
-    if (mousePos.x < x) return false;
-    if (mousePos.y < y) return false;
-    if (mousePos.x > x + width) return false;
-    if (mousePos.y > y + height) return false;
+    return CheckMouseOnButton(x,y,width,height);
+}
 
-    return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+void BaseHud::TextLabel(int x, int y, std::string caption)
+{
+    //create text
+    sf::Text text(caption, _font, 15);
+    text.setPosition(x, y);
+    text.setOrigin(0, 0);
+    text.setColor(sf::Color::White);
+
+    //get width/height
+    int width = text.getLocalBounds().width + 5;
+    int height =  text.getLocalBounds().height + 5;
+
+    //create rectangle
+    sf::RectangleShape rect(sf::Vector2f(width, height));
+    rect.setPosition(x, y);
+    rect.setFillColor(sf::Color::Green);
+
+    glActiveTexture(GL_TEXTURE0);
+    _window->draw(rect);
+    _window->draw(text);
+}
+
+void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+{
+    //create text
+    sf::FloatRect textRect = hintsBoxText->getLocalBounds();
+    hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintsBoxText->setString(caption);
+    hintsBoxText->setFont(_font);
+    hintsBoxText->setCharacterSize(fontSize);
+    hintsBoxText->setColor(sf::Color::Black);
+
+    //sprite
+    hintsBoxTexture->setRepeated(true);
+
+    hintsBoxSprite->setTexture(*hintsBoxTexture);
+    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+
+    _window->draw(*hintsBoxSprite);
+    _window->draw(*hintsBoxText);
 }
 
 bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
@@ -158,13 +192,10 @@ bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std
     _window->draw(*hintsButtonText);
 
 	//text mouse
-    sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
-    if (mousePos.x < x) return false;
-    if (mousePos.y < y) return false;
-    if (mousePos.x > x + width) return false;
-    if (mousePos.y > y + height) return false;
+    return CheckMouseOnButton(x,y,width,height);
 
-    return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+
+
 }
 
 void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
@@ -210,6 +241,26 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxSprite);
     _window->draw(*hintsBoxText);
 }
+
+bool BaseHud::CheckMouseOnButton(int x, int y, int width, int height){
+    std::cout << "start of check: " << lmbPressedLastFrame << std::endl;
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
+    if (mousePos.x < x) { return false; }
+    if (mousePos.y < y) { return false; }
+    if (mousePos.x > x + width) { return false; }
+    if (mousePos.y > y + height) { return false; }
+    //Mouse is on button!
+
+    if (!lmbPressedLastFrame && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        lmbPressedLastFrame = true;
+        return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+    }
+
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        lmbPressedLastFrame = false;
+    }
+}
+
 
 // todo: remove?
 void BaseHud::draw()
