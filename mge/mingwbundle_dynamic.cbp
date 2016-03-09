@@ -22,6 +22,7 @@
 					<Add directory="src/mge" />
 					<Add directory="src/mge/core" />
 					<Add directory="src/mge/materials" />
+					<Add directory="src/mge/sphinx" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32" />

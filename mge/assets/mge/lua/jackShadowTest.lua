@@ -8,17 +8,28 @@ pieces[1]:setPosition(2,2,4)
 pieces[1]:scale(0.3,0.3,0.3)
 
 activePiece = 1
+solved = false
+
+pieces[activePiece]:flash(1.6)
 
 --storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
--- storyWall:changeTexture("land.jpg")
+--storyWall:changeTexture("land.jpg")
 -- wall:setPosition(0,1,-3)
 -- wall:scale(5,5,1)
 
 function update()
     -- updateGameStatus()
     handleControl()
+
 	hud.progress = checkProgress() 
     -- print(checkProgress())
+
+    if checkProgress() > 0.9 then
+        if solved == false then
+            solved = true
+            Audio.playSound("door.wav")
+        end
+    end
 
     -- handleControl(pieces[activePiece])
 
@@ -80,6 +91,12 @@ function handleControl()
     end
     if Game.getKey(KeyCode.A) == true then
         pieces[activePiece]:roll(-1.5) 
+    end
+    if Game.getKey(KeyCode.Q) == true then
+        pieces[activePiece]:yaw(1.5) 
+    end
+    if Game.getKey(KeyCode.E) == true then
+        pieces[activePiece]:yaw(-1.5) 
     end
 end 
 

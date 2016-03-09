@@ -12,6 +12,8 @@ ShaderProgram* LitTextureMaterial::_shader = NULL;
 
 LitTextureMaterial::LitTextureMaterial(Texture * pDiffuseTexture):_diffuseTexture(pDiffuseTexture)
 {
+    diffuseColor = glm::vec3(1.0f, 1.0f, 1.0f);
+
     _lazyInitializeShader();
 }
 
@@ -58,9 +60,11 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     glBindTexture(GL_TEXTURE_2D, pRenderPipeline->getShadowMap());
     glUniform1i (_shader->getUniformLocation("shadowMap"), 1);
 
+    GLuint diffuseColorHandle = _shader->getUniformLocation("diffuseColor");
     GLuint lightPos = _shader->getUniformLocation("lightPos");
     GLuint viewPos = _shader->getUniformLocation("viewPos");
 
+    glUniform3fv(diffuseColorHandle, 1, glm::value_ptr(diffuseColor));
     glUniform3fv(lightPos, 1, glm::value_ptr(glm::vec3(0.0f,0.0f,10.0f)));
     glUniform3fv(viewPos, 1, glm::value_ptr(pCamera->getOwner()->getWorldPosition()));
 
