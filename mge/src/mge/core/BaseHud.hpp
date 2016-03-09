@@ -19,7 +19,7 @@ class BaseHud
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
         static void loadTextures();
-
+        static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
     protected:
 
     private:
@@ -45,6 +45,9 @@ class BaseHud
         static std::string hintsButtonTextureName;
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
+
+
+        static bool CheckMouseOnButton(int x, int y, int width, int height);
 };
 
 #endif // BASEHUD_H
