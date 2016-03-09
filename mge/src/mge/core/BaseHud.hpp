@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "mge/core/Timer.hpp"
 
 class BaseHud
 {
@@ -12,23 +13,28 @@ class BaseHud
 
         static bool Button(int x, int y, std::string caption);
         static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
-        static void Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
-        static bool RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
-        static bool HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
-        static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
-        static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName);
+        static void Label(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintsButton(int x, int y, int width, int height, int fontSize, std::string caption);
+        static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption);
+        static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption);
         static void loadTextures();
         static void setRiddleButtonTextureName(const std::string name);
         static void setHintsButtonTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
         static void setHintsBoxTextureName(const std::string name);
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
+        static bool DisplayRiddleAtStart();
 
     protected:
 
     private:
         static sf::RenderWindow* _window;
         static sf::Font _font;
+
+        static float startedRiddleDisplay;
+        static float displayTime;
+
         //hud textures
         static sf::Texture* riddleButtonTexture;
         static sf::Texture* hintsButtonTexture;

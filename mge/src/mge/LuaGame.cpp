@@ -95,6 +95,7 @@ void LuaGame::_initLua()
             .addFunction ("hintsButton", BaseHud::RiddleButton)
             .addFunction ("riddleBox", BaseHud::RiddleBox)
             .addFunction ("hintsBox", BaseHud::HintsBox)
+            .addFunction ("displayRiddleAtStart", BaseHud::DisplayRiddleAtStart)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
@@ -140,3 +141,4 @@ void LuaGame::_updateGUI()
     luaUpdateGUI();
     _window->popGLStates();
 }
+

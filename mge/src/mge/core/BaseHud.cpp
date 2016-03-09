@@ -7,7 +7,6 @@
 #include "Texture.hpp"
 #include <SFML/Graphics/Text.hpp>
 #include "mge/config.hpp"
-#include "mge/core/Timer.hpp"
 
 // init static members
 sf::RenderWindow* BaseHud::_window = 0;
@@ -34,6 +33,8 @@ std::string BaseHud::riddleBoxTextureName = "bricks";
 std::string BaseHud::hintsBoxTextureName = "land";
 
 bool BaseHud::lmbPressedLastFrame = false;
+float BaseHud::startedRiddleDisplay = 0;
+float BaseHud::displayTime = 5.0f;
 
 BaseHud::BaseHud(sf::RenderWindow* aWindow)
 {
@@ -45,6 +46,7 @@ BaseHud::BaseHud(sf::RenderWindow* aWindow)
         return;
     }
     loadTextures();
+    startedRiddleDisplay = Timer::now();
 }
 
 BaseHud::~BaseHud()
@@ -107,7 +109,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption)
 {
     //create text
     sf::FloatRect textRect = riddleButtonText->getLocalBounds();
@@ -129,7 +131,7 @@ bool BaseHud::RiddleButton(int x, int y, int width, int height, int fontSize, st
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std::string caption)
 {
     //create text
     sf::FloatRect textRect = hintsButtonText->getLocalBounds();
@@ -151,7 +153,7 @@ bool BaseHud::HintsButton(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption)
 {
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
@@ -170,7 +172,7 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
     _window->draw(*riddleBoxText);
 }
 
-void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption)
 {
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
@@ -189,7 +191,7 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxText);
 }
 
-void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, std::string imageName)
+void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption)
 {
 
     //create text
@@ -268,4 +270,10 @@ void BaseHud::setRiddleBoxTextureName(const std::string name)
 void BaseHud::setHintsBoxTextureName(const std::string name)
 {
     hintsBoxTextureName = name;
+}
+
+bool BaseHud::DisplayRiddleAtStart()
+{
+    if(Timer::now() - startedRiddleDisplay > displayTime) return true;
+    else return false;
 }
