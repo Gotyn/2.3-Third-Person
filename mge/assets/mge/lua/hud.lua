@@ -44,9 +44,10 @@ showHintsBox = false
 progress = 0
 
 function draw()
-	Hud.hintsBox(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
+	--Hud.hintsBox(hints_box_x, hints_box_y, hints_box_width, hints_box_height, hints_box_font, progress, hud_textures[4])
+	--Hud.hintsBox(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
 	--Hud.textLabel(100, 100, "yer a wizard Harry!")
-	Hud.label(100,100,100,100, 20, "123", hud_textures[1])
+	--Hud.label(100,100,100,100, 20, "123", hud_textures[1])
     handleRiddleButtonClick()
     handleHintsButtonClick()
     updateRiddleBox()
@@ -63,7 +64,7 @@ function handleRiddleButtonClick()
 end
 
 function handleHintsButtonClick()
-    if Hud.hintsButton(hints_button_x, hints_button_y, hints_button_width,hints_button_height, hints_button_font, hints_button_text, hud_textures[2]) == true then
+    if Hud.hintsButton(hints_button_x, hints_button_y, hints_button_width, hints_button_height, hints_button_font, hints_button_text, hud_textures[2]) == true then
         print("clicked hints!")
         if showHintsBox == false then showHintsBox = true
         elseif showHintsBox == true then showHintsBox = false
