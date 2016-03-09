@@ -2,24 +2,13 @@ gameHud = require "mge/lua/hud"
 
 dofile("mge/lua/story1.lua")
 
+storyCompleted = false
+activePuzzle = 1
+activePiece = 1
+solvedThreshold = 0.8
+
 storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
 storyWall:changeTexture("land.jpg")
-
--- getSomething()
--- print(story[1].wallImage)
--- print(story[1].blocks[1]:getName())
--- story[1].blocks[1]:setActive(false)
--- story[1].blocks[2]:setActive(false)
--- story[2].blocks[1]:setActive(false)
--- story[2].blocks[2]:setActive(false)
--- story[1].blocks[1]:setActive(true)
-
--- pieces = {  
---     Game.PuzzleBlock("Ship.obj", "bricks.jpg", "piece1", 2, 2, 4)
--- }
-
--- -- pieces[1]:setPosition(2,2,4)
--- pieces[1]:scale(0.3,0.3,0.3)
 
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
@@ -57,20 +46,7 @@ function nextPuzzle()
     end
 end
 
-storyCompleted = false
-activePuzzle = 1
-activePiece = 1
-solvedThreshold = 0.7
-
 selectPuzzle(activePuzzle)
-
--- puzzleSetActive(2, false)
-
--- pieces[activePiece]:flash(1.6)
-
-
--- wall:setPosition(0,1,-3)
--- wall:scale(5,5,1)
 
 function update()
     if storyCompleted then
@@ -91,35 +67,6 @@ function update()
         if checkProgress() >= solvedThreshold then
             nextPuzzle()
         end
-
-        -- updateGameStatus()
-        -- handleControl()
-
-        -- if checkProgress() > 0.9 then
-        --     if solved == false then
-        --         solved = true
-        --         Audio.playSound("door.wav")
-        --     end
-        -- end
-
-        -- handleControl(pieces[activePiece])
-
-        -- -- test placement for placing prop
-        -- handleControl(prop1)
-
-        
-        -- print(pieces[activePiece]:getName())
-        -- if checkProgress() > 0.66 then print(checkProgress()) end
-
-        -- if Game.getKeyDown(KeyCode.P) == true then
-        --     printPuzzleBlocksStates()
-        -- elseif Game.getKeyDown(KeyCode.H) == true then
-        --     hints.showHint()
-        -- end
-
-        -- if Game.getKeyDown(KeyCode.F5) == true then
-        --     refreshHud()
-        -- end
     end
 end
 
@@ -181,27 +128,4 @@ function handleSelection()
     end
 
     story[activePuzzle].blocks[activePiece]:flash(1.8)
-
-    -- if Game.getKey(KeyCode.Num1) == true then
-    --     activePiece = 1
-    -- end
-
-    -- if Game.getKey(KeyCode.Num2) == true then
-    --     activePiece = 2
-    -- end
-
-    -- if Game.getKey(KeyCode.Num3) == true then
-    --     activePiece = 3
-    -- end
 end
-
-function updateGameStatus()
-    if checkProgress() < 0.66 and testtt == true then 
-        print("level completed! proceeding to next level...")
-        -- os.execute("CHOICE /n /d: /c: /t:3")
-        -- cleanLevel()
-        testtt = false
-    end
-end
-        
-

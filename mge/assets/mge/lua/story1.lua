@@ -22,7 +22,3 @@ story = {
         }
     }
 }
-
-function getSomething()
-    print("HIHIHIHIHIHIHI")
-end
