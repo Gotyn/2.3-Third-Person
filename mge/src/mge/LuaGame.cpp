@@ -90,7 +90,12 @@ void LuaGame::_initLua()
         .endNamespace()
         .beginNamespace ("Hud")
             .addFunction ("button", BaseHud::Button)
+            .addFunction ("textLabel", BaseHud::TextLabel)
             .addFunction ("label", BaseHud::Label)
+            .addFunction ("riddleButton", BaseHud::RiddleButton)
+            .addFunction ("hintsButton", BaseHud::RiddleButton)
+            .addFunction ("riddleBox", BaseHud::RiddleBox)
+            .addFunction ("hintsBox", BaseHud::HintsBox)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
@@ -130,5 +135,9 @@ void LuaGame::_processEvents()
 void LuaGame::_updateGUI()
 {
     luabridge::LuaRef luaUpdateGUI = luabridge::getGlobal (_L, "updateGUI");
+
+    glActiveTexture(GL_TEXTURE0);
+    _window->pushGLStates();
     luaUpdateGUI();
+    _window->popGLStates();
 }
