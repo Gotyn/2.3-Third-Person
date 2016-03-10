@@ -10,7 +10,8 @@
 class PuzzleBlock : public GameObject
 {
     public:
-        PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName);
+        PuzzleBlock(std::string pModelName, std::string pTextureName, std::string pObjectName,
+                    float x, float y, float z);
         virtual ~PuzzleBlock();
 
         virtual void update(float pStep, const glm::mat4& pParentTransform);
