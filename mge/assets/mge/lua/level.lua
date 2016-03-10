@@ -10,6 +10,9 @@ solvedThreshold = 0.9
 storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
 storyWall:rotateAroundAxis(10, 0, 1, 0)
 
+camera = Game.getCameraObject()
+print("camera name: " .. camera:getName())
+
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
         v:setActive(active)
@@ -69,6 +72,7 @@ function handlePlacement(gameObject)
     if Game.getKey(KeyCode.RControl) == true then
         gameObject:move(0, -1, 0) 
     end
+    handleControl(gameObject)
 end
 
 selectPuzzle(activePuzzle)
@@ -85,8 +89,8 @@ function update()
             nextPuzzle()
         end
 
-        handleControl()
-        handlePlacement(storyWall)
+        handleControl(story[activePuzzle].blocks[activePiece])
+        handlePlacement(camera)
         -- handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
@@ -121,25 +125,25 @@ function checkProgress()
     return totalProgress / #story[activePuzzle].blocks
 end
 
-function handleControl()
+function handleControl(gameObject)
     if Game.getKey(KeyCode.W) == true then
-        story[activePuzzle].blocks[activePiece]:pitch(1.5) 
+        gameObject:pitch(1.5) 
     end
     if Game.getKey(KeyCode.S) == true then
-        story[activePuzzle].blocks[activePiece]:pitch(-1.5) 
+        gameObject:pitch(-1.5) 
     end
 
     if Game.getKey(KeyCode.D) == true then
-        story[activePuzzle].blocks[activePiece]:roll(1.5) 
+        gameObject:roll(1.5) 
     end
     if Game.getKey(KeyCode.A) == true then
-        story[activePuzzle].blocks[activePiece]:roll(-1.5) 
+        gameObject:roll(-1.5) 
     end
     if Game.getKey(KeyCode.Q) == true then
-        story[activePuzzle].blocks[activePiece]:yaw(1.5) 
+        gameObject:yaw(1.5) 
     end
     if Game.getKey(KeyCode.E) == true then
-        story[activePuzzle].blocks[activePiece]:yaw(-1.5) 
+        gameObject:yaw(-1.5) 
     end
 end 
 

@@ -20,6 +20,11 @@ LuaGame::~LuaGame()
 
 }
 
+GameObject* LuaGame::getCameraObject()
+{
+    return World::Instance()->getMainCamera()->getOwner();
+}
+
 void LuaGame::initialize()
 {
     //setup the core part
@@ -61,6 +66,7 @@ void LuaGame::_initLua()
             .addFunction ("deltaTime", Timer::deltaTime)
             .addFunction ("getKeyDown", Input::getKeyDown)
             .addFunction ("getKey", Input::getKey)
+            .addFunction ("getCameraObject", LuaGame::getCameraObject)
             //game classes
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()

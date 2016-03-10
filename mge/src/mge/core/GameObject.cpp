@@ -243,6 +243,7 @@ void GameObject::printStatus()
     std::cout << "TODO: print scale" << std::endl;
     std::cout << "forward direction: " << getForward() << std::endl;
     std::cout << "up direction:      " << getUp() << std::endl;
+    std::cout << "transform:" << std::endl << getTransform() << std::endl;
     std::cout << std::endl;
 }
 

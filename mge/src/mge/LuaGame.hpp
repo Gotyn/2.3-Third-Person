@@ -23,7 +23,7 @@ class LuaGame : public AbstractGame
         virtual void initialize();
         virtual void reloadHud();
 
-//        static BaseHud* hudStaticRef;
+        static GameObject* getCameraObject();
 
 	protected:
         virtual void _initializeScene();
