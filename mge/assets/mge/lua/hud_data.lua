@@ -17,7 +17,7 @@ help_button_y = 30
 help_button_width = 80
 help_button_height = 40
 help_button_font = 15
-help_button_text = "RIDDLE2"
+help_button_text = "RIDDLE"
 
 hint_button1_x = 720
 hint_button1_y = 80
