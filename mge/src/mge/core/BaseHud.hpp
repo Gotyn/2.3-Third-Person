@@ -13,6 +13,7 @@ class BaseHud
 
         static bool Button(int x, int y, std::string caption);
         static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
+<<<<<<< HEAD
         static void Label(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static bool HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static bool HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
@@ -21,6 +22,16 @@ class BaseHud
         static void HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
+=======
+        static void ProgressBar(int x, int y, int width, int height,  int spritesheetrow, int fontSize, std::string caption);
+        static bool HelpButton(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintButton1(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintButton2(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintButton3(int x, int y, int width, int height, int fontSize, std::string caption);
+        static void HelpBox(int x, int y, int width, int height, int fontSize, std::string caption);
+        static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption);
+        static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption);
+>>>>>>> refs/remotes/origin/hud2
         static void loadTextures();
         static void setHelpButtonTextureName(const std::string name);
         static void setHintButton1TextureName(const std::string name);
@@ -49,6 +60,7 @@ class BaseHud
         static sf::Texture* helpBoxTexture;
         static sf::Texture* riddleBoxTexture;
         static sf::Texture* hintsBoxTexture;
+        static sf::Texture* progressBarTexture;
         //hud sprites
         static sf::Sprite* helpButtonSprite;
         static sf::Sprite* hintButton1Sprite;
@@ -57,6 +69,7 @@ class BaseHud
         static sf::Sprite* helpBoxSprite;
         static sf::Sprite* riddleBoxSprite;
         static sf::Sprite* hintsBoxSprite;
+        static sf::Sprite* progressBarSprite;
         //hud texts
         static sf::Text* helpButtonText;
         static sf::Text* hintButton1Text;
@@ -65,6 +78,7 @@ class BaseHud
         static sf::Text* helpBoxText;
         static sf::Text* riddleBoxText;
         static sf::Text* hintsBoxText;
+        static sf::Text* progressBarText;
         //hud names
         static std::string helpButtonTextureName;
         static std::string hintButton1TextureName;
@@ -73,6 +87,7 @@ class BaseHud
         static std::string helpBoxTextureName;
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
+        static std::string progressBarTextureName;
 
         static bool CheckMouseOnButton(int x, int y, int width, int height);
 };
