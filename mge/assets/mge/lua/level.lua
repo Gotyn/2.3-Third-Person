@@ -90,7 +90,7 @@ function update()
         end
 
         handleControl(story[activePuzzle].blocks[activePiece])
-        handlePlacement(camera)
+        -- handlePlacement(camera)
         -- handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then

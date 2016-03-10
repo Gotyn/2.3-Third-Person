@@ -97,6 +97,7 @@ void LuaGame::_initLua()
     luabridge::getGlobalNamespace(_L)
         .beginNamespace ("Game")
             //game functions
+            .addFunction ("getWidth", LuaGame::getWindowWidth)
             .addFunction ("time", Timer::now)
             .addFunction ("deltaTime", Timer::deltaTime)
             .addFunction ("getKeyDown", Input::getKeyDown)
@@ -152,6 +153,12 @@ void LuaGame::_initLua()
             .addFunction ("pauseMusic", Audio::PauseMusic)
             .addFunction ("stopMusic", Audio::StopMusic)
         .endNamespace();
+}
+
+int LuaGame::getWindowWidth()
+{
+//    std::cout << "hi" << std::endl;
+    return static_cast<int>(_window->getSize().x);
 }
 
 void LuaGame::_update()

@@ -28,4 +28,4 @@
 *.app
 *.layout
 
-mge/assets/logFile.txt
+mge/assets/*

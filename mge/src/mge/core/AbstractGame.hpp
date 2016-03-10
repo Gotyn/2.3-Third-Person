@@ -8,6 +8,7 @@
 #include "mge/core/World.hpp"
 #include "mge/core/RenderPipeline.hpp"
 
+#define WINDOW_MODE sf::Style::Default // Default for windowed-mode, Fullscreen for full
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 710
 #define MSAA 4
@@ -66,7 +67,7 @@ class AbstractGame
         //process any sfml window events (see SystemEventDispatcher/Listener)
         virtual void _processEvents();
 
-		sf::RenderWindow* _window;  //sfml window to render into
+		static sf::RenderWindow* _window;  //sfml window to render into
 		RenderPipeline* _renderPipeline;        //the renderer class to render the world
 		bool _running;
 };

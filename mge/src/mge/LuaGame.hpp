@@ -23,6 +23,7 @@ class LuaGame : public AbstractGame
         virtual void initialize();
         virtual void reloadHud();
 
+        static int getWindowWidth();
         static GameObject* getCameraObject();
 //        static void setTransform(GameObject* pGameObject, luabridge::LuaRef table);
 
