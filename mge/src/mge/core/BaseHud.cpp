@@ -12,37 +12,37 @@
 sf::RenderWindow* BaseHud::_window = 0;
 sf::Font BaseHud::_font;
 // initialize static textures
-sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
-sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
-sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
-sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
-sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
-sf::Texture* BaseHud::hintsBoxTexture = new sf::Texture;
+sf::Texture* BaseHud::helpButtonTexture     = new sf::Texture;
+sf::Texture* BaseHud::hintButton1Texture    = new sf::Texture;
+sf::Texture* BaseHud::hintButton2Texture    = new sf::Texture;
+sf::Texture* BaseHud::hintButton3Texture    = new sf::Texture;
+sf::Texture* BaseHud::helpBoxTexture        = new sf::Texture;
+sf::Texture* BaseHud::riddleBoxTexture      = new sf::Texture;
+sf::Texture* BaseHud::hintsBoxTexture       = new sf::Texture;
 // initialize static sprites
-sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton2Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
-sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
+sf::Sprite* BaseHud::helpButtonSprite   = new sf::Sprite;
+sf::Sprite* BaseHud::hintButton1Sprite  = new sf::Sprite;
+sf::Sprite* BaseHud::hintButton2Sprite  = new sf::Sprite;
+sf::Sprite* BaseHud::hintButton3Sprite  = new sf::Sprite;
+sf::Sprite* BaseHud::helpBoxSprite      = new sf::Sprite;
+sf::Sprite* BaseHud::riddleBoxSprite    = new sf::Sprite;
+sf::Sprite* BaseHud::hintsBoxSprite     = new sf::Sprite;
 // initialize static texts
-sf::Text* BaseHud::helpButtonText = new sf::Text;
-sf::Text* BaseHud::hintButton1Text = new sf::Text;
-sf::Text* BaseHud::hintButton2Text = new sf::Text;
-sf::Text* BaseHud::hintButton3Text = new sf::Text;
-sf::Text* BaseHud::helpBoxText = new sf::Text;
-sf::Text* BaseHud::riddleBoxText = new sf::Text;
-sf::Text* BaseHud::hintsBoxText = new sf::Text;
+sf::Text* BaseHud::helpButtonText   = new sf::Text;
+sf::Text* BaseHud::hintButton1Text  = new sf::Text;
+sf::Text* BaseHud::hintButton2Text  = new sf::Text;
+sf::Text* BaseHud::hintButton3Text  = new sf::Text;
+sf::Text* BaseHud::helpBoxText      = new sf::Text;
+sf::Text* BaseHud::riddleBoxText    = new sf::Text;
+sf::Text* BaseHud::hintsBoxText     = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
-std::string BaseHud::helpButtonTextureName = "land.jpg";
+std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "bricks.jpg";
 std::string BaseHud::hintButton2TextureName = "bricks.jpg";
 std::string BaseHud::hintButton3TextureName = "bricks.jpg";
-std::string BaseHud::helpBoxTextureName = "land.jpg";
-std::string BaseHud::riddleBoxTextureName = "bricks.jpg";
-std::string BaseHud::hintsBoxTextureName = "bricks.jpg";
+std::string BaseHud::helpBoxTextureName     = "land.jpg";
+std::string BaseHud::riddleBoxTextureName   = "bricks.jpg";
+std::string BaseHud::hintsBoxTextureName    = "bricks.jpg";
 
 bool BaseHud::lmbPressedLastFrame = false;
 float BaseHud::startedRiddleDisplay = 0;
@@ -139,7 +139,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = helpButtonText->getLocalBounds();
@@ -161,7 +161,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintButton1Text->getLocalBounds();
@@ -183,7 +183,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintButton2Text->getLocalBounds();
@@ -205,7 +205,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintButton3Text->getLocalBounds();
@@ -227,7 +227,7 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = helpBoxText->getLocalBounds();
@@ -246,7 +246,7 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
     _window->draw(*helpBoxText);
 }
 
-void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
@@ -265,7 +265,7 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
     _window->draw(*riddleBoxText);
 }
 
-void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
@@ -284,7 +284,7 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxText);
 }
 
-void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
 
     //create text
