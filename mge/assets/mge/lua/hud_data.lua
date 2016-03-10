@@ -3,13 +3,13 @@ local HUD = {}
 -- BUTTONS AND BOXES PARAMETERS START --
 hud_textures =
 {
-    "land",     -- help_button_texture
-    "bricks",   -- hint_button1_texture
-    "bricks",   -- hint_button2_texture
-    "bricks",   -- hint_button2_texture
-    "land",     -- help_box_texture
-    "bricks",   -- riddle_box_texture
-    "bricks"    -- hints_box_texture
+    "land.jpg",     -- help_button_texture
+    "bricks.jpg",   -- hint_button1_texture
+    "bricks.jpg",   -- hint_button2_texture
+    "bricks.jpg",   -- hint_button2_texture
+    "land.jpg",     -- help_box_texture
+    "bricks.jpg",   -- riddle_box_texture
+    "bricks.jpg"    -- hints_box_texture
 }
 
 help_button_x = 700
