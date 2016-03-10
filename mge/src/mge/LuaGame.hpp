@@ -24,6 +24,7 @@ class LuaGame : public AbstractGame
         virtual void reloadHud();
 
         static GameObject* getCameraObject();
+        static void setTransform(GameObject* pGameObject, luabridge::LuaRef table);
 
 	protected:
         virtual void _initializeScene();

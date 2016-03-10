@@ -12,6 +12,13 @@ storyWall:rotateAroundAxis(10, 0, 1, 0)
 
 camera = Game.getCameraObject()
 print("camera name: " .. camera:getName())
+Game.setTransform(camera, 
+    {
+        1, 2, 3, 4, 
+        5, 6, 7, 8, 
+        9, 10, 11, 12, 
+        13, 14, 15, 16
+    })
 
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 

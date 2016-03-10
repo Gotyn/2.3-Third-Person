@@ -2000,7 +2000,7 @@
 	<vector>
 	"mge/core/GameObject.hpp"
 
-1457560022 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
+1457612845 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
 	<vector>
 	<string>
 	<iostream>
@@ -2085,7 +2085,7 @@
 	<string>
 	<GL/glew.h>
 
-1457152266 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
+1457611999 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
 	<vector>
 	<cstring>
 	<string>
@@ -2142,7 +2142,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/core/FPS.hpp"
 
-1457607064 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
+1457613110 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
 	<lua.hpp>
 	<FileWatcher/FileWatcher.h>
 	<AbstractGame.hpp>
@@ -2388,7 +2388,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1457608624 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1457611999 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<glm.hpp>
@@ -2557,7 +2557,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457607287 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1457615808 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
