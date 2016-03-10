@@ -92,10 +92,14 @@ void LuaGame::_initLua()
             .addFunction ("button", BaseHud::Button)
             .addFunction ("textLabel", BaseHud::TextLabel)
             .addFunction ("label", BaseHud::Label)
-            .addFunction ("riddleButton", BaseHud::RiddleButton)
-            .addFunction ("hintsButton", BaseHud::RiddleButton)
+            .addFunction ("helpButton", BaseHud::HelpButton)
+            .addFunction ("hintButton1", BaseHud::HintButton1)
+            .addFunction ("hintButton2", BaseHud::HintButton2)
+            .addFunction ("hintButton3", BaseHud::HintButton3)
+            .addFunction ("helpBox", BaseHud::HelpBox)
             .addFunction ("riddleBox", BaseHud::RiddleBox)
             .addFunction ("hintsBox", BaseHud::HintsBox)
+            .addFunction ("displayRiddleAtStart", BaseHud::DisplayRiddleAtStart)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
@@ -141,3 +145,4 @@ void LuaGame::_updateGUI()
     luaUpdateGUI();
     _window->popGLStates();
 }
+
