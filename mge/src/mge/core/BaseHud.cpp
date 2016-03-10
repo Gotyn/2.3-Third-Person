@@ -19,6 +19,7 @@ sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::hintsBoxTexture = new sf::Texture;
+sf::Texture* BaseHud::progressBarTexture = new sf::Texture;
 // initialize static sprites
 sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
@@ -27,6 +28,7 @@ sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
+sf::Sprite* BaseHud::progressBarSprite = new sf::Sprite;
 // initialize static texts
 sf::Text* BaseHud::helpButtonText = new sf::Text;
 sf::Text* BaseHud::hintButton1Text = new sf::Text;
@@ -35,6 +37,7 @@ sf::Text* BaseHud::hintButton3Text = new sf::Text;
 sf::Text* BaseHud::helpBoxText = new sf::Text;
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
+sf::Text* BaseHud::progressBarText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
 std::string BaseHud::helpButtonTextureName = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "bricks.jpg";
@@ -43,6 +46,7 @@ std::string BaseHud::hintButton3TextureName = "bricks.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "bricks.jpg";
 std::string BaseHud::hintsBoxTextureName = "bricks.jpg";
+std::string BaseHud::progressBarTextureName = "progressbar.png";
 
 bool BaseHud::lmbPressedLastFrame = false;
 float BaseHud::startedRiddleDisplay = 0;
@@ -105,6 +109,13 @@ void BaseHud::loadTextures()
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
+
+    if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName))
+    {
+        std::cout << "Could not load texture for label" << std::endl;
+        return;
+    }
+
     helpButtonTexture->setRepeated(true);
     hintButton1Texture->setRepeated(true);
     hintButton2Texture->setRepeated(true);
@@ -284,25 +295,27 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxText);
 }
 
-void BaseHud::Label(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption)
 {
-
     //create text
-    sf::Text text(caption,_font,fontSize);
-    sf::FloatRect textRect = text.getLocalBounds();
-    text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    text.setPosition(sf::Vector2f(x + width/2, y + height/2));
-    text.setColor(sf::Color::Black);
+    sf::FloatRect textRect = progressBarText->getLocalBounds();
+    progressBarText->setString(caption);
+    progressBarText->setFont(_font);
+    progressBarText->setCharacterSize(fontSize);
+
+    progressBarText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    progressBarText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    progressBarText->setColor(sf::Color::Black);
 
     //sprite
-    hintsBoxTexture->setRepeated(true);
+    progressBarTexture->setRepeated(false);
 
-    hintsBoxSprite->setTexture(*hintsBoxTexture);
-    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+    progressBarSprite->setTexture(*progressBarTexture);
+    progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
+    progressBarSprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
-    _window->draw(*hintsBoxSprite);
-    _window->draw(text);
+    _window->draw(*progressBarSprite);
+    _window->draw(*progressBarText);
 }
 
 void BaseHud::TextLabel(int x, int y, std::string caption)
