@@ -39,16 +39,6 @@ sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 sf::Text* BaseHud::progressBarText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
-<<<<<<< HEAD
-std::string BaseHud::helpButtonTextureName = "land";
-std::string BaseHud::hintButton1TextureName = "bricks";
-std::string BaseHud::hintButton2TextureName = "bricks";
-std::string BaseHud::hintButton3TextureName = "bricks";
-std::string BaseHud::helpBoxTextureName = "land";
-std::string BaseHud::riddleBoxTextureName = "bricks";
-std::string BaseHud::hintsBoxTextureName = "bricks";
-std::string BaseHud::progressBarTextureName = "progressbar.png";
-=======
 std::string BaseHud::helpButtonTextureName = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "bricks.jpg";
 std::string BaseHud::hintButton2TextureName = "bricks.jpg";
@@ -56,7 +46,7 @@ std::string BaseHud::hintButton3TextureName = "bricks.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "bricks.jpg";
 std::string BaseHud::hintsBoxTextureName = "bricks.jpg";
->>>>>>> refs/remotes/origin/hud2
+std::string BaseHud::progressBarTextureName = "progressbar.png";
 
 bool BaseHud::lmbPressedLastFrame = false;
 float BaseHud::startedRiddleDisplay = 0;
