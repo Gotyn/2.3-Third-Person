@@ -229,6 +229,23 @@ void GameObject::rotate(float pAngle, glm::vec3 pAxis)
 	setTransform(glm::rotate(_transform, pAngle, pAxis));
 }
 
+void GameObject::rotateAroundAxis(float pAngle, float x, float y, float z)
+{
+    rotate(pAngle * 0.017453292f, glm::vec3(x, y, z));
+}
+
+void GameObject::printStatus()
+{
+    std::cout << "===================================================" << std::endl;
+    std::cout << "GameObject status of: " << getName() << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "position:          " << getWorldPosition() << std::endl;
+    std::cout << "TODO: print scale" << std::endl;
+    std::cout << "forward direction: " << getForward() << std::endl;
+    std::cout << "up direction:      " << getUp() << std::endl;
+    std::cout << std::endl;
+}
+
 void GameObject::update(float pStep, const glm::mat4& pParentTransform)
 {
     if (!_active)
