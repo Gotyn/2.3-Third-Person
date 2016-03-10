@@ -1,7 +1,7 @@
 #version 330 core
-layout (location = 0) in vec3 position; //d
-layout (location = 1) in vec3 normal; //d
-layout (location = 2) in vec2 texCoords; //d
+layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 normal;
+layout (location = 2) in vec2 texCoords;
 
 out vec2 TexCoords;
 
@@ -12,10 +12,10 @@ out VS_OUT {
     vec4 FragPosLightSpace;
 } vs_out;
 
-uniform mat4 projection; //d
-uniform mat4 view; //d
-uniform mat4 model; //d
-uniform mat4 lightSpaceMatrix; //d
+uniform mat4 projection;
+uniform mat4 view;
+uniform mat4 model;
+uniform mat4 lightSpaceMatrix;
 
 void main()
 {

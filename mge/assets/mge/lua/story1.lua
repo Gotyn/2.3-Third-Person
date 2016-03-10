@@ -6,8 +6,8 @@ story = {
             Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
         },
         tips = {
-            "tip1",
-            "tip2"
+            "puzzle 1, tip1",
+            "puzzle 1, tip2"
         }
     },
     {
@@ -17,8 +17,8 @@ story = {
             Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 6, 0, 0)
         },
         tips = {
-            "tip1",
-            "tip2"
+            "puzzle 2, tip1",
+            "puzzle 2, tip2"
         }
     }
 }
