@@ -1,4 +1,5 @@
 gameHud = require "mge/lua/hud"
+gameHud_data = require "mge/lua/hud_data"
 
 dofile("mge/lua/story1.lua")
 
@@ -106,6 +107,9 @@ end
 function refreshHud()
     package.loaded["mge/lua/hud"] = nil
     gameHud = require "mge/lua/hud"
+    
+    package.loaded["mge/lua/hud_data"] = nil
+    gameHud_data = require "mge/lua/hud_data"
     print("hud reloaded!")
 end
 
@@ -119,7 +123,7 @@ end
 function checkProgress()
     totalProgress = 0
     for i, v in ipairs(story[activePuzzle].blocks) do 
-        totalProgress = totalProgress + story[activePuzzle].blocks[activePiece]:getProgress() 
+        totalProgress = totalProgress + story[activePuzzle].blocks[i]:getProgress() 
     end   
     return totalProgress / #story[activePuzzle].blocks
 end
