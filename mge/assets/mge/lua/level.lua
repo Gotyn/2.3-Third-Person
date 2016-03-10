@@ -116,7 +116,7 @@ end
 function checkProgress()
     totalProgress = 0
     for i, v in ipairs(story[activePuzzle].blocks) do 
-        totalProgress = totalProgress + story[activePuzzle].blocks[activePiece]:getProgress() 
+        totalProgress = totalProgress + story[activePuzzle].blocks[i]:getProgress() 
     end   
     return totalProgress / #story[activePuzzle].blocks
 end
