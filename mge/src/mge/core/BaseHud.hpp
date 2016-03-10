@@ -13,8 +13,7 @@ class BaseHud
 
         static bool Button(int x, int y, std::string caption);
         static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
-<<<<<<< HEAD
-        static void Label(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
+        static void ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment);
         static bool HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static bool HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static bool HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
@@ -22,16 +21,7 @@ class BaseHud
         static void HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
         static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-=======
-        static void ProgressBar(int x, int y, int width, int height,  int spritesheetrow, int fontSize, std::string caption);
-        static bool HelpButton(int x, int y, int width, int height, int fontSize, std::string caption);
-        static bool HintButton1(int x, int y, int width, int height, int fontSize, std::string caption);
-        static bool HintButton2(int x, int y, int width, int height, int fontSize, std::string caption);
-        static bool HintButton3(int x, int y, int width, int height, int fontSize, std::string caption);
-        static void HelpBox(int x, int y, int width, int height, int fontSize, std::string caption);
-        static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption);
-        static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption);
->>>>>>> refs/remotes/origin/hud2
+
         static void loadTextures();
         static void setHelpButtonTextureName(const std::string name);
         static void setHintButton1TextureName(const std::string name);

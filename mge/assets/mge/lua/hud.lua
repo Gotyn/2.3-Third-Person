@@ -2,11 +2,6 @@ module("hud", package.seeall)
 
 local data = require("mge/lua/hud_data")
 
-hud_progress_sprites =
-{
-	1, 2, 3, 4, 5, 6, 7
-}
-
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
@@ -16,32 +11,15 @@ hintText = ""
 
 progress = 0
 
-<<<<<<< HEAD
-function draw()    
-=======
 function draw()
 	Hud.textLabel(50, 50, progress)
-    
->>>>>>> refs/remotes/origin/hud2
+
     handleHelpButtonClick()
     updateHelpBox()
     updateHintsBox()
     inintialRiddleDisplay()
-<<<<<<< HEAD
-	
 	-- Progress Labels --
 	updateProgressBar()
-=======
-    
-    -- Progress Label --
-	--Hud.progressBarText(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
-	
-	-- Progress Labels --
-	updateProgressBar()
-	
-	-- Test Label --
-	--Hud.progressBarText(100,100,100,100, 20, "123", hud_textures[1])
->>>>>>> refs/remotes/origin/hud2
 end
 
 function handleHelpButtonClick()
@@ -107,14 +85,14 @@ end
 
 function updateProgressBar()
 	-- Using TextLabels for now
-	if 	   (progress > 0.90)  then Hud.progressBar(600,500, 224, 32, 224, 0, "") -- show all 
-	elseif (progress > 0.80)  then Hud.progressBar(600,500, 224, 32, 196, 0, "") -- show 6
-	elseif (progress > 0.65)  then Hud.progressBar(600,500, 224, 32, 160, 0, "") -- show 5
-	elseif (progress > 0.50)  then Hud.progressBar(600,500, 224, 32, 128, 0, "") -- show 4
-	elseif (progress > 0.35)  then Hud.progressBar(600,500, 224, 32,  96, 0, "") -- show 3
-	elseif (progress > 0.20)  then Hud.progressBar(600,500, 224, 32,  64, 0, "") -- show 2
-	elseif (progress > 0.10)  then Hud.progressBar(600,500, 224, 32,  32, 0, "") -- show 1
-	elseif (progress <= 0.10) then Hud.progressBar(600,500, 224, 32,  0, 0, "") -- show none
+	if 	   (progress > 0.90)  then Hud.progressBar(600,500, 224, 32, 224, 0, "",0) -- show all 
+	elseif (progress > 0.80)  then Hud.progressBar(600,500, 224, 32, 196, 0, "",0) -- show 6
+	elseif (progress > 0.65)  then Hud.progressBar(600,500, 224, 32, 160, 0, "",0) -- show 5
+	elseif (progress > 0.50)  then Hud.progressBar(600,500, 224, 32, 128, 0, "",0) -- show 4
+	elseif (progress > 0.35)  then Hud.progressBar(600,500, 224, 32,  96, 0, "",0) -- show 3
+	elseif (progress > 0.20)  then Hud.progressBar(600,500, 224, 32,  64, 0, "",0) -- show 2
+	elseif (progress > 0.10)  then Hud.progressBar(600,500, 224, 32,  32, 0, "",0) -- show 1
+	elseif (progress <= 0.10) then Hud.progressBar(600,500, 224, 32,  0, 0, "",0) -- show none
 	end
 end
 
