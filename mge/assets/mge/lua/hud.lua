@@ -14,8 +14,7 @@ initialRiddleCheck = false
 progress = 0
 
 function draw()
-	Hud.label(50, 50, 300, 30, data.hints_box_font, progress)
-	Hud.label(100,100,100,100, 20, "123")
+	Hud.textLabel(50, 50, progress)
     
     handleHelpButtonClick()
     updateHelpBox()
@@ -23,13 +22,13 @@ function draw()
     inintialRiddleDisplay()
     
     -- Progress Label --
-	Hud.label(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
+	--Hud.progressBarText(50, 50, 300, 30, hints_box_font, progress, hud_textures[4])
 	
 	-- Progress Labels --
 	updateProgressBar()
 	
 	-- Test Label --
-	Hud.label(100,100,100,100, 20, "123", hud_textures[1])
+	--Hud.progressBarText(100,100,100,100, 20, "123", hud_textures[1])
 end
 
 function handleHelpButtonClick()
@@ -67,13 +66,15 @@ end
 
 function updateProgressBar()
 	-- Using TextLabels for now
-	if (progress > 0.10) then Hud.textLabel(50 ,400, "||  1") end
-	if (progress > 0.20) then Hud.textLabel(80,400, "| 2") end
-	if (progress > 0.35) then Hud.textLabel(105,400, "| 3") end
-	if (progress > 0.50) then Hud.textLabel(130,400, "| 4") end
-	if (progress > 0.65) then Hud.textLabel(155,400, "| 5") end
-	if (progress > 0.80) then Hud.textLabel(180,400, "| 6") end
-	if (progress > 0.90) then Hud.textLabel(205,400, "| 7  ||") end
+	if 	   (progress > 0.90)  then Hud.progressBar(600,500, 224, 32, 224, 0, "") -- show all 
+	elseif (progress > 0.80)  then Hud.progressBar(600,500, 224, 32, 196, 0, "") -- show 6
+	elseif (progress > 0.65)  then Hud.progressBar(600,500, 224, 32, 160, 0, "") -- show 5
+	elseif (progress > 0.50)  then Hud.progressBar(600,500, 224, 32, 128, 0, "") -- show 4
+	elseif (progress > 0.35)  then Hud.progressBar(600,500, 224, 32,  96, 0, "") -- show 3
+	elseif (progress > 0.20)  then Hud.progressBar(600,500, 224, 32,  64, 0, "") -- show 2
+	elseif (progress > 0.10)  then Hud.progressBar(600,500, 224, 32,  32, 0, "") -- show 1
+	elseif (progress <= 0.10) then Hud.progressBar(600,500, 224, 32,  0, 0, "") -- show none
+	end
 end
 
 function updateHelpBox()
