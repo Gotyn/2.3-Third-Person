@@ -26,6 +26,7 @@ class GameObject
         bool getActive() const;
 
         void printStatus();
+        void WriteLogFile(const char* szString);
 
         //contains local rotation, scale, position
 		void setTransform (const glm::mat4& pTransform);

@@ -25,51 +25,40 @@ GameObject* LuaGame::getCameraObject()
     return World::Instance()->getMainCamera()->getOwner();
 }
 
-void LuaGame::setTransform(GameObject* pGameObject, luabridge::LuaRef table)
-{
-    std::cout << "(c++) set transform for: " << pGameObject->getName() << std::endl;
-
-    glm::mat4 newMatrix;
-
-    // --- matrix data ---
-
-//    luabridge::LuaRef c = table[1];
-//    int test = table[1].cast<int>();
+//void LuaGame::setTransform(GameObject* pGameObject, luabridge::LuaRef table)
+//{
+//    std::cout << "(c++) set transform for: " << pGameObject->getName() << std::endl;
 //
-//    std::cout << "<<<<<<<<<<<  " << test << std::endl;
-
-    newMatrix[0][0] = table[1].cast<int>();
-    newMatrix[1][0] = table[2].cast<int>();
-    newMatrix[2][0] = table[3].cast<int>();
-    newMatrix[3][0] = table[4].cast<int>();
-
-    newMatrix[0][1] = table[5].cast<int>();
-    newMatrix[1][1] = table[6].cast<int>();
-    newMatrix[2][1] = table[7].cast<int>();
-    newMatrix[3][1] = table[8].cast<int>();
-
-    newMatrix[0][2] = table[9].cast<int>();
-    newMatrix[1][2] = table[10].cast<int>();
-    newMatrix[2][2] = table[11].cast<int>();
-    newMatrix[3][2] = table[12].cast<int>();
-
-    newMatrix[0][3] = table[13].cast<int>();
-    newMatrix[1][3] = table[14].cast<int>();
-    newMatrix[2][3] = table[15].cast<int>();
-    newMatrix[3][3] = table[16].cast<int>();
-
-    // -------------------
-
-    std::cout << newMatrix << std::endl;
-
-    pGameObject->setTransform(newMatrix);
-
-    for (int i = 1; i < table.length() + 1; ++i)
-    {
-        luabridge::LuaRef choice = table[i];
-        std::cout << "* " << choice << std::endl;
-    }
-}
+//    glm::mat4 newMatrix;
+//
+//    // --- matrix data ---
+//
+//    newMatrix[0][0] = table[1].cast<int>();
+//    newMatrix[1][0] = table[2].cast<int>();
+//    newMatrix[2][0] = table[3].cast<int>();
+//    newMatrix[3][0] = table[4].cast<int>();
+//
+//    newMatrix[0][1] = table[5].cast<int>();
+//    newMatrix[1][1] = table[6].cast<int>();
+//    newMatrix[2][1] = table[7].cast<int>();
+//    newMatrix[3][1] = table[8].cast<int>();
+//
+//    newMatrix[0][2] = table[9].cast<int>();
+//    newMatrix[1][2] = table[10].cast<int>();
+//    newMatrix[2][2] = table[11].cast<int>();
+//    newMatrix[3][2] = table[12].cast<int>();
+//
+//    newMatrix[0][3] = table[13].cast<int>();
+//    newMatrix[1][3] = table[14].cast<int>();
+//    newMatrix[2][3] = table[15].cast<int>();
+//    newMatrix[3][3] = table[16].cast<int>();
+//
+//    // -------------------
+//
+//    std::cout << newMatrix << std::endl;
+//
+//    pGameObject->setTransform(newMatrix);
+//}
 
 void LuaGame::initialize()
 {
@@ -113,7 +102,7 @@ void LuaGame::_initLua()
             .addFunction ("getKeyDown", Input::getKeyDown)
             .addFunction ("getKey", Input::getKey)
             .addFunction ("getCameraObject", LuaGame::getCameraObject)
-            .addFunction ("setTransform", LuaGame::setTransform)
+//            .addFunction ("setTransform", LuaGame::setTransform)
             //game classes
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()
