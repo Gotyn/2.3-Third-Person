@@ -14,13 +14,19 @@ class BaseHud
         static bool Button(int x, int y, std::string caption);
         static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
         static void Label(int x, int y, int width, int height, int fontSize, std::string caption);
-        static bool RiddleButton(int x, int y, int width, int height, int fontSize, std::string caption);
-        static bool HintsButton(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HelpButton(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintButton1(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintButton2(int x, int y, int width, int height, int fontSize, std::string caption);
+        static bool HintButton3(int x, int y, int width, int height, int fontSize, std::string caption);
+        static void HelpBox(int x, int y, int width, int height, int fontSize, std::string caption);
         static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption);
         static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption);
         static void loadTextures();
-        static void setRiddleButtonTextureName(const std::string name);
-        static void setHintsButtonTextureName(const std::string name);
+        static void setHelpButtonTextureName(const std::string name);
+        static void setHintButton1TextureName(const std::string name);
+        static void setHintButton2TextureName(const std::string name);
+        static void setHintButton3TextureName(const std::string name);
+        static void setHelpBoxTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
         static void setHintsBoxTextureName(const std::string name);
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
@@ -36,23 +42,35 @@ class BaseHud
         static float displayTime;
 
         //hud textures
-        static sf::Texture* riddleButtonTexture;
-        static sf::Texture* hintsButtonTexture;
+        static sf::Texture* helpButtonTexture;
+        static sf::Texture* hintButton1Texture;
+        static sf::Texture* hintButton2Texture;
+        static sf::Texture* hintButton3Texture;
+        static sf::Texture* helpBoxTexture;
         static sf::Texture* riddleBoxTexture;
         static sf::Texture* hintsBoxTexture;
         //hud sprites
-        static sf::Sprite* riddleButtonSprite;
-        static sf::Sprite* hintsButtonSprite;
+        static sf::Sprite* helpButtonSprite;
+        static sf::Sprite* hintButton1Sprite;
+        static sf::Sprite* hintButton2Sprite;
+        static sf::Sprite* hintButton3Sprite;
+        static sf::Sprite* helpBoxSprite;
         static sf::Sprite* riddleBoxSprite;
         static sf::Sprite* hintsBoxSprite;
         //hud texts
-        static sf::Text* riddleButtonText;
-        static sf::Text* hintsButtonText;
+        static sf::Text* helpButtonText;
+        static sf::Text* hintButton1Text;
+        static sf::Text* hintButton2Text;
+        static sf::Text* hintButton3Text;
+        static sf::Text* helpBoxText;
         static sf::Text* riddleBoxText;
         static sf::Text* hintsBoxText;
         //hud names
-        static std::string riddleButtonTextureName;
-        static std::string hintsButtonTextureName;
+        static std::string helpButtonTextureName;
+        static std::string hintButton1TextureName;
+        static std::string hintButton2TextureName;
+        static std::string hintButton3TextureName;
+        static std::string helpBoxTextureName;
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
 
