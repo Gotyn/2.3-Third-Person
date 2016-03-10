@@ -39,6 +39,7 @@ sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 sf::Text* BaseHud::progressBarText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
+<<<<<<< HEAD
 std::string BaseHud::helpButtonTextureName = "land";
 std::string BaseHud::hintButton1TextureName = "bricks";
 std::string BaseHud::hintButton2TextureName = "bricks";
@@ -47,6 +48,15 @@ std::string BaseHud::helpBoxTextureName = "land";
 std::string BaseHud::riddleBoxTextureName = "bricks";
 std::string BaseHud::hintsBoxTextureName = "bricks";
 std::string BaseHud::progressBarTextureName = "progressbar.png";
+=======
+std::string BaseHud::helpButtonTextureName = "land.jpg";
+std::string BaseHud::hintButton1TextureName = "bricks.jpg";
+std::string BaseHud::hintButton2TextureName = "bricks.jpg";
+std::string BaseHud::hintButton3TextureName = "bricks.jpg";
+std::string BaseHud::helpBoxTextureName = "land.jpg";
+std::string BaseHud::riddleBoxTextureName = "bricks.jpg";
+std::string BaseHud::hintsBoxTextureName = "bricks.jpg";
+>>>>>>> refs/remotes/origin/hud2
 
 bool BaseHud::lmbPressedLastFrame = false;
 float BaseHud::startedRiddleDisplay = 0;
@@ -74,37 +84,37 @@ void BaseHud::loadTextures()
 {
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
-    if (!helpButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpButtonTextureName + ".jpg"))
+    if (!helpButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpButtonTextureName))
     {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName + ".jpg"))
+    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName))
     {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName + ".jpg"))
+    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName))
     {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName + ".jpg"))
+    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName))
     {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName + ".jpg"))
+    if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName))
     {
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName + ".jpg"))
+    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName))
     {
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName + ".jpg"))
+    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName))
     {
         std::cout << "Could not load texture for label" << std::endl;
         return;

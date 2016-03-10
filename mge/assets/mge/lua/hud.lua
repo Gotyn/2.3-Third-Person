@@ -7,9 +7,12 @@ hud_progress_sprites =
 	1, 2, 3, 4, 5, 6, 7
 }
 
-showHintsBox = false
+showHintsBox1 = false
+showHintsBox2 = false
+showHintsBox3 = false
 showHelpBox = true
 initialRiddleCheck = false
+hintText = ""
 
 progress = 0
 
@@ -38,28 +41,52 @@ function handleHelpButtonClick()
         elseif showHelpBox == true then
             showHelpBox = false
         end
-        if showHintsBox == true then
-            showHintsBox = false
+        if showHintsBox1 == true then
+            showHintsBox1 = false
+        end
+        if showHintsBox2 == true then
+            showHintsBox2 = false
+        end
+        if showHintsBox3 == true then
+            showHintsBox3 = false
         end
     end
 end
 
 function handleHintButtonsClick()
     if Hud.hintButton1(data.hint_button1_x, data.hint_button1_y, data.hint_button1_width, data.hint_button1_height, data.hint_button1_font, data.hint_button1_text) == true then
-        if showHintsBox == false then showHintsBox = true
-        elseif showHintsBox == true then showHintsBox = false
+        if showHintsBox1 == false then
+            showHintsBox1 = true
+            showHintsBox2 = false
+            showHintsBox3 = false
+            hintText = data.hints_box_text1
+        elseif showHintsBox1 == true then
+            showHintsBox1 = false
+            hintText = ""
         end
     end
      
     if Hud.hintButton2(data.hint_button2_x, data.hint_button2_y, data.hint_button2_width, data.hint_button2_height, data.hint_button2_font, data.hint_button2_text) == true then
-        if showHintsBox == false then showHintsBox = true
-        elseif showHintsBox == true then showHintsBox = false
+        if showHintsBox2 == false then
+            showHintsBox2 = true
+            showHintsBox1 = false
+            showHintsBox3 = false
+            hintText = data.hints_box_text2
+        elseif showHintsBox2 == true then
+            showHintsBox2 = false
+            hintText = ""
         end
     end
     
     if Hud.hintButton3(data.hint_button3_x, data.hint_button3_y, data.hint_button3_width, data.hint_button3_height, data.hint_button3_font, data.hint_button3_text) == true then
-        if showHintsBox == false then showHintsBox = true
-        elseif showHintsBox == true then showHintsBox = false
+        if showHintsBox3 == false then
+            showHintsBox3 = true
+            showHintsBox2 = false
+            showHintsBox1 = false
+            hintText = data.hints_box_text3
+        elseif showHintsBox3 == true then
+            showHintsBox3 = false
+            hintText = ""
         end
     end
 end
@@ -83,11 +110,16 @@ function updateHelpBox()
         Hud.riddleBox(data.riddle_box_x, data.riddle_box_y, data.riddle_box_width, data.riddle_box_height, data.riddle_box_font, data.riddle_box_text)
         handleHintButtonsClick()
     end
+    if showHelpBox == false then
+        showHintsBox1 = false
+        showHintsBox2 = false
+        showHintsBox3 = false
+    end
 end
 
 function updateHintsBox()
-    if showHintsBox == true then
-        Hud.hintsBox(data.hints_box_x, data.hints_box_y, data.hints_box_width, data.hints_box_height, data.hints_box_font, data.hints_box_text2)
+    if showHintsBox1 == true or showHintsBox2 == true or showHintsBox3 == true then
+        Hud.hintsBox(data.hints_box_x, data.hints_box_y, data.hints_box_width, data.hints_box_height, data.hints_box_font, hintText)
     end
 end
 
