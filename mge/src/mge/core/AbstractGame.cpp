@@ -9,7 +9,9 @@
 
 using namespace std;
 
-AbstractGame::AbstractGame():_window(NULL),_running(false)
+sf::RenderWindow* AbstractGame::_window = 0;
+
+AbstractGame::AbstractGame():_running(false)
 {
 
 }
@@ -34,7 +36,7 @@ void AbstractGame::initialize() {
 
 void AbstractGame::_initializeWindow() {
 	cout << "Initializing window..." << endl;
-	_window = new sf::RenderWindow( sf::VideoMode(SCREEN_WIDTH,SCREEN_HEIGHT), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,MSAA,3,3));
+	_window = new sf::RenderWindow( sf::VideoMode(SCREEN_WIDTH,SCREEN_HEIGHT), "My Game!", WINDOW_MODE, sf::ContextSettings(24,8,MSAA,3,3));
 	_window->setVerticalSyncEnabled(true);
     cout << "Window initialized." << endl << endl;
 }
