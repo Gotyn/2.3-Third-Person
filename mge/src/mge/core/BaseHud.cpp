@@ -312,7 +312,7 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
 
     progressBarSprite->setTexture(*progressBarTexture);
     progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
-    progressBarSprite->setPosition(fixAlignment(alignment, 10, 10)); // absolute position
+    progressBarSprite->setPosition(fixAlignment(alignment, x, y, width, height)); // absolute position
 
     _window->draw(*progressBarSprite);
     _window->draw(*progressBarText);
@@ -399,41 +399,61 @@ bool BaseHud::DisplayRiddleAtStart()
     else return false;
 }
 
-sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset) {
+sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int width, int height) {
     sf::Vector2f correctPosition(0,0);
+    sf::Vector2u wSize = _window->getSize();
 
     switch ( alignment ) {
         case 1:
-            std::cout << "Alignment: LEFT_TOP" << std::endl;
+            // Alignment: LEFT_TOP
             correctPosition.x = xOffset;
             correctPosition.y = yOffset;
             break;
         case 2:
-            std::cout << "Alignment: LEFT_CENTER" << std::endl;
+            // Alignment: LEFT_CENTER
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
         case 3:
-            std::cout << "Alignment: LEFT_BOTTOM" << std::endl;
+            // Alignment: LEFT_BOTTOM
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
         case 4:
-            std::cout << "Alignment: CENTER_TOP" << std::endl;
+            // Alignment: CENTER_TOP
+            std::cout << "Im doing it!" << std::endl;
+            correctPosition.x = wSize.x - wSize.x / 2 - width / 2;
+            correctPosition.y = yOffset;
             break;
         case 5:
-            std::cout << "Alignment: CENTER_CENTER" << std::endl;
+            // Alignment: CENTER_CENTER
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
         case 6:
-            std::cout << "Alignment: CENTER_BOTTOM" << std::endl;
+            // Alignment: CENTER_BOTTOM
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
         case 7:
-            std::cout << "Alignment: RIGHT_TOP" << std::endl;
+            // Alignment: RIGHT_TOP
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
         case 8:
-            std::cout << "Alignment: RIGHT_CENTER" << std::endl;
+            // Alignment: RIGHT_CENTER
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
         case 9:
-            std::cout << "Alignment: RIGHT_BOTTOM" << std::endl;
+            // Alignment: RIGHT_BOTTOM
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
+
         default:
-            std::cout << "CASE Default" << std::endl;
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
             break;
     }
     return correctPosition;
