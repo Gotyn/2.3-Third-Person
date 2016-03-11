@@ -32,6 +32,7 @@ class BaseHud
         static void setHintsBoxTextureName(const std::string name);
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
         static bool DisplayRiddleAtStart();
+        static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset);
 
     protected:
 

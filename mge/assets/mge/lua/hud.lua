@@ -85,14 +85,14 @@ end
 
 function updateProgressBar()
 	-- Using TextLabels for now
-	if 	   (progress > 0.90)  then Hud.progressBar(600,500, 224, 32, 224, 0, "",0) -- show all 
-	elseif (progress > 0.80)  then Hud.progressBar(600,500, 224, 32, 196, 0, "",0) -- show 6
-	elseif (progress > 0.65)  then Hud.progressBar(600,500, 224, 32, 160, 0, "",0) -- show 5
-	elseif (progress > 0.50)  then Hud.progressBar(600,500, 224, 32, 128, 0, "",0) -- show 4
-	elseif (progress > 0.35)  then Hud.progressBar(600,500, 224, 32,  96, 0, "",0) -- show 3
-	elseif (progress > 0.20)  then Hud.progressBar(600,500, 224, 32,  64, 0, "",0) -- show 2
-	elseif (progress > 0.10)  then Hud.progressBar(600,500, 224, 32,  32, 0, "",0) -- show 1
-	elseif (progress <= 0.10) then Hud.progressBar(600,500, 224, 32,  0, 0, "",0) -- show none
+	if 	   (progress > 0.90)  then Hud.progressBar(600,500, 224, 32, 224, 0, "", 1) -- show all 
+	elseif (progress > 0.80)  then Hud.progressBar(600,500, 224, 32, 196, 0, "", 1) -- show 6
+	elseif (progress > 0.65)  then Hud.progressBar(600,500, 224, 32, 160, 0, "", 1) -- show 5
+	elseif (progress > 0.50)  then Hud.progressBar(600,500, 224, 32, 128, 0, "", 1) -- show 4
+	elseif (progress > 0.35)  then Hud.progressBar(600,500, 224, 32,  96, 0, "", 1) -- show 3
+	elseif (progress > 0.20)  then Hud.progressBar(600,500, 224, 32,  64, 0, "", 1) -- show 2
+	elseif (progress > 0.10)  then Hud.progressBar(600,500, 224, 32,  32, 0, "", 1) -- show 1
+	elseif (progress <= 0.10) then Hud.progressBar(600,500, 224, 32,  0, 0,  "", 1) -- show none
 	end
 end
 

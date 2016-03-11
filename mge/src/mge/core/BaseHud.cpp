@@ -251,7 +251,7 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
 
     helpBoxSprite->setTexture(*helpBoxTexture);
     helpBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    helpBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+    helpBoxSprite->setPosition(fixAlignment(alignment,20,20)); // absolute position
 
     _window->draw(*helpBoxSprite);
     _window->draw(*helpBoxText);
@@ -312,7 +312,7 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
 
     progressBarSprite->setTexture(*progressBarTexture);
     progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
-    progressBarSprite->setPosition(sf::Vector2f(x, y)); // absolute position
+    progressBarSprite->setPosition(fixAlignment(alignment, 10, 10)); // absolute position
 
     _window->draw(*progressBarSprite);
     _window->draw(*progressBarText);
@@ -397,4 +397,44 @@ bool BaseHud::DisplayRiddleAtStart()
 {
     if(Timer::now() - startedRiddleDisplay > displayTime) return true;
     else return false;
+}
+
+sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset) {
+    sf::Vector2f correctPosition(0,0);
+
+    switch ( alignment ) {
+        case 1:
+            std::cout << "Alignment: LEFT_TOP" << std::endl;
+            correctPosition.x = xOffset;
+            correctPosition.y = yOffset;
+            break;
+        case 2:
+            std::cout << "Alignment: LEFT_CENTER" << std::endl;
+            break;
+        case 3:
+            std::cout << "Alignment: LEFT_BOTTOM" << std::endl;
+            break;
+        case 4:
+            std::cout << "Alignment: CENTER_TOP" << std::endl;
+            break;
+        case 5:
+            std::cout << "Alignment: CENTER_CENTER" << std::endl;
+            break;
+        case 6:
+            std::cout << "Alignment: CENTER_BOTTOM" << std::endl;
+            break;
+        case 7:
+            std::cout << "Alignment: RIGHT_TOP" << std::endl;
+            break;
+        case 8:
+            std::cout << "Alignment: RIGHT_CENTER" << std::endl;
+            break;
+        case 9:
+            std::cout << "Alignment: RIGHT_BOTTOM" << std::endl;
+            break;
+        default:
+            std::cout << "CASE Default" << std::endl;
+            break;
+    }
+    return correctPosition;
 }
