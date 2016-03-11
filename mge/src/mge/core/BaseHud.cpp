@@ -39,7 +39,7 @@ sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 sf::Text* BaseHud::progressBarText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
-std::string BaseHud::helpButtonTextureName = "land.jpg";
+std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "bricks.jpg";
 std::string BaseHud::hintButton2TextureName = "bricks.jpg";
 std::string BaseHud::hintButton3TextureName = "bricks.jpg";
@@ -150,7 +150,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = helpButtonText->getLocalBounds();
@@ -172,7 +172,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintButton1Text->getLocalBounds();
@@ -194,7 +194,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintButton2Text->getLocalBounds();
@@ -216,7 +216,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption)
+bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintButton3Text->getLocalBounds();
@@ -238,7 +238,7 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(x,y,width,height);
 }
 
-void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = helpBoxText->getLocalBounds();
@@ -257,7 +257,7 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
     _window->draw(*helpBoxText);
 }
 
-void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
@@ -276,7 +276,7 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
     _window->draw(*riddleBoxText);
 }
 
-void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption)
+void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
@@ -295,7 +295,7 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxText);
 }
 
-void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption)
+void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment)
 {
     //create text
     sf::FloatRect textRect = progressBarText->getLocalBounds();
