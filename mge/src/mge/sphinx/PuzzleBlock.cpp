@@ -42,11 +42,16 @@ void PuzzleBlock::randomize()
 float PuzzleBlock::getProgress()
 {
     glm::vec3 forwardDelta = _targetForward - GameObject::getForward();
+    glm::vec3 backwardDelta = -_targetForward - GameObject::getForward();
     glm::vec3 upDelta = _targetUp - GameObject::getUp();
 
-    float progressFraction = (glm::length(forwardDelta) / 2.0f + glm::length(upDelta) / 2.0f) * 0.5f;
+    float forwardFraction = (glm::length(forwardDelta) / 2.0f + glm::length(upDelta) / 2.0f) * 0.5f;
+    float backwardFraction = (glm::length(backwardDelta) / 2.0f + glm::length(upDelta) / 2.0f) * 0.5f;
 
-    return 1.0f - progressFraction;
+    if (forwardFraction <= backwardFraction)
+        return 1.0f - forwardFraction;
+    else
+        return 1.0f - backwardFraction;
 }
 
 void PuzzleBlock::update(float pStep, const glm::mat4& pParentTransform)
