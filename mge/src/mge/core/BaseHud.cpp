@@ -153,18 +153,19 @@ bool BaseHud::Button(int x, int y, std::string caption)
 
 bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    helpButtonSprite->setTexture(*helpButtonTexture);
+    helpButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
+    helpButtonSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = helpButtonText->getLocalBounds();
     helpButtonText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    helpButtonText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    helpButtonText->setPosition(helpButtonSprite->getPosition().x + width / 2, helpButtonSprite->getPosition().y + height / 2);
     helpButtonText->setString(caption);
     helpButtonText->setFont(_font);
     helpButtonText->setCharacterSize(fontSize);
     helpButtonText->setColor(sf::Color::White);
-
-    helpButtonSprite->setTexture(*helpButtonTexture);
-    helpButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
-    helpButtonSprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*helpButtonSprite);
     _window->draw(*helpButtonText);
@@ -175,18 +176,19 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
 
 bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    hintButton1Sprite->setTexture(*hintButton1Texture);
+    hintButton1Sprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintButton1Sprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = hintButton1Text->getLocalBounds();
     hintButton1Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton1Text->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintButton2Text->setPosition(hintButton2Sprite->getPosition().x + width / 2, hintButton2Sprite->getPosition().y + height / 2);
     hintButton1Text->setString(caption);
     hintButton1Text->setFont(_font);
     hintButton1Text->setCharacterSize(fontSize);
     hintButton1Text->setColor(sf::Color::White);
-
-    hintButton1Sprite->setTexture(*hintButton1Texture);
-    hintButton1Sprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintButton1Sprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*hintButton1Sprite);
     _window->draw(*hintButton1Text);
@@ -197,18 +199,19 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
 
 bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    hintButton2Sprite->setTexture(*hintButton2Texture);
+    hintButton2Sprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintButton2Sprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = hintButton2Text->getLocalBounds();
     hintButton2Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton2Text->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintButton2Text->setPosition(hintButton2Sprite->getPosition().x + width / 2, hintButton2Sprite->getPosition().y + height / 2);
     hintButton2Text->setString(caption);
     hintButton2Text->setFont(_font);
     hintButton2Text->setCharacterSize(fontSize);
     hintButton2Text->setColor(sf::Color::White);
-
-    hintButton2Sprite->setTexture(*hintButton2Texture);
-    hintButton2Sprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintButton2Sprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*hintButton2Sprite);
     _window->draw(*hintButton2Text);
@@ -219,18 +222,19 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
 
 bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    hintButton3Sprite->setTexture(*hintButton3Texture);
+    hintButton3Sprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintButton3Sprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = hintButton3Text->getLocalBounds();
     hintButton3Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton3Text->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintButton3Text->setPosition(hintButton3Sprite->getPosition().x + width / 2, hintButton3Sprite->getPosition().y + height / 2);
     hintButton3Text->setString(caption);
     hintButton3Text->setFont(_font);
     hintButton3Text->setCharacterSize(fontSize);
     hintButton3Text->setColor(sf::Color::White);
-
-    hintButton3Sprite->setTexture(*hintButton3Texture);
-    hintButton3Sprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintButton3Sprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*hintButton3Sprite);
     _window->draw(*hintButton3Text);
@@ -241,18 +245,19 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
 
 void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    helpBoxSprite->setTexture(*helpBoxTexture);
+    helpBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    helpBoxSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = helpBoxText->getLocalBounds();
     helpBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    helpBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    helpBoxText->setPosition(helpBoxSprite->getPosition().x + width / 2, helpBoxSprite->getPosition().y + height / 2);
     helpBoxText->setString(caption);
     helpBoxText->setFont(_font);
     helpBoxText->setCharacterSize(fontSize);
     helpBoxText->setColor(sf::Color::White);
-
-    helpBoxSprite->setTexture(*helpBoxTexture);
-    helpBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    helpBoxSprite->setPosition(fixAlignment(alignment,20,20)); // absolute position
 
     _window->draw(*helpBoxSprite);
     _window->draw(*helpBoxText);
@@ -260,18 +265,19 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
 
 void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    riddleBoxSprite->setTexture(*riddleBoxTexture);
+    riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    riddleBoxSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
     riddleBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    riddleBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    riddleBoxText->setPosition(riddleBoxSprite->getPosition().x + width / 2, riddleBoxSprite->getPosition().y + height / 2);
     riddleBoxText->setString(caption);
     riddleBoxText->setFont(_font);
     riddleBoxText->setCharacterSize(fontSize);
     riddleBoxText->setColor(sf::Color::White);
-
-    riddleBoxSprite->setTexture(*riddleBoxTexture);
-    riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    riddleBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*riddleBoxSprite);
     _window->draw(*riddleBoxText);
@@ -279,18 +285,20 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
 
 void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    //create sprite
+    hintsBoxSprite->setTexture(*hintsBoxTexture);
+    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintsBoxSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
     hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    //hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    hintsBoxText->setPosition(hintsBoxSprite->getPosition().x + width / 2, hintsBoxSprite->getPosition().y + height / 2);
     hintsBoxText->setString(caption);
     hintsBoxText->setFont(_font);
     hintsBoxText->setCharacterSize(fontSize);
     hintsBoxText->setColor(sf::Color::Black);
-
-    hintsBoxSprite->setTexture(*hintsBoxTexture);
-    hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintsBoxSprite->setPosition(sf::Vector2f(x, y)); // absolute position
 
     _window->draw(*hintsBoxSprite);
     _window->draw(*hintsBoxText);
@@ -298,6 +306,13 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
 
 void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment)
 {
+    //sprite
+    progressBarTexture->setRepeated(false);
+
+    progressBarSprite->setTexture(*progressBarTexture);
+    progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
+    progressBarSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+
     //create text
     sf::FloatRect textRect = progressBarText->getLocalBounds();
     progressBarText->setString(caption);
@@ -305,15 +320,8 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
     progressBarText->setCharacterSize(fontSize);
 
     progressBarText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    progressBarText->setPosition(sf::Vector2f(x + width/2, y + height/2));
+    progressBarText->setPosition(progressBarSprite->getPosition().x + width / 2, progressBarSprite->getPosition().y + height / 2);
     progressBarText->setColor(sf::Color::Black);
-
-    //sprite
-    progressBarTexture->setRepeated(false);
-
-    progressBarSprite->setTexture(*progressBarTexture);
-    progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
-    progressBarSprite->setPosition(fixAlignment(alignment, x, y, width, height)); // absolute position
 
     _window->draw(*progressBarSprite);
     _window->draw(*progressBarText);
