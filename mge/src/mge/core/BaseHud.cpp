@@ -11,7 +11,7 @@
 // init static members
 sf::RenderWindow* BaseHud::_window = 0;
 sf::Font BaseHud::_font;
-sf::Vector2u wSize(0,0);
+sf::Vector2u BaseHud::wSize(0,0);
 // initialize static textures
 sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
@@ -402,7 +402,7 @@ bool BaseHud::DisplayRiddleAtStart()
 
 sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int width, int height) {
     sf::Vector2f correctPosition(0,0);
-    sf::Vector2u wSize = _window->getSize();
+    wSize = _window->getSize();
 
     switch ( alignment ) {
         case 1:
@@ -453,8 +453,7 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
             break;
 
         default:
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            std::cout << "WARNING: Chosen Alignment '" << alignment << "' doesn't exist!" << std::endl;
             break;
     }
     return correctPosition;
@@ -462,24 +461,11 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
 
 
     // Alignment on X
-    int BaseHud::Align_X_Left(int xOffset) { return xOffset; }
-
-    int BaseHud::Align_X_Center (int width) {
-        return 1;
-    }
-
-    int BaseHud::Align_X_Right  (int width, int xOffset) {
-        return 1;
-    }
-
+    int BaseHud::Align_X_Left   (int xOffset)            { return xOffset; }
+    int BaseHud::Align_X_Center (int width)              { return (wSize.x / 2 - width / 2);   }
+    int BaseHud::Align_X_Right  (int width, int xOffset) { return (wSize.x - width - xOffset); }
     // Alignment on Y
-    int BaseHud::Align_Y_Top (int yOffset) { return yOffset; }
-
-    int BaseHud::Align_Y_Center (int height) {
-        return 1;
-    }
-
-    int BaseHud::Align_Y_Bottom (int height, int yOffset) {
-        return 1;
-    }
+    int BaseHud::Align_Y_Top    (int yOffset)            { return yOffset; }
+    int BaseHud::Align_Y_Center (int height)             { return (wSize.y / 2 - height / 2);   }
+    int BaseHud::Align_Y_Bottom (int height, int yOffset){ return (wSize.y - height - yOffset); }
 
