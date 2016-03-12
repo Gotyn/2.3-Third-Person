@@ -81,7 +81,7 @@ class BaseHud
         static std::string hintsBoxTextureName;
         static std::string progressBarTextureName;
 
-        static bool CheckMouseOnButton(int x, int y, int width, int height);
+        static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
 
         // Alignment
         static sf::Vector2u wSize;

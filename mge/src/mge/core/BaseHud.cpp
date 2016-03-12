@@ -148,20 +148,24 @@ bool BaseHud::Button(int x, int y, std::string caption)
     _window->draw(text);
 
     //text mouse
-    return CheckMouseOnButton(x,y,width,height);
+    std::cout << "Update BaseHud::Button function with Alignment first" << std::endl;
+    //return CheckMouseOnButton(x,y,width,height);
+    return false;
 }
 
 bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     helpButtonSprite->setTexture(*helpButtonTexture);
     helpButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
-    helpButtonSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    helpButtonSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = helpButtonText->getLocalBounds();
     helpButtonText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    helpButtonText->setPosition(helpButtonSprite->getPosition().x + width / 2, helpButtonSprite->getPosition().y + height / 2);
+    helpButtonText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     helpButtonText->setString(caption);
     helpButtonText->setFont(_font);
     helpButtonText->setCharacterSize(fontSize);
@@ -171,20 +175,22 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
     _window->draw(*helpButtonText);
 
 	//text mouse
-    return CheckMouseOnButton(x,y,width,height);
+    return CheckMouseOnButton(alignedPos, width, height);
 }
 
 bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     hintButton1Sprite->setTexture(*hintButton1Texture);
     hintButton1Sprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintButton1Sprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    hintButton1Sprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = hintButton1Text->getLocalBounds();
     hintButton1Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton2Text->setPosition(hintButton2Sprite->getPosition().x + width / 2, hintButton2Sprite->getPosition().y + height / 2);
+    hintButton2Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintButton1Text->setString(caption);
     hintButton1Text->setFont(_font);
     hintButton1Text->setCharacterSize(fontSize);
@@ -194,20 +200,22 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
     _window->draw(*hintButton1Text);
 
 	//text mouse
-    return CheckMouseOnButton(x,y,width,height);
+    return CheckMouseOnButton(alignedPos, width, height);
 }
 
 bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     hintButton2Sprite->setTexture(*hintButton2Texture);
     hintButton2Sprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintButton2Sprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    hintButton2Sprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = hintButton2Text->getLocalBounds();
     hintButton2Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton2Text->setPosition(hintButton2Sprite->getPosition().x + width / 2, hintButton2Sprite->getPosition().y + height / 2);
+    hintButton2Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintButton2Text->setString(caption);
     hintButton2Text->setFont(_font);
     hintButton2Text->setCharacterSize(fontSize);
@@ -217,20 +225,22 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
     _window->draw(*hintButton2Text);
 
 	//text mouse
-    return CheckMouseOnButton(x,y,width,height);
+    return CheckMouseOnButton(alignedPos, width, height);
 }
 
 bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     hintButton3Sprite->setTexture(*hintButton3Texture);
     hintButton3Sprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintButton3Sprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    hintButton3Sprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = hintButton3Text->getLocalBounds();
     hintButton3Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton3Text->setPosition(hintButton3Sprite->getPosition().x + width / 2, hintButton3Sprite->getPosition().y + height / 2);
+    hintButton3Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintButton3Text->setString(caption);
     hintButton3Text->setFont(_font);
     hintButton3Text->setCharacterSize(fontSize);
@@ -240,20 +250,22 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
     _window->draw(*hintButton3Text);
 
 	//text mouse
-    return CheckMouseOnButton(x,y,width,height);
+    return CheckMouseOnButton(alignedPos, width, height);
 }
 
 void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     helpBoxSprite->setTexture(*helpBoxTexture);
     helpBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    helpBoxSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    helpBoxSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = helpBoxText->getLocalBounds();
     helpBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    helpBoxText->setPosition(helpBoxSprite->getPosition().x + width / 2, helpBoxSprite->getPosition().y + height / 2);
+    helpBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     helpBoxText->setString(caption);
     helpBoxText->setFont(_font);
     helpBoxText->setCharacterSize(fontSize);
@@ -265,15 +277,17 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
 
 void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     riddleBoxSprite->setTexture(*riddleBoxTexture);
     riddleBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    riddleBoxSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    riddleBoxSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
     riddleBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    riddleBoxText->setPosition(riddleBoxSprite->getPosition().x + width / 2, riddleBoxSprite->getPosition().y + height / 2);
+    riddleBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     riddleBoxText->setString(caption);
     riddleBoxText->setFont(_font);
     riddleBoxText->setCharacterSize(fontSize);
@@ -285,16 +299,18 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
 
 void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //create sprite
     hintsBoxSprite->setTexture(*hintsBoxTexture);
     hintsBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    hintsBoxSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    hintsBoxSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
     hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
     //hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
-    hintsBoxText->setPosition(hintsBoxSprite->getPosition().x + width / 2, hintsBoxSprite->getPosition().y + height / 2);
+    hintsBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintsBoxText->setString(caption);
     hintsBoxText->setFont(_font);
     hintsBoxText->setCharacterSize(fontSize);
@@ -306,21 +322,22 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
 
 void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
     //sprite
     progressBarTexture->setRepeated(false);
 
     progressBarSprite->setTexture(*progressBarTexture);
     progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
-    progressBarSprite->setPosition(fixAlignment(alignment, x, y, width, height));
+    progressBarSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = progressBarText->getLocalBounds();
     progressBarText->setString(caption);
     progressBarText->setFont(_font);
     progressBarText->setCharacterSize(fontSize);
-
     progressBarText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    progressBarText->setPosition(progressBarSprite->getPosition().x + width / 2, progressBarSprite->getPosition().y + height / 2);
+    progressBarText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     progressBarText->setColor(sf::Color::Black);
 
     _window->draw(*progressBarSprite);
@@ -348,13 +365,27 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     _window->draw(text);
 }
 
-bool BaseHud::CheckMouseOnButton(int x, int y, int width, int height)
+void BaseHud::setHelpButtonTextureName(const std::string name)  { helpButtonTextureName  = name; }
+void BaseHud::setHintButton1TextureName(const std::string name) { hintButton1TextureName = name; }
+void BaseHud::setHintButton2TextureName(const std::string name) { hintButton2TextureName = name; }
+void BaseHud::setHintButton3TextureName(const std::string name) { hintButton3TextureName = name; }
+void BaseHud::setHelpBoxTextureName(const std::string name)     { helpBoxTextureName     = name; }
+void BaseHud::setRiddleBoxTextureName(const std::string name)   { riddleBoxTextureName   = name; }
+void BaseHud::setHintsBoxTextureName(const std::string name)    { hintsBoxTextureName    = name; }
+
+bool BaseHud::DisplayRiddleAtStart()
+{
+    if(Timer::now() - startedRiddleDisplay > displayTime) return true;
+    else return false;
+}
+
+bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height)
 {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
-    if (mousePos.x < x) { return false; }
-    if (mousePos.y < y) { return false; }
-    if (mousePos.x > x + width) { return false; }
-    if (mousePos.y > y + height) { return false; }
+    if (mousePos.x < position.x) { return false; }
+    if (mousePos.y < position.y) { return false; }
+    if (mousePos.x > position.x + width) { return false; }
+    if (mousePos.y > position.y + height) { return false; }
     //Mouse is on button!
 
     if (!lmbPressedLastFrame && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
@@ -365,47 +396,6 @@ bool BaseHud::CheckMouseOnButton(int x, int y, int width, int height)
     if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
         lmbPressedLastFrame = false;
     }
-}
-
-void BaseHud::setHelpButtonTextureName(const std::string name)
-{
-    helpButtonTextureName = name;
-}
-
-void BaseHud::setHintButton1TextureName(const std::string name)
-{
-    hintButton1TextureName = name;
-}
-
-void BaseHud::setHintButton2TextureName(const std::string name)
-{
-    hintButton2TextureName = name;
-}
-
-void BaseHud::setHintButton3TextureName(const std::string name)
-{
-    hintButton3TextureName = name;
-}
-
-void BaseHud::setHelpBoxTextureName(const std::string name)
-{
-    helpBoxTextureName = name;
-}
-
-void BaseHud::setRiddleBoxTextureName(const std::string name)
-{
-    riddleBoxTextureName = name;
-}
-
-void BaseHud::setHintsBoxTextureName(const std::string name)
-{
-    hintsBoxTextureName = name;
-}
-
-bool BaseHud::DisplayRiddleAtStart()
-{
-    if(Timer::now() - startedRiddleDisplay > displayTime) return true;
-    else return false;
 }
 
 sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int width, int height) {
