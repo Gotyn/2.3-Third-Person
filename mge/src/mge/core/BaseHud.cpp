@@ -11,6 +11,7 @@
 // init static members
 sf::RenderWindow* BaseHud::_window = 0;
 sf::Font BaseHud::_font;
+sf::Vector2u wSize(0,0);
 // initialize static textures
 sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
@@ -406,49 +407,49 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
     switch ( alignment ) {
         case 1:
             // Alignment: LEFT_TOP
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Left(xOffset);
+            correctPosition.y = Align_Y_Top(yOffset);
             break;
         case 2:
             // Alignment: LEFT_CENTER
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Left(xOffset);
+            correctPosition.y = Align_Y_Center(height);
             break;
         case 3:
             // Alignment: LEFT_BOTTOM
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Left(xOffset);
+            correctPosition.y = Align_Y_Bottom(height, yOffset);
             break;
         case 4:
             // Alignment: CENTER_TOP
-            std::cout << "Im doing it!" << std::endl;
-            correctPosition.x = wSize.x - wSize.x / 2 - width / 2;
-            correctPosition.y = yOffset;
+            //std::cout << "Im doing it!" << std::endl;
+            correctPosition.x = Align_X_Center(width);
+            correctPosition.y = Align_Y_Top(yOffset);
             break;
         case 5:
             // Alignment: CENTER_CENTER
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Center(width);
+            correctPosition.y = Align_Y_Center(height);
             break;
         case 6:
             // Alignment: CENTER_BOTTOM
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Center(width);
+            correctPosition.y = Align_Y_Bottom(height, yOffset);
             break;
         case 7:
             // Alignment: RIGHT_TOP
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Right(width, xOffset);
+            correctPosition.y = Align_Y_Top(yOffset);
             break;
         case 8:
             // Alignment: RIGHT_CENTER
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Right(width, xOffset);
+            correctPosition.y = Align_Y_Center(height);
             break;
         case 9:
             // Alignment: RIGHT_BOTTOM
-            correctPosition.x = xOffset;
-            correctPosition.y = yOffset;
+            correctPosition.x = Align_X_Right(width, xOffset);
+            correctPosition.y = Align_Y_Bottom(height, yOffset);
             break;
 
         default:
@@ -458,3 +459,27 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
     }
     return correctPosition;
 }
+
+
+    // Alignment on X
+    int BaseHud::Align_X_Left(int xOffset) { return xOffset; }
+
+    int BaseHud::Align_X_Center (int width) {
+        return 1;
+    }
+
+    int BaseHud::Align_X_Right  (int width, int xOffset) {
+        return 1;
+    }
+
+    // Alignment on Y
+    int BaseHud::Align_Y_Top (int yOffset) { return yOffset; }
+
+    int BaseHud::Align_Y_Center (int height) {
+        return 1;
+    }
+
+    int BaseHud::Align_Y_Bottom (int height, int yOffset) {
+        return 1;
+    }
+
