@@ -1,4 +1,5 @@
 gameHud = require "mge/lua/hud"
+gameHud_Data = require "mge/lua/hud_data"
 
 pieces = {  
     Game.PuzzleBlock("cube_flat.obj", "land.jpg", "piece1"),
@@ -52,6 +53,9 @@ function refreshHud()
     package.loaded["mge/lua/hud"] = nil
     gameHud = require "mge/lua/hud"
     print("hud reloaded!")
+	package.loaded["mge/lua/hud_data"] = nil
+	gameHud_Data = require "mge/lua/hud"
+	print("hud_data reloaded!")
 end
 
 function printPuzzleBlocksStates()
