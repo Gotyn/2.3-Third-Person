@@ -190,7 +190,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
     //create text
     sf::FloatRect textRect = hintButton1Text->getLocalBounds();
     hintButton1Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton2Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
+    hintButton1Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintButton1Text->setString(caption);
     hintButton1Text->setFont(_font);
     hintButton1Text->setCharacterSize(fontSize);

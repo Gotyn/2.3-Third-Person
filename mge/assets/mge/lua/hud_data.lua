@@ -14,54 +14,61 @@ hud_textures =
     "bricks.jpg"    -- hints_box_texture
 }
 
-help_button_xOffset = 700
+--Button for Riddle / Hints
+help_button_xOffset = 25
 help_button_yOffset = 30
-help_button_width = 80
+help_button_width = 60
 help_button_height = 40
-help_button_font = 15
-help_button_text = "RIDDLE"
+help_button_font = 18
+help_button_text = "{o_O}"
 help_button_alignment = alignment.RIGHT_TOP
 
-hint_button1_xOffset = 720
-hint_button1_yOffset = 80
-hint_button1_width = 40
+--Button for first hint
+hint_button1_xOffset = 30
+hint_button1_yOffset = 75
+hint_button1_width = 50
 hint_button1_height = 40
-hint_button1_font = 15
-hint_button1_text = "hint 1"
+hint_button1_font = 20
+hint_button1_text = "H1"
 hint_button1_alignment = alignment.RIGHT_TOP
 
-hint_button2_xOffset = 720
-hint_button2_yOffset = 130
-hint_button2_width = 40
+--Button for second hint
+hint_button2_xOffset = 30
+hint_button2_yOffset = 120
+hint_button2_width = 50
 hint_button2_height = 40
-hint_button2_font = 15
-hint_button2_text = "hint 2"
+hint_button2_font = 20
+hint_button2_text = "H2"
 hint_button2_alignment = alignment.RIGHT_TOP
 
-hint_button3_xOffset = 720
-hint_button3_yOffset = 180
-hint_button3_width = 40
+--Button for third hint
+hint_button3_xOffset = 30
+hint_button3_yOffset = 165
+hint_button3_width = 50
 hint_button3_height = 40
-hint_button3_font = 15
-hint_button3_text = "hint 3"
+hint_button3_font = 20
+hint_button3_text = "H3"
 hint_button3_alignment = alignment.RIGHT_TOP
 
-help_box_xOffset = 700
+--Label behind the hint buttons
+help_box_xOffset = 28
 help_box_yOffset = 70
-help_box_width = 80
-help_box_height = 180
+help_box_width = 54
+help_box_height = 140
 help_box_font = 30
 help_box_text = ""
 help_box_alignment = alignment.RIGHT_TOP
 
-riddle_box_xOffset = 250
-riddle_box_yOffset = 480
-riddle_box_width = 300
+--Label that shows the riddle
+riddle_box_xOffset = 0
+riddle_box_yOffset = 15
+riddle_box_width = 900
 riddle_box_height = 100
 riddle_box_font = 30
-riddle_box_text = "this is riddle"
+riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
 
+--Label that shows the actual hint
 hints_box_xOffset = 250
 hints_box_yOffset = 480
 hints_box_width = 300
