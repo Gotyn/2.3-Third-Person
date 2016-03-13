@@ -1,8 +1,8 @@
 #include <cassert>
 #include <iostream>
-using namespace std;
-
+#include <stdio.h>
 #include <glm.hpp>
+#include <string>
 
 #include "mge/core/Timer.hpp"
 #include "mge/core/GameObject.hpp"
@@ -10,6 +10,8 @@ using namespace std;
 #include "mge/core/World.hpp"
 #include "mge/core/Camera.hpp"
 #include "mge/behaviours/RotatingBehaviour.hpp"
+
+using namespace std;
 
 GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld )
 :	_name( pName ), _transform( glm::translate( pPosition ) ),  _parent(NULL), _children()
@@ -135,6 +137,48 @@ void GameObject::LookAt(GameObject* pTarget)
     );
 }
 
+void GameObject::WriteLogFile(const char* szString)
+{
+    std::cout << "writing to log file.." << std::endl;
+
+    glm::vec3 pos = getWorldPosition();
+    std::string s = getName() + " position: "
+        + std::to_string(pos[0])
+        + ", " + std::to_string(pos[1])
+        + ", " + std::to_string(pos[2]);
+
+//    glm::mat4 matrix = getTransform();
+
+//    std::string s = getName() + " transform: \n"
+//            + std::to_string(_transform[0][0])
+//            + ", " + std::to_string(_transform[1][0])
+//            + ", " + std::to_string(_transform[2][0])
+//            + ", " + std::to_string(_transform[3][0])
+//
+//            + ", " + std::to_string(_transform[0][1])
+//            + ", " + std::to_string(_transform[1][1])
+//            + ", " + std::to_string(_transform[2][1])
+//            + ", " + std::to_string(_transform[3][1])
+//
+//            + ", " + std::to_string(_transform[0][2])
+//            + ", " + std::to_string(_transform[1][2])
+//            + ", " + std::to_string(_transform[2][2])
+//            + ", " + std::to_string(_transform[3][2])
+//
+//            + ", " + std::to_string(_transform[0][3])
+//            + ", " + std::to_string(_transform[1][3])
+//            + ", " + std::to_string(_transform[2][3])
+//            + ", " + std::to_string(_transform[3][3]) + "\n";
+
+    const char* c = s.c_str();
+
+    FILE* pFile = fopen("logFile.txt", "a");
+    fprintf(pFile, "%s\n", c);
+    fclose(pFile);
+
+    std::cout << "write completed." << std::endl;
+}
+
 //new multiple behaviours
 void GameObject::addBehaviour(AbstractBehaviour* pBehaviour)
 {
@@ -243,7 +287,10 @@ void GameObject::printStatus()
     std::cout << "TODO: print scale" << std::endl;
     std::cout << "forward direction: " << getForward() << std::endl;
     std::cout << "up direction:      " << getUp() << std::endl;
+    std::cout << "transform:" << std::endl << getTransform() << std::endl;
     std::cout << std::endl;
+
+    WriteLogFile("status log for gameObject");
 }
 
 void GameObject::update(float pStep, const glm::mat4& pParentTransform)

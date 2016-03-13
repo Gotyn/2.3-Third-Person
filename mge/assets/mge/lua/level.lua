@@ -1,15 +1,16 @@
 gameHud = require "mge/lua/hud"
-gameHud_data = require "mge/lua/hud_data"
 
 dofile("mge/lua/story1.lua")
 
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 0.9
+solvedThreshold = 2
 
-storyWall = Game.StoryWall("Wall_side.obj", "bricks.jpg", "StoryWall")
-storyWall:rotateAroundAxis(10, 0, 1, 0)
+storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
+storyWall:rotateAroundAxis(240, 0, 1, 0)
+storyWall:scale(0.7, 0.7, 0.7)
+storyWall:setPosition (3.1, 2.3, 3.3)
 
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
@@ -36,6 +37,7 @@ function selectPuzzle(puzzleIndex)
     activePuzzle = puzzleIndex
     storyWall:changeTexture(story[puzzleIndex].wallImage)
     selectBlock(activePuzzle, 1)
+    print("Current Puzzel is: " .. activePuzzle) 
 end
 
 function nextPuzzle()
@@ -87,8 +89,8 @@ function update()
         end
 
         handleControl()
-        handlePlacement(storyWall)
-        -- handlePlacement(story[activePuzzle].blocks[activePiece])
+       handlePlacement(storyWall)
+        handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
             nextPuzzle()
@@ -104,9 +106,6 @@ end
 function refreshHud()
     package.loaded["mge/lua/hud"] = nil
     gameHud = require "mge/lua/hud"
-    
-    package.loaded["mge/lua/hud_data"] = nil
-    gameHud_data = require "mge/lua/hud_data"
     print("hud reloaded!")
 end
 
@@ -120,7 +119,7 @@ end
 function checkProgress()
     totalProgress = 0
     for i, v in ipairs(story[activePuzzle].blocks) do 
-        totalProgress = totalProgress + story[activePuzzle].blocks[i]:getProgress() 
+        totalProgress = totalProgress + story[activePuzzle].blocks[activePiece]:getProgress() 
     end   
     return totalProgress / #story[activePuzzle].blocks
 end
