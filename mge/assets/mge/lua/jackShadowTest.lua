@@ -1,4 +1,5 @@
 gameHud = require "mge/lua/hud"
+gameHud_Data = require "mge/lua/hud_data"
 
 dofile("mge/lua/story1.lua")
 
@@ -131,6 +132,9 @@ function refreshHud()
     package.loaded["mge/lua/hud"] = nil
     gameHud = require "mge/lua/hud"
     print("hud reloaded!")
+	package.loaded["mge/lua/hud_data"] = nil
+	gameHud_Data = require "mge/lua/hud"
+	print("hud_data reloaded!")
 end
 
 function printPuzzleBlocksStates()
