@@ -18,8 +18,6 @@ help_button_xOffset = 25
 help_button_yOffset = 30
 help_button_width = 60
 help_button_height = 40
-help_button_font = 18
-help_button_text = "{o_O}"
 help_button_alignment = alignment.RIGHT_TOP
 help_button_texture = "bricks.jpg"
 
@@ -28,8 +26,6 @@ hint_button1_xOffset = 30
 hint_button1_yOffset = 75
 hint_button1_width = 50
 hint_button1_height = 40
-hint_button1_font = 20
-hint_button1_text = "H1"
 hint_button1_alignment = alignment.RIGHT_TOP
 hint_button1_texture = "bricks.jpg"
 
@@ -38,8 +34,6 @@ hint_button2_xOffset = 30
 hint_button2_yOffset = 120
 hint_button2_width = 50
 hint_button2_height = 40
-hint_button2_font = 20
-hint_button2_text = "H2"
 hint_button2_alignment = alignment.RIGHT_TOP
 hint_button2_texture = "bricks.jpg"
 
@@ -48,8 +42,6 @@ hint_button3_xOffset = 30
 hint_button3_yOffset = 165
 hint_button3_width = 50
 hint_button3_height = 40
-hint_button3_font = 20
-hint_button3_text = "H3"
 hint_button3_alignment = alignment.RIGHT_TOP
 hint_button3_texture = "bricks.jpg"
 
@@ -58,8 +50,6 @@ help_box_xOffset = 28
 help_box_yOffset = 70
 help_box_width = 54
 help_box_height = 140
-help_box_font = 30
-help_box_text = ""
 help_box_alignment = alignment.RIGHT_TOP
 help_box_texture = "bricks.jpg"
 
@@ -97,51 +87,47 @@ HUD.progress_bar_sprite_height = progress_bar_sprite_height
 HUD.progress_bar_sprite_rows = progress_bar_sprite_rows
 HUD.progress_bar_alignment = progress_bar_alignment
 
+-- riddle / hint / help button
 HUD.help_button_xOffset = help_button_xOffset
 HUD.help_button_yOffset = help_button_yOffset
 HUD.help_button_width = help_button_width
 HUD.help_button_height = help_button_height
-HUD.help_button_font = help_button_font
-HUD.help_button_text = help_button_text
 HUD.help_button_alignment = help_button_alignment
 HUD.help_button_texture = help_button_texture
 
+--Button for first hint
 HUD.hint_button1_xOffset = hint_button1_xOffset
 HUD.hint_button1_yOffset = hint_button1_yOffset
 HUD.hint_button1_width = hint_button1_width
 HUD.hint_button1_height = hint_button1_height
-HUD.hint_button1_font = hint_button1_font
-HUD.hint_button1_text = hint_button1_text
 HUD.hint_button1_alignment = hint_button1_alignment
 HUD.hint_button1_texture = hint_button1_texture
 
+--Button for second hint
 HUD.hint_button2_xOffset = hint_button2_xOffset
 HUD.hint_button2_yOffset = hint_button2_yOffset
 HUD.hint_button2_width = hint_button2_width
 HUD.hint_button2_height = hint_button2_height
-HUD.hint_button2_font = hint_button2_font
-HUD.hint_button2_text = hint_button2_text
 HUD.hint_button2_alignment = hint_button2_alignment
 HUD.hint_button2_texture = hint_button2_texture
 
+--Button for third hint
 HUD.hint_button3_xOffset = hint_button3_xOffset
 HUD.hint_button3_yOffset = hint_button3_yOffset
 HUD.hint_button3_width = hint_button3_width
 HUD.hint_button3_height = hint_button3_height
-HUD.hint_button3_font = hint_button3_font
-HUD.hint_button3_text = hint_button3_text
 HUD.hint_button3_alignment = hint_button3_alignment
 HUD.hint_button3_texture = hint_button3_texture
 
+-- background of the hintbuttons
 HUD.help_box_xOffset = help_box_xOffset
 HUD.help_box_yOffset = help_box_yOffset
 HUD.help_box_width = help_box_width
 HUD.help_box_height = help_box_height
-HUD.help_box_font = help_box_font
-HUD.help_box_text = help_box_text
 HUD.help_box_alignment = help_box_alignment
 HUD.help_box_texture = help_box_texture
 
+-- actual riddle
 HUD.riddle_box_xOffset = riddle_box_xOffset
 HUD.riddle_box_yOffset = riddle_box_yOffset
 HUD.riddle_box_width = riddle_box_width
@@ -151,6 +137,7 @@ HUD.riddle_box_text = riddle_box_text
 HUD.riddle_box_alignment = riddle_box_alignment
 HUD.riddle_box_texture = riddle_box_texture
 
+-- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset
 HUD.hints_box_yOffset = hints_box_yOffset
 HUD.hints_box_width = hints_box_width
