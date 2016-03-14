@@ -9,6 +9,7 @@ showHintsBox2 = false
 showHintsBox3 = false
 showHelpBox = true
 initialRiddleCheck = false
+menuPressed = false
 hintText = ""
 
 progress = 0
@@ -28,12 +29,18 @@ function updateBook()
 end
 
 function updateMenu()
-
+    popUpTutorial()
+    if Game.getKey(KeyCode.M) == true and menuPressed == false then
+        game_state = MODE.LEVEL
+        menuPressed = true
+    end
+    if Game.getKey(KeyCode.M) == false then
+        menuPressed = false
+    end
 end
 
 function updateLevel()
     Hud.textLabel(50, 50, progress)
-    --popUpTutorial()
     
     handleHelpButtonClick()
     updateHelpBox()
@@ -48,6 +55,13 @@ function updateLevel()
 					  data.progress_bar_sprite_height, 
 					  data.progress_bar_sprite_rows,
 					  data.progress_bar_alignment)
+    if Game.getKey(KeyCode.M) == true and menuPressed == false then
+        game_state = MODE.MENU
+        menuPressed = true
+    end
+    if Game.getKey(KeyCode.M) == false then
+        menuPressed = false
+    end
 end
 
 function handleHelpButtonClick()
