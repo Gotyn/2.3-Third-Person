@@ -4,6 +4,7 @@
 #include "config.hpp"
 #include "RenderPipeline.hpp"
 #include "World.hpp"
+#include "AbstractGame.hpp"
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 
@@ -20,6 +21,8 @@ RenderPipeline::RenderPipeline()
 
     std::cout << "Render settings loaded." << std::endl << std::endl;
 
+    initializeScreenQuad();
+    initializeRenderBuffer();
     initializeDepthmap();
     initializeLightSpaceMatrix();
 }
@@ -67,6 +70,42 @@ void RenderPipeline::initializeDepthmap()
     _depthMapperMaterial = std::shared_ptr<AbstractMaterial>(new DepthMapper(_depthMapFBO, _depthMap, SHADOW_WIDTH, SHADOW_HEIGHT));
 }
 
+void RenderPipeline::initializeRenderBuffer()
+{
+    //create screen shader program
+    _screenShader = new ShaderProgram();
+    _screenShader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"screenShader.vs");
+    _screenShader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"screenShader.fs");
+    _screenShader->finalize();
+
+    glGenFramebuffers(1, &_framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
+
+    // Generate texture
+    glGenTextures(1, &_texColorBuffer);
+    glBindTexture(GL_TEXTURE_2D, _texColorBuffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    // Attach it to currently bound framebuffer object
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texColorBuffer, 0);
+
+    // Create Render buffer object
+    glGenRenderbuffers(1, &_rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, _rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, SCREEN_WIDTH, SCREEN_HEIGHT);
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _rbo);
+
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << endl;
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
 void RenderPipeline::render (World* pWorld)
 {
     //render world to depth map
@@ -79,10 +118,30 @@ void RenderPipeline::render (World* pWorld)
     //show shadowMap (testing only)
 //    showShadowMap();
 
-    //render world normally
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
+    // First pass
+    glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // We're not using stencil buffer now
+    glEnable(GL_DEPTH_TEST);
+    render(pWorld, pWorld, pWorld->getMainCamera(), true, false);
+
+    // Second pass
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
+    glActiveTexture(GL_TEXTURE0);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    _screenShader->use();
+    glBindVertexArray(_quadVAO);
+    glDisable(GL_DEPTH_TEST);
+    glBindTexture(GL_TEXTURE_2D, _texColorBuffer);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+
+////    render world normally (depricated)
+//    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
 }
 
 void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive, bool pShadowMap)
@@ -111,36 +170,55 @@ void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * p
     }
 }
 
-void RenderPipeline::showShadowMap()
+void RenderPipeline::initializeScreenQuad()
 {
-    // --- depth map preview quad ---
+    _quadVertices[0] = -1.0f;
+    _quadVertices[1] = 1.0f;
+    _quadVertices[2] = 0.0f;
+    _quadVertices[3] = 1.0f;
 
-    GLfloat quadVertices[] = {   // Vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
-        // Positions   // TexCoords
-        -1.0f,  1.0f,  0.0f, 1.0f,
-        -1.0f, -1.0f,  0.0f, 0.0f,
-         1.0f, -1.0f,  1.0f, 0.0f,
+    _quadVertices[4] = -1.0f;
+    _quadVertices[5] = -1.0f;
+    _quadVertices[6] = 0.0f;
+    _quadVertices[7] = 0.0f;
 
-        -1.0f,  1.0f,  0.0f, 1.0f,
-         1.0f, -1.0f,  1.0f, 0.0f,
-         1.0f,  1.0f,  1.0f, 1.0f
-    };
+    _quadVertices[8] = 1.0f;
+    _quadVertices[9] = -1.0f;
+    _quadVertices[10] = 1.0f;
+    _quadVertices[11] = 0.0f;
+
+    _quadVertices[12] = -1.0f;
+    _quadVertices[13] = 1.0f;
+    _quadVertices[14] = 0.0f;
+    _quadVertices[15] = 1.0f;
+
+    _quadVertices[16] = 1.0f;
+    _quadVertices[17] = -1.0f;
+    _quadVertices[18] = 1.0f;
+    _quadVertices[19] = 0.0f;
+
+    _quadVertices[20] = 1.0f;
+    _quadVertices[21] = 1.0f;
+    _quadVertices[22] = 1.0f;
+    _quadVertices[23] = 1.0f;
 
     // Setup screen VAO
-    GLuint quadVAO, quadVBO;
-    glGenVertexArrays(1, &quadVAO);
-    glGenBuffers(1, &quadVBO);
-    glBindVertexArray(quadVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+    glGenVertexArrays(1, &_quadVAO);
+    glGenBuffers(1, &_quadVBO);
+    glBindVertexArray(_quadVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, _quadVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(_quadVertices), &_quadVertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
     glBindVertexArray(0);
+}
 
-
+void RenderPipeline::showShadowMap()
+{
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
     // Clear all relevant buffers
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set clear color to white (not really necessery actually, since we won't be able to see behind the quad anyways)
     glClear(GL_COLOR_BUFFER_BIT);
@@ -148,7 +226,7 @@ void RenderPipeline::showShadowMap()
 
     // Draw Screen
     _depthPreview->use();
-    glBindVertexArray(quadVAO);
+    glBindVertexArray(_quadVAO);
     glBindTexture(GL_TEXTURE_2D, _depthMap);	// Use the color attachment texture as the texture of the quad plane
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
