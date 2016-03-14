@@ -8,6 +8,17 @@ activePuzzle = 1
 activePiece = 1
 solvedThreshold = 2
 
+-- TEXTURE NAMES FOR C++ START --
+display_riddle_at_start = gameHud_Data.display_riddle_at_start
+help_button_texture = gameHud_Data.help_button_texture
+hint_button1_texture = gameHud_Data.hint_button1_texture
+hint_button2_texture = gameHud_Data.hint_button2_texture
+hint_button3_texture = gameHud_Data.hint_button3_texture
+help_box_texture = gameHud_Data.help_box_texture
+riddle_box_texture = gameHud_Data.riddle_box_texture
+hints_box_texture = gameHud_Data.hints_box_texture
+-- TEXTURE NAMES FOR C++ END --
+
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
 storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
@@ -123,7 +134,7 @@ end
 function checkProgress()
     totalProgress = 0
     for i, v in ipairs(story[activePuzzle].blocks) do 
-        totalProgress = totalProgress + story[activePuzzle].blocks[activePiece]:getProgress() 
+        totalProgress = totalProgress + story[activePuzzle].blocks[i]:getProgress() 
     end   
     return totalProgress / #story[activePuzzle].blocks
 end

@@ -145,6 +145,7 @@ void LuaGame::_initLua()
             .addFunction ("helpBox", BaseHud::HelpBox)
             .addFunction ("riddleBox", BaseHud::RiddleBox)
             .addFunction ("hintsBox", BaseHud::HintsBox)
+            .addFunction ("tutorialBox", BaseHud::TutorialBox)
             .addFunction ("displayRiddleAtStart", BaseHud::DisplayRiddleAtStart)
         .endNamespace()
         .beginNamespace ("Audio")
@@ -159,7 +160,6 @@ void LuaGame::_initLua()
 
 int LuaGame::getWindowWidth()
 {
-//    std::cout << "hi" << std::endl;
     return static_cast<int>(_window->getSize().x);
 }
 
@@ -171,8 +171,43 @@ void LuaGame::_update()
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
 
+    if (!BaseHud::texturesSet)
+    {
+        setTextureNames();
+        BaseHud::texturesSet = true;
+    }
+
     //update folder watcher
     _fileWatcher.update();
+}
+
+void LuaGame::setTextureNames()
+{
+    luabridge::LuaRef displayTime = luabridge::getGlobal (_L, "display_riddle_at_start");
+    BaseHud::setDisplayTime(displayTime.cast<int>());
+
+    luabridge::LuaRef help_button_texture = luabridge::getGlobal (_L, "help_button_texture");
+    BaseHud::setHelpButtonTextureName(help_button_texture.cast<std::string>());
+
+    luabridge::LuaRef hint_button1_texture = luabridge::getGlobal (_L, "hint_button1_texture");
+    BaseHud::setHintButton1TextureName(hint_button1_texture.cast<std::string>());
+
+    luabridge::LuaRef hint_button2_texture = luabridge::getGlobal (_L, "hint_button2_texture");
+    BaseHud::setHintButton2TextureName(hint_button2_texture.cast<std::string>());
+
+    luabridge::LuaRef hint_button3_texture = luabridge::getGlobal (_L, "hint_button3_texture");
+    BaseHud::setHintButton3TextureName(hint_button3_texture.cast<std::string>());
+
+    luabridge::LuaRef help_box_texture = luabridge::getGlobal (_L, "help_box_texture");
+    BaseHud::setHelpBoxTextureName(help_box_texture.cast<std::string>());
+
+    luabridge::LuaRef riddle_box_texture = luabridge::getGlobal (_L, "riddle_box_texture");
+    BaseHud::setRiddleBoxTextureName(riddle_box_texture.cast<std::string>());
+
+    luabridge::LuaRef hints_box_texture = luabridge::getGlobal (_L, "hints_box_texture");
+    BaseHud::setHintsBoxTextureName(hints_box_texture.cast<std::string>());
+    cout << "LuaGame: " + help_button_texture.cast<std::string>() << endl;
+    BaseHud::loadTextures();
 }
 
 void LuaGame::_lateUpdate()

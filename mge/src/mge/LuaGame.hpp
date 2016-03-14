@@ -37,6 +37,7 @@ class LuaGame : public AbstractGame
 	private:
 	    void _initLua();
         void _updateGUI();
+        void setTextureNames();
 
         lua_State* _L;
         BaseHud* _hud;
