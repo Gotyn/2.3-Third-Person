@@ -2,18 +2,45 @@ module("hud", package.seeall)
 
 local data = require("mge/lua/hud_data")
 
+MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
+game_state = MODE.LEVEL
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
 showHelpBox = true
 initialRiddleCheck = false
+menuPressed = false
 hintText = ""
 
 progress = 0
 
 function draw()
-	Hud.textLabel(50, 50, progress)
-    --popUpTutorial()
+	if game_state == MODE.LEVEL then
+        updateLevel()
+    elseif game_state == MODE.BOOK then
+        updateBook()
+    elseif game_state == MODE.MENU then
+        updateMenu()
+    end
+end
+
+function updateBook()
+
+end
+
+function updateMenu()
+    popUpTutorial()
+    if Game.getKey(KeyCode.M) == true and menuPressed == false then
+        game_state = MODE.LEVEL
+        menuPressed = true
+    end
+    if Game.getKey(KeyCode.M) == false then
+        menuPressed = false
+    end
+end
+
+function updateLevel()
+    Hud.textLabel(50, 50, progress)
     
     handleHelpButtonClick()
     updateHelpBox()
@@ -28,6 +55,13 @@ function draw()
 					  data.progress_bar_sprite_height, 
 					  data.progress_bar_sprite_rows,
 					  data.progress_bar_alignment)
+    if Game.getKey(KeyCode.M) == true and menuPressed == false then
+        game_state = MODE.MENU
+        menuPressed = true
+    end
+    if Game.getKey(KeyCode.M) == false then
+        menuPressed = false
+    end
 end
 
 function handleHelpButtonClick()
