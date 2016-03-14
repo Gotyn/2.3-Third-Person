@@ -21,6 +21,7 @@ sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::hintsBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::progressBarTexture = new sf::Texture;
+sf::Texture* BaseHud::tutorialBoxTexture = new sf::Texture;
 // initialize static sprites
 sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
@@ -30,6 +31,7 @@ sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::progressBarSprite = new sf::Sprite;
+sf::Sprite* BaseHud::tutorialBoxSprite = new sf::Sprite;
 // initialize static texts
 sf::Text* BaseHud::helpButtonText = new sf::Text;
 sf::Text* BaseHud::hintButton1Text = new sf::Text;
@@ -38,19 +40,22 @@ sf::Text* BaseHud::hintButton3Text = new sf::Text;
 sf::Text* BaseHud::helpBoxText = new sf::Text;
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
+sf::Text* BaseHud::tutorialBoxText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
 std::string BaseHud::helpButtonTextureName  = "land.jpg";
-std::string BaseHud::hintButton1TextureName = "bricks.jpg";
-std::string BaseHud::hintButton2TextureName = "bricks.jpg";
-std::string BaseHud::hintButton3TextureName = "bricks.jpg";
+std::string BaseHud::hintButton1TextureName = "land.jpg";
+std::string BaseHud::hintButton2TextureName = "land.jpg";
+std::string BaseHud::hintButton3TextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
-std::string BaseHud::riddleBoxTextureName = "bricks.jpg";
-std::string BaseHud::hintsBoxTextureName = "bricks.jpg";
+std::string BaseHud::riddleBoxTextureName = "land.jpg";
+std::string BaseHud::hintsBoxTextureName = "land.jpg";
 std::string BaseHud::progressBarTextureName = "Progress_256.png";
+std::string BaseHud::tutorialBoxTextureName = "land.jpg";
 
 bool BaseHud::lmbPressedLastFrame = false;
+bool BaseHud::texturesSet = false;
 float BaseHud::startedRiddleDisplay = 0;
-float BaseHud::displayTime = 10.0f;
+float BaseHud::displayTime = 0.0f;
 
 BaseHud::BaseHud(sf::RenderWindow* aWindow)
 {
@@ -61,8 +66,9 @@ BaseHud::BaseHud(sf::RenderWindow* aWindow)
         std::cout << "Could not load font, exiting..." << std::endl;
         return;
     }
-    loadTextures();
+
     startedRiddleDisplay = Timer::now();
+    std::cout << "constr: " + helpButtonTextureName << std::endl;
 }
 
 BaseHud::~BaseHud()
@@ -70,6 +76,9 @@ BaseHud::~BaseHud()
 
 }
 
+//------------------------------------------------------
+// caching all textures to not re-upload on the fly
+//------------------------------------------------------
 void BaseHud::loadTextures()
 {
     glActiveTexture(GL_TEXTURE0);
@@ -109,7 +118,11 @@ void BaseHud::loadTextures()
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-
+    if (!tutorialBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + tutorialBoxTextureName))
+    {
+        std::cout << "Could not load texture for tutorial label" << std::endl;
+        return;
+    }
     if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName))
     {
         std::cout << "Could not load texture for label" << std::endl;
@@ -123,9 +136,13 @@ void BaseHud::loadTextures()
     helpBoxTexture->setRepeated(true);
     riddleBoxTexture->setRepeated(true);
     hintsBoxTexture->setRepeated(true);
+    tutorialBoxTexture->setRepeated(true);
     _window->popGLStates();
 }
 
+//----------------------------------------------------------------
+// regular SFML button with no image, triggers action upon click
+//----------------------------------------------------------------
 bool BaseHud::Button(int x, int y, std::string caption)
 {
     //create text
@@ -152,6 +169,9 @@ bool BaseHud::Button(int x, int y, std::string caption)
     return false;
 }
 
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -177,6 +197,9 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
     return CheckMouseOnButton(alignedPos, width, height);
 }
 
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -202,6 +225,9 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(alignedPos, width, height);
 }
 
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -227,6 +253,9 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(alignedPos, width, height);
 }
 
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -252,6 +281,9 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
     return CheckMouseOnButton(alignedPos, width, height);
 }
 
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -274,6 +306,9 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
     _window->draw(*helpBoxText);
 }
 
+//----------------------------------------------------------------
+//              image/sprite SFML label with text
+//----------------------------------------------------------------
 void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -296,6 +331,9 @@ void BaseHud::RiddleBox(int x, int y, int width, int height, int fontSize, std::
     _window->draw(*riddleBoxText);
 }
 
+//----------------------------------------------------------------
+//              image/sprite SFML label with text
+//----------------------------------------------------------------
 void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -319,6 +357,34 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxText);
 }
 
+//----------------------------------------------------------------
+//              image/sprite SFML label with text
+//----------------------------------------------------------------
+void BaseHud::TutorialBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+{
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
+    //create sprite
+    tutorialBoxSprite->setTexture(*tutorialBoxTexture);
+    tutorialBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    tutorialBoxSprite->setPosition(alignedPos);
+
+    //create text
+    sf::FloatRect textRect = tutorialBoxText->getLocalBounds();
+    tutorialBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    tutorialBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
+    tutorialBoxText->setString(caption);
+    tutorialBoxText->setFont(_font);
+    tutorialBoxText->setCharacterSize(fontSize);
+    tutorialBoxText->setColor(sf::Color::Black);
+
+    _window->draw(*tutorialBoxSprite);
+    _window->draw(*tutorialBoxText);
+}
+
+//----------------------------------------------------------------
+// label that uses spritesheet and manipulates sprite's position
+//----------------------------------------------------------------
 void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
@@ -333,6 +399,9 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
     _window->draw(*progressBarSprite);
 }
 
+//----------------------------------------------------------------
+// regular SFML label with no image just displaying text
+//----------------------------------------------------------------
 void BaseHud::TextLabel(int x, int y, std::string caption)
 {
     //create text
@@ -354,6 +423,9 @@ void BaseHud::TextLabel(int x, int y, std::string caption)
     _window->draw(text);
 }
 
+//--------------------------------------------------------------------------------
+// a bunch of sessters used outside the class for setting texture names from lua
+//--------------------------------------------------------------------------------
 void BaseHud::setHelpButtonTextureName(const std::string name)  { helpButtonTextureName  = name; }
 void BaseHud::setHintButton1TextureName(const std::string name) { hintButton1TextureName = name; }
 void BaseHud::setHintButton2TextureName(const std::string name) { hintButton2TextureName = name; }
@@ -361,13 +433,22 @@ void BaseHud::setHintButton3TextureName(const std::string name) { hintButton3Tex
 void BaseHud::setHelpBoxTextureName(const std::string name)     { helpBoxTextureName     = name; }
 void BaseHud::setRiddleBoxTextureName(const std::string name)   { riddleBoxTextureName   = name; }
 void BaseHud::setHintsBoxTextureName(const std::string name)    { hintsBoxTextureName    = name; }
+void BaseHud::setTutorialBoxTextureName(const std::string name) { tutorialBoxTextureName = name; }
+void BaseHud::setDisplayTime(const int value)                   { displayTime            = value;}
 
+//----------------------------------------------------------------------
+// simple counter that sends to lua a signal to stop displaying riddle
+//----------------------------------------------------------------------
 bool BaseHud::DisplayRiddleAtStart()
 {
     if(Timer::now() - startedRiddleDisplay > displayTime) return true;
     else return false;
 }
 
+//----------------------------------------------------------------------
+// custom mouse button down function, that substitutes
+// deprecated SFML 1.6 Input.GetMouseButtonDown
+//----------------------------------------------------------------------
 bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height)
 {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
@@ -387,6 +468,11 @@ bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height)
     }
 }
 
+//----------------------------------------------------------------------
+// function that handles HUD items alignment on screen to get rid
+// of screen dimensions dependancy. Gets alignment from LUA and
+// sets offsets for eac HUD item
+//----------------------------------------------------------------------
 sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int width, int height) {
     sf::Vector2f correctPosition(0,0);
     wSize = _window->getSize();
@@ -446,13 +532,15 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
     return correctPosition;
 }
 
-
-    // Alignment on X
-    int BaseHud::Align_X_Left   (int xOffset)            { return xOffset; }
-    int BaseHud::Align_X_Center (int width)              { return (wSize.x / 2 - width / 2);   }
-    int BaseHud::Align_X_Right  (int width, int xOffset) { return (wSize.x - width - xOffset); }
-    // Alignment on Y
-    int BaseHud::Align_Y_Top    (int yOffset)            { return yOffset; }
-    int BaseHud::Align_Y_Center (int height)             { return (wSize.y / 2 - height / 2);   }
-    int BaseHud::Align_Y_Bottom (int height, int yOffset){ return (wSize.y - height - yOffset); }
+//----------------------------------------------------------------------
+//              setters used in fixAlignment function
+//----------------------------------------------------------------------
+// Alignment on X
+int BaseHud::Align_X_Left   (int xOffset)            { return xOffset; }
+int BaseHud::Align_X_Center (int width)              { return (wSize.x / 2 - width / 2);   }
+int BaseHud::Align_X_Right  (int width, int xOffset) { return (wSize.x - width - xOffset); }
+// Alignment on Y
+int BaseHud::Align_Y_Top    (int yOffset)            { return yOffset; }
+int BaseHud::Align_Y_Center (int height)             { return (wSize.y / 2 - height / 2);   }
+int BaseHud::Align_Y_Bottom (int height, int yOffset){ return (wSize.y - height - yOffset); }
 

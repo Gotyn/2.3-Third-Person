@@ -1,12 +1,23 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story1.lua")
+dofile("mge/lua/story2.lua")
 
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
 solvedThreshold = 2
+
+-- TEXTURE NAMES FOR C++ START --
+display_riddle_at_start = gameHud_Data.display_riddle_at_start
+help_button_texture = gameHud_Data.help_button_texture
+hint_button1_texture = gameHud_Data.hint_button1_texture
+hint_button2_texture = gameHud_Data.hint_button2_texture
+hint_button3_texture = gameHud_Data.hint_button3_texture
+help_box_texture = gameHud_Data.help_box_texture
+riddle_box_texture = gameHud_Data.riddle_box_texture
+hints_box_texture = gameHud_Data.hints_box_texture
+-- TEXTURE NAMES FOR C++ END --
 
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
 storyWall:rotateAroundAxis(240, 0, 1, 0)
