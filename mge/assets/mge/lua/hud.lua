@@ -13,7 +13,8 @@ progress = 0
 
 function draw()
 	Hud.textLabel(50, 50, progress)
-
+    --popUpTutorial()
+    
     handleHelpButtonClick()
     updateHelpBox()
     updateHintsBox()
@@ -130,4 +131,8 @@ function inintialRiddleDisplay()
         showHelpBox = false
         initialRiddleCheck = true
     end
+end
+
+function popUpTutorial()
+    Hud.tutorialBox(0, 0, 100, 100, 20, "tutorial", 5)
 end
