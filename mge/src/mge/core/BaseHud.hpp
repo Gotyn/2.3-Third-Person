@@ -14,7 +14,7 @@ class BaseHud
         //SFML stuff (buttons, boxes, labels
         static bool Button      (int xOffset, int yOffset, std::string caption);
         static void TextLabel   (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
-        static void ProgressBar (int xOffset, int yOffset, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment);
+        static void ProgressBar (int xOffset, int yOffset, int width, int height, int spriteSheetRow, int alignment);
         static bool HelpButton  (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
         static bool HintButton1 (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
         static bool HintButton2 (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);

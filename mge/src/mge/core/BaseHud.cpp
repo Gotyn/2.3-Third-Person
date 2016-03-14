@@ -40,18 +40,27 @@ sf::Text* BaseHud::hintButton3Text = new sf::Text;
 sf::Text* BaseHud::helpBoxText = new sf::Text;
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
+<<<<<<< HEAD
 sf::Text* BaseHud::progressBarText = new sf::Text;
 sf::Text* BaseHud::tutorialBoxText = new sf::Text;
+=======
+>>>>>>> refs/remotes/origin/hud2
 // initialize static texture names (set default valid file name to avoid errors)
 std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "land.jpg";
 std::string BaseHud::hintButton2TextureName = "land.jpg";
 std::string BaseHud::hintButton3TextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
+<<<<<<< HEAD
 std::string BaseHud::riddleBoxTextureName = "land.jpg";
 std::string BaseHud::hintsBoxTextureName = "land.jpg";
 std::string BaseHud::progressBarTextureName = "progressbar.png";
 std::string BaseHud::tutorialBoxTextureName = "land.jpg";
+=======
+std::string BaseHud::riddleBoxTextureName = "bricks.jpg";
+std::string BaseHud::hintsBoxTextureName = "bricks.jpg";
+std::string BaseHud::progressBarTextureName = "Progress_256.png";
+>>>>>>> refs/remotes/origin/hud2
 
 bool BaseHud::lmbPressedLastFrame = false;
 bool BaseHud::texturesSet = false;
@@ -358,6 +367,7 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     _window->draw(*hintsBoxText);
 }
 
+<<<<<<< HEAD
 //----------------------------------------------------------------
 //              image/sprite SFML label with text
 //----------------------------------------------------------------
@@ -387,6 +397,9 @@ void BaseHud::TutorialBox(int x, int y, int width, int height, int fontSize, std
 // label that uses spritesheet and manipulates sprite's position
 //----------------------------------------------------------------
 void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment)
+=======
+void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int alignment)
+>>>>>>> refs/remotes/origin/hud2
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -397,17 +410,7 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
     progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
     progressBarSprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = progressBarText->getLocalBounds();
-    progressBarText->setString(caption);
-    progressBarText->setFont(_font);
-    progressBarText->setCharacterSize(fontSize);
-    progressBarText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    progressBarText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    progressBarText->setColor(sf::Color::Black);
-
     _window->draw(*progressBarSprite);
-    _window->draw(*progressBarText);
 }
 
 //----------------------------------------------------------------
