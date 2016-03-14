@@ -33,11 +33,6 @@ sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::progressBarSprite = new sf::Sprite;
 sf::Sprite* BaseHud::tutorialBoxSprite = new sf::Sprite;
 // initialize static texts
-sf::Text* BaseHud::helpButtonText = new sf::Text;
-sf::Text* BaseHud::hintButton1Text = new sf::Text;
-sf::Text* BaseHud::hintButton2Text = new sf::Text;
-sf::Text* BaseHud::hintButton3Text = new sf::Text;
-sf::Text* BaseHud::helpBoxText = new sf::Text;
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 sf::Text* BaseHud::tutorialBoxText = new sf::Text;
@@ -83,48 +78,40 @@ void BaseHud::loadTextures()
 {
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
-    if (!helpButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpButtonTextureName))
-    {
+
+    if (!helpButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpButtonTextureName)) {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName))
-    {
+    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName)) {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName))
-    {
+    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName)) {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName))
-    {
+    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName)) {
         std::cout << "Could not load texture for button" << std::endl;
         return;
     }
-    if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName))
-    {
+    if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName)) {
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName))
-    {
+    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName)) {
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName))
-    {
+    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName)) {
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-    if (!tutorialBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + tutorialBoxTextureName))
-    {
+    if (!tutorialBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + tutorialBoxTextureName)) {
         std::cout << "Could not load texture for tutorial label" << std::endl;
         return;
     }
-    if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName))
-    {
+    if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName)) {
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
@@ -172,7 +159,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+bool BaseHud::HelpButton(int x, int y, int width, int height, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -181,17 +168,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
     helpButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
     helpButtonSprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = helpButtonText->getLocalBounds();
-    helpButtonText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    helpButtonText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    helpButtonText->setString(caption);
-    helpButtonText->setFont(_font);
-    helpButtonText->setCharacterSize(fontSize);
-    helpButtonText->setColor(sf::Color::White);
-
     _window->draw(*helpButtonSprite);
-    _window->draw(*helpButtonText);
 
 	//text mouse
     return CheckMouseOnButton(alignedPos, width, height);
@@ -200,7 +177,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int fontSize, std:
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -209,17 +186,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
     hintButton1Sprite->setTextureRect(sf::IntRect(0,0,width,height));
     hintButton1Sprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = hintButton1Text->getLocalBounds();
-    hintButton1Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton1Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    hintButton1Text->setString(caption);
-    hintButton1Text->setFont(_font);
-    hintButton1Text->setCharacterSize(fontSize);
-    hintButton1Text->setColor(sf::Color::White);
-
     _window->draw(*hintButton1Sprite);
-    _window->draw(*hintButton1Text);
 
 	//text mouse
     return CheckMouseOnButton(alignedPos, width, height);
@@ -228,7 +195,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int fontSize, std
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -237,17 +204,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
     hintButton2Sprite->setTextureRect(sf::IntRect(0,0,width,height));
     hintButton2Sprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = hintButton2Text->getLocalBounds();
-    hintButton2Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton2Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    hintButton2Text->setString(caption);
-    hintButton2Text->setFont(_font);
-    hintButton2Text->setCharacterSize(fontSize);
-    hintButton2Text->setColor(sf::Color::White);
-
     _window->draw(*hintButton2Sprite);
-    _window->draw(*hintButton2Text);
 
 	//text mouse
     return CheckMouseOnButton(alignedPos, width, height);
@@ -256,7 +213,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int fontSize, std
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -265,17 +222,7 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
     hintButton3Sprite->setTextureRect(sf::IntRect(0,0,width,height));
     hintButton3Sprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = hintButton3Text->getLocalBounds();
-    hintButton3Text->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintButton3Text->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    hintButton3Text->setString(caption);
-    hintButton3Text->setFont(_font);
-    hintButton3Text->setCharacterSize(fontSize);
-    hintButton3Text->setColor(sf::Color::White);
-
     _window->draw(*hintButton3Sprite);
-    _window->draw(*hintButton3Text);
 
 	//text mouse
     return CheckMouseOnButton(alignedPos, width, height);
@@ -284,7 +231,7 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int fontSize, std
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+void BaseHud::HelpBox(int x, int y, int width, int height, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -293,17 +240,7 @@ void BaseHud::HelpBox(int x, int y, int width, int height, int fontSize, std::st
     helpBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
     helpBoxSprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = helpBoxText->getLocalBounds();
-    helpBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    helpBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    helpBoxText->setString(caption);
-    helpBoxText->setFont(_font);
-    helpBoxText->setCharacterSize(fontSize);
-    helpBoxText->setColor(sf::Color::White);
-
     _window->draw(*helpBoxSprite);
-    _window->draw(*helpBoxText);
 }
 
 //----------------------------------------------------------------
