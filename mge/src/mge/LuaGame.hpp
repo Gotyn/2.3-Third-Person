@@ -8,6 +8,7 @@
 #include "mge/core/BaseHud.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 #include "mge/sphinx/StoryWall.hpp"
+#include "ParticleSystem.hpp"
 
 extern "C" {
 # include "lua.h"
@@ -41,6 +42,7 @@ class LuaGame : public AbstractGame
         BaseHud* _hud;
         StoryWall* _storyWall;
         FW::FileWatcher _fileWatcher;
+        ParticleSystem* _particleSystem;
 };
 
 #endif // LUAGAME_H

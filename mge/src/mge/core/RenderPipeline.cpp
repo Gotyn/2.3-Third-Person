@@ -20,6 +20,7 @@ RenderPipeline::RenderPipeline()
 
     std::cout << "Render settings loaded." << std::endl << std::endl;
 
+    initializeParticleSystem();
     initializeDepthmap();
     initializeLightSpaceMatrix();
 }
@@ -32,6 +33,15 @@ RenderPipeline::~RenderPipeline()
 GLuint RenderPipeline::getShadowMap()
 {
     return _depthMap;
+}
+
+void RenderPipeline::initializeParticleSystem()
+{
+    std::cout << "initializing particle system..." << std::endl;
+
+    _particlesGameObject = new GameObject("particles GameObject", glm::vec3(0.0f), true);
+    _particleSystem = new ParticleSystem();
+    _particleSystem->addBehaviourToGO(_particlesGameObject);
 }
 
 void RenderPipeline::initializeLightSpaceMatrix()

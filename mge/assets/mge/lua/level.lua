@@ -1,6 +1,6 @@
 gameHud = require "mge/lua/hud"
 
-dofile("mge/lua/story1.lua")
+dofile("mge/lua/story2.lua")
 
 storyCompleted = false
 activePuzzle = 1
