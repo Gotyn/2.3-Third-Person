@@ -11,16 +11,18 @@ class BaseHud
         BaseHud(sf::RenderWindow* aWindow);
         virtual ~BaseHud();
 
-        static bool Button(int x, int y, std::string caption);
-        static void TextLabel(int x, int y, std::string caption);  //Adds a label that fits around given text.
-        static void ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int fontSize, std::string caption, int alignment);
-        static bool HelpButton(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-        static bool HintButton1(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-        static bool HintButton2(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-        static bool HintButton3(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-        static void HelpBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-        static void RiddleBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
-        static void HintsBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment);
+        static bool Button      (int xOffset, int yOffset, std::string caption);
+        static void TextLabel   (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
+        static void ProgressBar (int xOffset, int yOffset, int width, int height, int spriteSheetRow, int alignment);
+        static bool HelpButton  (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static bool HintButton1 (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static bool HintButton2 (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static bool HintButton3 (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static void HelpBox     (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+
+        static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 
         static void loadTextures();
         static void setHelpButtonTextureName(const std::string name);
@@ -79,7 +81,18 @@ class BaseHud
         static std::string hintsBoxTextureName;
         static std::string progressBarTextureName;
 
-        static bool CheckMouseOnButton(int x, int y, int width, int height);
+        static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
+
+        // Alignment
+        static sf::Vector2u wSize;
+        // Alignment on X
+        static int Align_X_Left   (int xOffset);
+        static int Align_X_Center (int width);
+        static int Align_X_Right  (int width, int xOffset);
+        // Alignment on Y
+        static int Align_Y_Top    (int yOffset);
+        static int Align_Y_Center (int height);
+        static int Align_Y_Bottom (int height, int yOffset);
 };
 
 #endif // BASEHUD_H
