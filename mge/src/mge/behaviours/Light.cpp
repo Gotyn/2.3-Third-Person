@@ -5,6 +5,8 @@ Light::Light(GameObject* pOwner)
 {
     addBehaviourToGO(pOwner);
 
+    _color = glm::vec3(1.0f, 1.0f, 0.7f);
+    _intensity = 0.85f;
     _innerCone = 15.0f;
     _outerCone = 29.0f;
 }
@@ -12,6 +14,16 @@ Light::Light(GameObject* pOwner)
 Light::~Light()
 {
 
+}
+
+glm::vec3 Light::getColor() const
+{
+    return _color;
+}
+
+float Light::getIntensity() const
+{
+    return _intensity;
 }
 
 float Light::getInnerCone() const

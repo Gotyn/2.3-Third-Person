@@ -63,10 +63,13 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
 
     GLuint diffuseColorHandle = _shader->getUniformLocation("diffuseColor");
     GLuint viewPos = _shader->getUniformLocation("viewPos");
+    GLuint ambient = _shader->getUniformLocation("ambient");
 
     // ===== light information ====== //
     GLuint lightPosition = _shader->getUniformLocation("light.position");
     GLuint lightdirection = _shader->getUniformLocation("light.direction");
+    GLuint lightColor = _shader->getUniformLocation("light.color");
+    GLuint lightIntensity = _shader->getUniformLocation("light.intensity");
     GLuint lightCutOff = _shader->getUniformLocation("light.cutOff");
     GLuint lightOuterCutOff = _shader->getUniformLocation("light.outerCutOff");
 
@@ -74,12 +77,15 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     {
         glUniform3fv(lightPosition, 1, glm::value_ptr(LuaGame::mainSpotlight->getOwner()->getWorldPosition()));
         glUniform3fv(lightdirection, 1, glm::value_ptr(LuaGame::mainSpotlight->getOwner()->getForward()));
+        glUniform3fv(lightColor, 1, glm::value_ptr(LuaGame::mainSpotlight->getColor()));
+        glUniform1f(lightIntensity, LuaGame::mainSpotlight->getIntensity());
         glUniform1f(lightCutOff, glm::cos(glm::radians(LuaGame::mainSpotlight->getInnerCone())));
         glUniform1f(lightOuterCutOff, glm::cos(glm::radians(LuaGame::mainSpotlight->getOuterCone())));
     }
 
     // ============================== //
 
+    glUniform3fv(ambient, 1, glm::value_ptr(World::Instance()->ambient));
     glUniform3fv(diffuseColorHandle, 1, glm::value_ptr(diffuseColor));
     glUniform3fv(viewPos, 1, glm::value_ptr(pCamera->getOwner()->getWorldPosition()));
 
