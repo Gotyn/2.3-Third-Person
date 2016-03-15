@@ -16,9 +16,9 @@ class BaseHud
         static void TextLabel   (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
         static void ProgressBar (int xOffset, int yOffset, int row, int alignment, float scaleX, float scaleY);
         static bool HelpButton  (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton1 (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton2 (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton3 (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton1 (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton2 (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton3 (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
         static bool ExitButton  (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool ResumeButton(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool StartButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);

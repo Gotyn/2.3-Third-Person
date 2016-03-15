@@ -24,8 +24,6 @@ help_button_texture = "Hint_Button_Shinx_Sprite.png"
 --Button for first hint
 hint_button1_xOffset = 30
 hint_button1_yOffset = 92
-hint_button1_width = 512			-- spriteWidth / columns
-hint_button1_height = 512
 hint_button1_scaleX = 0.1
 hint_button1_scaleY = 0.1
 hint_button1_alignment = alignment.RIGHT_TOP
@@ -34,8 +32,6 @@ hint_button1_texture = "Hint_Button_1_Sprite.png"
 --Button for second hint
 hint_button2_xOffset = 30
 hint_button2_yOffset = 140
-hint_button2_width = 512			-- spriteWidth / columns
-hint_button2_height = 512
 hint_button2_scaleX = 0.1
 hint_button2_scaleY = 0.1
 hint_button2_alignment = alignment.RIGHT_TOP
@@ -44,8 +40,6 @@ hint_button2_texture = "Hint_Button_2_Sprite.png"
 --Button for third hint
 hint_button3_xOffset = 30
 hint_button3_yOffset = 188
-hint_button3_width = 512			-- spriteWidth / columns
-hint_button3_height = 512
 hint_button3_scaleX = 0.1
 hint_button3_scaleY = 0.1
 hint_button3_alignment = alignment.RIGHT_TOP
@@ -156,8 +150,6 @@ HUD.help_button_texture = help_button_texture
 --Button for first hint
 HUD.hint_button1_xOffset = hint_button1_xOffset
 HUD.hint_button1_yOffset = hint_button1_yOffset
-HUD.hint_button1_width = hint_button1_width
-HUD.hint_button1_height = hint_button1_height
 HUD.hint_button1_scaleX = hint_button1_scaleX
 HUD.hint_button1_scaleY = hint_button1_scaleY
 HUD.hint_button1_alignment = hint_button1_alignment
@@ -166,8 +158,6 @@ HUD.hint_button1_texture = hint_button1_texture
 --Button for second hint
 HUD.hint_button2_xOffset = hint_button2_xOffset
 HUD.hint_button2_yOffset = hint_button2_yOffset
-HUD.hint_button2_width = hint_button2_width
-HUD.hint_button2_height = hint_button2_height
 HUD.hint_button2_scaleX = hint_button2_scaleX
 HUD.hint_button2_scaleY = hint_button2_scaleY
 HUD.hint_button2_alignment = hint_button2_alignment
@@ -176,8 +166,6 @@ HUD.hint_button2_texture = hint_button2_texture
 --Button for third hint
 HUD.hint_button3_xOffset = hint_button3_xOffset
 HUD.hint_button3_yOffset = hint_button3_yOffset
-HUD.hint_button3_width = hint_button3_width
-HUD.hint_button3_height = hint_button3_height
 HUD.hint_button3_scaleX = hint_button3_scaleX
 HUD.hint_button3_scaleY = hint_button3_scaleY
 HUD.hint_button3_alignment = hint_button3_alignment

@@ -161,11 +161,11 @@ bool BaseHud::HelpButton(int xOffset, int yOffset, int spriteID, int alignment, 
     int spriteSheetColumns = 2;
 
     sf::Vector2u spriteSize(helpButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;                 // 2 = number of columns in spritesheet
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
     int scaledSpriteHeight = spriteSize.y * scaleY;
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                              // unscaled!
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              // unscaled!
 
     //create sprite
     helpButtonSprite->setTexture(*helpButtonTexture);
@@ -183,77 +183,80 @@ bool BaseHud::HelpButton(int xOffset, int yOffset, int spriteID, int alignment, 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton1(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton1(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
 {
-    width *= scaleX;
-    height *= scaleY;
+    int spriteSheetColumns = 2;
 
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, width, height);
-    int spriteWidth = hintButton1Texture->getSize().x;
-    int spriteHeight = hintButton1Texture->getSize().y;
-    int tileWidth = ( spriteWidth / 2 );
+    sf::Vector2u spriteSize(hintButton1Texture->getSize());                              // Get the image size
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
+    int scaledSpriteHeight = spriteSize.y * scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
 
     //create sprite
     hintButton1Sprite->setTexture(*hintButton1Texture);
     hintButton1Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton1Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
-    else hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton1Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
+    else hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
     hintButton1Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton1Sprite);
 
-    return CheckMouseOnButton(alignedPos, width, height); //check for mouseclick
+    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
 
 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton2(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton2(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
 {
-    width *= scaleX;
-    height *= scaleY;
+    int spriteSheetColumns = 2;
 
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, width, height);
-    int spriteWidth = hintButton2Texture->getSize().x;
-    int spriteHeight = hintButton2Texture->getSize().y;
-    int tileWidth = ( spriteWidth / 2 );
+    sf::Vector2u spriteSize(hintButton2Texture->getSize());                              // Get the image size
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
+    int scaledSpriteHeight = spriteSize.y * scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
 
     //create sprite
     hintButton2Sprite->setTexture(*hintButton2Texture);
     hintButton2Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton2Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
-    else hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton2Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
+    else hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
     hintButton2Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton2Sprite);
 
-    return CheckMouseOnButton(alignedPos, width, height); //check for mouseclick
+    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton3(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton3(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
 {
-    width *= scaleX;
-    height *= scaleY;
+    int spriteSheetColumns = 2;
 
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, width, height);
-    int spriteWidth = hintButton3Texture->getSize().x;
-    int spriteHeight = hintButton3Texture->getSize().y;
-    int tileWidth = ( spriteWidth / 2 );
+    sf::Vector2u spriteSize(hintButton3Texture->getSize());                              // Get the image size
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
+    int scaledSpriteHeight = spriteSize.y * scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
 
     //create sprite
     hintButton3Sprite->setTexture(*hintButton3Texture);
     hintButton3Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton3Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
-    else hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton3Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
+    else hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
     hintButton3Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton3Sprite);
 
-    return CheckMouseOnButton(alignedPos, width, height); //check for mouseclick
+    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
 
 //----------------------------------------------------------------
