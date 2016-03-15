@@ -15,6 +15,9 @@ progress = 0
 hint1_spriteID = 0 
 hint2_spriteID = 0 
 hint3_spriteID = 0
+exit_spriteID = 0 
+resume_spriteID = 0 
+start_spriteID = 0
 
 function draw()
 	if game_state == MODE.LEVEL then
@@ -176,4 +179,10 @@ end
 
 function popMenu()
     Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment, data.menu_box_scaleX, data.menu_box_scaleY)
+    Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
+        data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY)
+    Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, data.resume_button_width, 
+        data.resume_button_height, resume_spriteID, data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY)
+    Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, data.exit_button_width, 
+        data.exit_button_height, exit_spriteID, data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY)
 end

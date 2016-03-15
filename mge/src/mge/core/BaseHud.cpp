@@ -139,6 +139,9 @@ void BaseHud::loadTextures()
     hintButton1Texture->setRepeated(true);
     hintButton2Texture->setRepeated(true);
     hintButton3Texture->setRepeated(true);
+    exitButtonTexture->setRepeated(true);
+    resumeButtonTexture->setRepeated(true);
+    startButtonTexture->setRepeated(true);
     helpBoxTexture->setRepeated(true);
     riddleBoxTexture->setRepeated(true);
     hintsBoxTexture->setRepeated(true);
@@ -293,7 +296,7 @@ bool BaseHud::ExitButton  (int x, int y, int width, int height, int spriteID, in
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
     int spriteWidth = exitButtonTexture->getSize().x;
     int spriteHeight = exitButtonTexture->getSize().y;
-    int tileWidth = ( spriteWidth / 2 );
+    int tileWidth = ( spriteWidth );
 
     //create sprite
     exitButtonSprite->setTexture(*exitButtonTexture);
@@ -313,7 +316,25 @@ bool BaseHud::ExitButton  (int x, int y, int width, int height, int spriteID, in
 //----------------------------------------------------------------
 bool BaseHud::ResumeButton(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
+    width *= scaleX;
+    height *= scaleY;
 
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = resumeButtonTexture->getSize().x;
+    int spriteHeight = resumeButtonTexture->getSize().y;
+    int tileWidth = ( spriteWidth / 2 );
+
+    //create sprite
+    resumeButtonSprite->setTexture(*resumeButtonTexture);
+    resumeButtonSprite->setScale(scaleX, scaleY);
+    if (spriteID == 0) resumeButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else resumeButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    resumeButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*resumeButtonSprite);
+
+	//text mouse
+    return CheckMouseOnButton(alignedPos, width, height);
 }
 
 //----------------------------------------------------------------
@@ -321,7 +342,23 @@ bool BaseHud::ResumeButton(int x, int y, int width, int height, int spriteID, in
 //----------------------------------------------------------------
 bool BaseHud::StartButton (int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width * scaleX, height * scaleY);
+    //int spriteWidth = startButtonTexture->getSize().x;
+    //int spriteHeight = startButtonTexture->getSize().y;
+    //int tileWidth = ( spriteWidth );
 
+    //create sprite
+    startButtonSprite->setScale(scaleX, scaleY);
+    startButtonSprite->setTexture(*startButtonTexture);
+    startButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    //if (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    //else startButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    startButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*startButtonSprite);
+
+	//text mouse
+    return CheckMouseOnButton(alignedPos, width, height);
 }
 
 //----------------------------------------------------------------
@@ -380,7 +417,6 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
     hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    //hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
     hintsBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintsBoxText->setString(caption);
     hintsBoxText->setFont(_font);
