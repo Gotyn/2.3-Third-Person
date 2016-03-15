@@ -16,8 +16,6 @@ progress_bar_texture = "Progress_256.png"
 --Button for Riddle / Hints
 help_button_xOffset = 20
 help_button_yOffset = 20
-help_button_width = 512				-- spriteWidth / columns
-help_button_height = 512
 help_button_scaleX = 0.14
 help_button_scaleY = 0.14
 help_button_alignment = alignment.RIGHT_TOP
@@ -150,8 +148,6 @@ HUD.progress_bar_texture = progress_bar_texture
 -- riddle / hint / help button
 HUD.help_button_xOffset = help_button_xOffset
 HUD.help_button_yOffset = help_button_yOffset
-HUD.help_button_width = help_button_width
-HUD.help_button_height = help_button_height
 HUD.help_button_scaleX = help_button_scaleX
 HUD.help_button_scaleY = help_button_scaleY
 HUD.help_button_alignment = help_button_alignment

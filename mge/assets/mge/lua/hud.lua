@@ -59,8 +59,8 @@ function updateLevel()
 end
 
 function handleHelpButtonClick(spriteID)
-    if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, data.help_button_width, 
-        data.help_button_height, spriteID, data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
+    if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, spriteID, 
+				      data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
         if showHelpBox == false then
             showHelpBox = true
         else
