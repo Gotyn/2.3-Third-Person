@@ -187,7 +187,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int spriteID, int 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton1(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
     width *= scaleX;
     height *= scaleY;
@@ -200,7 +200,8 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, fl
     //create sprite
     hintButton1Sprite->setTexture(*hintButton1Texture);
     hintButton1Sprite->setScale(scaleX, scaleY);
-    hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton1Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton1Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton1Sprite);
@@ -212,7 +213,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, fl
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton2(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
     width *= scaleX;
     height *= scaleY;
@@ -225,7 +226,8 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, fl
     //create sprite
     hintButton2Sprite->setTexture(*hintButton2Texture);
     hintButton2Sprite->setScale(scaleX, scaleY);
-    hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton2Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton2Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton2Sprite);
@@ -237,7 +239,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, fl
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton3(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
     width *= scaleX;
     height *= scaleY;
@@ -250,7 +252,8 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment, fl
     //create sprite
     hintButton3Sprite->setTexture(*hintButton3Texture);
     hintButton3Sprite->setScale(scaleX, scaleY);
-    hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton3Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton3Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton3Sprite);

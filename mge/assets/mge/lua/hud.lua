@@ -14,6 +14,10 @@ hintText = ""
 
 progress = 0
 
+hint1_spriteID = 0 
+hint2_spriteID = 0 
+hint3_spriteID = 0
+
 function draw()
 	if game_state == MODE.LEVEL then
         updateLevel()
@@ -72,50 +76,64 @@ function handleHelpButtonClick(spriteID)
             showHelpBox = true
         else
             showHelpBox = false
+			hint1_spriteID = 0 
+			hint2_spriteID = 0 
+			hint3_spriteID = 0
         end
-        if showHintsBox1 == true then
-            showHintsBox1 = false
-        end
-        if showHintsBox2 == true then
-            showHintsBox2 = false
-        end
-        if showHintsBox3 == true then
-            showHintsBox3 = false
-        end
+        
+		showHintsBox1 = false
+        showHintsBox2 = false
+        showHintsBox3 = false
     end
 end
 
 function handleHintButtonsClick()
     if Hud.hintButton1(data.hint_button1_xOffset, data.hint_button1_yOffset, data.hint_button1_width, 
-        data.hint_button1_height, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
+        data.hint_button1_height, hint1_spriteID, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
         if showHintsBox1 == false then
             showHintsBox1 = true
+			hint1_spriteID = 1
+			hint2_spriteID = 0
+			hint3_spriteID = 0
+			
             showHintsBox2 = false
             showHintsBox3 = false
         else
             showHintsBox1 = false
+			hint1_spriteID = 0
         end
     end
      
     if Hud.hintButton2(data.hint_button2_xOffset, data.hint_button2_yOffset, data.hint_button2_width, 
-        data.hint_button2_height, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
+        data.hint_button2_height, hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
         if showHintsBox2 == false then
             showHintsBox2 = true
+			hint1_spriteID = 0
+			hint2_spriteID = 1
+			hint3_spriteID = 0
+			
             showHintsBox1 = false
             showHintsBox3 = false
         elseif showHintsBox2 == true then
             showHintsBox2 = false
+			hint2_spriteID = 0
+
         end
     end
     
     if Hud.hintButton3(data.hint_button3_xOffset, data.hint_button3_yOffset, data.hint_button3_width, 
-        data.hint_button3_height, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
+        data.hint_button3_height, hint3_spriteID, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
         if showHintsBox3 == false then
             showHintsBox3 = true
+			hint1_spriteID = 0
+			hint2_spriteID = 0
+			hint3_spriteID = 1
+			
             showHintsBox2 = false
             showHintsBox1 = false
         elseif showHintsBox3 == true then
             showHintsBox3 = false
+			hint3_spriteID = 0
         end
     end
 end
