@@ -91,8 +91,9 @@ void LuaGame::_initializeScene()
     GameCamera* gameCam = new GameCamera(glm::vec3(-4, 3, 10));
 
     //main spotlight
-    GameObject* lightGO = new GameObject("main light", glm::vec3(-3, 3, 10));
+    GameObject* lightGO = new GameObject("main light", glm::vec3(-1.6, 2.4, 13.4)); //old -> -3, 3, 10
     mainSpotlight = new Light(lightGO);
+    lightGO->rotate(glm::radians(-10.0f), glm::vec3(0, 1, 0));
 
     luaL_dofile(_L, "mge/lua/main.lua");
 }

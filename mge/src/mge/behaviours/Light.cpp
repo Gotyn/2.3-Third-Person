@@ -43,5 +43,5 @@ void Light::addBehaviourToGO(GameObject* pGameObject)
 
 void Light::update(float step)
 {
-    getOwner()->yaw(20.0f * step);
+//    getOwner()->yaw(20.0f * step);
 }

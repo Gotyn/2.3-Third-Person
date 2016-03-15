@@ -62,6 +62,8 @@
 		<Unit filename="assets/mge/shaders/litTexture.vs" />
 		<Unit filename="assets/mge/shaders/litcolor.fs" />
 		<Unit filename="assets/mge/shaders/litcolor.vs" />
+		<Unit filename="assets/mge/shaders/particleShader.fs" />
+		<Unit filename="assets/mge/shaders/particleShader.vs" />
 		<Unit filename="assets/mge/shaders/screenShader.fs" />
 		<Unit filename="assets/mge/shaders/screenShader.vs" />
 		<Unit filename="assets/mge/shaders/shadowMap.fs" />
@@ -99,6 +101,8 @@
 		<Unit filename="src/mge/behaviours/ColorFlasher.hpp" />
 		<Unit filename="src/mge/behaviours/KeysBehaviour.cpp" />
 		<Unit filename="src/mge/behaviours/KeysBehaviour.hpp" />
+		<Unit filename="src/mge/behaviours/Light.cpp" />
+		<Unit filename="src/mge/behaviours/Light.hpp" />
 		<Unit filename="src/mge/behaviours/LookAt.cpp" />
 		<Unit filename="src/mge/behaviours/LookAt.hpp" />
 		<Unit filename="src/mge/behaviours/MeshRenderer.cpp" />
