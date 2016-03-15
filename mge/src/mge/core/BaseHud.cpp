@@ -149,7 +149,6 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int spriteID, int 
     int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
-
     helpButtonSprite->setTexture(*helpButtonTexture);
     helpButtonSprite->setScale(scaleX, scaleY);
     if (spriteID == 0) helpButtonSprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteHeight));
@@ -159,8 +158,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int spriteID, int 
 
     _window->draw(*helpButtonSprite);
 
-	//text mouse
-    return CheckMouseOnButton(alignedPos, width, height);
+    return CheckMouseOnButton(alignedPos, width, height); //check for mouseclick
 }
 
 //----------------------------------------------------------------
@@ -185,8 +183,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int spriteID, int
 
     _window->draw(*hintButton1Sprite);
 
-	//text mouse
-    return CheckMouseOnButton(alignedPos, width, height);
+    return CheckMouseOnButton(alignedPos, width, height); //check for mouseclick
 }
 
 
@@ -212,8 +209,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int spriteID, int
 
     _window->draw(*hintButton2Sprite);
 
-	//text mouse
-    return CheckMouseOnButton(alignedPos, width, height);
+    return CheckMouseOnButton(alignedPos, width, height); //check for mouseclick
 }
 
 //----------------------------------------------------------------
@@ -325,16 +321,23 @@ void BaseHud::MenuBox(int x, int y, int width, int height, int alignment)
 }
 
 //----------------------------------------------------------------
-// label that uses spritesheet and manipulates sprite's position
+// ProgressBar:
+// Essentially a label that uses a spritesheet and manipulates
+// sprite's position.
+// parameter: row --> row on the spritesheet to show
 //----------------------------------------------------------------
-void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int alignment, float scaleX, float scaleY) {
-    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+void BaseHud::ProgressBar(int x, int y, int row, int alignment, float scaleX, float scaleY) {
+    sf::Vector2u textureSize(progressBarTexture->getSize());    //get the image size
+    int rowHeight = textureSize.y / 8;                          //calculate rowHeight       // 8 = amount of rows
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, textureSize.x * scaleX, rowHeight * scaleY);
 
     //sprite
     progressBarTexture->setRepeated(false);
 
+    progressBarSprite->setScale(scaleX, scaleY);
     progressBarSprite->setTexture(*progressBarTexture);
-    progressBarSprite->setTextureRect(sf::IntRect(0, spriteSheetRow, width, height));
+    progressBarSprite->setTextureRect(sf::IntRect(0, rowHeight * row, textureSize.x, rowHeight));
     progressBarSprite->setPosition(alignedPos);
 
     _window->draw(*progressBarSprite);

@@ -8,11 +8,8 @@ display_riddle_at_start = 30
 --Progressbar
 progress_bar_xOffset = 0
 progress_bar_yOffset = 50 
-progress_bar_sprite_width = 672   	-- to change: do scale the actual picture and set this value to be the same size
-progress_bar_sprite_height = 768	-- to change: do scale the actual picture and set this value to be the same size
-progress_bar_sprite_rows = 8
-progress_bar_scaleX = 0.5
-progress_bar_scaleY = 0.5
+progress_bar_scaleX = 0.75
+progress_bar_scaleY = 0.75
 progress_bar_alignment = alignment.CENTER_TOP
 
 --Button for Riddle / Hints
@@ -112,9 +109,6 @@ HUD.display_riddle_at_start = display_riddle_at_start
 
 HUD.progress_bar_xOffset = progress_bar_xOffset
 HUD.progress_bar_yOffset = progress_bar_yOffset
-HUD.progress_bar_sprite_width = progress_bar_sprite_width 
-HUD.progress_bar_sprite_height = progress_bar_sprite_height
-HUD.progress_bar_sprite_rows = progress_bar_sprite_rows
 HUD.progress_bar_scaleX = progress_bar_scaleX
 HUD.progress_bar_scaleY = progress_bar_scaleY
 HUD.progress_bar_alignment = progress_bar_alignment
