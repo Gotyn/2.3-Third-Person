@@ -208,6 +208,7 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int spriteID, int
     return CheckMouseOnButton(alignedPos, width, height);
 }
 
+
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
