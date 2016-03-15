@@ -11,8 +11,8 @@ progress_bar_yOffset = 50
 progress_bar_sprite_width = 672   	-- to change: do scale the actual picture and set this value to be the same size
 progress_bar_sprite_height = 768	-- to change: do scale the actual picture and set this value to be the same size
 progress_bar_sprite_rows = 8
-progress_bar_scaleX = 1
-progress_bar_scaley = 1
+progress_bar_scaleX = 0.5
+progress_bar_scaley = 0.5
 progress_bar_alignment = alignment.CENTER_TOP
 
 --Button for Riddle / Hints
@@ -76,6 +76,14 @@ riddle_box_scaleY = 1
 riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
 riddle_box_texture = "bricks.jpg"
+
+--Label that shows menu container
+menu_box_xOffset = 0
+menu_box_yOffset = 0
+menu_box_width = 500
+menu_box_height = 500
+menu_box_alignment = alignment.CENTER_CENTER
+menu_box_texture = "bricks.jpg"
 
 --Label that shows the actual hint
 hints_box_xOffset = 250
@@ -172,6 +180,14 @@ HUD.riddle_box_scaleX = riddle_box_scaleX
 HUD.riddle_box_scaleY = riddle_box_scaleY
 HUD.riddle_box_alignment = riddle_box_alignment
 HUD.riddle_box_texture = riddle_box_texture
+
+-- actual menu container
+HUD.menu_box_xOffset = menu_box_xOffset
+HUD.menu_box_yOffset = menu_box_yOffset
+HUD.menu_box_width = menu_box_width
+HUD.menu_box_height = menu_box_height
+HUD.menu_box_alignment = menu_box_alignment
+HUD.menu_box_texture = menu_box_texture
 
 -- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset
