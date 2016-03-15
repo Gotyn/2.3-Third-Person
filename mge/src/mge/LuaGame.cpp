@@ -140,6 +140,9 @@ void LuaGame::_initLua()
             .addFunction ("hintButton1", BaseHud::HintButton1)
             .addFunction ("hintButton2", BaseHud::HintButton2)
             .addFunction ("hintButton3", BaseHud::HintButton3)
+            .addFunction ("exitButton", BaseHud::ExitButton)
+            .addFunction ("resumeButton", BaseHud::ResumeButton)
+            .addFunction ("startButton", BaseHud::StartButton)
             .addFunction ("helpBox", BaseHud::HelpBox)
             .addFunction ("riddleBox", BaseHud::RiddleBox)
             .addFunction ("hintsBox", BaseHud::HintsBox)
@@ -204,6 +207,9 @@ void LuaGame::setTextureNames()
 
     luabridge::LuaRef hints_box_texture = luabridge::getGlobal (_L, "hints_box_texture");
     BaseHud::setHintsBoxTextureName(hints_box_texture.cast<std::string>());
+
+    luabridge::LuaRef progress_bar_texture = luabridge::getGlobal (_L, "progress_bar_texture");
+    BaseHud::setProgressbarTextureName(progress_bar_texture.cast<std::string>());
 
     luabridge::LuaRef menu_box_texture = luabridge::getGlobal (_L, "menu_box_texture");
     BaseHud::setMenuBoxTextureName(menu_box_texture.cast<std::string>());

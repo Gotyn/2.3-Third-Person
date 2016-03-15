@@ -3,7 +3,7 @@ local HUD = {}
 alignment = { LEFT_TOP = 1, LEFT_CENTER = 2, LEFT_BOTTOM = 3, CENTER_TOP = 4, CENTER_CENTER = 5, CENTER_BOTTOM = 6, RIGHT_TOP = 7, RIGHT_CENTER = 8, RIGHT_BOTTOM = 9 }
 
 -- BUTTONS AND BOXES PARAMETERS START --
-display_riddle_at_start = 30
+display_riddle_at_start = 20
 
 --Progressbar
 progress_bar_xOffset = 0
@@ -14,6 +14,7 @@ progress_bar_sprite_rows = 8
 progress_bar_scaleX = 0.5
 progress_bar_scaley = 0.5
 progress_bar_alignment = alignment.CENTER_TOP
+progress_bar_texture = "Progress_256.png"
 
 --Button for Riddle / Hints
 help_button_xOffset = 20
@@ -82,6 +83,8 @@ menu_box_xOffset = 0
 menu_box_yOffset = 0
 menu_box_width = 500
 menu_box_height = 500
+menu_box_scaleX = 1
+menu_box_scaleY = 1
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "bricks.jpg"
 
@@ -118,6 +121,7 @@ HUD.progress_bar_sprite_rows = progress_bar_sprite_rows
 HUD.progress_bar_scaleX = progress_bar_scaleX
 HUD.progress_bar_scaleY = progress_bar_scaleY
 HUD.progress_bar_alignment = progress_bar_alignment
+HUD.progress_bar_texture = progress_bar_texture
 
 -- riddle / hint / help button
 HUD.help_button_xOffset = help_button_xOffset
@@ -188,6 +192,8 @@ HUD.menu_box_width = menu_box_width
 HUD.menu_box_height = menu_box_height
 HUD.menu_box_alignment = menu_box_alignment
 HUD.menu_box_texture = menu_box_texture
+HUD.menu_box_scaleX = menu_box_scaleX
+HUD.menu_box_scaleY = menu_box_scaleY
 
 -- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset

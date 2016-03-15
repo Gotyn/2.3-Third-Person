@@ -149,8 +149,7 @@ function updateHelpBox()
 		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_width, data.riddle_box_height, data.riddle_box_font, 
 				      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
         handleHintButtonsClick()
-    end
-    if showHelpBox == false then
+    else
         showHintsBox1 = false
         showHintsBox2 = false
         showHintsBox3 = false
@@ -168,10 +167,13 @@ end
 function inintialRiddleDisplay()
     if Hud.displayRiddleAtStart() == true and initialRiddleCheck == false then 
         showHelpBox = false
+        hint1_spriteID = 0
+        hint2_spriteID = 0
+        hint3_spriteID = 0
         initialRiddleCheck = true
     end
 end
 
 function popMenu()
-    Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment)
+    Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment, data.menu_box_scaleX, data.menu_box_scaleY)
 end
