@@ -64,6 +64,21 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     GLuint lightPos = _shader->getUniformLocation("lightPos");
     GLuint viewPos = _shader->getUniformLocation("viewPos");
 
+    //light information
+    GLuint lightPosition = _shader->getUniformLocation("light.position");
+    GLuint lightdirection = _shader->getUniformLocation("light.direction");
+    GLuint lightCutOff = _shader->getUniformLocation("light.cutOff");
+    GLuint lightOuterCutOff = _shader->getUniformLocation("light.outerCutOff");
+//    glUniform3fv(lightPosition, 1, glm::value_ptr(glm::vec3(0.0f,0.0f,10.0f)));
+//    glUniform3fv(lightdirection, 1, glm::value_ptr(glm::vec3(0.0f,0.0f,-1.0f)));
+    glm::vec3 camPos = World::Instance()->getMainCamera()->getOwner()->getWorldPosition();
+    camPos += glm::vec3(1.0f, 0.0f, 0.0f);
+    glm::vec3 camForward = World::Instance()->getMainCamera()->getOwner()->getForward();
+    glUniform3fv(lightPosition, 1, glm::value_ptr(camPos));
+    glUniform3fv(lightdirection, 1, glm::value_ptr(camForward));
+    glUniform1f(lightCutOff, glm::cos(glm::radians(15.5f)));
+    glUniform1f(lightOuterCutOff, glm::cos(glm::radians(29.5f)));
+
     glUniform3fv(diffuseColorHandle, 1, glm::value_ptr(diffuseColor));
     glUniform3fv(lightPos, 1, glm::value_ptr(glm::vec3(0.0f,0.0f,10.0f)));
     glUniform3fv(viewPos, 1, glm::value_ptr(pCamera->getOwner()->getWorldPosition()));

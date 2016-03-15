@@ -1,6 +1,14 @@
 #version 330 core
 out vec4 FragColor;
 
+struct Light
+{
+    vec3  position;
+    vec3  direction;
+    float cutOff;
+    float outerCutOff;
+};
+
 in VS_OUT {
     vec3 FragPos;
     vec3 Normal;
@@ -11,8 +19,8 @@ in VS_OUT {
 uniform sampler2D diffuseTexture;
 uniform sampler2D shadowMap;
 
+uniform Light light;
 uniform vec3 diffuseColor;
-uniform vec3 lightPos;
 uniform vec3 viewPos;
 
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 lightDir)
@@ -45,13 +53,17 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 lightDir)
 
 void main()
 {
+    vec3 lightDir = normalize(light.position - fs_in.FragPos);
+
+//    // Check if lighting is inside the spotlight cone
+//    float theta = dot(lightDir, normalize(-light.direction));
+
     vec3 color = texture(diffuseTexture, fs_in.TexCoords).rgb * diffuseColor;
     vec3 normal = normalize(fs_in.Normal);
     vec3 lightColor = vec3(1.0);
     // Ambient
-    vec3 ambient = 0.15 * color;
+    vec3 ambient = 0.25 * color;
     // Diffuse
-    vec3 lightDir = normalize(lightPos - fs_in.FragPos);
     float diff = max(dot(lightDir, normal), 0.0);
     vec3 diffuse = diff * lightColor;
     // Specular
@@ -63,7 +75,15 @@ void main()
     vec3 specular = spec * lightColor;
     // Calculate shadow
     float shadow = ShadowCalculation(fs_in.FragPosLightSpace, lightDir);
+
+    // Spotlight (soft edges)
+    float theta = dot(lightDir, normalize(-light.direction));
+    float epsilon = (light.cutOff - light.outerCutOff);
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    diffuse  *= intensity;
+    specular *= intensity;
+
     vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * color;
 
-    FragColor = vec4(lighting, 1.0f);
+    FragColor = vec4(lighting, 1.0);
 }

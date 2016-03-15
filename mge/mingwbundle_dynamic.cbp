@@ -23,6 +23,7 @@
 					<Add directory="src/mge/core" />
 					<Add directory="src/mge/materials" />
 					<Add directory="src/mge/sphinx" />
+					<Add directory="src/mge/behaviours" />
 				</Compiler>
 				<Linker>
 					<Add library="glew32" />
@@ -61,6 +62,8 @@
 		<Unit filename="assets/mge/shaders/litTexture.vs" />
 		<Unit filename="assets/mge/shaders/litcolor.fs" />
 		<Unit filename="assets/mge/shaders/litcolor.vs" />
+		<Unit filename="assets/mge/shaders/screenShader.fs" />
+		<Unit filename="assets/mge/shaders/screenShader.vs" />
 		<Unit filename="assets/mge/shaders/shadowMap.fs" />
 		<Unit filename="assets/mge/shaders/shadowMap.vs" />
 		<Unit filename="assets/mge/shaders/simpleDepthShader.fs" />
@@ -104,6 +107,8 @@
 		<Unit filename="src/mge/behaviours/OrbitBehaviour.hpp" />
 		<Unit filename="src/mge/behaviours/OrbitBehaviourPaul.cpp" />
 		<Unit filename="src/mge/behaviours/OrbitBehaviourPaul.h" />
+		<Unit filename="src/mge/behaviours/ParticleSystem.cpp" />
+		<Unit filename="src/mge/behaviours/ParticleSystem.hpp" />
 		<Unit filename="src/mge/behaviours/RotatingBehaviour.cpp" />
 		<Unit filename="src/mge/behaviours/RotatingBehaviour.hpp" />
 		<Unit filename="src/mge/config.hpp" />
@@ -167,6 +172,7 @@
 		<Unit filename="src/mge/sphinx/StoryWall.hpp" />
 		<Unit filename="src/mge/util/DebugHud.cpp" />
 		<Unit filename="src/mge/util/DebugHud.hpp" />
+		<Unit filename="src/mge/util/LogFile.h" />
 		<Unit filename="src/mge/util/UpdateListener.cpp" />
 		<Unit filename="src/mge/util/UpdateListener.hpp" />
 		<Unit filename="src/mge/util/Utils.cpp" />

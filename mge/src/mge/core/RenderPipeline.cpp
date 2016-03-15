@@ -6,6 +6,7 @@
 #include "World.hpp"
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
+#include "Camera.hpp"
 
 RenderPipeline::RenderPipeline()
 {
@@ -48,8 +49,9 @@ void RenderPipeline::initializeLightSpaceMatrix()
 {
     //light space transform
     GLfloat near_plane = 1.0f, far_plane = 60.0f;
-    glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
-    glm::mat4 lightView = glm::lookAt(glm::vec3(0.0f, 0.0f, 10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+//    glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
+    glm::mat4 lightProjection = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, near_plane, far_plane);
+    glm::mat4 lightView = glm::lookAt(glm::vec3(-4, 3, 10), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     lightSpaceMatrix = lightProjection * lightView;
 }
