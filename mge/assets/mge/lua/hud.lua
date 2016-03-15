@@ -34,7 +34,11 @@ function updateMenu()
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.LEVEL
     end
+<<<<<<< HEAD
     popMenu()
+=======
+	popMenu()
+>>>>>>> refs/remotes/origin/hud2
 end
 
 function updateLevel()    
@@ -44,6 +48,7 @@ function updateLevel()
     inintialRiddleDisplay()
     
 	-- Update ProgressBar: --
+<<<<<<< HEAD
 	--	int: xOffset, yOffset, spriteWidth, spriteHeight, spriteRows, alignment --
 	updateProgressBar(data.progress_bar_xOffset, 
 					  data.progress_bar_yOffset,  
@@ -51,6 +56,13 @@ function updateLevel()
 					  data.progress_bar_sprite_height, 
 					  data.progress_bar_sprite_rows,
 					  data.progress_bar_alignment)
+=======
+	updateProgressBar(data.progress_bar_xOffset, 	  data.progress_bar_yOffset,  
+					  data.progress_bar_sprite_width, data.progress_bar_sprite_height, 
+					  data.progress_bar_sprite_rows,  data.progress_bar_alignment,
+					  data.progress_bar_scaleX, 	  data.progress_bar_scaleY
+					  )
+>>>>>>> refs/remotes/origin/hud2
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.MENU
     end
@@ -171,4 +183,8 @@ end
 
 function popMenu()
     Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment)
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> refs/remotes/origin/hud2
