@@ -3,6 +3,8 @@ gameHud_Data = require "mge/lua/hud_data"
 
 dofile("mge/lua/story2.lua")
 
+MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
+game_state = MODE.LEVEL
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
@@ -14,10 +16,14 @@ help_button_texture = gameHud_Data.help_button_texture
 hint_button1_texture = gameHud_Data.hint_button1_texture
 hint_button2_texture = gameHud_Data.hint_button2_texture
 hint_button3_texture = gameHud_Data.hint_button3_texture
+exit_button_texture = gameHud_Data.exit_button_texture
+resume_button_texture = gameHud_Data.resume_button_texture
+start_button_texture = gameHud_Data.start_button_texture
 help_box_texture = gameHud_Data.help_box_texture
 riddle_box_texture = gameHud_Data.riddle_box_texture
 hints_box_texture = gameHud_Data.hints_box_texture
 menu_box_texture = gameHud_Data.menu_box_texture
+progress_bar_texture = gameHud_Data.progress_bar_texture
 -- TEXTURE NAMES FOR C++ END --
 
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
@@ -90,6 +96,29 @@ end
 selectPuzzle(activePuzzle)
 
 function update()
+    if game_state == MODE.LEVEL then
+        updateLevel()
+    elseif game_state == MODE.BOOK then
+        updateBook()
+    elseif game_state == MODE.MENU then
+        updateMenu()
+    end
+end
+
+function updateBook()
+
+end
+
+function updateMenu()
+    if Game.getKeyDown(KeyCode.M) == true then
+        game_state = MODE.LEVEL
+    end
+end
+
+function updateLevel()
+    if Game.getKeyDown(KeyCode.M) == true then
+        game_state = MODE.MENU
+    end
     if storyCompleted then
         return
     else
@@ -102,7 +131,7 @@ function update()
         end
 
         handleControl()
-       handlePlacement(storyWall)
+        handlePlacement(storyWall)
         handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then

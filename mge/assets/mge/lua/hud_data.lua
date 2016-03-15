@@ -3,7 +3,7 @@ local HUD = {}
 alignment = { LEFT_TOP = 1, LEFT_CENTER = 2, LEFT_BOTTOM = 3, CENTER_TOP = 4, CENTER_CENTER = 5, CENTER_BOTTOM = 6, RIGHT_TOP = 7, RIGHT_CENTER = 8, RIGHT_BOTTOM = 9 }
 
 -- BUTTONS AND BOXES PARAMETERS START --
-display_riddle_at_start = 30
+display_riddle_at_start = 20
 
 --Progressbar
 progress_bar_xOffset = 0
@@ -14,6 +14,7 @@ progress_bar_sprite_rows = 8
 progress_bar_scaleX = 0.5
 progress_bar_scaley = 0.5
 progress_bar_alignment = alignment.CENTER_TOP
+progress_bar_texture = "Progress_256.png"
 
 --Button for Riddle / Hints
 help_button_xOffset = 20
@@ -55,6 +56,36 @@ hint_button3_scaleY = 0.1
 hint_button3_alignment = alignment.RIGHT_TOP
 hint_button3_texture = "Hint_Button_3_Sprite.png"
 
+--Start button in menu
+start_button_xOffset = 0
+start_button_yOffset = 0
+start_button_width = 200			    -- spriteWidth / columns
+start_button_height = 75
+start_button_scaleX = 1
+start_button_scaleY = 1
+start_button_alignment = alignment.CENTER_CENTER
+start_button_texture = "land.jpg"
+
+--Resume button in menu
+resume_button_xOffset = 0
+resume_button_yOffset = 100
+resume_button_width = 200	        -- spriteWidth / columns
+resume_button_height = 75
+resume_button_scaleX = 1
+resume_button_scaleY = 1
+resume_button_alignment = alignment.CENTER_CENTER
+resume_button_texture = "land.jpg"
+
+--Exit button in menu
+exit_button_xOffset = 0
+exit_button_yOffset = 200
+exit_button_width = 200		    -- spriteWidth / columns
+exit_button_height = 75
+exit_button_scaleX = 1
+exit_button_scaleY = 1
+exit_button_alignment = alignment.CENTER_CENTER
+exit_button_texture = "land.jpg"
+
 --Label behind the hint buttons (helpbox)
 help_box_xOffset = 27
 help_box_yOffset = 25
@@ -82,6 +113,8 @@ menu_box_xOffset = 0
 menu_box_yOffset = 0
 menu_box_width = 500
 menu_box_height = 500
+menu_box_scaleX = 1
+menu_box_scaleY = 1
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "bricks.jpg"
 
@@ -118,6 +151,7 @@ HUD.progress_bar_sprite_rows = progress_bar_sprite_rows
 HUD.progress_bar_scaleX = progress_bar_scaleX
 HUD.progress_bar_scaleY = progress_bar_scaleY
 HUD.progress_bar_alignment = progress_bar_alignment
+HUD.progress_bar_texture = progress_bar_texture
 
 -- riddle / hint / help button
 HUD.help_button_xOffset = help_button_xOffset
@@ -159,6 +193,36 @@ HUD.hint_button3_scaleY = hint_button3_scaleY
 HUD.hint_button3_alignment = hint_button3_alignment
 HUD.hint_button3_texture = hint_button3_texture
 
+--Exit button in menu
+HUD.exit_button_xOffset = exit_button_xOffset
+HUD.exit_button_yOffset = exit_button_yOffset
+HUD.exit_button_width = exit_button_width
+HUD.exit_button_height = exit_button_height
+HUD.exit_button_scaleX = exit_button_scaleX
+HUD.exit_button_scaleY = exit_button_scaleY
+HUD.exit_button_alignment = exit_button_alignment
+HUD.exit_button_texture = exit_button_texture
+
+--Resume button in menu
+HUD.resume_button_xOffset = resume_button_xOffset
+HUD.resume_button_yOffset = resume_button_yOffset
+HUD.resume_button_width = resume_button_width
+HUD.resume_button_height = resume_button_height
+HUD.resume_button_scaleX = resume_button_scaleX
+HUD.resume_button_scaleY = resume_button_scaleY
+HUD.resume_button_alignment = resume_button_alignment
+HUD.resume_button_texture = resume_button_texture
+
+--Start button in menu
+HUD.start_button_xOffset = start_button_xOffset
+HUD.start_button_yOffset = start_button_yOffset
+HUD.start_button_width = start_button_width
+HUD.start_button_height = start_button_height
+HUD.start_button_scaleX = start_button_scaleX
+HUD.start_button_scaleY = start_button_scaleY
+HUD.start_button_alignment = start_button_alignment
+HUD.start_button_texture = start_button_texture
+
 -- background of the hintbuttons
 HUD.help_box_xOffset = help_box_xOffset
 HUD.help_box_yOffset = help_box_yOffset
@@ -188,6 +252,8 @@ HUD.menu_box_width = menu_box_width
 HUD.menu_box_height = menu_box_height
 HUD.menu_box_alignment = menu_box_alignment
 HUD.menu_box_texture = menu_box_texture
+HUD.menu_box_scaleX = menu_box_scaleX
+HUD.menu_box_scaleY = menu_box_scaleY
 
 -- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset

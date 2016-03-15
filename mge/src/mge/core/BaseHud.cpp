@@ -17,6 +17,9 @@ sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
+sf::Texture* BaseHud::exitButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::resumeButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::startButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::hintsBoxTexture = new sf::Texture;
@@ -27,6 +30,9 @@ sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton2Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
+sf::Sprite* BaseHud::exitButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::resumeButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::startButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
@@ -40,10 +46,13 @@ std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "land.jpg";
 std::string BaseHud::hintButton2TextureName = "land.jpg";
 std::string BaseHud::hintButton3TextureName = "land.jpg";
+std::string BaseHud::exitButtonTextureName = "land.jpg";
+std::string BaseHud::resumeButtonTextureName = "land.jpg";
+std::string BaseHud::startButtonTextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "land.jpg";
 std::string BaseHud::hintsBoxTextureName = "land.jpg";
-std::string BaseHud::progressBarTextureName = "Progress_256.png";
+std::string BaseHud::progressBarTextureName = "land.jpg";
 std::string BaseHud::menuBoxTextureName = "land.jpg";
 
 bool BaseHud::lmbPressedLastFrame = false;
@@ -78,19 +87,31 @@ void BaseHud::loadTextures()
     _window->pushGLStates();
 
     if (!helpButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpButtonTextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
+        std::cout << "Could not load texture for help button" << std::endl;
         return;
     }
     if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
+        std::cout << "Could not load texture for hint1 button" << std::endl;
         return;
     }
     if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
+        std::cout << "Could not load texture for hint2 button" << std::endl;
         return;
     }
     if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
+        std::cout << "Could not load texture for hint3 button" << std::endl;
+        return;
+    }
+    if (!exitButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + exitButtonTextureName)) {
+        std::cout << "Could not load texture for exit button" << std::endl;
+        return;
+    }
+    if (!resumeButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + resumeButtonTextureName)) {
+        std::cout << "Could not load texture for resume button" << std::endl;
+        return;
+    }
+    if (!startButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + startButtonTextureName)) {
+        std::cout << "Could not load texture for start button" << std::endl;
         return;
     }
     if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName)) {
@@ -118,6 +139,9 @@ void BaseHud::loadTextures()
     hintButton1Texture->setRepeated(true);
     hintButton2Texture->setRepeated(true);
     hintButton3Texture->setRepeated(true);
+    exitButtonTexture->setRepeated(true);
+    resumeButtonTexture->setRepeated(true);
+    startButtonTexture->setRepeated(true);
     helpBoxTexture->setRepeated(true);
     riddleBoxTexture->setRepeated(true);
     hintsBoxTexture->setRepeated(true);
@@ -264,6 +288,82 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int spriteID, int
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
+bool BaseHud::ExitButton  (int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+{
+    width *= scaleX;
+    height *= scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = exitButtonTexture->getSize().x;
+    int spriteHeight = exitButtonTexture->getSize().y;
+    int tileWidth = ( spriteWidth );
+
+    //create sprite
+    exitButtonSprite->setTexture(*exitButtonTexture);
+    exitButtonSprite->setScale(scaleX, scaleY);
+    if (spriteID == 0) exitButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else exitButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    exitButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*exitButtonSprite);
+
+	//text mouse
+    return CheckMouseOnButton(alignedPos, width, height);
+}
+
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
+bool BaseHud::ResumeButton(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+{
+    width *= scaleX;
+    height *= scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = resumeButtonTexture->getSize().x;
+    int spriteHeight = resumeButtonTexture->getSize().y;
+    int tileWidth = ( spriteWidth / 2 );
+
+    //create sprite
+    resumeButtonSprite->setTexture(*resumeButtonTexture);
+    resumeButtonSprite->setScale(scaleX, scaleY);
+    if (spriteID == 0) resumeButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else resumeButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    resumeButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*resumeButtonSprite);
+
+	//text mouse
+    return CheckMouseOnButton(alignedPos, width, height);
+}
+
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
+bool BaseHud::StartButton (int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+{
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width * scaleX, height * scaleY);
+    //int spriteWidth = startButtonTexture->getSize().x;
+    //int spriteHeight = startButtonTexture->getSize().y;
+    //int tileWidth = ( spriteWidth );
+
+    //create sprite
+    startButtonSprite->setScale(scaleX, scaleY);
+    startButtonSprite->setTexture(*startButtonTexture);
+    startButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    //if (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    //else startButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    startButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*startButtonSprite);
+
+	//text mouse
+    return CheckMouseOnButton(alignedPos, width, height);
+}
+
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 void BaseHud::HelpBox(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width * scaleX, height * scaleY);
@@ -317,7 +417,6 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
     hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    //hintsBoxText->setPosition(sf::Vector2f(x + width/2, y + height/2));
     hintsBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
     hintsBoxText->setString(caption);
     hintsBoxText->setFont(_font);
@@ -331,7 +430,7 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
 //----------------------------------------------------------------
 //              image/sprite SFML label with text
 //----------------------------------------------------------------
-void BaseHud::MenuBox(int x, int y, int width, int height, int alignment)
+void BaseHud::MenuBox(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
@@ -395,7 +494,11 @@ void BaseHud::setHelpBoxTextureName(const std::string name)     { helpBoxTexture
 void BaseHud::setRiddleBoxTextureName(const std::string name)   { riddleBoxTextureName   = name; }
 void BaseHud::setHintsBoxTextureName(const std::string name)    { hintsBoxTextureName    = name; }
 void BaseHud::setMenuBoxTextureName(const std::string name)     { menuBoxTextureName     = name; }
+void BaseHud::setProgressbarTextureName(const std::string name) { progressBarTextureName = name; }
 void BaseHud::setDisplayTime(const int value)                   { displayTime            = value;}
+void BaseHud::setExitButtonTextureName(const std::string name)  { exitButtonTextureName  = name; }
+void BaseHud::setResumeButtonTextureName(const std::string name){ resumeButtonTextureName= name; }
+void BaseHud::setStartButtonTextureName(const std::string name) { startButtonTextureName = name; }
 
 //----------------------------------------------------------------------
 // simple counter that sends to lua a signal to stop displaying riddle
