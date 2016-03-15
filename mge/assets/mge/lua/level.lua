@@ -3,6 +3,9 @@ gameHud_Data = require "mge/lua/hud_data"
 
 dofile("mge/lua/story2.lua")
 
+MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
+game_state = MODE.LEVEL
+
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
@@ -89,6 +92,16 @@ end
 selectPuzzle(activePuzzle)
 
 function update()
+    if game_state == MODE.LEVEL then
+        updateLevel()
+    elseif game_state == MODE.BOOK then
+        updateBook()
+    elseif game_state == MODE.MENU then
+        updateMenu()
+    end
+end
+
+function updateLevel()
     if storyCompleted then
         return
     else
@@ -101,12 +114,21 @@ function update()
         end
 
         handleControl()
-       handlePlacement(storyWall)
+        handlePlacement(storyWall)
         handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
             nextPuzzle()
         end
+    end
+    if Game.getKeyDown(KeyCode.M) == true then
+        game_state = MODE.MENU
+    end
+end
+
+function updateMenu()
+    if Game.getKeyDown(KeyCode.M) == true then
+        game_state = MODE.LEVEL
     end
 end
 
@@ -120,7 +142,7 @@ function refreshHud()
     gameHud = require "mge/lua/hud"
     print("hud reloaded!")
 	package.loaded["mge/lua/hud_data"] = nil
-	gameHud_Data = require "mge/lua/hud"
+	gameHud_Data = require "mge/lua/hud_data"
 	print("hud_data reloaded!")
 end
 
