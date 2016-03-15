@@ -76,11 +76,7 @@ end
 
 function handleHintButtonsClick()
     if Hud.hintButton1(data.hint_button1_xOffset, data.hint_button1_yOffset, data.hint_button1_width, 
-<<<<<<< HEAD
-        data.hint_button1_height, data.hint_button1_alignment) == true then
-=======
         data.hint_button1_height, hint1_spriteID, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
->>>>>>> refs/remotes/origin/hud2
         if showHintsBox1 == false then
             showHintsBox1 = true
 			hint1_spriteID = 1
@@ -96,11 +92,7 @@ function handleHintButtonsClick()
     end
      
     if Hud.hintButton2(data.hint_button2_xOffset, data.hint_button2_yOffset, data.hint_button2_width, 
-<<<<<<< HEAD
-        data.hint_button2_height, data.hint_button2_alignment) == true then
-=======
         data.hint_button2_height, hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
->>>>>>> refs/remotes/origin/hud2
         if showHintsBox2 == false then
             showHintsBox2 = true
 			hint1_spriteID = 0
@@ -117,11 +109,7 @@ function handleHintButtonsClick()
     end
     
     if Hud.hintButton3(data.hint_button3_xOffset, data.hint_button3_yOffset, data.hint_button3_width, 
-<<<<<<< HEAD
-        data.hint_button3_height, data.hint_button3_alignment) == true then
-=======
         data.hint_button3_height, hint3_spriteID, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
->>>>>>> refs/remotes/origin/hud2
         if showHintsBox3 == false then
             showHintsBox3 = true
 			hint1_spriteID = 0
