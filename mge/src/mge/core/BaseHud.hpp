@@ -22,7 +22,7 @@ class BaseHud
         static void HelpBox     (int xOffset, int yOffset, int width, int height, int alignment);
         static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
         static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
-        static void TutorialBox (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static void MenuBox     (int xOffset, int yOffset, int width, int height, int alignment);
 
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 
@@ -35,7 +35,7 @@ class BaseHud
         static void setHelpBoxTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
         static void setHintsBoxTextureName(const std::string name);
-        static void setTutorialBoxTextureName(const std::string name);
+        static void setMenuBoxTextureName(const std::string name);
         static void setDisplayTime(const int value);
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
         static bool DisplayRiddleAtStart();
@@ -59,7 +59,7 @@ class BaseHud
         static sf::Texture* riddleBoxTexture;
         static sf::Texture* hintsBoxTexture;
         static sf::Texture* progressBarTexture;
-        static sf::Texture* tutorialBoxTexture;
+        static sf::Texture* menuBoxTexture;
         //hud sprites
         static sf::Sprite* helpButtonSprite;
         static sf::Sprite* hintButton1Sprite;
@@ -69,17 +69,11 @@ class BaseHud
         static sf::Sprite* riddleBoxSprite;
         static sf::Sprite* hintsBoxSprite;
         static sf::Sprite* progressBarSprite;
-        static sf::Sprite* tutorialBoxSprite;
+        static sf::Sprite* menuBoxSprite;
         //hud texts
-        static sf::Text* helpButtonText;
-        static sf::Text* hintButton1Text;
-        static sf::Text* hintButton2Text;
-        static sf::Text* hintButton3Text;
-        static sf::Text* helpBoxText;
         static sf::Text* riddleBoxText;
         static sf::Text* hintsBoxText;
         static sf::Text* progressBarText;
-        static sf::Text* tutorialBoxText;
         //hud names
         static std::string helpButtonTextureName;
         static std::string hintButton1TextureName;
@@ -89,7 +83,7 @@ class BaseHud
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
         static std::string progressBarTextureName;
-        static std::string tutorialBoxTextureName;
+        static std::string menuBoxTextureName;
 
         static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
 

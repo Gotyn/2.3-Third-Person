@@ -63,6 +63,14 @@ riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
 riddle_box_texture = "bricks.jpg"
 
+--Label that shows menu container
+menu_box_xOffset = 0
+menu_box_yOffset = 0
+menu_box_width = 500
+menu_box_height = 500
+menu_box_alignment = alignment.CENTER_CENTER
+menu_box_texture = "bricks.jpg"
+
 --Label that shows the actual hint
 hints_box_xOffset = 250
 hints_box_yOffset = 480
@@ -136,6 +144,14 @@ HUD.riddle_box_font = riddle_box_font
 HUD.riddle_box_text = riddle_box_text
 HUD.riddle_box_alignment = riddle_box_alignment
 HUD.riddle_box_texture = riddle_box_texture
+
+-- actual menu container
+HUD.menu_box_xOffset = menu_box_xOffset
+HUD.menu_box_yOffset = menu_box_yOffset
+HUD.menu_box_width = menu_box_width
+HUD.menu_box_height = menu_box_height
+HUD.menu_box_alignment = menu_box_alignment
+HUD.menu_box_texture = menu_box_texture
 
 -- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset

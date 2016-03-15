@@ -8,7 +8,6 @@ showHintsBox2 = false
 showHintsBox3 = false
 showHelpBox = true
 initialRiddleCheck = false
-menuPressed = false
 hintText = ""
 
 progress = 0
@@ -28,10 +27,10 @@ function updateBook()
 end
 
 function updateMenu()
-    popMenu()
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.LEVEL
     end
+    popMenu()
 end
 
 function updateLevel()    
@@ -153,5 +152,5 @@ function inintialRiddleDisplay()
 end
 
 function popMenu()
-    Hud.tutorialBox(0, 0, 500, 500, 40, "MENU", 5)
+    Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment)
 end
