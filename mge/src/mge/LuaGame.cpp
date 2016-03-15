@@ -151,7 +151,7 @@ void LuaGame::_initLua()
             .addFunction ("helpBox", BaseHud::HelpBox)
             .addFunction ("riddleBox", BaseHud::RiddleBox)
             .addFunction ("hintsBox", BaseHud::HintsBox)
-            .addFunction ("tutorialBox", BaseHud::TutorialBox)
+            .addFunction ("menuBox", BaseHud::MenuBox)
             .addFunction ("displayRiddleAtStart", BaseHud::DisplayRiddleAtStart)
         .endNamespace()
         .beginNamespace ("Audio")
@@ -212,7 +212,10 @@ void LuaGame::setTextureNames()
 
     luabridge::LuaRef hints_box_texture = luabridge::getGlobal (_L, "hints_box_texture");
     BaseHud::setHintsBoxTextureName(hints_box_texture.cast<std::string>());
-    cout << "LuaGame: " + help_button_texture.cast<std::string>() << endl;
+
+    luabridge::LuaRef menu_box_texture = luabridge::getGlobal (_L, "menu_box_texture");
+    BaseHud::setMenuBoxTextureName(menu_box_texture.cast<std::string>());
+
     BaseHud::loadTextures();
 }
 
