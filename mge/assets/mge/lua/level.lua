@@ -25,6 +25,11 @@ storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
 
+-- (test) send active puzzleBlock to c++
+function getActiveBlock()
+    return story[activePuzzle].blocks[activePiece]
+end
+
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
         v:setActive(active)

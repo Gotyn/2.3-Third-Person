@@ -112,7 +112,6 @@ void LuaGame::_initLua()
             .addFunction ("getKeyDown", Input::getKeyDown)
             .addFunction ("getKey", Input::getKey)
             .addFunction ("getCameraObject", LuaGame::getCameraObject)
-//            .addFunction ("setTransform", LuaGame::setTransform)
             //game classes
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()
@@ -165,6 +164,14 @@ void LuaGame::_initLua()
         .endNamespace();
 }
 
+PuzzleBlock* LuaGame::getActiveBlock()
+{
+    luabridge::LuaRef getActiveBlock = luabridge::getGlobal(_L, "getActiveBlock");
+
+    PuzzleBlock* b = getActiveBlock();
+    return b;
+}
+
 int LuaGame::getWindowWidth()
 {
     return static_cast<int>(_window->getSize().x);
@@ -177,6 +184,15 @@ void LuaGame::_update()
     //call lua update function
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
+
+    // test: spotlight update target (LookAt not working) //
+//    PuzzleBlock* block = getActiveBlock();
+//
+//    if (block != NULL)
+//    {
+//        mainSpotlight->getOwner()->LookAt(block);
+//    }
+    // end test //
 
     if (!BaseHud::texturesSet)
     {

@@ -8,6 +8,7 @@
 #include "mge/core/BaseHud.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 #include "mge/sphinx/StoryWall.hpp"
+#include "mge/sphinx/PuzzleBlock.hpp"
 #include "ParticleSystem.hpp"
 #include "Light.hpp"
 
@@ -27,6 +28,7 @@ class LuaGame : public AbstractGame
 
         static int getWindowWidth();
         static GameObject* getCameraObject();
+        PuzzleBlock* getActiveBlock();
 
         static Light* mainSpotlight;
 
