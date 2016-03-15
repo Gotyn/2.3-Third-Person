@@ -42,9 +42,14 @@ end
 function updateLevel()
     Hud.textLabel(50, 50, progress)
     
-    handleHelpButtonClick()
     updateHelpBox()
     updateHintsBox()
+	
+	if (showHelpBox) then handleHelpButtonClick(1) 	-- show pressed
+	else handleHelpButtonClick(0) end				-- show unpressed
+	
+	
+    
     inintialRiddleDisplay()
 	
 	-- Update ProgressBar: --
@@ -64,12 +69,12 @@ function updateLevel()
     end
 end
 
-function handleHelpButtonClick()
+function handleHelpButtonClick(spriteID)
     if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, data.help_button_width, 
-        data.help_button_height, data.help_button_alignment) == true then
+        data.help_button_height, spriteID, data.help_button_alignment, 0.2, 0.1) == true then
         if showHelpBox == false then
             showHelpBox = true
-        elseif showHelpBox == true then
+        else
             showHelpBox = false
         end
         if showHintsBox1 == true then
@@ -91,7 +96,7 @@ function handleHintButtonsClick()
             showHintsBox1 = true
             showHintsBox2 = false
             showHintsBox3 = false
-        elseif showHintsBox1 == true then
+        else
             showHintsBox1 = false
         end
     end

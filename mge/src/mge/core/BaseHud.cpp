@@ -159,13 +159,23 @@ bool BaseHud::Button(int x, int y, std::string caption)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HelpButton(int x, int y, int width, int height, int alignment)
+bool BaseHud::HelpButton(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
+    width *= scaleX;
+    height *= scaleY;
+
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = helpButtonTexture->getSize().x;
+    int spriteHeight = helpButtonTexture->getSize().y;
+    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
+
     helpButtonSprite->setTexture(*helpButtonTexture);
-    helpButtonSprite->setTextureRect(sf::IntRect(0, 0, width, height));
+    helpButtonSprite->setScale(scaleX, scaleY);
+    if (spriteID == 0) helpButtonSprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteHeight));
+    else helpButtonSprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteHeight));
+
     helpButtonSprite->setPosition(alignedPos);
 
     _window->draw(*helpButtonSprite);
@@ -383,7 +393,8 @@ bool BaseHud::DisplayRiddleAtStart()
 }
 
 //----------------------------------------------------------------------
-// custom mouse button down function, that substitutes
+// Checks whether the mouse is on a button or not.
+// Includes a custom mouse button down function, that substitutes
 // deprecated SFML 1.6 Input.GetMouseButtonDown
 //----------------------------------------------------------------------
 bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height)

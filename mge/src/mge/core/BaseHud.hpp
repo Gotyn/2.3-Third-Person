@@ -15,7 +15,7 @@ class BaseHud
         static bool Button      (int xOffset, int yOffset, std::string caption);
         static void TextLabel   (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
         static void ProgressBar (int xOffset, int yOffset, int width, int height, int spriteSheetRow, int alignment);
-        static bool HelpButton  (int xOffset, int yOffset, int width, int height, int alignment);
+        static bool HelpButton  (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool HintButton1 (int xOffset, int yOffset, int width, int height, int alignment);
         static bool HintButton2 (int xOffset, int yOffset, int width, int height, int alignment);
         static bool HintButton3 (int xOffset, int yOffset, int width, int height, int alignment);
@@ -94,7 +94,7 @@ class BaseHud
         static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
 
         // Alignment
-        static sf::Vector2u wSize;
+        static sf::Vector2u wSize; //windowSize
         // Alignment on X
         static int Align_X_Left   (int xOffset);
         static int Align_X_Center (int width);

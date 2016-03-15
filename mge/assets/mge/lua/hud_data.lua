@@ -16,10 +16,10 @@ progress_bar_alignment = alignment.CENTER_TOP
 --Button for Riddle / Hints
 help_button_xOffset = 25
 help_button_yOffset = 30
-help_button_width = 60
-help_button_height = 40
+help_button_width = 512				-- spriteWidth / columns
+help_button_height = 512
 help_button_alignment = alignment.RIGHT_TOP
-help_button_texture = "bricks.jpg"
+help_button_texture = "Hint_Button_Shinx_Sprite.png"
 
 --Button for first hint
 hint_button1_xOffset = 30
