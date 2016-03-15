@@ -16,54 +16,54 @@ progress_bar_scaley = 1
 progress_bar_alignment = alignment.CENTER_TOP
 
 --Button for Riddle / Hints
-help_button_xOffset = 25
-help_button_yOffset = 30
+help_button_xOffset = 20
+help_button_yOffset = 20
 help_button_width = 512				-- spriteWidth / columns
 help_button_height = 512
-help_button_scaleX = 0.15
-help_button_scaleY = 0.15
+help_button_scaleX = 0.14
+help_button_scaleY = 0.14
 help_button_alignment = alignment.RIGHT_TOP
 help_button_texture = "Hint_Button_Shinx_Sprite.png"
 
 --Button for first hint
 hint_button1_xOffset = 30
-hint_button1_yOffset = 75
-hint_button1_width = 50
-hint_button1_height = 40
-hint_button1_scaleX = 1
-hint_button1_scaleY = 1
+hint_button1_yOffset = 92
+hint_button1_width = 512			-- spriteWidth / columns
+hint_button1_height = 512
+hint_button1_scaleX = 0.1
+hint_button1_scaleY = 0.1
 hint_button1_alignment = alignment.RIGHT_TOP
-hint_button1_texture = "bricks.jpg"
+hint_button1_texture = "Hint_Button_1_Sprite.png"
 
 --Button for second hint
 hint_button2_xOffset = 30
-hint_button2_yOffset = 120
-hint_button2_width = 50
-hint_button2_height = 40
-hint_button2_scaleX = 1
-hint_button2_scaleY = 1
+hint_button2_yOffset = 140
+hint_button2_width = 512			-- spriteWidth / columns
+hint_button2_height = 512
+hint_button2_scaleX = 0.1
+hint_button2_scaleY = 0.1
 hint_button2_alignment = alignment.RIGHT_TOP
-hint_button2_texture = "bricks.jpg"
+hint_button2_texture = "Hint_Button_2_Sprite.png"
 
 --Button for third hint
 hint_button3_xOffset = 30
-hint_button3_yOffset = 165
-hint_button3_width = 50
-hint_button3_height = 40
-hint_button3_scaleX = 1
-hint_button3_scaleY = 1
+hint_button3_yOffset = 188
+hint_button3_width = 512			-- spriteWidth / columns
+hint_button3_height = 512
+hint_button3_scaleX = 0.1
+hint_button3_scaleY = 0.1
 hint_button3_alignment = alignment.RIGHT_TOP
-hint_button3_texture = "bricks.jpg"
+hint_button3_texture = "Hint_Button_3_Sprite.png"
 
---Label behind the hint buttons
-help_box_xOffset = 28
-help_box_yOffset = 70
-help_box_width = 54
-help_box_height = 140
-help_box_scaleX = 1
-help_box_scaleY = 1
+--Label behind the hint buttons (helpbox)
+help_box_xOffset = 27
+help_box_yOffset = 25
+help_box_width = 512
+help_box_height = 2048
+help_box_scaleX = 0.11
+help_box_scaleY = 0.11
 help_box_alignment = alignment.RIGHT_TOP
-help_box_texture = "bricks.jpg"
+help_box_texture = "Dropdown_Box.png"
 
 --Label that shows the riddle
 riddle_box_xOffset = 0

@@ -187,13 +187,20 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int spriteID, int 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment)
+bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
+    width *= scaleX;
+    height *= scaleY;
+
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = hintButton1Texture->getSize().x;
+    int spriteHeight = hintButton1Texture->getSize().y;
+    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
     hintButton1Sprite->setTexture(*hintButton1Texture);
-    hintButton1Sprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintButton1Sprite->setScale(scaleX, scaleY);
+    hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton1Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton1Sprite);
@@ -205,13 +212,20 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment)
+bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
+    width *= scaleX;
+    height *= scaleY;
+
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = hintButton2Texture->getSize().x;
+    int spriteHeight = hintButton2Texture->getSize().y;
+    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
     hintButton2Sprite->setTexture(*hintButton2Texture);
-    hintButton2Sprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintButton2Sprite->setScale(scaleX, scaleY);
+    hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton2Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton2Sprite);
@@ -223,13 +237,20 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment)
+bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
+    width *= scaleX;
+    height *= scaleY;
+
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    int spriteWidth = hintButton3Texture->getSize().x;
+    int spriteHeight = hintButton3Texture->getSize().y;
+    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
     hintButton3Sprite->setTexture(*hintButton3Texture);
-    hintButton3Sprite->setTextureRect(sf::IntRect(0,0,width,height));
+    hintButton3Sprite->setScale(scaleX, scaleY);
+    hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton3Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton3Sprite);
@@ -241,12 +262,13 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-void BaseHud::HelpBox(int x, int y, int width, int height, int alignment)
+void BaseHud::HelpBox(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
-    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width * scaleX, height * scaleY);
 
     //create sprite
     helpBoxSprite->setTexture(*helpBoxTexture);
+    helpBoxSprite->setScale(scaleX, scaleY);
     helpBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
     helpBoxSprite->setPosition(alignedPos);
 
