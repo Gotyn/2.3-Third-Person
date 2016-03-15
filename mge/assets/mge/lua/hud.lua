@@ -1,5 +1,4 @@
 module("hud", package.seeall)
-
 local data = require("mge/lua/hud_data")
 
 MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
@@ -9,7 +8,6 @@ showHintsBox2 = false
 showHintsBox3 = false
 showHelpBox = true
 initialRiddleCheck = false
-menuPressed = false
 hintText = ""
 
 progress = 0
@@ -33,19 +31,13 @@ function updateBook()
 end
 
 function updateMenu()
-    popUpTutorial()
-    if Game.getKey(KeyCode.M) == true and menuPressed == false then
+    if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.LEVEL
-        menuPressed = true
     end
-    if Game.getKey(KeyCode.M) == false then
-        menuPressed = false
-    end
+	popMenu()
 end
 
 function updateLevel()
-    Hud.textLabel(50, 50, progress)
-    
     updateHelpBox()
     updateHintsBox()
 	
@@ -57,15 +49,11 @@ function updateLevel()
 	-- Update ProgressBar: --
 	updateProgressBar(data.progress_bar_xOffset, 	  data.progress_bar_yOffset,  
 					  data.progress_bar_sprite_width, data.progress_bar_sprite_height, 
-					  data.progress_bar_sprite_rows,  data.progress_bar_alignment,
-					  data.progress_bar_scaleX, 	  data.progress_bar_scaleY
+					  data.progress_bar_sprite_rows,  data.progress_bar_alignment
+					  --data.progress_bar_scaleX, 	  data.progress_bar_scaleY
 					  )
-    if Game.getKey(KeyCode.M) == true and menuPressed == false then
+    if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.MENU
-        menuPressed = true
-    end
-    if Game.getKey(KeyCode.M) == false then
-        menuPressed = false
     end
 end
 
@@ -141,14 +129,14 @@ end
 function updateProgressBar(xOffset, yOffset, spriteWidth, spriteHeight, spriteRows, alignment, scaleX, scaleY)
 	rowHeight = spriteHeight / spriteRows
 		
-	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 7, alignment, scaleX, scaleY) -- show all 
-	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 6, alignment, scaleX, scaleY) -- show 6
-	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 5, alignment, scaleX, scaleY) -- show 5
-	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 4, alignment, scaleX, scaleY) -- show 4
-	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 3, alignment, scaleX, scaleY) -- show 3
-	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 2, alignment, scaleX, scaleY) -- show 2
-	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 1, alignment, scaleX, scaleY) -- show 1
-	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 0, alignment, scaleX, scaleY) -- show none
+	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 7, alignment) -- show all 
+	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 6, alignment) -- show 6
+	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 5, alignment) -- show 5
+	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 4, alignment) -- show 4
+	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 3, alignment) -- show 3
+	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 2, alignment) -- show 2
+	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 1, alignment) -- show 1
+	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 0, alignment) -- show none
 	end
 	
 end
@@ -184,6 +172,6 @@ function inintialRiddleDisplay()
     end
 end
 
-function popUpTutorial()
-    Hud.tutorialBox(0, 0, 100, 100, 20, "tutorial", 5, 1, 1)
+function popMenu()
+    Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment)
 end
