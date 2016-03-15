@@ -21,7 +21,7 @@ sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::hintsBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::progressBarTexture = new sf::Texture;
-sf::Texture* BaseHud::tutorialBoxTexture = new sf::Texture;
+sf::Texture* BaseHud::menuBoxTexture = new sf::Texture;
 // initialize static sprites
 sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
@@ -31,11 +31,10 @@ sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::progressBarSprite = new sf::Sprite;
-sf::Sprite* BaseHud::tutorialBoxSprite = new sf::Sprite;
+sf::Sprite* BaseHud::menuBoxSprite = new sf::Sprite;
 // initialize static texts
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
-sf::Text* BaseHud::tutorialBoxText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
 std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "land.jpg";
@@ -45,7 +44,7 @@ std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "land.jpg";
 std::string BaseHud::hintsBoxTextureName = "land.jpg";
 std::string BaseHud::progressBarTextureName = "Progress_256.png";
-std::string BaseHud::tutorialBoxTextureName = "land.jpg";
+std::string BaseHud::menuBoxTextureName = "land.jpg";
 
 bool BaseHud::lmbPressedLastFrame = false;
 bool BaseHud::texturesSet = false;
@@ -63,7 +62,6 @@ BaseHud::BaseHud(sf::RenderWindow* aWindow)
     }
 
     startedRiddleDisplay = Timer::now();
-    std::cout << "constr: " + helpButtonTextureName << std::endl;
 }
 
 BaseHud::~BaseHud()
@@ -107,7 +105,7 @@ void BaseHud::loadTextures()
         std::cout << "Could not load texture for label" << std::endl;
         return;
     }
-    if (!tutorialBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + tutorialBoxTextureName)) {
+    if (!menuBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + menuBoxTextureName)) {
         std::cout << "Could not load texture for tutorial label" << std::endl;
         return;
     }
@@ -123,7 +121,7 @@ void BaseHud::loadTextures()
     helpBoxTexture->setRepeated(true);
     riddleBoxTexture->setRepeated(true);
     hintsBoxTexture->setRepeated(true);
-    tutorialBoxTexture->setRepeated(true);
+    menuBoxTexture->setRepeated(true);
     _window->popGLStates();
 }
 
@@ -187,7 +185,7 @@ bool BaseHud::HelpButton(int x, int y, int width, int height, int spriteID, int 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton1(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
     width *= scaleX;
     height *= scaleY;
@@ -200,7 +198,8 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, fl
     //create sprite
     hintButton1Sprite->setTexture(*hintButton1Texture);
     hintButton1Sprite->setScale(scaleX, scaleY);
-    hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton1Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton1Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton1Sprite);
@@ -209,10 +208,11 @@ bool BaseHud::HintButton1(int x, int y, int width, int height, int alignment, fl
     return CheckMouseOnButton(alignedPos, width, height);
 }
 
+
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton2(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
     width *= scaleX;
     height *= scaleY;
@@ -225,7 +225,8 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, fl
     //create sprite
     hintButton2Sprite->setTexture(*hintButton2Texture);
     hintButton2Sprite->setScale(scaleX, scaleY);
-    hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton2Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton2Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton2Sprite);
@@ -237,7 +238,7 @@ bool BaseHud::HintButton2(int x, int y, int width, int height, int alignment, fl
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+bool BaseHud::HintButton3(int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
     width *= scaleX;
     height *= scaleY;
@@ -250,7 +251,8 @@ bool BaseHud::HintButton3(int x, int y, int width, int height, int alignment, fl
     //create sprite
     hintButton3Sprite->setTexture(*hintButton3Texture);
     hintButton3Sprite->setScale(scaleX, scaleY);
-    hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    if (spriteID == 0) hintButton3Sprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    else hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     hintButton3Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton3Sprite);
@@ -329,26 +331,16 @@ void BaseHud::HintsBox(int x, int y, int width, int height, int fontSize, std::s
 //----------------------------------------------------------------
 //              image/sprite SFML label with text
 //----------------------------------------------------------------
-void BaseHud::TutorialBox(int x, int y, int width, int height, int fontSize, std::string caption, int alignment)
+void BaseHud::MenuBox(int x, int y, int width, int height, int alignment)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
     //create sprite
-    tutorialBoxSprite->setTexture(*tutorialBoxTexture);
-    tutorialBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
-    tutorialBoxSprite->setPosition(alignedPos);
+    menuBoxSprite->setTexture(*menuBoxTexture);
+    menuBoxSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    menuBoxSprite->setPosition(alignedPos);
 
-    //create text
-    sf::FloatRect textRect = tutorialBoxText->getLocalBounds();
-    tutorialBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    tutorialBoxText->setPosition(alignedPos.x + width / 2, alignedPos.y + height / 2);
-    tutorialBoxText->setString(caption);
-    tutorialBoxText->setFont(_font);
-    tutorialBoxText->setCharacterSize(fontSize);
-    tutorialBoxText->setColor(sf::Color::Black);
-
-    _window->draw(*tutorialBoxSprite);
-    _window->draw(*tutorialBoxText);
+    _window->draw(*menuBoxSprite);
 }
 
 //----------------------------------------------------------------
@@ -402,7 +394,7 @@ void BaseHud::setHintButton3TextureName(const std::string name) { hintButton3Tex
 void BaseHud::setHelpBoxTextureName(const std::string name)     { helpBoxTextureName     = name; }
 void BaseHud::setRiddleBoxTextureName(const std::string name)   { riddleBoxTextureName   = name; }
 void BaseHud::setHintsBoxTextureName(const std::string name)    { hintsBoxTextureName    = name; }
-void BaseHud::setTutorialBoxTextureName(const std::string name) { tutorialBoxTextureName = name; }
+void BaseHud::setMenuBoxTextureName(const std::string name)     { menuBoxTextureName     = name; }
 void BaseHud::setDisplayTime(const int value)                   { displayTime            = value;}
 
 //----------------------------------------------------------------------
