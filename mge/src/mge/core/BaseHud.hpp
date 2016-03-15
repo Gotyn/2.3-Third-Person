@@ -19,10 +19,13 @@ class BaseHud
         static bool HintButton1 (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool HintButton2 (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool HintButton3 (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool ExitButton  (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool ResumeButton(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool StartButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static void HelpBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
         static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); //scale doesnt work here???
         static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); // ... max arg lua can handle?
-        static void MenuBox     (int xOffset, int yOffset, int width, int height, int alignment);
+        static void MenuBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
 
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 
@@ -32,10 +35,14 @@ class BaseHud
         static void setHintButton1TextureName(const std::string name);
         static void setHintButton2TextureName(const std::string name);
         static void setHintButton3TextureName(const std::string name);
+        static void setExitButtonTextureName(const std::string name);
+        static void setResumeButtonTextureName(const std::string name);
+        static void setStartButtonTextureName(const std::string name);
         static void setHelpBoxTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
         static void setHintsBoxTextureName(const std::string name);
         static void setMenuBoxTextureName(const std::string name);
+        static void setProgressbarTextureName(const std::string name);
         static void setDisplayTime(const int value);
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
         static bool DisplayRiddleAtStart();
@@ -55,6 +62,9 @@ class BaseHud
         static sf::Texture* hintButton1Texture;
         static sf::Texture* hintButton2Texture;
         static sf::Texture* hintButton3Texture;
+        static sf::Texture* exitButtonTexture;
+        static sf::Texture* resumeButtonTexture;
+        static sf::Texture* startButtonTexture;
         static sf::Texture* helpBoxTexture;
         static sf::Texture* riddleBoxTexture;
         static sf::Texture* hintsBoxTexture;
@@ -65,6 +75,9 @@ class BaseHud
         static sf::Sprite* hintButton1Sprite;
         static sf::Sprite* hintButton2Sprite;
         static sf::Sprite* hintButton3Sprite;
+        static sf::Sprite* exitButtonSprite;
+        static sf::Sprite* resumeButtonSprite;
+        static sf::Sprite* startButtonSprite;
         static sf::Sprite* helpBoxSprite;
         static sf::Sprite* riddleBoxSprite;
         static sf::Sprite* hintsBoxSprite;
@@ -78,6 +91,9 @@ class BaseHud
         static std::string hintButton1TextureName;
         static std::string hintButton2TextureName;
         static std::string hintButton3TextureName;
+        static std::string exitButtonTextureName;
+        static std::string resumeButtonTextureName;
+        static std::string startButtonTextureName;
         static std::string helpBoxTextureName;
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
