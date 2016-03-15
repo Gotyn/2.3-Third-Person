@@ -8,6 +8,8 @@
 #include "mge/core/BaseHud.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 #include "mge/sphinx/StoryWall.hpp"
+#include "ParticleSystem.hpp"
+#include "Light.hpp"
 
 extern "C" {
 # include "lua.h"
@@ -25,7 +27,8 @@ class LuaGame : public AbstractGame
 
         static int getWindowWidth();
         static GameObject* getCameraObject();
-//        static void setTransform(GameObject* pGameObject, luabridge::LuaRef table);
+
+        static Light* mainSpotlight;
 
 	protected:
         virtual void _initializeScene();
@@ -42,6 +45,7 @@ class LuaGame : public AbstractGame
         BaseHud* _hud;
         StoryWall* _storyWall;
         FW::FileWatcher _fileWatcher;
+        ParticleSystem* _particleSystem;
 };
 
 #endif // LUAGAME_H

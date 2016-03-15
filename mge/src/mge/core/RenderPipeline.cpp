@@ -6,6 +6,8 @@
 #include "World.hpp"
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
+#include "Camera.hpp"
+#include "LuaGame.hpp"
 
 RenderPipeline::RenderPipeline()
 {
@@ -20,8 +22,9 @@ RenderPipeline::RenderPipeline()
 
     std::cout << "Render settings loaded." << std::endl << std::endl;
 
+    initializeParticleSystem();
     initializeDepthmap();
-    initializeLightSpaceMatrix();
+//    calculateLightSpaceMatrix();
 }
 
 RenderPipeline::~RenderPipeline()
@@ -34,12 +37,31 @@ GLuint RenderPipeline::getShadowMap()
     return _depthMap;
 }
 
-void RenderPipeline::initializeLightSpaceMatrix()
+void RenderPipeline::initializeParticleSystem()
+{
+    std::cout << "initializing particle system..." << std::endl;
+
+    _particlesGameObject = new GameObject("particles GameObject", glm::vec3(0.0f), true);
+    _particleSystem = new ParticleSystem();
+    _particleSystem->addBehaviourToGO(_particlesGameObject);
+}
+
+void RenderPipeline::calculateLightSpaceMatrix()
 {
     //light space transform
     GLfloat near_plane = 1.0f, far_plane = 60.0f;
-    glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
-    glm::mat4 lightView = glm::lookAt(glm::vec3(0.0f, 0.0f, 10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+//    glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
+    glm::mat4 lightProjection = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, near_plane, far_plane);
+//    glm::mat4 lightView = glm::lookAt(glm::vec3(-4, 3, 10), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    glm::vec3 lightPos = LuaGame::mainSpotlight->getOwner()->getWorldPosition();
+    glm::vec3 lightForward = LuaGame::mainSpotlight->getOwner()->getForward();
+    glm::mat4 lightView = glm::lookAt(
+          lightPos,                     // from
+          lightPos + lightForward,      // target
+          glm::vec3(0.0f, 1.0f, 0.0f)   // up
+    );
+
 
     lightSpaceMatrix = lightProjection * lightView;
 }
@@ -69,6 +91,8 @@ void RenderPipeline::initializeDepthmap()
 
 void RenderPipeline::render (World* pWorld)
 {
+    calculateLightSpaceMatrix();
+
     //render world to depth map
     glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
     glClear(GL_DEPTH_BUFFER_BIT);

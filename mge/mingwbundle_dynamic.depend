@@ -1989,14 +1989,14 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1457648400 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1457959889 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
 	"mge/core/World.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457152266 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\world.hpp
+1458043013 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\world.hpp
 	<vector>
 	"mge/core/GameObject.hpp"
 
@@ -2117,7 +2117,7 @@
 
 1455012284 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1457643181 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458043022 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
@@ -2143,13 +2143,15 @@
 	"mge/util/DebugHud.hpp"
 	"mge/core/FPS.hpp"
 
-1457648400 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
+1458043013 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
 	<lua.hpp>
 	<FileWatcher/FileWatcher.h>
 	<AbstractGame.hpp>
 	"mge/core/BaseHud.hpp"
 	"mge/LuaBridge/LuaBridge.h"
 	"mge/sphinx/StoryWall.hpp"
+	"ParticleSystem.hpp"
+	"Light.hpp"
 	"lua.h"
 	"lauxlib.h"
 	"lualib.h"
@@ -2315,9 +2317,10 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1457648400 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1458043013 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
+	<glm.hpp>
 	"mge/core/Input.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/FPS.hpp"
@@ -2364,7 +2367,7 @@
 	<vector>
 	<string>
 
-1457643181 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1458043022 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2456,7 +2459,7 @@
 1455012284 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\timer.cpp
 	"mge/core/Timer.hpp"
 
-1456238358 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\world.cpp
+1458043013 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\world.cpp
 	<cassert>
 	<algorithm>
 	<iostream>
@@ -2559,7 +2562,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1457648399 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1458043022 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -2570,7 +2573,7 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1457560023 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457752409 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
@@ -3413,7 +3416,7 @@
 	<map>
 	<sys/types.h>
 
-1457442530 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1458043013 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
@@ -3421,19 +3424,21 @@
 	"mge/core/Camera.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/config.hpp"
+	"LuaGame.hpp"
 
 1457442530 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1457442530 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
+1458043013 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
 	"mge/materials/DepthMapper.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/RenderPipeline.hpp"
+	"ParticleSystem.hpp"
 
-1457648400 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1458043013 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3441,6 +3446,8 @@
 	"World.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/materials/AbstractMaterial.hpp"
+	"Camera.hpp"
+	"LuaGame.hpp"
 
 1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.hpp
 	"mge/materials/AbstractMaterial.hpp"
@@ -3566,4 +3573,24 @@
 1457442948 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.hpp
 	"mge/behaviours/AbstractBehaviour.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
+
+1458043013 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\particlesystem.hpp
+	<GL/glew.h>
+	<glm.hpp>
+	<AbstractBehaviour.hpp>
+	"ShaderProgram.hpp"
+
+1458043013 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\particlesystem.cpp
+	<algorithm>
+	"ParticleSystem.hpp"
+	"GameObject.hpp"
+	"config.hpp"
+
+1458043013 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\light.hpp
+	<AbstractBehaviour.hpp>
+	<glm.hpp>
+
+1458045084 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\light.cpp
+	"Light.hpp"
+	"GameObject.hpp"
 
