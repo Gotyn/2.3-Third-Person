@@ -49,8 +49,8 @@ function updateLevel()
 	-- Update ProgressBar: --
 	updateProgressBar(data.progress_bar_xOffset, 	  data.progress_bar_yOffset,  
 					  data.progress_bar_sprite_width, data.progress_bar_sprite_height, 
-					  data.progress_bar_sprite_rows,  data.progress_bar_alignment
-					  --data.progress_bar_scaleX, 	  data.progress_bar_scaleY
+					  data.progress_bar_sprite_rows,  data.progress_bar_alignment,
+					  data.progress_bar_scaleX, 	  data.progress_bar_scaleY
 					  )
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.MENU
@@ -129,14 +129,14 @@ end
 function updateProgressBar(xOffset, yOffset, spriteWidth, spriteHeight, spriteRows, alignment, scaleX, scaleY)
 	rowHeight = spriteHeight / spriteRows
 		
-	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 7, alignment) -- show all 
-	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 6, alignment) -- show 6
-	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 5, alignment) -- show 5
-	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 4, alignment) -- show 4
-	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 3, alignment) -- show 3
-	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 2, alignment) -- show 2
-	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 1, alignment) -- show 1
-	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 0, alignment) -- show none
+	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 7, alignment, scaleX, scaleY) -- show all 
+	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 6, alignment, scaleX, scaleY) -- show 6
+	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 5, alignment, scaleX, scaleY) -- show 5
+	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 4, alignment, scaleX, scaleY) -- show 4
+	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 3, alignment, scaleX, scaleY) -- show 3
+	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 2, alignment, scaleX, scaleY) -- show 2
+	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 1, alignment, scaleX, scaleY) -- show 1
+	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 0, alignment, scaleX, scaleY) -- show none
 	end
 	
 end
@@ -149,8 +149,7 @@ function updateHelpBox()
 		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_width, data.riddle_box_height, data.riddle_box_font, 
 				      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
         handleHintButtonsClick()
-    end
-    if showHelpBox == false then
+    else
         showHintsBox1 = false
         showHintsBox2 = false
         showHintsBox3 = false

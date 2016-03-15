@@ -12,7 +12,7 @@ progress_bar_sprite_width = 672   	-- to change: do scale the actual picture and
 progress_bar_sprite_height = 768	-- to change: do scale the actual picture and set this value to be the same size
 progress_bar_sprite_rows = 8
 progress_bar_scaleX = 0.5
-progress_bar_scaley = 0.5
+progress_bar_scaleY = 0.5
 progress_bar_alignment = alignment.CENTER_TOP
 
 --Button for Riddle / Hints

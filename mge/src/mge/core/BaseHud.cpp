@@ -346,8 +346,7 @@ void BaseHud::MenuBox(int x, int y, int width, int height, int alignment)
 //----------------------------------------------------------------
 // label that uses spritesheet and manipulates sprite's position
 //----------------------------------------------------------------
-void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int alignment)
-{
+void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int alignment, float scaleX, float scaleY) {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
 
     //sprite
@@ -363,8 +362,7 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
 //----------------------------------------------------------------
 // regular SFML label with no image just displaying text
 //----------------------------------------------------------------
-void BaseHud::TextLabel(int x, int y, std::string caption)
-{
+void BaseHud::TextLabel(int x, int y, std::string caption) {
     //create text
     sf::Text text(caption, _font, 15);
     text.setPosition(x, y);
@@ -400,8 +398,7 @@ void BaseHud::setDisplayTime(const int value)                   { displayTime   
 //----------------------------------------------------------------------
 // simple counter that sends to lua a signal to stop displaying riddle
 //----------------------------------------------------------------------
-bool BaseHud::DisplayRiddleAtStart()
-{
+bool BaseHud::DisplayRiddleAtStart() {
     if(Timer::now() - startedRiddleDisplay > displayTime) return true;
     else return false;
 }
@@ -411,8 +408,7 @@ bool BaseHud::DisplayRiddleAtStart()
 // Includes a custom mouse button down function, that substitutes
 // deprecated SFML 1.6 Input.GetMouseButtonDown
 //----------------------------------------------------------------------
-bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height)
-{
+bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
     if (mousePos.x < position.x) { return false; }
     if (mousePos.y < position.y) { return false; }
