@@ -15,14 +15,14 @@ class BaseHud
         static bool Button      (int xOffset, int yOffset, std::string caption);
         static void TextLabel   (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
         static void ProgressBar (int xOffset, int yOffset, int width, int height, int spriteSheetRow, int alignment);
-        static bool HelpButton  (int xOffset, int yOffset, int width, int height, int alignment);
-        static bool HintButton1 (int xOffset, int yOffset, int width, int height, int alignment);
-        static bool HintButton2 (int xOffset, int yOffset, int width, int height, int alignment);
-        static bool HintButton3 (int xOffset, int yOffset, int width, int height, int alignment);
-        static void HelpBox     (int xOffset, int yOffset, int width, int height, int alignment);
-        static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
-        static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
-        static void TutorialBox (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment);
+        static bool HelpButton  (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton1 (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
+        static bool HintButton2 (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
+        static bool HintButton3 (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
+        static void HelpBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
+        static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); //scale doesnt work here???
+        static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); // ... max arg lua can handle?
+        static void TutorialBox (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); // ...
 
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 
@@ -94,7 +94,7 @@ class BaseHud
         static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
 
         // Alignment
-        static sf::Vector2u wSize;
+        static sf::Vector2u wSize; //windowSize
         // Alignment on X
         static int Align_X_Left   (int xOffset);
         static int Align_X_Center (int width);
