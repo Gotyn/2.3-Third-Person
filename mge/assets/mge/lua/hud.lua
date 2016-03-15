@@ -34,43 +34,31 @@ function updateMenu()
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.LEVEL
     end
-<<<<<<< HEAD
-    popMenu()
-=======
 	popMenu()
->>>>>>> refs/remotes/origin/hud2
 end
 
 function updateLevel()    
-    handleHelpButtonClick()
     updateHelpBox()
     updateHintsBox()
+    
+    if (showHelpBox) then handleHelpButtonClick(1)     -- show pressed
+    else handleHelpButtonClick(0) end                -- show unpressed
+    
     inintialRiddleDisplay()
     
 	-- Update ProgressBar: --
-<<<<<<< HEAD
-	--	int: xOffset, yOffset, spriteWidth, spriteHeight, spriteRows, alignment --
-	updateProgressBar(data.progress_bar_xOffset, 
-					  data.progress_bar_yOffset,  
-					  data.progress_bar_sprite_width, 
-					  data.progress_bar_sprite_height, 
-					  data.progress_bar_sprite_rows,
-					  data.progress_bar_alignment)
-=======
 	updateProgressBar(data.progress_bar_xOffset, 	  data.progress_bar_yOffset,  
 					  data.progress_bar_sprite_width, data.progress_bar_sprite_height, 
-					  data.progress_bar_sprite_rows,  data.progress_bar_alignment,
-					  data.progress_bar_scaleX, 	  data.progress_bar_scaleY
+					  data.progress_bar_sprite_rows,  data.progress_bar_alignment
 					  )
->>>>>>> refs/remotes/origin/hud2
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.MENU
     end
 end
 
-function handleHelpButtonClick()
+function handleHelpButtonClick(spriteID)
     if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, data.help_button_width, 
-        data.help_button_height, data.help_button_alignment) == true then
+        data.help_button_height, spriteID, data.help_button_alignment) == true then
         if showHelpBox == false then
             showHelpBox = true
         elseif showHelpBox == true then
@@ -155,9 +143,10 @@ end
 -- the box holding the hint buttons
 function updateHelpBox()
     if showHelpBox == true then
-        Hud.helpBox(data.help_box_xOffset, data.help_box_yOffset, data.help_box_width, data.help_box_height, data.help_box_alignment)
-        Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_width, 
-            data.riddle_box_height, data.riddle_box_font, data.riddle_box_text, data.riddle_box_alignment)
+        Hud.helpBox  (data.help_box_xOffset, data.help_box_yOffset, data.help_box_width, data.help_box_height, 
+                      data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
+        Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_width, data.riddle_box_height, data.riddle_box_font, 
+                      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
         handleHintButtonsClick()
     end
     if showHelpBox == false then
@@ -170,7 +159,8 @@ end
 -- the box showing the actual hint
 function updateHintsBox()
     if showHintsBox1 == true or showHintsBox2 == true or showHintsBox3 == true then
-        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_width, data.hints_box_height, data.hints_box_font, hintText, data.hints_box_alignment)
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_width, data.hints_box_height, data.hints_box_font, 
+                     hintText, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
     end
 end
 
@@ -183,8 +173,4 @@ end
 
 function popMenu()
     Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment)
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> refs/remotes/origin/hud2
