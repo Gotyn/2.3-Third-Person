@@ -77,42 +77,24 @@ void BaseHud::loadTextures()
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
 
-    if (!helpButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpButtonTextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
-        return;
-    }
-    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
-        return;
-    }
-    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
-        return;
-    }
-    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName)) {
-        std::cout << "Could not load texture for button" << std::endl;
-        return;
-    }
-    if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName)) {
-        std::cout << "Could not load texture for label" << std::endl;
-        return;
-    }
-    if (!riddleBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + riddleBoxTextureName)) {
-        std::cout << "Could not load texture for label" << std::endl;
-        return;
-    }
-    if (!hintsBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + hintsBoxTextureName)) {
-        std::cout << "Could not load texture for label" << std::endl;
-        return;
-    }
-    if (!menuBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + menuBoxTextureName)) {
-        std::cout << "Could not load texture for tutorial label" << std::endl;
-        return;
-    }
-    if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName)) {
-        std::cout << "Could not load texture for label" << std::endl;
-        return;
-    }
+    if (!helpButtonTexture->loadFromFile (config::MGE_TEXTURE_PATH + helpButtonTextureName))
+        { std::cout << "Could not load texture for button"      << std::endl; return; }
+    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName))
+        { std::cout << "Could not load texture for button"      << std::endl; return; }
+    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName))
+        { std::cout << "Could not load texture for button"      << std::endl; return; }
+    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName))
+        { std::cout << "Could not load texture for button"      << std::endl; return; }
+    if (!helpBoxTexture->loadFromFile    (config::MGE_TEXTURE_PATH + helpBoxTextureName))
+        { std::cout << "Could not load texture for label"       << std::endl; return; }
+    if (!riddleBoxTexture->loadFromFile  (config::MGE_TEXTURE_PATH + riddleBoxTextureName))
+        { std::cout << "Could not load texture for label"       << std::endl; return; }
+    if (!hintsBoxTexture->loadFromFile   (config::MGE_TEXTURE_PATH + hintsBoxTextureName))
+        { std::cout << "Could not load texture for label"       << std::endl; return; }
+    if (!menuBoxTexture->loadFromFile    (config::MGE_TEXTURE_PATH + menuBoxTextureName))
+        { std::cout << "Could not load texture for menulabel"   << std::endl; return; }
+    if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName))
+        { std::cout << "Could not load texture for label"       << std::endl; return; }
 
     helpButtonTexture->setRepeated(true);
     hintButton1Texture->setRepeated(true);
@@ -150,8 +132,7 @@ bool BaseHud::Button(int x, int y, std::string caption)
 
     //text mouse
     std::cout << "Update BaseHud::Button function with Alignment first" << std::endl;
-    //return CheckMouseOnButton(x,y,width,height);
-    return false;
+    return false; //return CheckMouseOnButton(x,y,width,height);
 }
 
 //----------------------------------------------------------------
@@ -361,6 +342,7 @@ void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRo
 
 //----------------------------------------------------------------
 // regular SFML label with no image just displaying text
+// This can be used for ingame debugging, maybe even subtitles(?).
 //----------------------------------------------------------------
 void BaseHud::TextLabel(int x, int y, std::string caption) {
     //create text
@@ -414,13 +396,15 @@ bool BaseHud::CheckMouseOnButton(sf::Vector2f position, int width, int height) {
     if (mousePos.y < position.y) { return false; }
     if (mousePos.x > position.x + width) { return false; }
     if (mousePos.y > position.y + height) { return false; }
-    //Mouse is on button!
+    //If this part is reached, we can conclude that the mouse is on the button...
 
+    //GetMouseButtonDown substitute
     if (!lmbPressedLastFrame && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
         lmbPressedLastFrame = true;
         return sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
     }
 
+    //Mouse is not pressed
     if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
         lmbPressedLastFrame = false;
     }
