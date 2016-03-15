@@ -10,6 +10,8 @@
 
 using namespace std;
 
+Light* LuaGame::mainSpotlight = 0;
+
 LuaGame::LuaGame()
 {
     _initLua();
@@ -87,6 +89,10 @@ void LuaGame::_initializeScene()
 {
     //camera
     GameCamera* gameCam = new GameCamera(glm::vec3(-4, 3, 10));
+
+    //main spotlight
+    GameObject* lightGO = new GameObject("main light", glm::vec3(-3, 3, 10));
+    mainSpotlight = new Light(lightGO);
 
     luaL_dofile(_L, "mge/lua/main.lua");
 }

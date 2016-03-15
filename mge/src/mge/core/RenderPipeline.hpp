@@ -30,7 +30,7 @@ class RenderPipeline
 
     private:
         void initializeParticleSystem();
-        void initializeLightSpaceMatrix();
+        void calculateLightSpaceMatrix();
         void initializeDepthmap();
         void showShadowMap();
 

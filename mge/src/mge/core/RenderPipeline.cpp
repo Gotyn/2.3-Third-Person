@@ -7,6 +7,7 @@
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 #include "Camera.hpp"
+#include "LuaGame.hpp"
 
 RenderPipeline::RenderPipeline()
 {
@@ -23,7 +24,7 @@ RenderPipeline::RenderPipeline()
 
     initializeParticleSystem();
     initializeDepthmap();
-    initializeLightSpaceMatrix();
+//    calculateLightSpaceMatrix();
 }
 
 RenderPipeline::~RenderPipeline()
@@ -45,13 +46,22 @@ void RenderPipeline::initializeParticleSystem()
     _particleSystem->addBehaviourToGO(_particlesGameObject);
 }
 
-void RenderPipeline::initializeLightSpaceMatrix()
+void RenderPipeline::calculateLightSpaceMatrix()
 {
     //light space transform
     GLfloat near_plane = 1.0f, far_plane = 60.0f;
 //    glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
     glm::mat4 lightProjection = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, near_plane, far_plane);
-    glm::mat4 lightView = glm::lookAt(glm::vec3(-4, 3, 10), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+//    glm::mat4 lightView = glm::lookAt(glm::vec3(-4, 3, 10), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    glm::vec3 lightPos = LuaGame::mainSpotlight->getOwner()->getWorldPosition();
+    glm::vec3 lightForward = LuaGame::mainSpotlight->getOwner()->getForward();
+    glm::mat4 lightView = glm::lookAt(
+          lightPos,                     // from
+          lightPos + lightForward,      // target
+          glm::vec3(0.0f, 1.0f, 0.0f)   // up
+    );
+
 
     lightSpaceMatrix = lightProjection * lightView;
 }
@@ -81,6 +91,8 @@ void RenderPipeline::initializeDepthmap()
 
 void RenderPipeline::render (World* pWorld)
 {
+    calculateLightSpaceMatrix();
+
     //render world to depth map
     glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
     glClear(GL_DEPTH_BUFFER_BIT);
