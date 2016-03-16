@@ -1,12 +1,13 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story3.lua")
+dofile("mge/lua/story1.lua")
 
+game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 2
+solvedThreshold = 0.5
 
 -- TEXTURE NAMES FOR C++ START --
 display_riddle_at_start = gameHud_Data.display_riddle_at_start
@@ -14,10 +15,16 @@ help_button_texture = gameHud_Data.help_button_texture
 hint_button1_texture = gameHud_Data.hint_button1_texture
 hint_button2_texture = gameHud_Data.hint_button2_texture
 hint_button3_texture = gameHud_Data.hint_button3_texture
+exit_button_texture = gameHud_Data.exit_button_texture
+resume_button_texture = gameHud_Data.resume_button_texture
+start_button_texture = gameHud_Data.start_button_texture
 help_box_texture = gameHud_Data.help_box_texture
 riddle_box_texture = gameHud_Data.riddle_box_texture
 hints_box_texture = gameHud_Data.hints_box_texture
 menu_box_texture = gameHud_Data.menu_box_texture
+progress_bar_texture = gameHud_Data.progress_bar_texture
+story_book_texture = gameHud_Data.story_book_texture
+story_book_button_texture = gameHud_Data.story_book_button_texture
 -- TEXTURE NAMES FOR C++ END --
 
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
@@ -117,6 +124,12 @@ end
 selectPuzzle(activePuzzle)
 
 function update()
+    if game_state == hud.MODE.LEVEL then
+        updateLevel()
+    end
+end
+
+function updateLevel()
     if storyCompleted then
         return
     else
@@ -129,11 +142,18 @@ function update()
         end
 
         handleControl()
-       -- handlePlacement(camera)
+        handlePlacement(storyWall)
+        --handlePlacement(camera)
         handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
+            hud.game_state = hud.MODE.BOOK
+        end
+        
+        if hud.continueToNextPuzzle == true then
+            hud.game_state = hud.MODE.LEVEL
             nextPuzzle()
+            hud.continueToNextPuzzle = false
         end
     end
 end
@@ -141,6 +161,7 @@ end
 function updateGUI()
     hud.progress = checkProgress()
     hud.draw()
+    game_state = hud.game_state
 end
 
 function refreshHud()
