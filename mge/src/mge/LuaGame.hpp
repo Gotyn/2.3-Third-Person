@@ -8,8 +8,10 @@
 #include "mge/core/BaseHud.hpp"
 #include "mge/LuaBridge/LuaBridge.h"
 #include "mge/sphinx/StoryWall.hpp"
+#include "mge/sphinx/PuzzleBlock.hpp"
 #include "ParticleSystem.hpp"
 #include "Light.hpp"
+#include "MainLight.hpp"
 
 extern "C" {
 # include "lua.h"
@@ -27,8 +29,11 @@ class LuaGame : public AbstractGame
 
         static int getWindowWidth();
         static GameObject* getCameraObject();
+        static MainLight* getMainLight();
 
-        static Light* mainSpotlight;
+        PuzzleBlock* getActiveBlock();
+
+        static MainLight* mainLight;
 
 	protected:
         virtual void _initializeScene();

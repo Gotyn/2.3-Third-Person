@@ -18,12 +18,13 @@ class Light : public AbstractBehaviour
         float getInnerCone() const;
         float getOuterCone() const;
 
-    protected:
-    private:
         glm::vec3 _color;
         float _intensity;
         float _innerCone;
         float _outerCone;
+
+    protected:
+    private:
 };
 
 #endif // LIGHT_H
