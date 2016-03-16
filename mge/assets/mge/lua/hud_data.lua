@@ -3,7 +3,7 @@ local HUD = {}
 alignment = { LEFT_TOP = 1, LEFT_CENTER = 2, LEFT_BOTTOM = 3, CENTER_TOP = 4, CENTER_CENTER = 5, CENTER_BOTTOM = 6, RIGHT_TOP = 7, RIGHT_CENTER = 8, RIGHT_BOTTOM = 9 }
 
 -- BUTTONS AND BOXES PARAMETERS START --
-display_riddle_at_start = 20
+display_riddle_at_start = 60
 
 --[ProgressBar] ProgressBar 
 progress_bar_xOffset = 0
@@ -56,24 +56,24 @@ help_box_texture = "HUD_Dropdown_Box.png"
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
-menu_box_scaleX = 0.5
-menu_box_scaleY = 0.5
+menu_box_scaleX = 0.3
+menu_box_scaleY = 0.33
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
-story_book_scaleX = 0.1
-story_book_scaleY = 0.1
+story_book_scaleX = 0.32
+story_book_scaleY = 0.35
 story_book_alignment = alignment.CENTER_CENTER
 story_book_texture = "BOOK_0.png"
 
 --[StoryBookButton] Continue button in storybook container
-story_book_button_xOffset = 30
-story_book_button_yOffset = 0
-story_book_button_scaleX = 0.15
-story_book_button_scaleY = 0.15
+story_book_button_xOffset = 320
+story_book_button_yOffset = 230
+story_book_button_scaleX = 0.08
+story_book_button_scaleY = 0.08
 story_book_button_alignment = alignment.CENTER_CENTER
 story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
 
@@ -118,9 +118,6 @@ hints_box_yOffset = 120
 hints_box_font = 30
 hints_box_scaleX = 3
 hints_box_scaleY = 0.5
-hints_box_text1 = "this is hint #1"
-hints_box_text2 = "this is hint #2"
-hints_box_text3 = "this is hint #3"
 hints_box_alignment = alignment.CENTER_TOP
 hints_box_texture = "bricks.jpg"
 -- BUTTONS AND BOXES PARAMETERS END --
@@ -245,9 +242,6 @@ HUD.story_book_texture = story_book_texture
 HUD.hints_box_xOffset = hints_box_xOffset
 HUD.hints_box_yOffset = hints_box_yOffset
 HUD.hints_box_font = hints_box_font
-HUD.hints_box_text1 = hints_box_text1
-HUD.hints_box_text2 = hints_box_text2
-HUD.hints_box_text3 = hints_box_text3
 HUD.hints_box_scaleX = hints_box_scaleX
 HUD.hints_box_scaleY = hints_box_scaleY
 HUD.hints_box_alignment = hints_box_alignment

@@ -33,13 +33,13 @@ storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
 
 -- PRE-CACHING STORY-WALL IMAGES STARTS HERE
---[[function cacheWallTextures()
+function cacheWallTextures()
     for i, v in ipairs(story) do 
         storyWall:changeTexture(story[i].wallImage)
     end
     storyWall:changeTexture(story[1].wallImage)
 end
-cacheWallTextures()]]--
+cacheWallTextures()
 -- PRE-CACHING STORY-WALL IMAGES ENDS HERE
 
 spotlight = Game.getSpotlight()
@@ -101,7 +101,7 @@ function nextPuzzle()
     nextPuzzleIndex = activePuzzle + 1
     if nextPuzzleIndex > #story then
         storyCompleted = true
-        hud.showFinalMenu = ture
+        hud.showFinalMenu = true
         hud.game_state = hud.MODE.MENU
         hud.showHelpBox = false
         print("completed!!")
@@ -176,8 +176,10 @@ function updateGUI()
     hud.progress = checkProgress()
     hud.draw()
     game_state = hud.game_state
-    hud.currentPuzzle = activePuzzle
     restartGame()
+    hud.hint_1 = story[activePuzzle].tips[1]
+    hud.hint_2 = story[activePuzzle].tips[2]
+    hud.hint_3 = story[activePuzzle].tips[3]
 end
 
 function refreshHud()
@@ -211,7 +213,6 @@ function handleControl()
     if Game.getKey(KeyCode.S) == true then
         story[activePuzzle].blocks[activePiece]:pitch(-1.5) 
     end
-
     if Game.getKey(KeyCode.D) == true then
         story[activePuzzle].blocks[activePiece]:roll(1.5) 
     end
@@ -233,7 +234,7 @@ function handleSelection()
     activePiece = activePiece + 1
 
     if activePiece > blockCount then
-        activePiece = 1
+       activePiece = 1
     end
 
     story[activePuzzle].blocks[activePiece]:flash(1.8)
