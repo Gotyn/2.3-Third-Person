@@ -105,14 +105,14 @@ menu_box_texture = "bricks.jpg"
 
 --Label that shows the actual hint
 hints_box_xOffset = 0
-hints_box_yOffset = 480
+hints_box_yOffset = 120
 hints_box_font = 30
 hints_box_scaleX = 3
 hints_box_scaleY = 0.5
 hints_box_text1 = "this is hint #1"
 hints_box_text2 = "this is hint #2"
 hints_box_text3 = "this is hint #3"
-hints_box_alignment = alignment.CENTER_BOTTOM
+hints_box_alignment = alignment.CENTER_TOP
 hints_box_texture = "bricks.jpg"
 -- BUTTONS AND BOXES PARAMETERS START --
 
