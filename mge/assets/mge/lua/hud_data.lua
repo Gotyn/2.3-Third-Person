@@ -85,13 +85,13 @@ help_box_texture = "Dropdown_Box.png"
 
 --Label that shows the riddle
 riddle_box_xOffset = 0
-riddle_box_yOffset = 15
-riddle_box_font = 30
-riddle_box_scaleX = 1
-riddle_box_scaleY = 1
+riddle_box_yOffset = 0
+riddle_box_font = 25
+riddle_box_scaleX = 0.30
+riddle_box_scaleY = 0.25
 riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
-riddle_box_texture = "bricks.jpg"
+riddle_box_texture = "Hint_box_3840.png"
 
 --Label that shows menu container
 menu_box_xOffset = 0
@@ -104,11 +104,11 @@ menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "bricks.jpg"
 
 --Label that shows the actual hint
-hints_box_xOffset = 250
+hints_box_xOffset = 0
 hints_box_yOffset = 480
 hints_box_font = 30
-hints_box_scaleX = 1
-hints_box_scaleY = 1
+hints_box_scaleX = 3
+hints_box_scaleY = 0.5
 hints_box_text1 = "this is hint #1"
 hints_box_text2 = "this is hint #2"
 hints_box_text3 = "this is hint #3"

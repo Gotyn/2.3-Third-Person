@@ -352,20 +352,24 @@ void BaseHud::HelpBox(int xOffset, int yOffset, int alignment, float scaleX, flo
 //----------------------------------------------------------------
 //              image/sprite SFML label with text
 //----------------------------------------------------------------
-void BaseHud::RiddleBox(int xOffset, int yOffset, int fontSize, std::string caption, int alignment)
+void BaseHud::RiddleBox(int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY)
 {
     sf::Vector2u spriteSize(riddleBoxTexture->getSize());                              // Get the image size
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, spriteSize.x, spriteSize.y);
+    int scaledSpriteWidth = spriteSize.x * scaleX;
+    int scaledSpriteHeight = spriteSize.y * scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
 
     //create sprite
     riddleBoxSprite->setTexture(*riddleBoxTexture);
-    riddleBoxSprite->setTextureRect(sf::IntRect(0,0,spriteSize.x,spriteSize.y));
+    riddleBoxSprite->setScale(scaleX, scaleY);
+    riddleBoxSprite->setTextureRect(sf::IntRect(0, 0, spriteSize.x, spriteSize.y)); //unscaled!
     riddleBoxSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
     riddleBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    riddleBoxText->setPosition(alignedPos.x + spriteSize.x / 2, alignedPos.y + spriteSize.y / 2);
+    riddleBoxText->setPosition(alignedPos.x + scaledSpriteWidth / 2, alignedPos.y + scaledSpriteHeight / 2);
     riddleBoxText->setString(caption);
     riddleBoxText->setFont(_font);
     riddleBoxText->setCharacterSize(fontSize);
@@ -378,20 +382,24 @@ void BaseHud::RiddleBox(int xOffset, int yOffset, int fontSize, std::string capt
 //----------------------------------------------------------------
 //              image/sprite SFML label with text
 //----------------------------------------------------------------
-void BaseHud::HintsBox(int xOffset, int yOffset, int fontSize, std::string caption, int alignment)
+void BaseHud::HintsBox(int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY)
 {
     sf::Vector2u spriteSize(hintsBoxTexture->getSize());                              // Get the image size
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, spriteSize.x, spriteSize.y);
+    int scaledSpriteWidth = spriteSize.x * scaleX;
+    int scaledSpriteHeight = spriteSize.y * scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
 
     //create sprite
     hintsBoxSprite->setTexture(*hintsBoxTexture);
-    hintsBoxSprite->setTextureRect(sf::IntRect(0, 0, spriteSize.x, spriteSize.y));
+    hintsBoxSprite->setScale(scaleX, scaleY);
+    hintsBoxSprite->setTextureRect(sf::IntRect(0, 0, spriteSize.x, spriteSize.y)); //unscaled!
     hintsBoxSprite->setPosition(alignedPos);
 
     //create text
     sf::FloatRect textRect = hintsBoxText->getLocalBounds();
     hintsBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    hintsBoxText->setPosition(alignedPos.x + spriteSize.x / 2, alignedPos.y + spriteSize.y / 2);
+    hintsBoxText->setPosition(alignedPos.x + scaledSpriteWidth / 2, alignedPos.y + scaledSpriteHeight / 2);
     hintsBoxText->setString(caption);
     hintsBoxText->setFont(_font);
     hintsBoxText->setCharacterSize(fontSize);

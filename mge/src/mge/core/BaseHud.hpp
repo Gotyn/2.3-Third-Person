@@ -23,8 +23,8 @@ class BaseHud
         static bool ResumeButton(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool StartButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static void HelpBox     (int xOffset, int yOffset, int alignment, float scaleX, float scaleY);
-        static void RiddleBox   (int xOffset, int yOffset, int fontSize, std::string caption, int alignment); //scale doesnt work here???
-        static void HintsBox    (int xOffset, int yOffset, int fontSize, std::string caption, int alignment); // ... max arg lua can handle?
+        static void RiddleBox   (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
+        static void HintsBox    (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
         static void MenuBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
 
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
