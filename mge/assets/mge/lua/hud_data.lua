@@ -11,7 +11,7 @@ progress_bar_yOffset = 50
 progress_bar_scaleX = 0.75
 progress_bar_scaleY = 0.75
 progress_bar_alignment = alignment.CENTER_TOP
-progress_bar_texture = "Progress_256.png"
+progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 
 --[HelpButton] Button for Riddle / Hints 
 help_button_xOffset = 20
@@ -19,7 +19,7 @@ help_button_yOffset = 20
 help_button_scaleX = 0.14
 help_button_scaleY = 0.14
 help_button_alignment = alignment.RIGHT_TOP
-help_button_texture = "Hint_Button_Shinx_Sprite.png"
+help_button_texture = "HUD_Hint_Button_Sphinx_Sheet.png"
 
 --[HintButton1] Button for first hint
 hint_button1_xOffset = 30
@@ -27,7 +27,7 @@ hint_button1_yOffset = 92
 hint_button1_scaleX = 0.1
 hint_button1_scaleY = 0.1
 hint_button1_alignment = alignment.RIGHT_TOP
-hint_button1_texture = "Hint_Button_1_Sprite.png"
+hint_button1_texture = "HUD_Hint_Button_1_Sheet.png"
 
 --[HintButton2] Button for second hint
 hint_button2_xOffset = 30
@@ -35,65 +35,15 @@ hint_button2_yOffset = 140
 hint_button2_scaleX = 0.1
 hint_button2_scaleY = 0.1
 hint_button2_alignment = alignment.RIGHT_TOP
-hint_button2_texture = "Hint_Button_2_Sprite.png"
+hint_button2_texture = "HUD_Hint_Button_2_Sheet.png"
 
---[HintButton2] Button for third hint
+--[HintButton3] Button for third hint
 hint_button3_xOffset = 30
 hint_button3_yOffset = 188
 hint_button3_scaleX = 0.1
 hint_button3_scaleY = 0.1
 hint_button3_alignment = alignment.RIGHT_TOP
-hint_button3_texture = "Hint_Button_3_Sprite.png"
-
---[MenuBox] Label that shows menu container
-menu_box_xOffset = 0
-menu_box_yOffset = 0
-menu_box_scaleX = 2.5
-menu_box_scaleY = 2.5
-menu_box_alignment = alignment.CENTER_CENTER
-menu_box_texture = "bricks.jpg"
-
---[StoryBook] Label that shows storybook container
-story_book_xOffset = 0
-story_book_yOffset = 0
-story_book_scaleX = 1
-story_book_scaleY = 1
-story_book_alignment = alignment.CENTER_CENTER
-story_book_texture = "bricks.jpg"
-
---[StoryBookButton] Continue button in storybook container
-story_book_button_xOffset = 30
-story_book_button_yOffset = 0
-story_book_button_scaleX = 0.1
-story_book_button_scaleY = 0.05
-story_book_button_alignment = alignment.CENTER_CENTER
-story_book_button_texture = "land.jpg"
-
---[StartButton] Start button in menu
-start_button_xOffset = 150
-start_button_yOffset = 0
-start_button_scaleX = 0.3
-start_button_scaleY = 0.05
-start_button_alignment = alignment.CENTER_CENTER
-start_button_texture = "land.jpg"
-
---[ResumeButton] Resume button in menu 
--- NOTE: ONLY VISIBLE AFTER STARTING! | Gets reset when hotloading, so click start again.
-resume_button_xOffset = 150
-resume_button_yOffset = 75
-resume_button_scaleX = 0.3
-resume_button_scaleY = 0.05
-resume_button_alignment = alignment.CENTER_CENTER
-resume_button_texture = "land.jpg"
-
-
---[ExitButton] Exit button in menu
-exit_button_xOffset = 150
-exit_button_yOffset = 150
-exit_button_scaleX = 0.3
-exit_button_scaleY = 0.05
-exit_button_alignment = alignment.CENTER_CENTER
-exit_button_texture = "land.jpg"
+hint_button3_texture = "HUD_Hint_Button_3_Sheet.png"
 
 --[HelpBox] Label behind the hint buttons (helpbox)
 help_box_xOffset = 27
@@ -101,7 +51,56 @@ help_box_yOffset = 25
 help_box_scaleX = 0.11
 help_box_scaleY = 0.11
 help_box_alignment = alignment.RIGHT_TOP
-help_box_texture = "Dropdown_Box.png"
+help_box_texture = "HUD_Dropdown_Box.png"
+
+--[MenuBox] Label that shows menu container
+menu_box_xOffset = 0
+menu_box_yOffset = 0
+menu_box_scaleX = 0.5
+menu_box_scaleY = 0.5
+menu_box_alignment = alignment.CENTER_CENTER
+menu_box_texture = "MENU_Background.png"
+
+--[StoryBook] Label that shows storybook container
+story_book_xOffset = 0
+story_book_yOffset = 0
+story_book_scaleX = 0.1
+story_book_scaleY = 0.1
+story_book_alignment = alignment.CENTER_CENTER
+story_book_texture = "BOOK_0.png"
+
+--[StoryBookButton] Continue button in storybook container
+story_book_button_xOffset = 30
+story_book_button_yOffset = 0
+story_book_button_scaleX = 0.15
+story_book_button_scaleY = 0.15
+story_book_button_alignment = alignment.CENTER_CENTER
+story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
+
+--[ResumeButton] Resume button in menu 
+-- NOTE: ONLY VISIBLE AFTER STARTING! | Gets reset when hotloading, so click start again.
+resume_button_xOffset = 30
+resume_button_yOffset = 270
+resume_button_scaleX = 0.2
+resume_button_scaleY = 0.2
+resume_button_alignment = alignment.RIGHT_BOTTOM
+resume_button_texture = "MENU_Resume_Sheet.png"
+
+--[StartButton] Start button in menu
+start_button_xOffset = 30
+start_button_yOffset = 150
+start_button_scaleX = 0.2
+start_button_scaleY = 0.2
+start_button_alignment = alignment.RIGHT_BOTTOM
+start_button_texture = "MENU_Play_Sheet.png"
+
+--[ExitButton] Exit button in menu
+exit_button_xOffset = 30
+exit_button_yOffset = 30
+exit_button_scaleX = 0.2
+exit_button_scaleY = 0.2
+exit_button_alignment = alignment.RIGHT_BOTTOM
+exit_button_texture = "MENU_Exit_Sheet.png"
 
 --[RiddleBox] Label that shows the riddle
 riddle_box_xOffset = 0
@@ -111,7 +110,7 @@ riddle_box_scaleX = 0.30
 riddle_box_scaleY = 0.25
 riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
-riddle_box_texture = "Hint_box_3840.png"
+riddle_box_texture = "HUD_Riddle_Box.png"
 
 --[HintsBox] Label that shows the actual hint
 hints_box_xOffset = 0
