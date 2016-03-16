@@ -24,7 +24,7 @@ World* World::Instance()
 
 World::World():GameObject("root", glm::vec3(0,0,0), false), _mainCamera(0)
 {
-
+    ambient = glm::vec3(0.27f, 0.26f, 0.20f);
 }
 
 void World::setMainCamera (Camera* pCamera) {

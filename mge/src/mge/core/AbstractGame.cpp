@@ -1,6 +1,7 @@
 #include "AbstractGame.hpp"
 
 #include <iostream>
+#include <glm.hpp>
 
 #include "mge/core/Input.hpp"
 #include "mge/core/Timer.hpp"

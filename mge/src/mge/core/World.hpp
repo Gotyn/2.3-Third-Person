@@ -18,6 +18,8 @@ class World : public GameObject
         void addLight(BaseLight* light);
         std::vector<BaseLight*> sceneLights() { return _lights; }
 
+        glm::vec3 ambient;
+
 	private:
 	    World();
 	    World(World const&){};             // copy constructor is private
@@ -26,7 +28,7 @@ class World : public GameObject
         static World* _instance;
 
 	    Camera* _mainCamera;
-	    std::vector<BaseLight*> _lights;
+	    std::vector<BaseLight*> _lights; //old
 };
 
 

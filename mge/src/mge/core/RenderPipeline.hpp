@@ -9,6 +9,7 @@ class Camera;
 #include "mge/behaviours/MeshRenderer.hpp"
 #include "mge/core/ShaderProgram.hpp"
 #include "mge/core/RenderPipeline.hpp"
+#include "ParticleSystem.hpp"
 
 class RenderPipeline
 {
@@ -28,7 +29,8 @@ class RenderPipeline
     protected:
 
     private:
-        void initializeLightSpaceMatrix();
+        void initializeParticleSystem();
+        void calculateLightSpaceMatrix();
         void initializeDepthmap();
         void showShadowMap();
 
@@ -37,6 +39,10 @@ class RenderPipeline
         ShaderProgram* _depthPreview;
         GLuint _depthMapFBO;
         GLuint _depthMap;
+
+        // particle system
+        GameObject* _particlesGameObject;
+        ParticleSystem* _particleSystem;
 };
 
 #endif // RENDERPIPELINE_H
