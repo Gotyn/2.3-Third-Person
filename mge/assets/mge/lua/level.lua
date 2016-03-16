@@ -7,7 +7,7 @@ game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 0.5
+solvedThreshold = 0.98
 
 -- TEXTURE NAMES FOR C++ START --
 display_riddle_at_start = gameHud_Data.display_riddle_at_start
@@ -37,6 +37,7 @@ storyWall:setPosition (3.1, 2.3, 3.3)
     for i, v in ipairs(story) do 
         storyWall:changeTexture(story[i].wallImage)
     end
+    storyWall:changeTexture(story[1].wallImage)
 end
 cacheWallTextures()]]--
 -- PRE-CACHING STORY-WALL IMAGES ENDS HERE
