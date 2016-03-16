@@ -354,8 +354,8 @@ bool BaseHud::StoryBookButton (int xOffset, int yOffset, int spriteID, int align
     int spriteSheetRows = 2;
 
     sf::Vector2u spriteSize(storyBookButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetRows;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
+    int scaledSpriteWidth = spriteSize.x * scaleX;
+    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
     int tileHeight = ( spriteSize.y / spriteSheetRows );                               //unscaled!
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);

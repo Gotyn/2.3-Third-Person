@@ -56,16 +56,16 @@ help_box_texture = "HUD_Dropdown_Box.png"
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
-menu_box_scaleX = 2.5
-menu_box_scaleY = 2.5
+menu_box_scaleX = 0.5
+menu_box_scaleY = 0.5
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
-story_book_scaleX = 1
-story_book_scaleY = 1
+story_book_scaleX = 0.1
+story_book_scaleY = 0.1
 story_book_alignment = alignment.CENTER_CENTER
 story_book_texture = "BOOK_0.png"
 
