@@ -33,12 +33,12 @@ storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
 
 -- PRE-CACHING STORY-WALL IMAGES STARTS HERE
-function cacheWallTextures()
+--[[function cacheWallTextures()
     for i, v in ipairs(story) do 
         storyWall:changeTexture(story[i].wallImage)
     end
 end
-cacheWallTextures()
+cacheWallTextures()]]--
 -- PRE-CACHING STORY-WALL IMAGES ENDS HERE
 
 spotlight = Game.getSpotlight()
