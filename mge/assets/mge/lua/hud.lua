@@ -12,6 +12,8 @@ hintText = ""
 firstMenuShown = false
 firstBookShown = false
 continueToNextPuzzle = false
+showFinalMenu = false
+restartGame = false
 
 progress = 0
 
@@ -191,27 +193,25 @@ function handleMenuButtonsClick()
             game_state = MODE.BOOK
             firstMenuShown = true
             start_spriteID = 1
-            print("START!")
         end
     end
     
     if firstMenuShown == true then
         if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
-            -- CALL RESTART FUNCTION HERE
+            restartGame = true
             print("RESTART!")
         end
-    
-        if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
-							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
-            game_state = MODE.LEVEL
-            print("RESUME!")
+        if showFinalMenu == false then 
+            if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
+                                data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
+                game_state = MODE.LEVEL
+            end
         end
     end
     
     if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
 					  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
-        print("EXIT!")
         Hud.handleExit()
     end
 end
@@ -226,14 +226,12 @@ function handleStoryBookButtonClick()
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             firstBookShown = true
-            print("CONTINUE TO 1st LEVEL!")
         end
     else
         if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             continueToNextPuzzle = true
-            print("CONTINUE TO NEXT LEVEL!")
         end
     end
 end

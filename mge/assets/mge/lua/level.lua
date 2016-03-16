@@ -62,7 +62,7 @@ end
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
         v:setActive(active)
-    end   
+    end
 end
 
 function selectBlock(puzzleIndex, blockIndex)
@@ -91,6 +91,8 @@ function nextPuzzle()
     nextPuzzleIndex = activePuzzle + 1
     if nextPuzzleIndex > #story then
         storyCompleted = true
+        hud.showFinalMenu = ture
+        hud.game_state = hud.MODE.MENU
         print("completed!!")
     else
         selectPuzzle(nextPuzzleIndex)
@@ -137,7 +139,7 @@ function updateLevel()
             handleSelection()
         end
 
-        if Game.getKeyDown(KeyCode.Y) == true then
+        if Game.getKeyDown(KeyCode.Y) == true then -- THIS BLOCK SHOULD BE REMOVED IN RELEASE VERSION
             nextPuzzle()
         end
 
@@ -162,6 +164,7 @@ function updateGUI()
     hud.progress = checkProgress()
     hud.draw()
     game_state = hud.game_state
+    restartGame()
 end
 
 function refreshHud()
@@ -221,4 +224,18 @@ function handleSelection()
     end
 
     story[activePuzzle].blocks[activePiece]:flash(1.8)
+end
+
+function restartGame()
+    if hud.restartGame == true then
+        hud.game_state = hud.MODE.LEVEL
+        activePuzzle = 1
+        activePiece = 1
+        selectPuzzle(activePuzzle)
+        hud.restartGame = false
+    end
+end
+
+function cacheWallTextures()
+    
 end
