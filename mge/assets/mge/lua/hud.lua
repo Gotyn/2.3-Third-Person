@@ -2,13 +2,14 @@ module("hud", package.seeall)
 local data = require("mge/lua/hud_data")
 
 MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
-game_state = MODE.LEVEL
+game_state = MODE.MENU
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
-showHelpBox = true
-initialRiddleCheck = false
+showHelpBox = false         -- NOTE: SHOULD BE TRUE UPON START OF THE LEVEL FOR INITIAL RIDDLE SHOW-UP
+initialRiddleCheck = true   -- NOTE: SHOULD BE FALSE FOR INITIAL RIDDLE SHOW-UP
 hintText = ""
+firstMenuShown = false
 
 progress = 0
 
@@ -18,6 +19,7 @@ hint3_spriteID = 0
 exit_spriteID = 0 
 resume_spriteID = 0 
 start_spriteID = 0
+story_book_button_spriteID = 0
 
 function draw()
 	if game_state == MODE.LEVEL then
@@ -30,7 +32,8 @@ function draw()
 end
 
 function updateBook()
-
+    popStoryBook()
+    handleStoryBookButtonClick()
 end
 
 function updateMenu()
@@ -38,6 +41,7 @@ function updateMenu()
         game_state = MODE.LEVEL
     end
 	popMenu()
+    handleMenuButtonsClick()
 end
 
 function updateLevel()
@@ -175,10 +179,49 @@ end
 
 function popMenu()
     Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment, data.menu_box_scaleX, data.menu_box_scaleY)
-    Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
-        data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY)
-    Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, data.resume_button_width, 
-        data.resume_button_height, resume_spriteID, data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY)
-    Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, data.exit_button_width, 
-        data.exit_button_height, exit_spriteID, data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY)
+end
+
+function handleMenuButtonsClick()
+
+    if firstMenuShown == false then
+        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
+            data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
+            game_state = MODE.LEVEL
+            firstMenuShown = true
+            start_spriteID = 1
+            print("START!")
+        end
+    end
+    
+    if firstMenuShown == true then
+        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
+            data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
+            -- CALL RESTART FUNCTION HERE
+            print("RESTART!")
+        end
+    
+        if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, data.resume_button_width, 
+            data.resume_button_height, resume_spriteID, data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
+            game_state = MODE.LEVEL
+            print("RESUME!")
+        end
+    end
+    
+    if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, data.exit_button_width, 
+        data.exit_button_height, exit_spriteID, data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
+        print("EXIT!")
+        Hud.handleExit()
+    end
+end
+
+function popStoryBook()
+    Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_width, data.story_book_height, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
+end
+
+function handleStoryBookButtonClick()
+    if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, data.story_book_button_width, 
+        data.story_book_button_height, story_book_button_spriteID, data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
+        print("EXIT!")
+        Hud.handleExit()
+    end
 end
