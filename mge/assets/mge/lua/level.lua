@@ -1,13 +1,13 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story2.lua")
+dofile("mge/lua/story1.lua")
 
 game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 2
+solvedThreshold = 0.5
 
 -- TEXTURE NAMES FOR C++ START --
 display_riddle_at_start = gameHud_Data.display_riddle_at_start
@@ -119,7 +119,13 @@ function updateLevel()
         handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
+            hud.game_state = hud.MODE.BOOK
+        end
+        
+        if hud.continueToNextPuzzle == true then
+            hud.game_state = hud.MODE.LEVEL
             nextPuzzle()
+            hud.continueToNextPuzzle = false
         end
     end
 end
