@@ -120,6 +120,7 @@ void LuaGame::_initLua()
             .addFunction ("getKey", Input::getKey)
             .addFunction ("getCameraObject", LuaGame::getCameraObject)
             .addFunction ("getSpotlight", LuaGame::getMainLight)
+            .addFunction ("ambientLight", LuaGame::setWorldAmbient)
             //game classes
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()
@@ -183,6 +184,11 @@ void LuaGame::_initLua()
 //            //light functions
 //            .addFunction ("playSound", LuaGame::PlayEffect)
 //        .endNamespace();
+}
+
+void LuaGame::setWorldAmbient(float r, float g, float b)
+{
+    World::Instance()->ambient = glm::vec3(r, g, b);
 }
 
 PuzzleBlock* LuaGame::getActiveBlock()
