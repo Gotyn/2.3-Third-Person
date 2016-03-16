@@ -180,6 +180,7 @@ function updateGUI()
     hud.hint_1 = story[activePuzzle].tips[1]
     hud.hint_2 = story[activePuzzle].tips[2]
     hud.hint_3 = story[activePuzzle].tips[3]
+    hud.riddle_text = story[activePuzzle].riddle[1]
 end
 
 function refreshHud()

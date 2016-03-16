@@ -16,6 +16,7 @@ restartGame = false
 hint_1 = "hint_1"
 hint_2 = "hint_2"
 hint_3 = "hint_3"
+riddle_text = "riddle text"
 
 progress = 0
 
@@ -150,10 +151,8 @@ end
 -- the box holding the hint buttons
 function updateHelpBox()
     if showHelpBox == true then
-        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, 
-					  data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
-		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, 
-				      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
+        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
+		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, riddle_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
         handleHintButtonsClick()
     else
         showHintsBox1 = false

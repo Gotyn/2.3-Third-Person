@@ -6,9 +6,12 @@ story = {
             --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
         },
         tips = {
-            "puzzle 1, tip1",
-            "puzzle 1, tip2",
-            "puzzle 1, tip3"
+            "Not meant to submerge",
+            "Used for transportation",
+            "Ship"
+        },
+        riddle = {
+            "Weight in my belly, trees on my back, nails in my ribbon, feet I do lack."
         }
     },
     {
@@ -18,9 +21,12 @@ story = {
             --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 6, 0, 0)
         },
         tips = {
-            "puzzle 2, tip1",
-            "puzzle 2, tip2",
-            "puzzle 2, tip3"
+            "King of the sky",
+            "Emblem of ancient Rome",
+            "Eagle"
+        },
+        riddle = {
+            "Hard when young, but soft when old. I cannot live with my food. Majestic in movement, in eating crude."
         }
     },
     {
@@ -30,9 +36,12 @@ story = {
             --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
         },
         tips = {
-            "puzzle 3, tip1",
-            "puzzle 3, tip2",
-            "puzzle 3, tip3"
+            "Brings deadly resolutions",
+            "Very sharp",
+            "Knife"
+        },
+        riddle = {
+            "I eat meat, but do not drink wine. I am a means to an end or it's protector. I have committed many gruesome betrayals."
         }
     },
     {
@@ -44,9 +53,12 @@ story = {
         
         },
         tips = {
-            "puzzle 4, tip1",
-            "puzzle 4, tip2",
-            "puzzle 4, tip3"
+            "High in the sky",
+            "Bright in darkness",
+            "Star"
+        },
+        riddle = {
+            "At night they come without being fetched. By day they are lost without being stolen."
         }
     },
     {
@@ -56,9 +68,12 @@ story = {
             Game.PuzzleBlock("Piramide_Peak.obj", "Piramide_Peak_Base_Color.png", "piece2", 1.79, 1.36, 6.68)
         },
         tips = {
-            "puzzle 5, tip1",
-            "puzzle 5, tip2",
-            "puzzle 5, tip3"
+            "God's achitecture",
+            "Geometrical shape",
+            "Pyramid"
+        },
+        riddle = {
+            "Young ones can only listen to the tales of the elders on how we were brought into exiistence"
         }
     },
     {
@@ -68,9 +83,12 @@ story = {
             Game.PuzzleBlock("Scroll_Part2.obj", "Piramide_Peak_Base_Color.png", "piece2", 2.58, 0.576, 3.5)
         },
         tips = {
-            "puzzle 6, tip1",
-            "puzzle 6, tip2",
-            "puzzle 6, tip3"
+            "Rollable, not foldable",
+            "Writable and recitable",
+            "Scroll"
+        },
+        riddle = {
+            "Men has always sought for me, to use me for his gain, yet fools claim to have found me."
         }
     },
     {
@@ -80,9 +98,12 @@ story = {
             Game.PuzzleBlock("Lips_Bottom.obj", "LipsLow_Base_Color.png", "piece2", 1.8, 0.254, 1)
         },
         tips = {
-            "puzzle 7, tip1",
-            "puzzle 7, tip2",
-            "puzzle 7, tip3"
+            "Influences a large crowd",
+            "Words come from it",
+            "Lips"
+        },
+        riddle = {
+            "My touch is soft, but my intensions can be stern. With your faith I can be great, but defy me and we will both fall."
         }
     },
     {
@@ -92,9 +113,12 @@ story = {
             Game.PuzzleBlock("Lips_Bottom.obj", "LipsLow_Base_Color.png", "piece2", 2, 0, 1)
         },
         tips = {
-            "puzzle 8, tip1",
-            "puzzle 8, tip2",
-            "puzzle 8, tip3"
+            "Answer lies within you",
+            "Protector of the mind",
+            "Skull"
+        },
+        riddle = {
+            "Some try to hide, some try to cheat, but time will show, we will always meet. Try as you might, to guess my name. I promise you'll know, when I do my claim."
         }
     },
     {
@@ -104,9 +128,12 @@ story = {
             Game.PuzzleBlock("Camal_Body_2.obj", "CamelBody2_Base_Color.png", "piece2", 1.63, 0.686, 4.939)
         },
         tips = {
-            "puzzle 9, tip1",
-            "puzzle 9, tip2",
-            "puzzle 9, tip3"
+            "Living transport",
+            "Brother of Dromedaries",
+            "Camel"
+        },
+        riddle = {
+            "My kind has been around for centuries. We carry mountains or our backs. Yet, we do not protest, for we cannot speak."
         }
     },
     {
@@ -116,9 +143,12 @@ story = {
             Game.PuzzleBlock("Potion_Top.obj", "PotionTop_Base_Color.png", "piece2", 1.765, 2.258, 4.816)
         },
         tips = {
-            "puzzle 10, tip1",
-            "puzzle 10, tip2",
-            "puzzle 10, tip3"
+            "It is antidote",
+            "Pot shaped",
+            "Antidote"
+        },
+        riddle = {
+            "The solution is the antiodote."
         }
     },
     {
@@ -128,9 +158,12 @@ story = {
             Game.PuzzleBlock("Potion_Top.obj", "PotionTop_Base_Color.png", "piece2", 1.765, 2.258, 4.816)
         },
         tips = {
-            "puzzle 11, tip1",
-            "puzzle 11, tip2",
-            "puzzle 11, tip3"
+            "Ancient key",
+            "Looks like a cross",
+            "Ankh"
+        },
+        riddle = {
+            "I am the gateway between two worlds. My purpose is to send you back, not let you pass."
         }
     },
     {
@@ -142,9 +175,12 @@ story = {
             Game.PuzzleBlock("UFO_Part4.obj", "PotionTop_Base_Color.png", "piece2", 1.758, 0.729, 6.674)
         },
         tips = {
-            "puzzle 12, tip1",
-            "puzzle 12, tip2",
-            "puzzle 12, tip3"
+            "Difficult to explain",
+            "Can fly",
+            "U.F.O."
+        },
+        riddle = {
+            "Unbelievable fussy organization."
         }
     }
 }
