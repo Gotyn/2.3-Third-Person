@@ -77,30 +77,29 @@ story_book_button_scaleY = 0.15
 story_book_button_alignment = alignment.CENTER_CENTER
 story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
 
---[StartButton] Start button in menu
-start_button_xOffset = 150
-start_button_yOffset = 0
-start_button_scaleX = 0.15
-start_button_scaleY = 0.15
-start_button_alignment = alignment.CENTER_CENTER
-start_button_texture = "MENU_Play_Sheet.png"
-
 --[ResumeButton] Resume button in menu 
 -- NOTE: ONLY VISIBLE AFTER STARTING! | Gets reset when hotloading, so click start again.
-resume_button_xOffset = 150
-resume_button_yOffset = 75
-resume_button_scaleX = 0.15
-resume_button_scaleY = 0.15
-resume_button_alignment = alignment.CENTER_CENTER
+resume_button_xOffset = 30
+resume_button_yOffset = 270
+resume_button_scaleX = 0.2
+resume_button_scaleY = 0.2
+resume_button_alignment = alignment.RIGHT_BOTTOM
 resume_button_texture = "MENU_Resume_Sheet.png"
 
+--[StartButton] Start button in menu
+start_button_xOffset = 30
+start_button_yOffset = 150
+start_button_scaleX = 0.2
+start_button_scaleY = 0.2
+start_button_alignment = alignment.RIGHT_BOTTOM
+start_button_texture = "MENU_Play_Sheet.png"
 
 --[ExitButton] Exit button in menu
-exit_button_xOffset = 150
-exit_button_yOffset = 150
-exit_button_scaleX = 0.15
-exit_button_scaleY = 0.15
-exit_button_alignment = alignment.CENTER_CENTER
+exit_button_xOffset = 30
+exit_button_yOffset = 30
+exit_button_scaleX = 0.2
+exit_button_scaleY = 0.2
+exit_button_alignment = alignment.RIGHT_BOTTOM
 exit_button_texture = "MENU_Exit_Sheet.png"
 
 --[RiddleBox] Label that shows the riddle
