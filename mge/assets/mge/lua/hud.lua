@@ -190,6 +190,7 @@ function handleMenuButtonsClick()
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             game_state = MODE.BOOK
             firstMenuShown = true
+			start_spriteID = 4
             print("START!")
         end
     end
