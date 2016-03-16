@@ -8,7 +8,9 @@ story = {
         tips = {
             "puzzle 1, tip1",
             "puzzle 1, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "2_MainWall_Base_Color.png",    --EAGLE
@@ -19,7 +21,9 @@ story = {
         tips = {
             "puzzle 2, tip1",
             "puzzle 2, tip2"
-        }
+        },
+        camPosition = {-4.53, 2.66, 7.02},
+        lightPosition = {1.6, 2.4, 13.4}
     },
     {
         wallImage = "3_MainWall_Base_Color.png",    --KNIFE
@@ -30,7 +34,9 @@ story = {
         tips = {
             "puzzle 3, tip1",
             "puzzle 3, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "4_MainWall_Base_Color.png",    --STAR
@@ -43,7 +49,9 @@ story = {
         tips = {
             "puzzle 4, tip1",
             "puzzle 4, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "5_MainWall_Base_Color.png",    --PYRAMIDE
@@ -54,7 +62,9 @@ story = {
         tips = {
             "puzzle 5, tip1",
             "puzzle 5, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "6_MainWall_Base_Color.png",    --SCROLL
@@ -65,7 +75,9 @@ story = {
         tips = {
             "puzzle 6, tip1",
             "puzzle 6, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "7_MainWall_Base_Color.png",    --LIPS
@@ -76,7 +88,9 @@ story = {
         tips = {
             "puzzle 7, tip1",
             "puzzle 7, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "8_MainWall_Base_Color.png",    --[PLACE HOLDER] FOR SKULL
@@ -87,7 +101,9 @@ story = {
         tips = {
             "puzzle 8, tip1",
             "puzzle 8, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "9_MainWall_Base_Color.png",    --CAMEL
@@ -98,7 +114,9 @@ story = {
         tips = {
             "puzzle 9, tip1",
             "puzzle 9, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "10_MainWall_Base_Color.png",   --POTION
@@ -109,7 +127,9 @@ story = {
         tips = {
             "puzzle 10, tip1",
             "puzzle 10, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "11_MainWall_Base_Color.png",   --[PLACE HOLDER] ARKH
@@ -120,7 +140,9 @@ story = {
         tips = {
             "puzzle 10, tip1",
             "puzzle 10, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "12_MainWall_Base_Color.png",   --UFO 
@@ -133,7 +155,9 @@ story = {
         tips = {
             "puzzle 12, tip1",
             "puzzle 12, tip2"
-        }
+        },
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     }
 }
 
