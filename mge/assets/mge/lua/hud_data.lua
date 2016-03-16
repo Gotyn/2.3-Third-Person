@@ -78,8 +78,6 @@ exit_button_texture = "land.jpg"
 --Label behind the hint buttons (helpbox)
 help_box_xOffset = 27
 help_box_yOffset = 25
-help_box_width = 512
-help_box_height = 2048
 help_box_scaleX = 0.11
 help_box_scaleY = 0.11
 help_box_alignment = alignment.RIGHT_TOP
@@ -88,8 +86,6 @@ help_box_texture = "Dropdown_Box.png"
 --Label that shows the riddle
 riddle_box_xOffset = 0
 riddle_box_yOffset = 15
-riddle_box_width = 900
-riddle_box_height = 100
 riddle_box_font = 30
 riddle_box_scaleX = 1
 riddle_box_scaleY = 1
@@ -110,8 +106,6 @@ menu_box_texture = "bricks.jpg"
 --Label that shows the actual hint
 hints_box_xOffset = 250
 hints_box_yOffset = 480
-hints_box_width = 300
-hints_box_height = 100
 hints_box_font = 30
 hints_box_scaleX = 1
 hints_box_scaleY = 1
@@ -204,8 +198,6 @@ HUD.start_button_texture = start_button_texture
 -- background of the hintbuttons
 HUD.help_box_xOffset = help_box_xOffset
 HUD.help_box_yOffset = help_box_yOffset
-HUD.help_box_width = help_box_width
-HUD.help_box_height = help_box_height
 HUD.help_box_scaleX = help_box_scaleX
 HUD.help_box_scaleY = help_box_scaleY
 HUD.help_box_alignment = help_box_alignment
@@ -214,8 +206,6 @@ HUD.help_box_texture = help_box_texture
 -- actual riddle
 HUD.riddle_box_xOffset = riddle_box_xOffset
 HUD.riddle_box_yOffset = riddle_box_yOffset
-HUD.riddle_box_width = riddle_box_width
-HUD.riddle_box_height = riddle_box_height
 HUD.riddle_box_font = riddle_box_font
 HUD.riddle_box_text = riddle_box_text
 HUD.riddle_box_scaleX = riddle_box_scaleX
@@ -236,8 +226,6 @@ HUD.menu_box_scaleY = menu_box_scaleY
 -- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset
 HUD.hints_box_yOffset = hints_box_yOffset
-HUD.hints_box_width = hints_box_width
-HUD.hints_box_height = hints_box_height
 HUD.hints_box_font = hints_box_font
 HUD.hints_box_text1 = hints_box_text1
 HUD.hints_box_text2 = hints_box_text2

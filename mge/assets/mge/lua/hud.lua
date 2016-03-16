@@ -143,9 +143,9 @@ end
 -- the box holding the hint buttons
 function updateHelpBox()
     if showHelpBox == true then
-        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, data.help_box_width, data.help_box_height, 
+        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, 
 					  data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
-		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_width, data.riddle_box_height, data.riddle_box_font, 
+		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, 
 				      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
         handleHintButtonsClick()
     else
@@ -158,7 +158,7 @@ end
 -- the box showing the actual hint
 function updateHintsBox()
     if showHintsBox1 == true or showHintsBox2 == true or showHintsBox3 == true then
-        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_width, data.hints_box_height, data.hints_box_font, 
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, 
 					 hintText, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
     end
 end
