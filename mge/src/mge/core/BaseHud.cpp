@@ -351,20 +351,20 @@ bool BaseHud::StartButton (int xOffset, int yOffset, int spriteID, int alignment
 //----------------------------------------------------------------
 bool BaseHud::StoryBookButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
 {
-    int spriteSheetColumns = 2;
+    int spriteSheetRows = 2;
 
     sf::Vector2u spriteSize(storyBookButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetRows;
     int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
+    int tileHeight = ( spriteSize.y / spriteSheetRows );                               //unscaled!
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
 
     //create sprite
     storyBookButtonSprite->setTexture(*storyBookButtonTexture);
     storyBookButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) storyBookButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else storyBookButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
+    if (spriteID == 0) storyBookButtonSprite->setTextureRect(sf::IntRect(0,0,spriteSize.x,tileHeight));
+    else storyBookButtonSprite->setTextureRect(sf::IntRect(0,tileHeight,spriteSize.x,tileHeight));
     storyBookButtonSprite->setPosition(alignedPos);
 
     _window->draw(*storyBookButtonSprite);
