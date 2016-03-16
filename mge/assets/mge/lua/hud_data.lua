@@ -11,7 +11,7 @@ progress_bar_yOffset = 50
 progress_bar_scaleX = 0.75
 progress_bar_scaleY = 0.75
 progress_bar_alignment = alignment.CENTER_TOP
-progress_bar_texture = "Progress_256.png"
+progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 
 --[HelpButton] Button for Riddle / Hints 
 help_button_xOffset = 20
@@ -19,7 +19,7 @@ help_button_yOffset = 20
 help_button_scaleX = 0.14
 help_button_scaleY = 0.14
 help_button_alignment = alignment.RIGHT_TOP
-help_button_texture = "Hint_Button_Shinx_Sprite.png"
+help_button_texture = "HUD_Hint_Button_Sphinx_Sheet.png"
 
 --[HintButton1] Button for first hint
 hint_button1_xOffset = 30
@@ -27,7 +27,7 @@ hint_button1_yOffset = 92
 hint_button1_scaleX = 0.1
 hint_button1_scaleY = 0.1
 hint_button1_alignment = alignment.RIGHT_TOP
-hint_button1_texture = "Hint_Button_1_Sprite.png"
+hint_button1_texture = "HUD_Hint_Button_1_Sheet.png"
 
 --[HintButton2] Button for second hint
 hint_button2_xOffset = 30
@@ -35,15 +35,23 @@ hint_button2_yOffset = 140
 hint_button2_scaleX = 0.1
 hint_button2_scaleY = 0.1
 hint_button2_alignment = alignment.RIGHT_TOP
-hint_button2_texture = "Hint_Button_2_Sprite.png"
+hint_button2_texture = "HUD_Hint_Button_2_Sheet.png"
 
---[HintButton2] Button for third hint
+--[HintButton3] Button for third hint
 hint_button3_xOffset = 30
 hint_button3_yOffset = 188
 hint_button3_scaleX = 0.1
 hint_button3_scaleY = 0.1
 hint_button3_alignment = alignment.RIGHT_TOP
-hint_button3_texture = "Hint_Button_3_Sprite.png"
+hint_button3_texture = "HUD_Hint_Button_3_Sheet.png"
+
+--[HelpBox] Label behind the hint buttons (helpbox)
+help_box_xOffset = 27
+help_box_yOffset = 25
+help_box_scaleX = 0.11
+help_box_scaleY = 0.11
+help_box_alignment = alignment.RIGHT_TOP
+help_box_texture = "HUD_Dropdown_Box.png"
 
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
@@ -95,14 +103,6 @@ exit_button_scaleY = 0.05
 exit_button_alignment = alignment.CENTER_CENTER
 exit_button_texture = "land.jpg"
 
---[HelpBox] Label behind the hint buttons (helpbox)
-help_box_xOffset = 27
-help_box_yOffset = 25
-help_box_scaleX = 0.11
-help_box_scaleY = 0.11
-help_box_alignment = alignment.RIGHT_TOP
-help_box_texture = "Dropdown_Box.png"
-
 --[RiddleBox] Label that shows the riddle
 riddle_box_xOffset = 0
 riddle_box_yOffset = 0
@@ -111,7 +111,7 @@ riddle_box_scaleX = 0.30
 riddle_box_scaleY = 0.25
 riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
-riddle_box_texture = "Hint_box_3840.png"
+riddle_box_texture = "HUD_Riddle_Box.png"
 
 --[HintsBox] Label that shows the actual hint
 hints_box_xOffset = 0

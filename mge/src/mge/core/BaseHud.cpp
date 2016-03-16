@@ -92,34 +92,36 @@ void BaseHud::loadTextures()
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
 
-    if (!helpButtonTexture->loadFromFile (config::MGE_TEXTURE_PATH + helpButtonTextureName))
+    if (!helpButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + helpButtonTextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton1Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton1TextureName))
+    if (!hintButton1Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton1TextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton2Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton2TextureName))
+    if (!hintButton2Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton2TextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton3Texture->loadFromFile(config::MGE_TEXTURE_PATH + hintButton3TextureName))
+    if (!hintButton3Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton3TextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!exitButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + exitButtonTextureName))
+    if (!exitButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + exitButtonTextureName))
         { std::cout << "Could not load texture for exit button"      << std::endl; return; }
-    if (!resumeButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + resumeButtonTextureName))
+    if (!resumeButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + resumeButtonTextureName))
         { std::cout << "Could not load texture for resume button"    << std::endl; return; }
-    if (!startButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + startButtonTextureName))
+    if (!startButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + startButtonTextureName))
         { std::cout << "Could not load texture for start button"     << std::endl; return; }
-    if (!storyBookButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + storyBookButtonTextureName))
+    if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName))
         { std::cout << "Could not load texture for storybook button" << std::endl; return; }
-    if (!helpBoxTexture->loadFromFile    (config::MGE_TEXTURE_PATH + helpBoxTextureName))
+    if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!riddleBoxTexture->loadFromFile  (config::MGE_TEXTURE_PATH + riddleBoxTextureName))
+    if (!riddleBoxTexture->loadFromFile  (config::MGE_SPRITE_PATH + riddleBoxTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!hintsBoxTexture->loadFromFile   (config::MGE_TEXTURE_PATH + hintsBoxTextureName))
+    if (!hintsBoxTexture->loadFromFile   (config::MGE_SPRITE_PATH + hintsBoxTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!menuBoxTexture->loadFromFile    (config::MGE_TEXTURE_PATH + menuBoxTextureName))
+    if (!menuBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + menuBoxTextureName))
         { std::cout << "Could not load texture for menulabel"        << std::endl; return; }
-    if (!storyBookTexture->loadFromFile(config::MGE_TEXTURE_PATH + storyBookTextureName))
+    if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))
         { std::cout << "Could not load texture for storybook label"  << std::endl; return; }
-    if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName))
+    if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
+
+
 
     helpButtonTexture->setRepeated(true);
     hintButton1Texture->setRepeated(true);
