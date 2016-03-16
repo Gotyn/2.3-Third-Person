@@ -409,7 +409,7 @@ void BaseHud::RiddleBox(int xOffset, int yOffset, int fontSize, std::string capt
     //create text
     sf::FloatRect textRect = riddleBoxText->getLocalBounds();
     riddleBoxText->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    riddleBoxText->setPosition(alignedPos.x + scaledSpriteWidth / 2, alignedPos.y + scaledSpriteHeight / 2);
+    riddleBoxText->setPosition(alignedPos.x + scaledSpriteWidth / 2, alignedPos.y + scaledSpriteHeight / 2 + 40);
     riddleBoxText->setString(caption);
     riddleBoxText->setFont(_font);
     riddleBoxText->setCharacterSize(fontSize);
