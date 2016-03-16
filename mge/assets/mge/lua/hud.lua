@@ -1,19 +1,22 @@
 module("hud", package.seeall)
 local data = require("mge/lua/hud_data")
 
+dofile("mge/lua/story1.lua")
+
 MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
 game_state = MODE.MENU
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
-showHelpBox = false         -- NOTE: SHOULD BE TRUE UPON START OF THE LEVEL FOR INITIAL RIDDLE SHOW-UP
-initialRiddleCheck = true   -- NOTE: SHOULD BE FALSE FOR INITIAL RIDDLE SHOW-UP
-hintText = ""
+showHelpBox = true           -- NOTE: SHOULD BE TRUE UPON START OF THE LEVEL FOR INITIAL RIDDLE SHOW-UP
+initialRiddleCheck = false   -- NOTE: SHOULD BE FALSE FOR INITIAL RIDDLE SHOW-UP
+hintText = "HINT EXAMPLE"
 firstMenuShown = false
 firstBookShown = false
 continueToNextPuzzle = false
 showFinalMenu = false
 restartGame = false
+currentPuzzle = 1
 
 progress = 0
 
@@ -165,9 +168,15 @@ end
 
 -- the box showing the actual hint
 function updateHintsBox()
-    if showHintsBox1 == true or showHintsBox2 == true or showHintsBox3 == true then
+    if showHintsBox1 == true then
         Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, 
-					 hintText, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
+			story[currentPuzzle].tips[1], data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
+    elseif showHintsBox2 == true then
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, 
+			story[currentPuzzle].tips[2], data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
+    elseif showHintsBox3 == true then
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, 
+			story[currentPuzzle].tips[3], data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
     end
 end
 

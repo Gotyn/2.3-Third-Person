@@ -7,7 +7,8 @@ story = {
         },
         tips = {
             "puzzle 1, tip1",
-            "puzzle 1, tip2"
+            "puzzle 1, tip2",
+            "puzzle 1, tip3"
         }
     },
     {
@@ -18,7 +19,8 @@ story = {
         },
         tips = {
             "puzzle 2, tip1",
-            "puzzle 2, tip2"
+            "puzzle 2, tip2",
+            "puzzle 2, tip3"
         }
     },
     {
@@ -29,7 +31,8 @@ story = {
         },
         tips = {
             "puzzle 3, tip1",
-            "puzzle 3, tip2"
+            "puzzle 3, tip2",
+            "puzzle 3, tip3"
         }
     },
     {
@@ -42,7 +45,8 @@ story = {
         },
         tips = {
             "puzzle 4, tip1",
-            "puzzle 4, tip2"
+            "puzzle 4, tip2",
+            "puzzle 4, tip3"
         }
     },
     {
@@ -53,7 +57,8 @@ story = {
         },
         tips = {
             "puzzle 5, tip1",
-            "puzzle 5, tip2"
+            "puzzle 5, tip2",
+            "puzzle 5, tip3"
         }
     },
     {
@@ -64,7 +69,8 @@ story = {
         },
         tips = {
             "puzzle 6, tip1",
-            "puzzle 6, tip2"
+            "puzzle 6, tip2",
+            "puzzle 6, tip3"
         }
     },
     {
@@ -75,7 +81,8 @@ story = {
         },
         tips = {
             "puzzle 7, tip1",
-            "puzzle 7, tip2"
+            "puzzle 7, tip2",
+            "puzzle 7, tip3"
         }
     },
     {
@@ -86,7 +93,8 @@ story = {
         },
         tips = {
             "puzzle 8, tip1",
-            "puzzle 8, tip2"
+            "puzzle 8, tip2",
+            "puzzle 8, tip3"
         }
     },
     {
@@ -97,7 +105,8 @@ story = {
         },
         tips = {
             "puzzle 9, tip1",
-            "puzzle 9, tip2"
+            "puzzle 9, tip2",
+            "puzzle 9, tip3"
         }
     },
     {
@@ -108,7 +117,8 @@ story = {
         },
         tips = {
             "puzzle 10, tip1",
-            "puzzle 10, tip2"
+            "puzzle 10, tip2",
+            "puzzle 10, tip3"
         }
     },
     {
@@ -118,8 +128,9 @@ story = {
             Game.PuzzleBlock("Potion_Top.obj", "PotionTop_Base_Color.png", "piece2", 1.765, 2.258, 4.816)
         },
         tips = {
-            "puzzle 10, tip1",
-            "puzzle 10, tip2"
+            "puzzle 11, tip1",
+            "puzzle 11, tip2",
+            "puzzle 11, tip3"
         }
     },
     {
@@ -132,7 +143,8 @@ story = {
         },
         tips = {
             "puzzle 12, tip1",
-            "puzzle 12, tip2"
+            "puzzle 12, tip2",
+            "puzzle 12, tip3"
         }
     }
 }

@@ -102,9 +102,11 @@ function nextPuzzle()
         storyCompleted = true
         hud.showFinalMenu = ture
         hud.game_state = hud.MODE.MENU
+        hud.showHelpBox = false
         print("completed!!")
     else
         selectPuzzle(nextPuzzleIndex)
+        hud.showHelpBox = false
     end
 end
 
@@ -173,6 +175,7 @@ function updateGUI()
     hud.progress = checkProgress()
     hud.draw()
     game_state = hud.game_state
+    hud.currentPuzzle = activePuzzle
     restartGame()
 end
 
