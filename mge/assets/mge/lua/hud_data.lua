@@ -66,6 +66,26 @@ menu_box_scaleY = 1
 menu_box_alignment = alignment.LEFT_CENTER
 menu_box_texture = "bricks.jpg"
 
+--Label that shows storybook container
+story_book_xOffset = 0
+story_book_yOffset = 0
+story_book_width = 300
+story_book_height = 250
+story_book_scaleX = 1
+story_book_scaleY = 1
+story_book_alignment = alignment.RIGHT_CENTER
+story_book_texture = "bricks.jpg"
+
+--Continue button in storybook container
+story_book_button_xOffset = 0
+story_book_button_yOffset = 0
+story_book_button_width = 100
+story_book_button_height = 75
+story_book_button_scaleX = 1
+story_book_button_scaleY = 1
+story_book_button_alignment = alignment.RIGHT_CENTER
+story_book_button_texture = "land.jpg"
+
 --Start button in menu
 start_button_xOffset = 50
 start_button_yOffset = 0
@@ -223,6 +243,16 @@ HUD.start_button_scaleY = start_button_scaleY
 HUD.start_button_alignment = start_button_alignment
 HUD.start_button_texture = start_button_texture
 
+--Continue button in storybook container
+HUD.story_book_button_xOffset = story_book_button_xOffset
+HUD.story_book_button_yOffset = story_book_button_yOffset
+HUD.story_book_button_width = story_book_button_width
+HUD.story_book_button_height = story_book_button_height
+HUD.story_book_button_scaleX = story_book_button_scaleX
+HUD.story_book_button_scaleY = story_book_button_scaleY
+HUD.story_book_button_alignment = story_book_button_alignment
+HUD.story_book_button_texture = story_book_button_texture
+
 -- background of the hintbuttons
 HUD.help_box_xOffset = help_box_xOffset
 HUD.help_box_yOffset = help_box_yOffset
@@ -254,6 +284,16 @@ HUD.menu_box_alignment = menu_box_alignment
 HUD.menu_box_texture = menu_box_texture
 HUD.menu_box_scaleX = menu_box_scaleX
 HUD.menu_box_scaleY = menu_box_scaleY
+
+-- actual story book container
+HUD.story_book_xOffset = story_book_xOffset
+HUD.story_book_yOffset = story_book_yOffset
+HUD.story_book_width = story_book_width
+HUD.story_book_height = story_book_height
+HUD.story_book_scaleX = story_book_scaleX
+HUD.story_book_scaleY = story_book_scaleY
+HUD.story_book_alignment = story_book_alignment
+HUD.story_book_texture = story_book_texture
 
 -- actual hint
 HUD.hints_box_xOffset = hints_box_xOffset

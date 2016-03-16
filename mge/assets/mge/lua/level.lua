@@ -23,6 +23,8 @@ riddle_box_texture = gameHud_Data.riddle_box_texture
 hints_box_texture = gameHud_Data.hints_box_texture
 menu_box_texture = gameHud_Data.menu_box_texture
 progress_bar_texture = gameHud_Data.progress_bar_texture
+story_book_texture = gameHud_Data.story_book_texture
+story_book_button_texture = gameHud_Data.story_book_button_texture
 -- TEXTURE NAMES FOR C++ END --
 
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")

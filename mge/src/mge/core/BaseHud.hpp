@@ -22,10 +22,12 @@ class BaseHud
         static bool ExitButton  (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool ResumeButton(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static bool StartButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool StoryBookButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
         static void HelpBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
         static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); //scale doesnt work here???
         static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); // ... max arg lua can handle?
         static void MenuBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
+        static void StoryBook   (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
 
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 
@@ -38,10 +40,12 @@ class BaseHud
         static void setExitButtonTextureName(const std::string name);
         static void setResumeButtonTextureName(const std::string name);
         static void setStartButtonTextureName(const std::string name);
+        static void setStoryBookButtonTextureName(const std::string name);
         static void setHelpBoxTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
         static void setHintsBoxTextureName(const std::string name);
         static void setMenuBoxTextureName(const std::string name);
+        static void setStoryBookTextureName(const std::string name);
         static void setProgressbarTextureName(const std::string name);
         static void setDisplayTime(const int value);
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
@@ -66,11 +70,13 @@ class BaseHud
         static sf::Texture* exitButtonTexture;
         static sf::Texture* resumeButtonTexture;
         static sf::Texture* startButtonTexture;
+        static sf::Texture* storyBookButtonTexture;
         static sf::Texture* helpBoxTexture;
         static sf::Texture* riddleBoxTexture;
         static sf::Texture* hintsBoxTexture;
         static sf::Texture* progressBarTexture;
         static sf::Texture* menuBoxTexture;
+        static sf::Texture* storyBookTexture;
         //hud sprites
         static sf::Sprite* helpButtonSprite;
         static sf::Sprite* hintButton1Sprite;
@@ -79,11 +85,13 @@ class BaseHud
         static sf::Sprite* exitButtonSprite;
         static sf::Sprite* resumeButtonSprite;
         static sf::Sprite* startButtonSprite;
+        static sf::Sprite* storyBookButtonSprite;
         static sf::Sprite* helpBoxSprite;
         static sf::Sprite* riddleBoxSprite;
         static sf::Sprite* hintsBoxSprite;
         static sf::Sprite* progressBarSprite;
         static sf::Sprite* menuBoxSprite;
+        static sf::Sprite* storyBookSprite;
         //hud texts
         static sf::Text* riddleBoxText;
         static sf::Text* hintsBoxText;
@@ -95,11 +103,13 @@ class BaseHud
         static std::string exitButtonTextureName;
         static std::string resumeButtonTextureName;
         static std::string startButtonTextureName;
+        static std::string storyBookButtonTextureName;
         static std::string helpBoxTextureName;
         static std::string riddleBoxTextureName;
         static std::string hintsBoxTextureName;
         static std::string progressBarTextureName;
         static std::string menuBoxTextureName;
+        static std::string storyBookTextureName;
 
         static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
 

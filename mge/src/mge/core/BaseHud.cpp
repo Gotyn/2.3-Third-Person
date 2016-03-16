@@ -20,11 +20,13 @@ sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
 sf::Texture* BaseHud::exitButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::resumeButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::startButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::storyBookButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::hintsBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::progressBarTexture = new sf::Texture;
 sf::Texture* BaseHud::menuBoxTexture = new sf::Texture;
+sf::Texture* BaseHud::storyBookTexture = new sf::Texture;
 // initialize static sprites
 sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
@@ -33,11 +35,13 @@ sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::exitButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::resumeButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::startButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::storyBookButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintsBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::progressBarSprite = new sf::Sprite;
 sf::Sprite* BaseHud::menuBoxSprite = new sf::Sprite;
+sf::Sprite* BaseHud::storyBookSprite = new sf::Sprite;
 // initialize static texts
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
@@ -49,11 +53,13 @@ std::string BaseHud::hintButton3TextureName = "land.jpg";
 std::string BaseHud::exitButtonTextureName = "land.jpg";
 std::string BaseHud::resumeButtonTextureName = "land.jpg";
 std::string BaseHud::startButtonTextureName = "land.jpg";
+std::string BaseHud::storyBookButtonTextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "land.jpg";
 std::string BaseHud::hintsBoxTextureName = "land.jpg";
 std::string BaseHud::progressBarTextureName = "land.jpg";
 std::string BaseHud::menuBoxTextureName = "land.jpg";
+std::string BaseHud::storyBookTextureName = "land.jpg";
 
 bool BaseHud::lmbPressedLastFrame = false;
 bool BaseHud::texturesSet = false;
@@ -114,6 +120,10 @@ void BaseHud::loadTextures()
         std::cout << "Could not load texture for start button" << std::endl;
         return;
     }
+    if (!storyBookButtonTexture->loadFromFile(config::MGE_TEXTURE_PATH + storyBookButtonTextureName)) {
+        std::cout << "Could not load texture for storybook button" << std::endl;
+        return;
+    }
     if (!helpBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + helpBoxTextureName)) {
         std::cout << "Could not load texture for label" << std::endl;
         return;
@@ -127,7 +137,11 @@ void BaseHud::loadTextures()
         return;
     }
     if (!menuBoxTexture->loadFromFile(config::MGE_TEXTURE_PATH + menuBoxTextureName)) {
-        std::cout << "Could not load texture for tutorial label" << std::endl;
+        std::cout << "Could not load texture for menubox label" << std::endl;
+        return;
+    }
+    if (!storyBookTexture->loadFromFile(config::MGE_TEXTURE_PATH + storyBookTextureName)) {
+        std::cout << "Could not load texture for storybook label" << std::endl;
         return;
     }
     if (!progressBarTexture->loadFromFile(config::MGE_TEXTURE_PATH + progressBarTextureName)) {
@@ -142,10 +156,12 @@ void BaseHud::loadTextures()
     exitButtonTexture->setRepeated(true);
     resumeButtonTexture->setRepeated(true);
     startButtonTexture->setRepeated(true);
+    storyBookButtonTexture->setRepeated(true);
     helpBoxTexture->setRepeated(true);
     riddleBoxTexture->setRepeated(true);
     hintsBoxTexture->setRepeated(true);
     menuBoxTexture->setRepeated(true);
+    storyBookTexture->setRepeated(true);
     _window->popGLStates();
 }
 
@@ -369,6 +385,33 @@ bool BaseHud::StartButton (int x, int y, int width, int height, int spriteID, in
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
+bool BaseHud::StoryBookButton (int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
+{
+    width *= scaleX;
+    height *= scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+//    int spriteWidth = storyBookButtonTexture->getSize().x;
+//    int spriteHeight = storyBookButtonTexture->getSize().y;
+//    int tileWidth = ( spriteWidth / 2 );
+
+    //create sprite
+    storyBookButtonSprite->setScale(scaleX, scaleY);
+    storyBookButtonSprite->setTexture(*storyBookButtonTexture);
+    storyBookButtonSprite->setTextureRect(sf::IntRect(0,0,width,height)); //remove later
+    //if (spriteID == 0) storyBookButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+    //else storyBookButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    storyBookButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*storyBookButtonSprite);
+
+	//text mouse
+    return CheckMouseOnButton(alignedPos, width, height);
+}
+
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
 void BaseHud::HelpBox(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
 {
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width * scaleX, height * scaleY);
@@ -448,6 +491,21 @@ void BaseHud::MenuBox(int x, int y, int width, int height, int alignment, float 
 }
 
 //----------------------------------------------------------------
+//              image/sprite SFML label with text
+//----------------------------------------------------------------
+void BaseHud::StoryBook(int x, int y, int width, int height, int alignment, float scaleX, float scaleY)
+{
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+
+    //create sprite
+    storyBookSprite->setTexture(*storyBookTexture);
+    storyBookSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    storyBookSprite->setPosition(alignedPos);
+
+    _window->draw(*storyBookSprite);
+}
+
+//----------------------------------------------------------------
 // label that uses spritesheet and manipulates sprite's position
 //----------------------------------------------------------------
 void BaseHud::ProgressBar(int x, int y, int width, int height, int spriteSheetRow, int alignment)
@@ -499,11 +557,13 @@ void BaseHud::setHelpBoxTextureName(const std::string name)     { helpBoxTexture
 void BaseHud::setRiddleBoxTextureName(const std::string name)   { riddleBoxTextureName   = name; }
 void BaseHud::setHintsBoxTextureName(const std::string name)    { hintsBoxTextureName    = name; }
 void BaseHud::setMenuBoxTextureName(const std::string name)     { menuBoxTextureName     = name; }
+void BaseHud::setStoryBookTextureName(const std::string name)   { storyBookTextureName     = name; }
 void BaseHud::setProgressbarTextureName(const std::string name) { progressBarTextureName = name; }
 void BaseHud::setDisplayTime(const int value)                   { displayTime            = value;}
 void BaseHud::setExitButtonTextureName(const std::string name)  { exitButtonTextureName  = name; }
 void BaseHud::setResumeButtonTextureName(const std::string name){ resumeButtonTextureName= name; }
 void BaseHud::setStartButtonTextureName(const std::string name) { startButtonTextureName = name; }
+void BaseHud::setStoryBookButtonTextureName(const std::string name) { storyBookButtonTextureName = name; }
 
 //----------------------------------------------------------------------
 // simple counter that sends to lua a signal to stop displaying riddle

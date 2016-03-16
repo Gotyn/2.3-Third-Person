@@ -19,6 +19,7 @@ hint3_spriteID = 0
 exit_spriteID = 0 
 resume_spriteID = 0 
 start_spriteID = 0
+story_book_button_spriteID = 0
 
 function draw()
 	if game_state == MODE.LEVEL then
@@ -31,7 +32,8 @@ function draw()
 end
 
 function updateBook()
-
+    popStoryBook()
+    handleStoryBookButtonClick()
 end
 
 function updateMenu()
@@ -211,6 +213,18 @@ function handleMenuButtonsClick()
     
     if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, data.exit_button_width, 
         data.exit_button_height, exit_spriteID, data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
+        print("EXIT!")
+        Hud.handleExit()
+    end
+end
+
+function popStoryBook()
+    Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_width, data.story_book_height, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
+end
+
+function handleStoryBookButtonClick()
+    if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, data.story_book_button_width, 
+        data.story_book_button_height, story_book_button_spriteID, data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
         print("EXIT!")
         Hud.handleExit()
     end
