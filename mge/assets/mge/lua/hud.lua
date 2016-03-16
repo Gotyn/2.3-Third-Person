@@ -186,15 +186,9 @@ end
 function handleMenuButtonsClick()
 
     if firstMenuShown == false then
-<<<<<<< HEAD
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
-            data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
-            game_state = MODE.BOOK
-=======
         if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
-            game_state = MODE.LEVEL
->>>>>>> refs/remotes/origin/hud2
+            game_state = MODE.BOOK
             firstMenuShown = true
             start_spriteID = 1
             print("START!")
@@ -227,26 +221,19 @@ function popStoryBook()
 end
 
 function handleStoryBookButtonClick()
-<<<<<<< HEAD
     if firstBookShown == false then
-        if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, data.story_book_button_width, 
-            data.story_book_button_height, story_book_button_spriteID, data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
+        if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
+            data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             firstBookShown = true
             print("CONTINUE TO 1st LEVEL!")
         end
     else
-        if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, data.story_book_button_width, 
-            data.story_book_button_height, story_book_button_spriteID, data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
+        if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
+            data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             continueToNextPuzzle = true
             print("CONTINUE TO NEXT LEVEL!")
         end
-=======
-    if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
-						   data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
-        print("EXIT!")
-        Hud.handleExit()
->>>>>>> refs/remotes/origin/hud2
     end
 end
