@@ -1,7 +1,7 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story1.lua")
+dofile("mge/lua/story3.lua")
 
 game_state = 1
 storyCompleted = false
@@ -68,6 +68,7 @@ function selectPuzzle(puzzleIndex)
         if counter == puzzleIndex then
             puzzleSetActive(counter, true)
             camera:setPosition(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3])
+            camera:moveTo(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3], 10)
             spotlight:setPosition(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3])
         else
             puzzleSetActive(counter, false)
