@@ -54,10 +54,8 @@ function updateLevel()
     inintialRiddleDisplay()
 	
 	-- Update ProgressBar: --
-	updateProgressBar(data.progress_bar_xOffset, 	  data.progress_bar_yOffset,  
-					  data.progress_bar_sprite_width, data.progress_bar_sprite_height, 
-					  data.progress_bar_sprite_rows,  data.progress_bar_alignment
-					  --data.progress_bar_scaleX, 	  data.progress_bar_scaleY
+	updateProgressBar(data.progress_bar_xOffset, data.progress_bar_yOffset, data.progress_bar_alignment,
+					  data.progress_bar_scaleX,  data.progress_bar_scaleY
 					  )
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.MENU
@@ -65,8 +63,8 @@ function updateLevel()
 end
 
 function handleHelpButtonClick(spriteID)
-    if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, data.help_button_width, 
-        data.help_button_height, spriteID, data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
+    if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, spriteID, 
+				      data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
         if showHelpBox == false then
             showHelpBox = true
         else
@@ -83,8 +81,8 @@ function handleHelpButtonClick(spriteID)
 end
 
 function handleHintButtonsClick()
-    if Hud.hintButton1(data.hint_button1_xOffset, data.hint_button1_yOffset, data.hint_button1_width, 
-        data.hint_button1_height, hint1_spriteID, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
+    if Hud.hintButton1(data.hint_button1_xOffset, data.hint_button1_yOffset, 
+        hint1_spriteID, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
         if showHintsBox1 == false then
             showHintsBox1 = true
 			hint1_spriteID = 1
@@ -99,8 +97,8 @@ function handleHintButtonsClick()
         end
     end
      
-    if Hud.hintButton2(data.hint_button2_xOffset, data.hint_button2_yOffset, data.hint_button2_width, 
-        data.hint_button2_height, hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
+    if Hud.hintButton2(data.hint_button2_xOffset, data.hint_button2_yOffset,
+        hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
         if showHintsBox2 == false then
             showHintsBox2 = true
 			hint1_spriteID = 0
@@ -116,8 +114,8 @@ function handleHintButtonsClick()
         end
     end
     
-    if Hud.hintButton3(data.hint_button3_xOffset, data.hint_button3_yOffset, data.hint_button3_width, 
-        data.hint_button3_height, hint3_spriteID, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
+    if Hud.hintButton3(data.hint_button3_xOffset, data.hint_button3_yOffset, 
+        hint3_spriteID, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
         if showHintsBox3 == false then
             showHintsBox3 = true
 			hint1_spriteID = 0
@@ -133,17 +131,15 @@ function handleHintButtonsClick()
     end
 end
 
-function updateProgressBar(xOffset, yOffset, spriteWidth, spriteHeight, spriteRows, alignment, scaleX, scaleY)
-	rowHeight = spriteHeight / spriteRows
-		
-	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 7, alignment) -- show all 
-	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 6, alignment) -- show 6
-	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 5, alignment) -- show 5
-	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 4, alignment) -- show 4
-	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 3, alignment) -- show 3
-	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 2, alignment) -- show 2
-	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 1, alignment) -- show 1
-	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, spriteWidth, rowHeight, rowHeight * 0, alignment) -- show none
+function updateProgressBar(xOffset, yOffset, alignment, scaleX, scaleY)
+	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, 7, alignment, scaleX, scaleY) -- show 7 
+	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, 6, alignment, scaleX, scaleY) -- show 6
+	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, 5, alignment, scaleX, scaleY) -- show 5
+	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, 4, alignment, scaleX, scaleY) -- show 4
+	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, 3, alignment, scaleX, scaleY) -- show 3
+	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, 2, alignment, scaleX, scaleY) -- show 2
+	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, 1, alignment, scaleX, scaleY) -- show 1
+	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, 0, alignment, scaleX, scaleY) -- show 0
 	end
 	
 end
@@ -151,9 +147,9 @@ end
 -- the box holding the hint buttons
 function updateHelpBox()
     if showHelpBox == true then
-        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, data.help_box_width, data.help_box_height, 
+        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, 
 					  data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
-		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_width, data.riddle_box_height, data.riddle_box_font, 
+		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, 
 				      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
         handleHintButtonsClick()
     else
@@ -166,7 +162,7 @@ end
 -- the box showing the actual hint
 function updateHintsBox()
     if showHintsBox1 == true or showHintsBox2 == true or showHintsBox3 == true then
-        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_width, data.hints_box_height, data.hints_box_font, 
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, 
 					 hintText, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
     end
 end
@@ -182,14 +178,14 @@ function inintialRiddleDisplay()
 end
 
 function popMenu()
-    Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_width, data.menu_box_height, data.menu_box_alignment, data.menu_box_scaleX, data.menu_box_scaleY)
+    Hud.menuBox(data.menu_box_xOffset, data.menu_box_yOffset, data.menu_box_alignment, data.menu_box_scaleX, data.menu_box_scaleY)
 end
 
 function handleMenuButtonsClick()
 
     if firstMenuShown == false then
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
-            data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
+        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             game_state = MODE.LEVEL
             firstMenuShown = true
             start_spriteID = 1
@@ -198,33 +194,33 @@ function handleMenuButtonsClick()
     end
     
     if firstMenuShown == true then
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, data.start_button_width, 
-            data.start_button_height, start_spriteID, data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
+        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             -- CALL RESTART FUNCTION HERE
             print("RESTART!")
         end
     
-        if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, data.resume_button_width, 
-            data.resume_button_height, resume_spriteID, data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
+        if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
+							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
             game_state = MODE.LEVEL
             print("RESUME!")
         end
     end
     
-    if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, data.exit_button_width, 
-        data.exit_button_height, exit_spriteID, data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
+    if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
+					  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
         print("EXIT!")
         Hud.handleExit()
     end
 end
 
 function popStoryBook()
-    Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_width, data.story_book_height, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
+    Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
 end
 
 function handleStoryBookButtonClick()
-    if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, data.story_book_button_width, 
-        data.story_book_button_height, story_book_button_spriteID, data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
+    if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
+						   data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
         print("EXIT!")
         Hud.handleExit()
     end
