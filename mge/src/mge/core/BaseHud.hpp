@@ -12,28 +12,22 @@ class BaseHud
         virtual ~BaseHud();
 
         //SFML stuff (buttons, boxes, labels
-        static bool Button      (int xOffset, int yOffset, std::string caption);
-        static void TextLabel   (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
-        static void ProgressBar (int xOffset, int yOffset, int row, int alignment, float scaleX, float scaleY);
-        static bool HelpButton  (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton1 (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton2 (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton3 (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool ExitButton  (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool ResumeButton(int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool StartButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
-<<<<<<< HEAD
-        static void HelpBox     (int xOffset, int yOffset, int alignment, float scaleX, float scaleY);
-        static void RiddleBox   (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
-        static void HintsBox    (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
-=======
-        static bool StoryBookButton (int xOffset, int yOffset, int width, int height, int spriteID, int alignment, float scaleX, float scaleY);
-        static void HelpBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
-        static void RiddleBox   (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); //scale doesnt work here???
-        static void HintsBox    (int xOffset, int yOffset, int width, int height, int fontSize, std::string caption, int alignment); // ... max arg lua can handle?
->>>>>>> refs/remotes/origin/hud2
-        static void MenuBox     (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
-        static void StoryBook   (int xOffset, int yOffset, int width, int height, int alignment, float scaleX, float scaleY);
+        static bool Button          (int xOffset, int yOffset, std::string caption);
+        static void TextLabel       (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
+        static void ProgressBar     (int xOffset, int yOffset, int row, int alignment, float scaleX, float scaleY);
+        static bool HelpButton      (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton1     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton2     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintButton3     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool ExitButton      (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool ResumeButton    (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool StartButton     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool StoryBookButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static void HelpBox         (int xOffset, int yOffset, int alignment, float scaleX, float scaleY);
+        static void RiddleBox       (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
+        static void HintsBox        (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
+        static void MenuBox         (int xOffset, int yOffset, int alignment, float scaleX, float scaleY);
+        static void StoryBook       (int xOffset, int yOffset, int alignment, float scaleX, float scaleY);
 
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 

@@ -5,7 +5,7 @@ alignment = { LEFT_TOP = 1, LEFT_CENTER = 2, LEFT_BOTTOM = 3, CENTER_TOP = 4, CE
 -- BUTTONS AND BOXES PARAMETERS START --
 display_riddle_at_start = 20
 
---Progressbar
+--[ProgressBar] ProgressBar 
 progress_bar_xOffset = 0
 progress_bar_yOffset = 50 
 progress_bar_scaleX = 0.75
@@ -13,7 +13,7 @@ progress_bar_scaleY = 0.75
 progress_bar_alignment = alignment.CENTER_TOP
 progress_bar_texture = "Progress_256.png"
 
---Button for Riddle / Hints
+--[HelpButton] Button for Riddle / Hints 
 help_button_xOffset = 20
 help_button_yOffset = 20
 help_button_scaleX = 0.14
@@ -21,7 +21,7 @@ help_button_scaleY = 0.14
 help_button_alignment = alignment.RIGHT_TOP
 help_button_texture = "Hint_Button_Shinx_Sprite.png"
 
---Button for first hint
+--[HintButton1] Button for first hint
 hint_button1_xOffset = 30
 hint_button1_yOffset = 92
 hint_button1_scaleX = 0.1
@@ -29,7 +29,7 @@ hint_button1_scaleY = 0.1
 hint_button1_alignment = alignment.RIGHT_TOP
 hint_button1_texture = "Hint_Button_1_Sprite.png"
 
---Button for second hint
+--[HintButton2] Button for second hint
 hint_button2_xOffset = 30
 hint_button2_yOffset = 140
 hint_button2_scaleX = 0.1
@@ -37,7 +37,7 @@ hint_button2_scaleY = 0.1
 hint_button2_alignment = alignment.RIGHT_TOP
 hint_button2_texture = "Hint_Button_2_Sprite.png"
 
---Button for third hint
+--[HintButton2] Button for third hint
 hint_button3_xOffset = 30
 hint_button3_yOffset = 188
 hint_button3_scaleX = 0.1
@@ -45,67 +45,57 @@ hint_button3_scaleY = 0.1
 hint_button3_alignment = alignment.RIGHT_TOP
 hint_button3_texture = "Hint_Button_3_Sprite.png"
 
---Label that shows menu container
+--[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
-menu_box_width = 500
-menu_box_height = 500
-menu_box_scaleX = 1
-menu_box_scaleY = 1
-menu_box_alignment = alignment.LEFT_CENTER
+menu_box_scaleX = 2.5
+menu_box_scaleY = 2.5
+menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "bricks.jpg"
 
---Label that shows storybook container
+--[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
-story_book_width = 300
-story_book_height = 250
 story_book_scaleX = 1
 story_book_scaleY = 1
-story_book_alignment = alignment.RIGHT_CENTER
+story_book_alignment = alignment.CENTER_CENTER
 story_book_texture = "bricks.jpg"
 
---Continue button in storybook container
-story_book_button_xOffset = 0
+--[StoryBookButton] Continue button in storybook container
+story_book_button_xOffset = 30
 story_book_button_yOffset = 0
-story_book_button_width = 100
-story_book_button_height = 75
-story_book_button_scaleX = 1
-story_book_button_scaleY = 1
-story_book_button_alignment = alignment.RIGHT_CENTER
+story_book_button_scaleX = 0.1
+story_book_button_scaleY = 0.05
+story_book_button_alignment = alignment.CENTER_CENTER
 story_book_button_texture = "land.jpg"
 
---Start button in menu
-start_button_xOffset = 50
+--[StartButton] Start button in menu
+start_button_xOffset = 150
 start_button_yOffset = 0
-start_button_width = 100			    -- spriteWidth / columns
-start_button_height = 50
-start_button_scaleX = 1
-start_button_scaleY = 1
-start_button_alignment = alignment.LEFT_CENTER
+start_button_scaleX = 0.3
+start_button_scaleY = 0.05
+start_button_alignment = alignment.CENTER_CENTER
 start_button_texture = "land.jpg"
 
---Resume button in menu
-resume_button_xOffset = 170
-resume_button_yOffset = 120
-resume_button_width = 100	        -- spriteWidth / columns
-resume_button_height = 50
-resume_button_scaleX = 1
-resume_button_scaleY = 1
-resume_button_alignment = alignment.LEFT_CENTER
+--[ResumeButton] Resume button in menu 
+-- NOTE: ONLY VISIBLE AFTER STARTING! | Gets reset when hotloading, so click start again.
+resume_button_xOffset = 150
+resume_button_yOffset = 75
+resume_button_scaleX = 0.3
+resume_button_scaleY = 0.05
+resume_button_alignment = alignment.CENTER_CENTER
 resume_button_texture = "land.jpg"
 
---Exit button in menu
-exit_button_xOffset = 290
-exit_button_yOffset = 240
-exit_button_width = 100		    -- spriteWidth / columns
-exit_button_height = 50
-exit_button_scaleX = 1
-exit_button_scaleY = 1
-exit_button_alignment = alignment.LEFT_CENTER
+
+--[ExitButton] Exit button in menu
+exit_button_xOffset = 150
+exit_button_yOffset = 150
+exit_button_scaleX = 0.3
+exit_button_scaleY = 0.05
+exit_button_alignment = alignment.CENTER_CENTER
 exit_button_texture = "land.jpg"
 
---Label behind the hint buttons (helpbox)
+--[HelpBox] Label behind the hint buttons (helpbox)
 help_box_xOffset = 27
 help_box_yOffset = 25
 help_box_scaleX = 0.11
@@ -113,7 +103,7 @@ help_box_scaleY = 0.11
 help_box_alignment = alignment.RIGHT_TOP
 help_box_texture = "Dropdown_Box.png"
 
---Label that shows the riddle
+--[RiddleBox] Label that shows the riddle
 riddle_box_xOffset = 0
 riddle_box_yOffset = 0
 riddle_box_font = 25
@@ -123,7 +113,7 @@ riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
 riddle_box_texture = "Hint_box_3840.png"
 
---Label that shows the actual hint
+--[HintsBox] Label that shows the actual hint
 hints_box_xOffset = 0
 hints_box_yOffset = 120
 hints_box_font = 30
@@ -134,7 +124,7 @@ hints_box_text2 = "this is hint #2"
 hints_box_text3 = "this is hint #3"
 hints_box_alignment = alignment.CENTER_TOP
 hints_box_texture = "bricks.jpg"
--- BUTTONS AND BOXES PARAMETERS START --
+-- BUTTONS AND BOXES PARAMETERS END --
 
 --------------------------------------------------------------------------------
 ---||\--||--|||||||--|||||||--|||||||--|||||||--|||||||--|||||||--|||||||---------
@@ -143,6 +133,7 @@ hints_box_texture = "bricks.jpg"
 --------------------------------------------------------------------------------
 
 -- THIS PART SHOULD NOT BE TOUCHED --
+
 HUD.alignment = alignment
 HUD.display_riddle_at_start = display_riddle_at_start
 
@@ -188,8 +179,6 @@ HUD.hint_button3_texture = hint_button3_texture
 --Exit button in menu
 HUD.exit_button_xOffset = exit_button_xOffset
 HUD.exit_button_yOffset = exit_button_yOffset
-HUD.exit_button_width = exit_button_width
-HUD.exit_button_height = exit_button_height
 HUD.exit_button_scaleX = exit_button_scaleX
 HUD.exit_button_scaleY = exit_button_scaleY
 HUD.exit_button_alignment = exit_button_alignment
@@ -198,8 +187,6 @@ HUD.exit_button_texture = exit_button_texture
 --Resume button in menu
 HUD.resume_button_xOffset = resume_button_xOffset
 HUD.resume_button_yOffset = resume_button_yOffset
-HUD.resume_button_width = resume_button_width
-HUD.resume_button_height = resume_button_height
 HUD.resume_button_scaleX = resume_button_scaleX
 HUD.resume_button_scaleY = resume_button_scaleY
 HUD.resume_button_alignment = resume_button_alignment
@@ -208,8 +195,6 @@ HUD.resume_button_texture = resume_button_texture
 --Start button in menu
 HUD.start_button_xOffset = start_button_xOffset
 HUD.start_button_yOffset = start_button_yOffset
-HUD.start_button_width = start_button_width
-HUD.start_button_height = start_button_height
 HUD.start_button_scaleX = start_button_scaleX
 HUD.start_button_scaleY = start_button_scaleY
 HUD.start_button_alignment = start_button_alignment
@@ -218,8 +203,6 @@ HUD.start_button_texture = start_button_texture
 --Continue button in storybook container
 HUD.story_book_button_xOffset = story_book_button_xOffset
 HUD.story_book_button_yOffset = story_book_button_yOffset
-HUD.story_book_button_width = story_book_button_width
-HUD.story_book_button_height = story_book_button_height
 HUD.story_book_button_scaleX = story_book_button_scaleX
 HUD.story_book_button_scaleY = story_book_button_scaleY
 HUD.story_book_button_alignment = story_book_button_alignment
@@ -246,8 +229,6 @@ HUD.riddle_box_texture = riddle_box_texture
 -- actual menu container
 HUD.menu_box_xOffset = menu_box_xOffset
 HUD.menu_box_yOffset = menu_box_yOffset
-HUD.menu_box_width = menu_box_width
-HUD.menu_box_height = menu_box_height
 HUD.menu_box_alignment = menu_box_alignment
 HUD.menu_box_texture = menu_box_texture
 HUD.menu_box_scaleX = menu_box_scaleX
@@ -256,8 +237,6 @@ HUD.menu_box_scaleY = menu_box_scaleY
 -- actual story book container
 HUD.story_book_xOffset = story_book_xOffset
 HUD.story_book_yOffset = story_book_yOffset
-HUD.story_book_width = story_book_width
-HUD.story_book_height = story_book_height
 HUD.story_book_scaleX = story_book_scaleX
 HUD.story_book_scaleY = story_book_scaleY
 HUD.story_book_alignment = story_book_alignment
