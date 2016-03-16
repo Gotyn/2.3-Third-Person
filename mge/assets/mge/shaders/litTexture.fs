@@ -1,6 +1,16 @@
 #version 330 core
 out vec4 FragColor;
 
+struct Light
+{
+    vec3 position;
+    vec3 direction;
+    vec3 color;
+    float intensity;
+    float cutOff;
+    float outerCutOff;
+};
+
 in VS_OUT {
     vec3 FragPos;
     vec3 Normal;
@@ -11,8 +21,9 @@ in VS_OUT {
 uniform sampler2D diffuseTexture;
 uniform sampler2D shadowMap;
 
+uniform Light light;
+uniform vec3 ambient;
 uniform vec3 diffuseColor;
-uniform vec3 lightPos;
 uniform vec3 viewPos;
 
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 lightDir)
@@ -45,25 +56,36 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 lightDir)
 
 void main()
 {
+    vec3 lightDir = normalize(light.position - fs_in.FragPos);
+
+//    // Check if lighting is inside the spotlight cone
+//    float theta = dot(lightDir, normalize(-light.direction));
+
     vec3 color = texture(diffuseTexture, fs_in.TexCoords).rgb * diffuseColor;
     vec3 normal = normalize(fs_in.Normal);
-    vec3 lightColor = vec3(1.0);
     // Ambient
-    vec3 ambient = 0.15 * color;
+    vec3 ambientColor = ambient * color;
     // Diffuse
-    vec3 lightDir = normalize(lightPos - fs_in.FragPos);
     float diff = max(dot(lightDir, normal), 0.0);
-    vec3 diffuse = diff * lightColor;
+    vec3 diffuse = diff * light.color * light.intensity; //test
     // Specular
     vec3 viewDir = normalize(viewPos - fs_in.FragPos);
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = 0.0;
     vec3 halfwayDir = normalize(lightDir + viewDir);
     spec = pow(max(dot(normal, halfwayDir), 0.0), 32.0);
-    vec3 specular = spec * lightColor;
+    vec3 specular = spec * light.color  * light.intensity; //test
     // Calculate shadow
     float shadow = ShadowCalculation(fs_in.FragPosLightSpace, lightDir);
-    vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * color;
 
-    FragColor = vec4(lighting, 1.0f);
+    // Spotlight (soft edges)
+    float theta = dot(lightDir, normalize(-light.direction));
+    float epsilon = (light.cutOff - light.outerCutOff);
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    diffuse  *= intensity;
+    specular *= intensity;
+
+    vec3 lighting = (ambientColor + (1.0 - shadow) * (diffuse + specular)) * color;
+
+    FragColor = vec4(lighting, 1.0);
 }
