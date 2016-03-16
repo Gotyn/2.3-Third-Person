@@ -32,6 +32,33 @@ storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
 
+spotlight = Game.getSpotlight()
+camera = Game.getCameraObject()
+
+camera:setPosition(-5.537027, 2.663034, 7.021962)
+camera:rotateAroundAxis(-23, 0, 1, 0)
+
+-- ambient lighting
+-- Game.ambientLight(0, 1, 0)
+
+print("spotlight name: " .. camera:getName())
+print("spotlight name: " .. spotlight:getName())
+print("spotlight intensity: " .. spotlight:getIntensity())
+-- spotlight:setIntensity(0.30)
+print("spotlight intensity: " .. spotlight:getIntensity())
+print("spotlight innerCone: " .. spotlight:getInnerCone())
+spotlight:setInnerCone(3)
+print("spotlight innerCone: " .. spotlight:getInnerCone())
+print("spotlight outerCone: " .. spotlight:getOuterCone())
+spotlight:setOuterCone(13)
+print("spotlight outerCone: " .. spotlight:getOuterCone())
+-- spotlight:setColor(1, 0, 0)
+
+-- (test) send active puzzleBlock to c++
+function getActiveBlock()
+    return story[activePuzzle].blocks[activePiece]
+end
+
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
         v:setActive(active)
@@ -116,6 +143,7 @@ function updateLevel()
 
         handleControl()
         handlePlacement(storyWall)
+        --handlePlacement(camera)
         handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then

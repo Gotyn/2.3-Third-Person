@@ -10,6 +10,8 @@
 
 using namespace std;
 
+MainLight* LuaGame::mainLight = 0;
+
 LuaGame::LuaGame()
 {
     _initLua();
@@ -23,6 +25,11 @@ LuaGame::~LuaGame()
 GameObject* LuaGame::getCameraObject()
 {
     return World::Instance()->getMainCamera()->getOwner();
+}
+
+MainLight* LuaGame::getMainLight()
+{
+    return mainLight;
 }
 
 //void LuaGame::setTransform(GameObject* pGameObject, luabridge::LuaRef table)
@@ -85,7 +92,16 @@ void LuaGame::reloadHud()
 //build the game _world
 void LuaGame::_initializeScene()
 {
+    //camera
     GameCamera* gameCam = new GameCamera(glm::vec3(-4, 3, 10));
+
+    //main spotlight
+//    GameObject* lightGO = new GameObject("main light", glm::vec3(-1.6, 2.4, 13.4)); //old -> -3, 3, 10
+//    new Light(lightGO);
+//    lightGO->rotate(glm::radians(-10.0f), glm::vec3(0, 1, 0));
+    mainLight = new MainLight("main light", glm::vec3(-1.6, 2.4, 13.4));
+    mainLight->rotate(glm::radians(-10.0f), glm::vec3(0, 1, 0));
+
     luaL_dofile(_L, "mge/lua/main.lua");
 }
 
@@ -103,7 +119,8 @@ void LuaGame::_initLua()
             .addFunction ("getKeyDown", Input::getKeyDown)
             .addFunction ("getKey", Input::getKey)
             .addFunction ("getCameraObject", LuaGame::getCameraObject)
-//            .addFunction ("setTransform", LuaGame::setTransform)
+            .addFunction ("getSpotlight", LuaGame::getMainLight)
+            .addFunction ("ambientLight", LuaGame::setWorldAmbient)
             //game classes
             .beginClass <GameObject> ("GameObject")
                 .addConstructor <void (*) (void)> ()
@@ -118,6 +135,15 @@ void LuaGame::_initLua()
                 .addFunction ("yaw", &GameObject::yaw)
                 .addFunction ("scale", &GameObject::scaleLua)
                 .addFunction ("lookAt", &GameObject::LookAt)
+            .endClass ()
+            .deriveClass <MainLight, GameObject> ("MainLight")
+                .addFunction ("getIntensity", &MainLight::getIntensity)
+                .addFunction ("setIntensity", &MainLight::setIntensity)
+                .addFunction ("getInnerCone", &MainLight::getInnerCone)
+                .addFunction ("setInnerCone", &MainLight::setInnerCone)
+                .addFunction ("getOuterCone", &MainLight::getOuterCone)
+                .addFunction ("setOuterCone", &MainLight::setOuterCone)
+                .addFunction ("setColor", &MainLight::setColor)
             .endClass ()
             .deriveClass <StoryWall, GameObject> ("StoryWall")
                 .addConstructor <void (*) (std::string pModelName, std::string pTextureName, std::string pObjectName)> ()
@@ -160,6 +186,23 @@ void LuaGame::_initLua()
             .addFunction ("pauseMusic", Audio::PauseMusic)
             .addFunction ("stopMusic", Audio::StopMusic)
         .endNamespace();
+//        .beginNamespace ("Light")
+//            //light functions
+//            .addFunction ("playSound", LuaGame::PlayEffect)
+//        .endNamespace();
+}
+
+void LuaGame::setWorldAmbient(float r, float g, float b)
+{
+    World::Instance()->ambient = glm::vec3(r, g, b);
+}
+
+PuzzleBlock* LuaGame::getActiveBlock()
+{
+    luabridge::LuaRef getActiveBlock = luabridge::getGlobal(_L, "getActiveBlock");
+
+    PuzzleBlock* b = getActiveBlock();
+    return b;
 }
 
 int LuaGame::getWindowWidth()
@@ -174,6 +217,15 @@ void LuaGame::_update()
     //call lua update function
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
+
+    // test: spotlight update target (LookAt not working) //
+//    PuzzleBlock* block = getActiveBlock();
+//
+//    if (block != NULL)
+//    {
+//        mainSpotlight->getOwner()->LookAt(block);
+//    }
+    // end test //
 
     if (!BaseHud::texturesSet)
     {
