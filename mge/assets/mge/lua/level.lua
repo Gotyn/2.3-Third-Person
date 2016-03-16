@@ -1,7 +1,7 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story3.lua")
+dofile("mge/lua/story1.lua")
 
 game_state = 1
 storyCompleted = false
@@ -142,11 +142,8 @@ function updateLevel()
         end
 
         handleControl()
-<<<<<<< HEAD
         handlePlacement(storyWall)
-=======
-       -- handlePlacement(camera)
->>>>>>> refs/remotes/origin/master
+        --handlePlacement(camera)
         handlePlacement(story[activePuzzle].blocks[activePiece])
 
         if checkProgress() >= solvedThreshold then
