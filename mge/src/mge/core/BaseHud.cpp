@@ -294,15 +294,16 @@ bool BaseHud::ExitButton  (int x, int y, int width, int height, int spriteID, in
     height *= scaleY;
 
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
-    int spriteWidth = exitButtonTexture->getSize().x;
-    int spriteHeight = exitButtonTexture->getSize().y;
-    int tileWidth = ( spriteWidth );
+//    int spriteWidth = exitButtonTexture->getSize().x;
+//    int spriteHeight = exitButtonTexture->getSize().y;
+//    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
     exitButtonSprite->setTexture(*exitButtonTexture);
     exitButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) exitButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
-    else exitButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    exitButtonSprite->setTextureRect(sf::IntRect(0,0,width,height)); //remove later
+//    if (spriteID == 0) exitButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+//    else exitButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     exitButtonSprite->setPosition(alignedPos);
 
     _window->draw(*exitButtonSprite);
@@ -320,15 +321,16 @@ bool BaseHud::ResumeButton(int x, int y, int width, int height, int spriteID, in
     height *= scaleY;
 
     sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
-    int spriteWidth = resumeButtonTexture->getSize().x;
-    int spriteHeight = resumeButtonTexture->getSize().y;
-    int tileWidth = ( spriteWidth / 2 );
+//    int spriteWidth = resumeButtonTexture->getSize().x;
+//    int spriteHeight = resumeButtonTexture->getSize().y;
+//    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
     resumeButtonSprite->setTexture(*resumeButtonTexture);
     resumeButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) resumeButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
-    else resumeButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
+    resumeButtonSprite->setTextureRect(sf::IntRect(0,0,width,height)); //remove later
+//    if (spriteID == 0) resumeButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
+//    else resumeButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     resumeButtonSprite->setPosition(alignedPos);
 
     _window->draw(*resumeButtonSprite);
@@ -342,15 +344,18 @@ bool BaseHud::ResumeButton(int x, int y, int width, int height, int spriteID, in
 //----------------------------------------------------------------
 bool BaseHud::StartButton (int x, int y, int width, int height, int spriteID, int alignment, float scaleX, float scaleY)
 {
-    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width * scaleX, height * scaleY);
-    //int spriteWidth = startButtonTexture->getSize().x;
-    //int spriteHeight = startButtonTexture->getSize().y;
-    //int tileWidth = ( spriteWidth );
+    width *= scaleX;
+    height *= scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, x, y, width, height);
+//    int spriteWidth = startButtonTexture->getSize().x;
+//    int spriteHeight = startButtonTexture->getSize().y;
+//    int tileWidth = ( spriteWidth / 2 );
 
     //create sprite
     startButtonSprite->setScale(scaleX, scaleY);
     startButtonSprite->setTexture(*startButtonTexture);
-    startButtonSprite->setTextureRect(sf::IntRect(0,0,width,height));
+    startButtonSprite->setTextureRect(sf::IntRect(0,0,width,height)); //remove later
     //if (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteHeight));
     //else startButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteHeight));
     startButtonSprite->setPosition(alignedPos);
@@ -609,3 +614,7 @@ int BaseHud::Align_Y_Top    (int yOffset)            { return yOffset; }
 int BaseHud::Align_Y_Center (int height)             { return (wSize.y / 2 - height / 2);   }
 int BaseHud::Align_Y_Bottom (int height, int yOffset){ return (wSize.y - height - yOffset); }
 
+void BaseHud::handleExit()
+{
+    exit(0);
+}

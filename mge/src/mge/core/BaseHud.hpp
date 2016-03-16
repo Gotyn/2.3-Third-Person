@@ -47,6 +47,7 @@ class BaseHud
         static bool lmbPressedLastFrame; //store if LeftMouseButton was pressed.
         static bool DisplayRiddleAtStart();
         static bool texturesSet;
+        static void handleExit();
 
     protected:
 

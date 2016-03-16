@@ -3,8 +3,7 @@ gameHud_Data = require "mge/lua/hud_data"
 
 dofile("mge/lua/story2.lua")
 
-MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
-game_state = MODE.LEVEL
+game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
@@ -96,29 +95,12 @@ end
 selectPuzzle(activePuzzle)
 
 function update()
-    if game_state == MODE.LEVEL then
+    if game_state == hud.MODE.LEVEL then
         updateLevel()
-    elseif game_state == MODE.BOOK then
-        updateBook()
-    elseif game_state == MODE.MENU then
-        updateMenu()
-    end
-end
-
-function updateBook()
-
-end
-
-function updateMenu()
-    if Game.getKeyDown(KeyCode.M) == true then
-        game_state = MODE.LEVEL
     end
 end
 
 function updateLevel()
-    if Game.getKeyDown(KeyCode.M) == true then
-        game_state = MODE.MENU
-    end
     if storyCompleted then
         return
     else
@@ -143,6 +125,7 @@ end
 function updateGUI()
     hud.progress = checkProgress()
     hud.draw()
+    game_state = hud.game_state
 end
 
 function refreshHud()

@@ -148,6 +148,7 @@ void LuaGame::_initLua()
             .addFunction ("hintsBox", BaseHud::HintsBox)
             .addFunction ("menuBox", BaseHud::MenuBox)
             .addFunction ("displayRiddleAtStart", BaseHud::DisplayRiddleAtStart)
+            .addFunction ("handleExit", BaseHud::handleExit)
         .endNamespace()
         .beginNamespace ("Audio")
             //audio functions
@@ -248,4 +249,3 @@ void LuaGame::_updateGUI()
     luaUpdateGUI();
     _window->popGLStates();
 }
-
