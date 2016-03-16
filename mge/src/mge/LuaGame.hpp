@@ -30,6 +30,7 @@ class LuaGame : public AbstractGame
         static int getWindowWidth();
         static GameObject* getCameraObject();
         static MainLight* getMainLight();
+        static void setWorldAmbient(float r, float g, float b);
 
         PuzzleBlock* getActiveBlock();
 

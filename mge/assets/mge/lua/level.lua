@@ -31,6 +31,9 @@ camera = Game.getCameraObject()
 camera:setPosition(-5.537027, 2.663034, 7.021962)
 camera:rotateAroundAxis(-23, 0, 1, 0)
 
+-- ambient lighting
+-- Game.ambientLight(0, 1, 0)
+
 print("spotlight name: " .. camera:getName())
 print("spotlight name: " .. spotlight:getName())
 print("spotlight intensity: " .. spotlight:getIntensity())
