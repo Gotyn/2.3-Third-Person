@@ -2143,7 +2143,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/core/FPS.hpp"
 
-1458076279 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
+1458122748 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
 	<lua.hpp>
 	<FileWatcher/FileWatcher.h>
 	<AbstractGame.hpp>
@@ -2153,6 +2153,7 @@
 	"mge/sphinx/PuzzleBlock.hpp"
 	"ParticleSystem.hpp"
 	"Light.hpp"
+	"MainLight.hpp"
 	"lua.h"
 	"lauxlib.h"
 	"lualib.h"
@@ -2392,7 +2393,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1457648400 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1458125290 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<stdio.h>
@@ -2563,7 +2564,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1458077712 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1458124764 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3417,7 +3418,7 @@
 	<map>
 	<sys/types.h>
 
-1458046092 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1458121566 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
@@ -3439,7 +3440,7 @@
 	"mge/core/RenderPipeline.hpp"
 	"ParticleSystem.hpp"
 
-1458078262 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1458121378 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3587,11 +3588,18 @@
 	"GameObject.hpp"
 	"config.hpp"
 
-1458078854 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\light.hpp
+1458121675 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\light.hpp
 	<AbstractBehaviour.hpp>
 	<glm.hpp>
 
 1458046092 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\light.cpp
 	"Light.hpp"
 	"GameObject.hpp"
+
+1458124696 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\mainlight.cpp
+	"MainLight.hpp"
+
+1458124583 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\mainlight.hpp
+	<GameObject.hpp>
+	"Light.hpp"
 

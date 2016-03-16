@@ -54,8 +54,8 @@ void RenderPipeline::calculateLightSpaceMatrix()
     glm::mat4 lightProjection = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, near_plane, far_plane);
 //    glm::mat4 lightView = glm::lookAt(glm::vec3(-4, 3, 10), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    glm::vec3 lightPos = LuaGame::mainSpotlight->getOwner()->getWorldPosition();
-    glm::vec3 lightForward = LuaGame::mainSpotlight->getOwner()->getForward();
+    glm::vec3 lightPos = LuaGame::mainLight->getWorldPosition();
+    glm::vec3 lightForward = LuaGame::mainLight->getForward();
     glm::mat4 lightView = glm::lookAt(
           lightPos,                     // from
           lightPos + lightForward,      // target

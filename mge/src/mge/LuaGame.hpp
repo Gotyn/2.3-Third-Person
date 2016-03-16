@@ -11,6 +11,7 @@
 #include "mge/sphinx/PuzzleBlock.hpp"
 #include "ParticleSystem.hpp"
 #include "Light.hpp"
+#include "MainLight.hpp"
 
 extern "C" {
 # include "lua.h"
@@ -28,9 +29,11 @@ class LuaGame : public AbstractGame
 
         static int getWindowWidth();
         static GameObject* getCameraObject();
+        static MainLight* getMainLight();
+
         PuzzleBlock* getActiveBlock();
 
-        static Light* mainSpotlight;
+        static MainLight* mainLight;
 
 	protected:
         virtual void _initializeScene();
