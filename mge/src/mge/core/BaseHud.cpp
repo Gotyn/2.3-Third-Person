@@ -326,19 +326,31 @@ bool BaseHud::ResumeButton(int xOffset, int yOffset, int spriteID, int alignment
 bool BaseHud::StartButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
 {
     int spriteSheetColumns = 2;
+    int spriteSheetRows = 5;
 
     sf::Vector2u spriteSize(startButtonTexture->getSize());                              // Get the image size
     int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
+    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                          //unscaled!
+    int tileHeight = spriteSize.y / spriteSheetRows;                                //unscaled!
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
 
     //create sprite
     startButtonSprite->setTexture(*startButtonTexture);
     startButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else startButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
+
+    if      (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(        0,              0, tileWidth, tileHeight)); //R1 C1    //Play
+    else if (spriteID == 1) startButtonSprite->setTextureRect(sf::IntRect(tileWidth,              0, tileWidth, tileHeight)); //R1 C2    //Play*
+    else if (spriteID == 2) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 1, tileWidth, tileHeight)); //R2 C1    //Exit
+    else if (spriteID == 3) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 1, tileWidth, tileHeight)); //R2 C2    //Exit*
+    else if (spriteID == 4) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Restart
+    else if (spriteID == 5) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Restart*
+    else if (spriteID == 6) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Resume
+    else if (spriteID == 7) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R5 C2    //Resume*
+    else if (spriteID == 8) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 4, tileWidth, tileHeight)); //R5 C1    //Empty
+    else if (spriteID == 9) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 4, tileWidth, tileHeight)); //R5 C2    //Empty*
+
     startButtonSprite->setPosition(alignedPos);
 
     _window->draw(*startButtonSprite);

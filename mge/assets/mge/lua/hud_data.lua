@@ -92,7 +92,7 @@ start_button_yOffset = 150
 start_button_scaleX = 0.2
 start_button_scaleY = 0.2
 start_button_alignment = alignment.RIGHT_BOTTOM
-start_button_texture = "MENU_Play_Sheet.png"
+start_button_texture = "MENU_Buttons_Sheet.png"
 
 --[ExitButton] Exit button in menu
 exit_button_xOffset = 30
