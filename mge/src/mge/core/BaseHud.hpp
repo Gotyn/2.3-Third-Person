@@ -106,11 +106,11 @@ class BaseHud
         static sf::Vector2u wSize;
         // Alignment on X
         static int Align_X_Left   (int xOffset);
-        static int Align_X_Center (int width);
+        static int Align_X_Center (int width, int xOffset);
         static int Align_X_Right  (int width, int xOffset);
         // Alignment on Y
         static int Align_Y_Top    (int yOffset);
-        static int Align_Y_Center (int height);
+        static int Align_Y_Center (int height, int yOffset);
         static int Align_Y_Bottom (int height, int yOffset);
 };
 

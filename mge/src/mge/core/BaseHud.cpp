@@ -520,16 +520,16 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
     wSize = _window->getSize();
 
     switch ( alignment ) {                    //X Alignment                  //Y Alignment
-        case 1:  correctPosition = sf::Vector2f(Align_X_Left(xOffset)        , Align_Y_Top(yOffset));            break; // LEFT_TOP
-        case 2:  correctPosition = sf::Vector2f(Align_X_Left(xOffset)        , Align_Y_Center(height));          break; // LEFT_CENTER
-        case 3:  correctPosition = sf::Vector2f(Align_X_Left(xOffset)        , Align_Y_Bottom(height, yOffset)); break; // LEFT_BOTTOM
-        case 4:  correctPosition = sf::Vector2f(Align_X_Center(width)        , Align_Y_Top(yOffset));            break; // CENTER_TOP
-        case 5:  correctPosition = sf::Vector2f(Align_X_Center(width)        , Align_Y_Center(height));          break; // CENTER_CENTER
-        case 6:  correctPosition = sf::Vector2f(Align_X_Center(width)        , Align_Y_Bottom(height, yOffset)); break; // CENTER_BOTTOM
-        case 7:  correctPosition = sf::Vector2f(Align_X_Right(width, xOffset), (yOffset));                       break; // RIGHT_TOP
-        case 8:  correctPosition = sf::Vector2f(Align_X_Right(width, xOffset), Align_Y_Center(height));          break; // RIGHT_CENTER
-        case 9:  correctPosition = sf::Vector2f(Align_X_Right(width, xOffset), Align_Y_Bottom(height, yOffset)); break; // RIGHT_BOTTOM
-        default: std::cout << "WARNING: Alignment '" << alignment << "' doesn't exist!" << std::endl;            break; // WARNING
+        case 1:  correctPosition = sf::Vector2f(Align_X_Left(xOffset)         , Align_Y_Top(yOffset));            break; // LEFT_TOP
+        case 2:  correctPosition = sf::Vector2f(Align_X_Left(xOffset)         , Align_Y_Center(height, yOffset)); break; // LEFT_CENTER
+        case 3:  correctPosition = sf::Vector2f(Align_X_Left(xOffset)         , Align_Y_Bottom(height, yOffset)); break; // LEFT_BOTTOM
+        case 4:  correctPosition = sf::Vector2f(Align_X_Center(width, xOffset), Align_Y_Top(yOffset));            break; // CENTER_TOP
+        case 5:  correctPosition = sf::Vector2f(Align_X_Center(width, xOffset), Align_Y_Center(height, yOffset)); break; // CENTER_CENTER
+        case 6:  correctPosition = sf::Vector2f(Align_X_Center(width, xOffset), Align_Y_Bottom(height, yOffset)); break; // CENTER_BOTTOM
+        case 7:  correctPosition = sf::Vector2f(Align_X_Right(width, xOffset) , (yOffset));                       break; // RIGHT_TOP
+        case 8:  correctPosition = sf::Vector2f(Align_X_Right(width, xOffset) , Align_Y_Center(height, yOffset)); break; // RIGHT_CENTER
+        case 9:  correctPosition = sf::Vector2f(Align_X_Right(width, xOffset) , Align_Y_Bottom(height, yOffset)); break; // RIGHT_BOTTOM
+        default: std::cout << "WARNING: Alignment '" << alignment << "' doesn't exist!" << std::endl;             break; // WARNING
     }
     return correctPosition;
 }
@@ -539,10 +539,10 @@ sf::Vector2f BaseHud::fixAlignment(int alignment, int xOffset, int yOffset, int 
 //----------------------------------------------------------------------
 // Alignment on X
 int BaseHud::Align_X_Left   (int xOffset)            { return xOffset; }
-int BaseHud::Align_X_Center (int width)              { return (wSize.x / 2 - width / 2);   }
+int BaseHud::Align_X_Center (int width, int xOffset) { return (wSize.x / 2 - width / 2 + xOffset);   }
 int BaseHud::Align_X_Right  (int width, int xOffset) { return (wSize.x - width - xOffset); }
 // Alignment on Y
 int BaseHud::Align_Y_Top    (int yOffset)            { return yOffset; }
-int BaseHud::Align_Y_Center (int height)             { return (wSize.y / 2 - height / 2);   }
+int BaseHud::Align_Y_Center (int height, int yOffset){ return (wSize.y / 2 - height / 2 + yOffset);   }
 int BaseHud::Align_Y_Bottom (int height, int yOffset){ return (wSize.y - height - yOffset); }
 
