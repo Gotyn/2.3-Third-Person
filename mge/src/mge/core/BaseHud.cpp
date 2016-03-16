@@ -19,6 +19,7 @@ sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
 sf::Texture* BaseHud::exitButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::resumeButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::menuButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::startButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
@@ -35,6 +36,7 @@ sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::exitButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::resumeButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::startButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::menuButtonSprite = new sf::Sprite; //contains play, exit, restart, resume, empty
 sf::Sprite* BaseHud::storyBookButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
@@ -52,6 +54,7 @@ std::string BaseHud::hintButton2TextureName = "land.jpg";
 std::string BaseHud::hintButton3TextureName = "land.jpg";
 std::string BaseHud::exitButtonTextureName = "land.jpg";
 std::string BaseHud::resumeButtonTextureName = "land.jpg";
+std::string BaseHud::menuButtonTextureName = "land.jpg";
 std::string BaseHud::startButtonTextureName = "land.jpg";
 std::string BaseHud::storyBookButtonTextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
@@ -357,6 +360,46 @@ bool BaseHud::StartButton (int xOffset, int yOffset, int spriteID, int alignment
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
+
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
+bool BaseHud::MenuButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
+{
+    int spriteSheetColumns = 2;
+    int spriteSheetRows = 5;
+
+    sf::Vector2u spriteSize(menuButtonTexture->getSize());                              // Get the image size
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
+    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                          //unscaled!
+    int tileHeight = spriteSize.y / spriteSheetRows;                                //unscaled!
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
+
+    //create sprite
+    menuButtonSprite->setTexture(*menuButtonTexture);
+    menuButtonSprite->setScale(scaleX, scaleY);
+
+    if      (spriteID == 0) menuButtonSprite->setTextureRect(sf::IntRect(        0,              0, tileWidth, tileHeight)); //R1 C1    //Play
+    else if (spriteID == 1) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth,              0, tileWidth, tileHeight)); //R1 C2    //Play*
+    else if (spriteID == 2) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 1, tileWidth, tileHeight)); //R2 C1    //Exit
+    else if (spriteID == 3) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 1, tileWidth, tileHeight)); //R2 C2    //Exit*
+    else if (spriteID == 4) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Restart
+    else if (spriteID == 5) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Restart*
+    else if (spriteID == 6) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Resume
+    else if (spriteID == 7) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R5 C2    //Resume*
+    else if (spriteID == 8) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 4, tileWidth, tileHeight)); //R5 C1    //Empty
+    else if (spriteID == 9) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 4, tileWidth, tileHeight)); //R5 C2    //Empty*
+
+    menuButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*menuButtonSprite);
+
+    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
+}
+
+
 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click

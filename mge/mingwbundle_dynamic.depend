@@ -2889,7 +2889,7 @@
 
 1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458171058 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
