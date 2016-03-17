@@ -20,6 +20,8 @@ GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld 
         World::Instance()->add(this);
 
     _rotateWithCamera = true;
+
+    std::cout << "game object created" << std::endl;
 }
 
 GameObject::~GameObject()
