@@ -65,6 +65,9 @@ end
 
 function nextPuzzle()
     nextPuzzleIndex = activePuzzle + 1
+    if nextPuzzleIndex == #story then
+        hud.playFinalBookSound = true
+    end
     if nextPuzzleIndex > #story then
         storyCompleted = true
         hud.showFinalMenu = true
@@ -139,6 +142,7 @@ function updateLevel()
 
         if checkProgress() >= solvedThreshold then
             hud.game_state = hud.MODE.BOOK
+            hud.bookSoundPlayed = false
         end
         
         if hud.continueToNextPuzzle == true then
