@@ -3,7 +3,7 @@ local HUD = {}
 alignment = { LEFT_TOP = 1, LEFT_CENTER = 2, LEFT_BOTTOM = 3, CENTER_TOP = 4, CENTER_CENTER = 5, CENTER_BOTTOM = 6, RIGHT_TOP = 7, RIGHT_CENTER = 8, RIGHT_BOTTOM = 9 }
 
 -- BUTTONS AND BOXES PARAMETERS START --
-display_riddle_at_start = 20
+display_riddle_at_start = 60
 
 --[ProgressBar] ProgressBar 
 progress_bar_xOffset = 0
@@ -57,13 +57,31 @@ help_box_texture = "HUD_Dropdown_Box.png"
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
-menu_box_scaleX = 0.5
-menu_box_scaleY = 0.5
+menu_box_scaleX = 0.3
+menu_box_scaleY = 0.33
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
+<<<<<<< HEAD
 --[MenuButton]
 menu_button_texture = "MENU_Buttons_Sheet.png"
+=======
+--[StoryBook] Label that shows storybook container
+story_book_xOffset = 0
+story_book_yOffset = 0
+story_book_scaleX = 0.5
+story_book_scaleY = 0.5
+story_book_alignment = alignment.CENTER_CENTER
+story_book_texture = "BOOK_00.png"
+
+--[StoryBookButton] Continue button in storybook container
+story_book_button_xOffset = 320
+story_book_button_yOffset = 230
+story_book_button_scaleX = 0.08
+story_book_button_scaleY = 0.08
+story_book_button_alignment = alignment.CENTER_CENTER
+story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
+>>>>>>> refs/remotes/origin/hud2
 
 --[MenuButton: Resume]
 resume_button_xOffset = 30
@@ -111,21 +129,17 @@ riddle_box_yOffset = 0
 riddle_box_font = 25
 riddle_box_scaleX = 0.30
 riddle_box_scaleY = 0.25
-riddle_box_text = "What two things can you\nnever eat for breakfast?"
 riddle_box_alignment = alignment.CENTER_BOTTOM
 riddle_box_texture = "HUD_Riddle_Box.png"
 
 --[HintsBox] Label that shows the actual hint
 hints_box_xOffset = 0
-hints_box_yOffset = 120
+hints_box_yOffset = 0
 hints_box_font = 30
-hints_box_scaleX = 3
-hints_box_scaleY = 0.5
-hints_box_text1 = "this is hint #1"
-hints_box_text2 = "this is hint #2"
-hints_box_text3 = "this is hint #3"
-hints_box_alignment = alignment.CENTER_TOP
-hints_box_texture = "bricks.jpg"
+hints_box_scaleX = 0.30
+hints_box_scaleY = 0.25
+hints_box_alignment = alignment.CENTER_BOTTOM
+hints_box_texture = "HUD_Riddle_Box.png"
 -- BUTTONS AND BOXES PARAMETERS END --
 
 --------------------------------------------------------------------------------
@@ -224,7 +238,6 @@ HUD.help_box_texture = help_box_texture
 HUD.riddle_box_xOffset = riddle_box_xOffset
 HUD.riddle_box_yOffset = riddle_box_yOffset
 HUD.riddle_box_font = riddle_box_font
-HUD.riddle_box_text = riddle_box_text
 HUD.riddle_box_scaleX = riddle_box_scaleX
 HUD.riddle_box_scaleY = riddle_box_scaleY
 HUD.riddle_box_alignment = riddle_box_alignment
@@ -250,9 +263,6 @@ HUD.story_book_texture = story_book_texture
 HUD.hints_box_xOffset = hints_box_xOffset
 HUD.hints_box_yOffset = hints_box_yOffset
 HUD.hints_box_font = hints_box_font
-HUD.hints_box_text1 = hints_box_text1
-HUD.hints_box_text2 = hints_box_text2
-HUD.hints_box_text3 = hints_box_text3
 HUD.hints_box_scaleX = hints_box_scaleX
 HUD.hints_box_scaleY = hints_box_scaleY
 HUD.hints_box_alignment = hints_box_alignment

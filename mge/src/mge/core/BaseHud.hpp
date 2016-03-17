@@ -5,6 +5,8 @@
 #include <iostream>
 #include "mge/core/Timer.hpp"
 
+using namespace std;
+
 class BaseHud
 {
     public:
@@ -27,6 +29,21 @@ class BaseHud
         static sf::Vector2f fixAlignment(int alignment, int xOffset, int yOffset, int widht = 1, int height = 1);
 
         static void loadTextures();
+        //setters for book texture names
+        static void setBookTextureIntroName(const std::string name);
+        static void setBookTexture1Name(const std::string name);
+        static void setBookTexture2Name(const std::string name);
+        static void setBookTexture3Name(const std::string name);
+        static void setBookTexture4Name(const std::string name);
+        static void setBookTexture5Name(const std::string name);
+        static void setBookTexture6Name(const std::string name);
+        static void setBookTexture7Name(const std::string name);
+        static void setBookTexture8Name(const std::string name);
+        static void setBookTexture9Name(const std::string name);
+        static void setBookTexture10Name(const std::string name);
+        static void setBookTexture11Name(const std::string name);
+        static void setBookTextureFinalName(const std::string name);
+
         //setters
         static void setHintsButtonTextureName(const std::string name);
         static void setMenuButtonTextureName(const std::string name);
@@ -42,6 +59,7 @@ class BaseHud
         static bool DisplayRiddleAtStart();
         static bool texturesSet;
         static void handleExit();
+        static void setBookTexture(int index);
 
     protected:
 
@@ -51,6 +69,22 @@ class BaseHud
 
         static float startedRiddleDisplay;
         static float displayTime;
+
+        //story book textures
+        static sf::Texture* bookTextureIntro;
+        static sf::Texture* bookTexture1;
+        static sf::Texture* bookTexture2;
+        static sf::Texture* bookTexture3;
+        static sf::Texture* bookTexture4;
+        static sf::Texture* bookTexture5;
+        static sf::Texture* bookTexture6;
+        static sf::Texture* bookTexture7;
+        static sf::Texture* bookTexture8;
+        static sf::Texture* bookTexture9;
+        static sf::Texture* bookTexture10;
+        static sf::Texture* bookTexture11;
+        static sf::Texture* bookTextureFinal;
+        static std::vector<sf::Texture*> bookTextures;
 
         //hud textures
         static sf::Texture* hintsButtonTexture;
@@ -86,6 +120,21 @@ class BaseHud
         static std::string menuBoxTextureName;
         static std::string storyBookTextureName;
 
+        //book texture names
+        static std::string bookTextureIntroName;
+        static std::string bookTexture1Name;
+        static std::string bookTexture2Name;
+        static std::string bookTexture3Name;
+        static std::string bookTexture4Name;
+        static std::string bookTexture5Name;
+        static std::string bookTexture6Name;
+        static std::string bookTexture7Name;
+        static std::string bookTexture8Name;
+        static std::string bookTexture9Name;
+        static std::string bookTexture10Name;
+        static std::string bookTexture11Name;
+        static std::string bookTextureFinalName;
+
         static bool CheckMouseOnButton(sf::Vector2f position, int width, int height);
 
         // Alignment
@@ -98,6 +147,7 @@ class BaseHud
         static int Align_Y_Top    (int yOffset);
         static int Align_Y_Center (int height, int yOffset);
         static int Align_Y_Bottom (int height, int yOffset);
+        void fillBookTexturesVector();
 };
 
 #endif // BASEHUD_H
