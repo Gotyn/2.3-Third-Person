@@ -29,7 +29,7 @@ class Mesh
         /**
          * Streams the mesh to opengl using the given indexes for the different attributes
          */
-        void streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib, GLint pTangentsAttrib, GLint pBiTangentsAttrib);
+        void streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib);
         void renderDebugInfo(glm::mat4& pModelMatrix, World* pWorld);
 
 	protected:
