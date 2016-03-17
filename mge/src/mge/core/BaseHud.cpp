@@ -13,11 +13,7 @@ sf::RenderWindow* BaseHud::_window = 0;
 sf::Font BaseHud::_font;
 sf::Vector2u BaseHud::wSize(0,0);
 // initialize static textures
-sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::hintsButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
-sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
-sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
 sf::Texture* BaseHud::menuButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
@@ -27,11 +23,7 @@ sf::Texture* BaseHud::progressBarTexture = new sf::Texture;
 sf::Texture* BaseHud::menuBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookTexture = new sf::Texture;
 // initialize static sprites
-sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintsButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton2Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::menuButtonSprite = new sf::Sprite; //contains play, exit, restart, resume, empty
 sf::Sprite* BaseHud::storyBookButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
@@ -44,11 +36,7 @@ sf::Sprite* BaseHud::storyBookSprite = new sf::Sprite;
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
-std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintsButtonTextureName  = "land.jpg";
-std::string BaseHud::hintButton1TextureName = "land.jpg";
-std::string BaseHud::hintButton2TextureName = "land.jpg";
-std::string BaseHud::hintButton3TextureName = "land.jpg";
 std::string BaseHud::menuButtonTextureName = "land.jpg";
 std::string BaseHud::storyBookButtonTextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
@@ -89,15 +77,7 @@ void BaseHud::loadTextures()
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
 
-    if (!helpButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + helpButtonTextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
     if (!hintsButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + hintsButtonTextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton1Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton1TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton2Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton2TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton3Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton3TextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
     if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))
         { std::cout << "Could not load texture for menuspritesheet"  << std::endl; return; }
@@ -116,11 +96,7 @@ void BaseHud::loadTextures()
     if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
 
-    helpButtonTexture->setRepeated(true);
     hintsButtonTexture->setRepeated(true);
-    hintButton1Texture->setRepeated(true);
-    hintButton2Texture->setRepeated(true);
-    hintButton3Texture->setRepeated(true);
     menuButtonTexture->setRepeated(true);
     storyBookButtonTexture->setRepeated(true);
     helpBoxTexture->setRepeated(true);
@@ -162,129 +138,34 @@ bool BaseHud::Button(int x, int y, std::string caption)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HelpButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(helpButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              // unscaled!
-
-    //create sprite
-    helpButtonSprite->setTexture(*helpButtonTexture);
-    helpButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) helpButtonSprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));    // unscaled!
-    else helpButtonSprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));          // unscaled!
-
-    helpButtonSprite->setPosition(alignedPos);
-
-    _window->draw(*helpButtonSprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
 bool BaseHud::HintsButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
     int spriteSheetColumns = 2;
+    int spriteSheetRows = 4;
 
     sf::Vector2u spriteSize(hintsButtonTexture->getSize());                              // Get the image size
     int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
+    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                          //unscaled!
+    int tileHeight = spriteSize.y / spriteSheetRows;                                //unscaled!
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              // unscaled!
 
     //create sprite
     hintsButtonSprite->setTexture(*hintsButtonTexture);
     hintsButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintsButtonSprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));    // unscaled!
-    else hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));          // unscaled!
+
+    if      (spriteID == 0) hintsButtonSprite->setTextureRect(sf::IntRect(        0,              0, tileWidth, tileHeight)); //R1 C1    //Sphinx
+    else if (spriteID == 1) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth,              0, tileWidth, tileHeight)); //R1 C2    //Sphinx*
+    else if (spriteID == 2) hintsButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 1, tileWidth, tileHeight)); //R2 C1    //One
+    else if (spriteID == 3) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 1, tileWidth, tileHeight)); //R2 C2    //One*
+    else if (spriteID == 4) hintsButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Two
+    else if (spriteID == 5) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Two*
+    else if (spriteID == 6) hintsButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Three
+    else if (spriteID == 7) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R5 C2    //Three*
 
     hintsButtonSprite->setPosition(alignedPos);
 
     _window->draw(*hintsButtonSprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::HintButton1(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(hintButton1Texture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
-
-    //create sprite
-    hintButton1Sprite->setTexture(*hintButton1Texture);
-    hintButton1Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton1Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
-    else hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
-    hintButton1Sprite->setPosition(alignedPos);
-
-    _window->draw(*hintButton1Sprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::HintButton2(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(hintButton2Texture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
-
-    //create sprite
-    hintButton2Sprite->setTexture(*hintButton2Texture);
-    hintButton2Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton2Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
-    else hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
-    hintButton2Sprite->setPosition(alignedPos);
-
-    _window->draw(*hintButton2Sprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::HintButton3(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(hintButton3Texture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
-
-    //create sprite
-    hintButton3Sprite->setTexture(*hintButton3Texture);
-    hintButton3Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton3Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
-    else hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
-    hintButton3Sprite->setPosition(alignedPos);
-
-    _window->draw(*hintButton3Sprite);
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
@@ -516,11 +397,7 @@ void BaseHud::TextLabel(int x, int y, std::string caption) {
 //--------------------------------------------------------------------------------
 // a bunch of sessters used outside the class for setting texture names from lua
 //--------------------------------------------------------------------------------
-void BaseHud::setHelpButtonTextureName(const std::string name)      { helpButtonTextureName      = name;  }
 void BaseHud::setHintsButtonTextureName(const std::string name)     { hintsButtonTextureName     = name;  }
-void BaseHud::setHintButton1TextureName(const std::string name)     { hintButton1TextureName     = name;  }
-void BaseHud::setHintButton2TextureName(const std::string name)     { hintButton2TextureName     = name;  }
-void BaseHud::setHintButton3TextureName(const std::string name)     { hintButton3TextureName     = name;  }
 void BaseHud::setHelpBoxTextureName(const std::string name)         { helpBoxTextureName         = name;  }
 void BaseHud::setRiddleBoxTextureName(const std::string name)       { riddleBoxTextureName       = name;  }
 void BaseHud::setHintsBoxTextureName(const std::string name)        { hintsBoxTextureName        = name;  }

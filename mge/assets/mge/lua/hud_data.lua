@@ -14,44 +14,35 @@ progress_bar_alignment = alignment.CENTER_TOP
 progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 
 --[HintsButton] Button for Riddle / Hints 
-hints_button_xOffset = 20
-hints_button_yOffset = 20
-hints_button_scaleX = 0.28
-hints_button_scaleY = 0.28
-hints_button_alignment = alignment.RIGHT_TOP
 hints_button_texture = "HUD_Hints_Sheet.png"
 
 --[HelpButton] Button for Riddle / Hints 
 help_button_xOffset = 20
 help_button_yOffset = 20
-help_button_scaleX = 0.14
-help_button_scaleY = 0.14
+help_button_scaleX = 0.56
+help_button_scaleY = 0.56
 help_button_alignment = alignment.RIGHT_TOP
-help_button_texture = "HUD_Hint_Button_Sphinx_Sheet.png"
 
 --[HintButton1] Button for first hint
-hint_button1_xOffset = 30
+hint_button1_xOffset = 32
 hint_button1_yOffset = 92
-hint_button1_scaleX = 0.1
-hint_button1_scaleY = 0.1
+hint_button1_scaleX = 0.36
+hint_button1_scaleY = 0.36
 hint_button1_alignment = alignment.RIGHT_TOP
-hint_button1_texture = "HUD_Hint_Button_1_Sheet.png"
 
 --[HintButton2] Button for second hint
-hint_button2_xOffset = 30
+hint_button2_xOffset = 32
 hint_button2_yOffset = 140
-hint_button2_scaleX = 0.1
-hint_button2_scaleY = 0.1
+hint_button2_scaleX = 0.36
+hint_button2_scaleY = 0.36
 hint_button2_alignment = alignment.RIGHT_TOP
-hint_button2_texture = "HUD_Hint_Button_2_Sheet.png"
 
 --[HintButton3] Button for third hint
-hint_button3_xOffset = 30
+hint_button3_xOffset = 32
 hint_button3_yOffset = 188
-hint_button3_scaleX = 0.1
-hint_button3_scaleY = 0.1
+hint_button3_scaleX = 0.36
+hint_button3_scaleY = 0.36
 hint_button3_alignment = alignment.RIGHT_TOP
-hint_button3_texture = "HUD_Hint_Button_3_Sheet.png"
 
 --[HelpBox] Label behind the hint buttons (helpbox)
 help_box_xOffset = 27
@@ -155,12 +146,7 @@ HUD.progress_bar_scaleY = progress_bar_scaleY
 HUD.progress_bar_alignment = progress_bar_alignment
 HUD.progress_bar_texture = progress_bar_texture
 
--- riddle / hint / help button
-HUD.hints_button_xOffset 	= hints_button_xOffset
-HUD.hints_button_yOffset 	= hints_button_yOffset
-HUD.hints_button_scaleX 	= hints_button_scaleX
-HUD.hints_button_scaleY 	= hints_button_scaleY
-HUD.hints_button_alignment 	= hints_button_alignment
+-- riddle / hint / help button texture
 HUD.hints_button_texture 	= hints_button_texture
 
 -- riddle / hint / help button
@@ -169,7 +155,6 @@ HUD.help_button_yOffset = help_button_yOffset
 HUD.help_button_scaleX = help_button_scaleX
 HUD.help_button_scaleY = help_button_scaleY
 HUD.help_button_alignment = help_button_alignment
-HUD.help_button_texture = help_button_texture
 
 --Button for first hint
 HUD.hint_button1_xOffset = hint_button1_xOffset
@@ -177,7 +162,6 @@ HUD.hint_button1_yOffset = hint_button1_yOffset
 HUD.hint_button1_scaleX = hint_button1_scaleX
 HUD.hint_button1_scaleY = hint_button1_scaleY
 HUD.hint_button1_alignment = hint_button1_alignment
-HUD.hint_button1_texture = hint_button1_texture
 
 --Button for second hint
 HUD.hint_button2_xOffset = hint_button2_xOffset
@@ -185,7 +169,6 @@ HUD.hint_button2_yOffset = hint_button2_yOffset
 HUD.hint_button2_scaleX = hint_button2_scaleX
 HUD.hint_button2_scaleY = hint_button2_scaleY
 HUD.hint_button2_alignment = hint_button2_alignment
-HUD.hint_button2_texture = hint_button2_texture
 
 --Button for third hint
 HUD.hint_button3_xOffset = hint_button3_xOffset
@@ -193,7 +176,6 @@ HUD.hint_button3_yOffset = hint_button3_yOffset
 HUD.hint_button3_scaleX = hint_button3_scaleX
 HUD.hint_button3_scaleY = hint_button3_scaleY
 HUD.hint_button3_alignment = hint_button3_alignment
-HUD.hint_button3_texture = hint_button3_texture
 
 --[MenuButton]
 HUD.menu_button_texture = menu_button_texture

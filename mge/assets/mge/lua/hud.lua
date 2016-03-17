@@ -15,9 +15,9 @@ continueToNextPuzzle = false
 
 progress = 0
 
-hint1_spriteID = 0 
-hint2_spriteID = 0 
-hint3_spriteID = 0
+hint1_spriteID = 2 
+hint2_spriteID = 4 
+hint3_spriteID = 6
 exit_spriteID = 2 
 resume_spriteID = 6 
 start_spriteID = 0
@@ -65,15 +65,16 @@ function updateLevel()
 end
 
 function handleHelpButtonClick(spriteID)
-    if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, spriteID, 
-				      data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
+	--HelpButton
+	if Hud.hintsButton(data.help_button_xOffset, data.help_button_yOffset, spriteID, 
+				       data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then					
         if showHelpBox == false then
             showHelpBox = true
         else
             showHelpBox = false
-			hint1_spriteID = 0 
-			hint2_spriteID = 0 
-			hint3_spriteID = 0
+			hint1_spriteID = 2 --off
+			hint2_spriteID = 4 --off
+			hint3_spriteID = 6 --off
         end
         
 		showHintsBox1 = false
@@ -83,52 +84,55 @@ function handleHelpButtonClick(spriteID)
 end
 
 function handleHintButtonsClick()
-    if Hud.hintButton1(data.hint_button1_xOffset, data.hint_button1_yOffset, 
+    --HintButton1
+	if Hud.hintsButton(data.hint_button1_xOffset, data.hint_button1_yOffset, 
         hint1_spriteID, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
         if showHintsBox1 == false then
             showHintsBox1 = true
-			hint1_spriteID = 1
-			hint2_spriteID = 0
-			hint3_spriteID = 0
+			hint1_spriteID = 3 --on
+			hint2_spriteID = 4 --off
+			hint3_spriteID = 6 --off
 			
             showHintsBox2 = false
             showHintsBox3 = false
         else
             showHintsBox1 = false
-			hint1_spriteID = 0
+			hint1_spriteID = 2 --off
         end
     end
-     
-    if Hud.hintButton2(data.hint_button2_xOffset, data.hint_button2_yOffset,
+    
+	--HintButton2
+	if Hud.hintsButton(data.hint_button2_xOffset, data.hint_button2_yOffset,
         hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
         if showHintsBox2 == false then
             showHintsBox2 = true
-			hint1_spriteID = 0
-			hint2_spriteID = 1
-			hint3_spriteID = 0
+			hint1_spriteID = 2 --off
+			hint2_spriteID = 5 --on
+			hint3_spriteID = 6 --off
 			
             showHintsBox1 = false
             showHintsBox3 = false
         elseif showHintsBox2 == true then
             showHintsBox2 = false
-			hint2_spriteID = 0
+			hint2_spriteID = 4 --off
 
         end
     end
     
-    if Hud.hintButton3(data.hint_button3_xOffset, data.hint_button3_yOffset, 
+    --HintButton3
+	if Hud.hintsButton(data.hint_button3_xOffset, data.hint_button3_yOffset, 
         hint3_spriteID, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
         if showHintsBox3 == false then
             showHintsBox3 = true
-			hint1_spriteID = 0
-			hint2_spriteID = 0
-			hint3_spriteID = 1
+			hint1_spriteID = 2 --off
+			hint2_spriteID = 4 --off
+			hint3_spriteID = 7 --on
 			
             showHintsBox2 = false
             showHintsBox1 = false
         elseif showHintsBox3 == true then
             showHintsBox3 = false
-			hint3_spriteID = 0
+			hint3_spriteID = 6 --off
         end
     end
 end
