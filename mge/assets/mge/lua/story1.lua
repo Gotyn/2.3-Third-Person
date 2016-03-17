@@ -128,25 +128,31 @@ story = {
         camPosition = {2.702556, 3.736271, 10.554673},
         lightPosition = {7.023105, 2.647626, 13.4}
     },
-    -------------------------------------------------------------------------------------
     {
-        wallImage = "8_MainWall_Base_Color.png",    --[PLACE HOLDER] FOR SKULL
+        wallImage = "12_MainWall_Base_Color.png",   --UFO 
         blocks = {  
-            Game.PuzzleBlock("Lips_Top.obj", "LipsTop_Base_Color.png", "piece1", 2, 0, 1),
-            Game.PuzzleBlock("Lips_Bottom.obj", "LipsLow_Base_Color.png", "piece2", 2, 0, 1)
+            Game.PuzzleBlock("UFO_Part1.obj", "Potion_Base_Color.png", "piece1", 7.869242, 4.829529, 8.615430),
+            Game.PuzzleBlock("UFO_Part2.obj", "PotionTop_Base_Color.png", "piece2", 7.830701, 5.109225, 10.125306),
+            Game.PuzzleBlock("UFO_Part3.obj", "PotionTop_Base_Color.png", "piece3", 7.824039, 4.957216, 9.211638),
+            Game.PuzzleBlock("UFO_Part4.obj", "PotionTop_Base_Color.png", "piece4", 7.430742, 5.011202, 8.167035)
         },
         tips = {
-            "Answer lies within you",
-            "Protector of the mind",
-            "Skull"
+            "Difficult to explain",
+            "Can fly",
+            "U.F.O."
         },
         riddle = {
-            "Some try to hide, some try to cheat, but time will show, we will always meet. \nTry as you might, to guess my name. I promise you'll know, when I do my claim."
+            "Unbelievable fussy organization."
         },
-        bookImage = "BOOK_08.png",
-        camPosition = {-5.53, 2.66, 7.02},
-        lightPosition = {-1.6, 2.4, 13.4}
+        bookImage = "BOOK_12.png",
+        camPosition = {2.514137, 4.950314, 13.103568},
+        lightPosition = {7.604338, 5.042066, 13.4}
     },
+    ------------------------------------------------------------------------------------------------------------
+                                                        
+                                                        -- END HERE --
+
+    ------------------------------------------------------------------------------------------------------------
     {
         wallImage = "9_MainWall_Base_Color.png",    --CAMEL
         blocks = {  
@@ -243,9 +249,10 @@ story[6].blocks[2]:scale(0.18, 0.18, 0.18)
 story[7].blocks[1]:scale(0.12, 0.12, 0.12)
 story[7].blocks[2]:scale(0.1, 0.1, 0.1)
 
---story[8].blocks[1]:scale(0.2, 0.2, 0.2)
---story[8].blocks[2]:scale(0.2, 0.2, 0.2)
---story[8].blocks[3]:scale(0.2, 0.2, 0.2)
+story[8].blocks[1]:scale(0.075, 0.075, 0.075)
+story[8].blocks[2]:scale(0.055, 0.055, 0.055)
+story[8].blocks[3]:scale(0.065, 0.065, 0.065)
+story[8].blocks[4]:scale(0.085, 0.085, 0.085)
 
 -- story[9].blocks[1]:scale(0.3, 0.3, 0.3)
 -- story[9].blocks[2]:scale(0.3, 0.3, 0.3)

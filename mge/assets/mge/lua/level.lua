@@ -5,9 +5,9 @@ dofile("mge/lua/story1.lua")
 
 game_state = 1
 storyCompleted = false
-activePuzzle = 7
+activePuzzle = 1
 activePiece = 1
-solvedThreshold = 10.94
+solvedThreshold = 0.94
 
 ---- initial scene setup ----
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
@@ -122,7 +122,7 @@ function updateLevel()
         if Game.getKeyDown(KeyCode.P) == true then
             ---- print status calls ----  ==> uncomment a line to print status for different types of objects
             -- camera:printStatus()
-            story[activePuzzle].blocks[activePiece]:printStatus()
+            -- story[activePuzzle].blocks[activePiece]:printStatus()
 
             ----------------------------
         end
@@ -133,7 +133,7 @@ function updateLevel()
 
         -- handlePlacement(storyWall)
         -- handlePlacement(camera)
-        handlePlacement(story[activePuzzle].blocks[activePiece])
+        -- handlePlacement(story[activePuzzle].blocks[activePiece])
         
         --------------------------------
 
