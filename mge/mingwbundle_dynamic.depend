@@ -1997,7 +1997,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1458183080 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1458181948 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2420,7 +2420,7 @@
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-1458183863 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
+1458179125 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>

@@ -358,13 +358,11 @@ void Mesh::calculateTangents(Mesh* pMesh, glm::vec3 edge1, glm::vec3 edge2, glm:
     tangent.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
     tangent.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
     tangent = glm::normalize(tangent);
-//    tangent *= -1.0f;
 
     biTangent.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
     biTangent.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
     biTangent.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
     biTangent = glm::normalize(biTangent);
-//    biTangent *= -1.0f;
 
     pMesh->_tangents.push_back(tangent);
     pMesh->_biTangents.push_back(biTangent);
