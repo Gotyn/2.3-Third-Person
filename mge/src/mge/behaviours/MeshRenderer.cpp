@@ -33,8 +33,6 @@ void MeshRenderer::render(RenderPipeline* pRenderPipeline)
 void MeshRenderer::render(RenderPipeline* pRenderPipeline, std::shared_ptr<AbstractMaterial> pMaterial)
 {
     pMaterial->render(pRenderPipeline, World::Instance(), _owner, _mesh, World::Instance()->getMainCamera());
-
-//    _mesh->renderDebugInfo(_owner->getTransform(), World::Instance());
 }
 
 void MeshRenderer::setMaterial(std::shared_ptr<AbstractMaterial> pMaterial) {

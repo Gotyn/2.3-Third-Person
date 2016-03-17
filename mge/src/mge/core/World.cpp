@@ -1,13 +1,10 @@
 #include <cassert>
 #include <algorithm>
 #include <iostream>
-
-#include "AbstractGame.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/Camera.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/BaseLight.h"
-#include "MeshRenderer.hpp"
 
 using namespace std;
 
@@ -43,17 +40,11 @@ void World::renderDebugInfo() {
     GameObject* gameObject;
     for (int i = 0; i < getChildCount(); i++) {
         gameObject = getChildAt(i);
-//        std::cout << gameObject->getName() << std::endl;
         //oo wise it would be better to do gameObject->renderDebugInfo, but since this is only for debugging
         //it's sort of pasted on
-        MeshRenderer* mr = gameObject->getBehaviour<MeshRenderer>();
-        if (mr != NULL)
-        {
-            if (mr->getMaterial() && mr->getMesh() && RENDERDEBUG)
-            {
-                mr->getMesh()->renderDebugInfo(gameObject->getWorldTransform(), this);
-            }
-        }
+//        if (gameObject->getMaterial() && gameObject->getMesh()) {
+//            gameObject->getMesh()->renderDebugInfo(gameObject->getWorldTransform(), this);
+//        }
     }
 }
 

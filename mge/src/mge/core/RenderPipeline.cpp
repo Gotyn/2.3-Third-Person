@@ -106,8 +106,6 @@ void RenderPipeline::render (World* pWorld)
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     render (pWorld, pWorld, pWorld->getMainCamera(), true, false);
-
-    World::Instance()->renderDebugInfo();
 }
 
 void RenderPipeline::render (World* pWorld, GameObject * pGameObject, Camera * pCamera, bool pRecursive, bool pShadowMap)
