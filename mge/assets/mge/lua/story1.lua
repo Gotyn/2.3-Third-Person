@@ -1,8 +1,9 @@
 story = {
     {
-        wallImage = "1_MainWall_Base_Color.png",    --SHIPS
+        wallImage = "1_MainWall_Base_Color.png",    --SHIPS (done)
         blocks = {  
-            Game.PuzzleBlock("Ship.obj", "Ship_Base_Color.png", "piece1", -1.6, 2.4, 7.4)
+            Game.PuzzleBlock("Ship.obj", "Ship_Base_Color.png", "piece1", -1.325238, 4.995407, 4.780406)
+            --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
         },
         tips = {
             "Not meant to submerge",
@@ -13,7 +14,10 @@ story = {
             "Weight in my belly, trees on my back, \nnails in my ribbon, feet I do lack."
         },
         bookImageIntro = "BOOK_00.png",
-        bookImage = "BOOK_01.png"
+        bookImage = "BOOK_01.png",
+        camPosition = {-5.809093, 3.296122, 6.267358},
+        lightPosition = {-1.325238, 4.995407, 13.4},
+        wallPosition = {4.169649, 0.326027, 5.563453}
     },
     {
         wallImage = "2_MainWall_Base_Color.png",    --EAGLE
@@ -28,7 +32,9 @@ story = {
         riddle = {
             "Hard when young, but soft when old. \nI cannot live with my food. Majestic in movement, in eating crude."
         },
-        bookImage = "BOOK_02.png"
+        bookImage = "BOOK_02.png",
+        camPosition = {-4.53, 2.66, 7.02},
+        lightPosition = {1.6, 2.4, 13.4}
     },
     {
         wallImage = "3_MainWall_Base_Color.png",    --KNIFE
@@ -43,7 +49,9 @@ story = {
         riddle = {
             "I eat meat, but do not drink wine. \nI am a means to an end or it's protector. \nI have committed many gruesome betrayals."
         },
-        bookImage = "BOOK_03.png"
+        bookImage = "BOOK_03.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "4_MainWall_Base_Color.png",    --STAR
@@ -61,7 +69,9 @@ story = {
         riddle = {
             "At night they come without being fetched. \nBy day they are lost without being stolen."
         },
-        bookImage = "BOOK_04.png"
+        bookImage = "BOOK_04.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "5_MainWall_Base_Color.png",    --PYRAMIDE
@@ -77,7 +87,9 @@ story = {
         riddle = {
             "Young ones can only listen to the tales of \nthe elders on how we were brought into exiistence"
         },
-        bookImage = "BOOK_05.png"
+        bookImage = "BOOK_05.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "6_MainWall_Base_Color.png",    --SCROLL
@@ -93,7 +105,9 @@ story = {
         riddle = {
             "Men has always sought for me, to use me \nfor his gain, yet fools claim to have found me."
         },
-        bookImage = "BOOK_06.png"
+        bookImage = "BOOK_06.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "7_MainWall_Base_Color.png",    --LIPS
@@ -109,7 +123,9 @@ story = {
         riddle = {
             "My touch is soft, but my intensions can be stern. \nWith your faith I can be great, but defy me and we will both fall."
         },
-        bookImage = "BOOK_07.png"
+        bookImage = "BOOK_07.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "8_MainWall_Base_Color.png",    --[PLACE HOLDER] FOR SKULL
@@ -125,7 +141,9 @@ story = {
         riddle = {
             "Some try to hide, some try to cheat, but time will show, we will always meet. \nTry as you might, to guess my name. I promise you'll know, when I do my claim."
         },
-        bookImage = "BOOK_08.png"
+        bookImage = "BOOK_08.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "9_MainWall_Base_Color.png",    --CAMEL
@@ -141,7 +159,9 @@ story = {
         riddle = {
             "My kind has been around for centuries. \nWe carry mountains or our backs. \nYet, we do not protest, for we cannot speak."
         },
-        bookImage = "BOOK_09.png"
+        bookImage = "BOOK_09.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "10_MainWall_Base_Color.png",   --POTION
@@ -157,7 +177,9 @@ story = {
         riddle = {
             "The solution is the antiodote."
         },
-        bookImage = "BOOK_10.png"
+        bookImage = "BOOK_10.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "11_MainWall_Base_Color.png",   --[PLACE HOLDER] ARKH
@@ -173,7 +195,9 @@ story = {
         riddle = {
             "I am the gateway between two worlds. \nMy purpose is to send you back, not let you pass."
         },
-        bookImage = "BOOK_11.png"
+        bookImage = "BOOK_11.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     },
     {
         wallImage = "12_MainWall_Base_Color.png",   --UFO 
@@ -191,13 +215,15 @@ story = {
         riddle = {
             "Unbelievable fussy organization."
         },
-        bookImage = "BOOK_12.png"
+        bookImage = "BOOK_12.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
     }
 }
 
 --Scales Puzzle pieces
 
-story[1].blocks[1]:scale(0.1, 0.1, 0.1)
+story[1].blocks[1]:scale(0.08, 0.08, 0.08)
 
 story[2].blocks[1]:scale(0.3, 0.3, 0.3)
 

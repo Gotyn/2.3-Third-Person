@@ -128,6 +128,7 @@ void LuaGame::_initLua()
                 .addFunction ("setActive", &GameObject::setActive)
                 .addFunction ("printStatus", &GameObject::printStatus)
                 .addFunction ("setPosition", &GameObject::setLocalPositionLua)
+                .addFunction ("moveTo", &GameObject::moveTo)
                 .addFunction ("move", &GameObject::move)
                 .addFunction ("rotateAroundAxis", &GameObject::rotateAroundAxis)
                 .addFunction ("pitch", &GameObject::pitch)
@@ -182,10 +183,6 @@ void LuaGame::_initLua()
             .addFunction ("pauseMusic", Audio::PauseMusic)
             .addFunction ("stopMusic", Audio::StopMusic)
         .endNamespace();
-//        .beginNamespace ("Light")
-//            //light functions
-//            .addFunction ("playSound", LuaGame::PlayEffect)
-//        .endNamespace();
 }
 
 void LuaGame::setWorldAmbient(float r, float g, float b)
@@ -213,15 +210,6 @@ void LuaGame::_update()
     //call lua update function
     luabridge::LuaRef luaUpdate = luabridge::getGlobal (_L, "update");
     luaUpdate();
-
-    // test: spotlight update target (LookAt not working) //
-//    PuzzleBlock* block = getActiveBlock();
-//
-//    if (block != NULL)
-//    {
-//        mainSpotlight->getOwner()->LookAt(block);
-//    }
-    // end test //
 
     if (!BaseHud::texturesSet)
     {
