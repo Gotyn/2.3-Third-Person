@@ -40,10 +40,10 @@ camera = Game.getCameraObject()
 camera:setPosition(-5.537027, 2.663034, 7.021962)
 camera:rotateAroundAxis(-23, 0, 1, 0)
 
-spotlight:setIntensity(1)
-spotlight:setInnerCone(5)
-spotlight:setOuterCone(29)
-spotlight:setColor(1, 1, 1)
+spotlight:setIntensity(0.78)
+spotlight:setInnerCone(3)
+spotlight:setOuterCone(13)
+spotlight:setColor(0.9, 0.94, 0.62)
 
 ----------------------------
 
