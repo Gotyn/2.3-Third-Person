@@ -142,6 +142,11 @@ Mesh* Mesh::load(string pFileName)
                 //Have we read exactly 10 elements?
 				if ( count == 10 ) {
 
+                    //3 index/vertex/UV that define a triangle
+//                    unsigned int triangleIndices[3];
+                    glm::vec3 triangleVerts[3];
+                    glm::vec2 triangleUVs[3];
+
                     //process 3 triplets, one for each vertex (which is first element of the triplet)
 					for ( int i = 0; i < 3; ++i ) {
 					    //create key out of the triplet and check if we already encountered this before
@@ -171,7 +176,38 @@ Mesh* Mesh::load(string pFileName)
                             //and update our index buffer with it
 							mesh->_indices.push_back( index );
 						}
+
+					//add vertex to triangeVerts
+                    triangleVerts[i] = vertices[ vertexIndex[i]-1 ];
+                    triangleUVs[i] = uvs[ uvIndex[i]-1 ];
 					}
+
+					//calculate tangent
+					glm::vec3 vert1Edge1 = triangleVerts[1] - triangleVerts[0];
+					glm::vec3 vert2Edge1 = triangleVerts[2] - triangleVerts[1];
+					glm::vec3 vert3Edge1 = triangleVerts[0] - triangleVerts[2];
+
+					glm::vec3 vert1edge2 = triangleVerts[2] - triangleVerts[0];
+					glm::vec3 vert2edge2 = triangleVerts[0] - triangleVerts[1];
+					glm::vec3 vert3edge2 = triangleVerts[1] - triangleVerts[2];
+
+					glm::vec2 vert1deltaUV1 = triangleUVs[1] - triangleUVs[0];
+					glm::vec2 vert2deltaUV1 = triangleUVs[2] - triangleUVs[1];
+					glm::vec2 vert3deltaUV1 = triangleUVs[0] - triangleUVs[2];
+
+					glm::vec2 vert1deltaUV2 = triangleUVs[2] - triangleUVs[0];
+					glm::vec2 vert2deltaUV2 = triangleUVs[0] - triangleUVs[1];
+					glm::vec2 vert3deltaUV2 = triangleUVs[1] - triangleUVs[2];
+
+                    mesh->calculateTangents(mesh, vert1Edge1, vert1edge2, vert1deltaUV1, vert1deltaUV2);
+                    mesh->calculateTangents(mesh, vert2Edge1, vert2edge2, vert2deltaUV1, vert2deltaUV2);
+                    mesh->calculateTangents(mesh, vert3Edge1, vert3edge2, vert3deltaUV1, vert3deltaUV2);
+
+//                    bitangent1.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
+//                    bitangent1.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
+//                    bitangent1.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+//                    bitangent1 = glm::normalize(bitangent1);
+
 				} else {
 				    //If we read a different amount, something is wrong
 					cout << "Error reading obj, needing v,vn,vt" << endl;
@@ -263,7 +299,7 @@ void Mesh::renderDebugInfo(glm::mat4& pModelMatrix, World* pWorld) {
         if (true) {
             //now get normal end
             glm::vec3 normal = _normals[_indices[i]];
-            glColor3fv(glm::value_ptr(normal));
+            glColor3f(0,0,1);
 
             glm::vec3 normalStart = _vertices[_indices[i]];
             glVertex3fv(glm::value_ptr(normalStart));
@@ -274,18 +310,44 @@ void Mesh::renderDebugInfo(glm::mat4& pModelMatrix, World* pWorld) {
 //        //draw tangent for vertex (code for tangent calculation has been removed)
           //tangents are needed if you want to implement bump mapping
 //        if (_tangentsCalculated) {
-//            glColor3f(1,1,1);
-//            //now get normal end
-//            glm::vec3 tangent = glm::vec3(_tangents[_indices[i]]);
-//            glm::vec3 tangentStart = _vertices[_indices[i]];
-//            glVertex3fv(glm::value_ptr(tangentStart));
-//            glm::vec3 tangentEnd = tangentStart + tangent*0.2f;
-//            glVertex3fv(glm::value_ptr(tangentEnd));
+            glColor3f(1,1,1);
+            //now get tangent end
+            glm::vec3 tangent = glm::vec3(_tangents[_indices[i]]);
+            glm::vec3 tangentStart = _vertices[_indices[i]];
+            glVertex3fv(glm::value_ptr(tangentStart));
+            glm::vec3 tangentEnd = tangentStart + tangent*0.2f;
+            glVertex3fv(glm::value_ptr(tangentEnd));
 //        }
+            glColor3f(1,0,0);
+            //now get bi-tangent end
+            glm::vec3 biTangent = glm::vec3(_biTangents[_indices[i]]);
+            glm::vec3 biTangentStart = _vertices[_indices[i]];
+            glVertex3fv(glm::value_ptr(biTangentStart));
+            glm::vec3 biTangentEnd = biTangentStart + biTangent*0.2f;
+            glVertex3fv(glm::value_ptr(biTangentEnd));
 
     }
     glEnd();
 }
 
+void Mesh::calculateTangents(Mesh* pMesh, glm::vec3 edge1, glm::vec3 edge2, glm::vec2 deltaUV1, glm::vec2 deltaUV2)
+{
+    glm::vec3 tangent = glm::vec3(0.0f);
+    glm::vec3 biTangent = glm::vec3(0.0f);
 
+    GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
+
+    tangent.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
+    tangent.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
+    tangent.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+    tangent = glm::normalize(tangent);
+
+    biTangent.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
+    biTangent.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
+    biTangent.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+    biTangent = glm::normalize(biTangent);
+
+    pMesh->_tangents.push_back(tangent);
+    pMesh->_biTangents.push_back(biTangent);
+}
 

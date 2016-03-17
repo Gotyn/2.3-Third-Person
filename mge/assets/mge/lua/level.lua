@@ -1,13 +1,13 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story1.lua")
+dofile("mge/lua/story4.lua")
 
 game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 0.5
+solvedThreshold = 1.1
 
 -- TEXTURE NAMES FOR C++ START --
 display_riddle_at_start = gameHud_Data.display_riddle_at_start
@@ -27,6 +27,8 @@ story_book_texture = gameHud_Data.story_book_texture
 story_book_button_texture = gameHud_Data.story_book_button_texture
 -- TEXTURE NAMES FOR C++ END --
 
+---- initial scene setup ----
+
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
 storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
@@ -38,23 +40,13 @@ camera = Game.getCameraObject()
 camera:setPosition(-5.537027, 2.663034, 7.021962)
 camera:rotateAroundAxis(-23, 0, 1, 0)
 
--- ambient lighting
--- Game.ambientLight(0, 1, 0)
-
-print("spotlight name: " .. camera:getName())
-print("spotlight name: " .. spotlight:getName())
-print("spotlight intensity: " .. spotlight:getIntensity())
--- spotlight:setIntensity(0.30)
-print("spotlight intensity: " .. spotlight:getIntensity())
-print("spotlight innerCone: " .. spotlight:getInnerCone())
+spotlight:setIntensity(0.78)
 spotlight:setInnerCone(3)
-print("spotlight innerCone: " .. spotlight:getInnerCone())
-print("spotlight outerCone: " .. spotlight:getOuterCone())
 spotlight:setOuterCone(13)
-print("spotlight outerCone: " .. spotlight:getOuterCone())
--- spotlight:setColor(1, 0, 0)
+spotlight:setColor(0.9, 0.94, 0.62)
 
--- (test) send active puzzleBlock to c++
+----------------------------
+
 function getActiveBlock()
     return story[activePuzzle].blocks[activePiece]
 end
@@ -62,7 +54,7 @@ end
 function puzzleSetActive(puzzleIndex, active)
     for i, v in ipairs(story[puzzleIndex].blocks) do 
         v:setActive(active)
-    end   
+    end
 end
 
 function selectBlock(puzzleIndex, blockIndex)
@@ -75,6 +67,9 @@ function selectPuzzle(puzzleIndex)
     for i, v in ipairs(story) do 
         if counter == puzzleIndex then
             puzzleSetActive(counter, true)
+            -- camera:setPosition(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3])
+            -- camera:moveTo(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3], 10)
+            -- spotlight:setPosition(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3])
         else
             puzzleSetActive(counter, false)
         end
@@ -98,9 +93,6 @@ function nextPuzzle()
 end
 
 function handlePlacement(gameObject)
-    if Game.getKeyDown(KeyCode.P) == true then
-        gameObject:printStatus(gameObject) 
-    end
     if Game.getKey(KeyCode.Up) == true then
         gameObject:move(0, 0, -1) 
     end
@@ -141,10 +133,23 @@ function updateLevel()
             nextPuzzle()
         end
 
+        if Game.getKeyDown(KeyCode.P) == true then
+            ---- print status calls ----  ==> uncomment a line to print status for different types of objects
+            camera:printStatus()
+            -- story[activePuzzle].blocks[activePiece]:printStatus()
+
+            ----------------------------
+        end
+
         handleControl()
-        handlePlacement(storyWall)
-        --handlePlacement(camera)
-        handlePlacement(story[activePuzzle].blocks[activePiece])
+
+        ---- object placement calls ----  ==> uncomment a line to place different types of objects
+
+        -- handlePlacement(storyWall)
+        -- handlePlacement(camera)
+        -- handlePlacement(story[activePuzzle].blocks[activePiece])
+        
+        --------------------------------
 
         if checkProgress() >= solvedThreshold then
             hud.game_state = hud.MODE.BOOK

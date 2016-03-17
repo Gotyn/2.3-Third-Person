@@ -34,6 +34,8 @@ class Mesh
 
 	protected:
 
+        void calculateTangents(Mesh* pMesh, glm::vec3 edge1, glm::vec3 edge2, glm::vec2 deltaUV1, glm::vec2 deltaUV2);
+
 	    std::string _id;
 
         //OpenGL id's for the different buffers created for this mesh
@@ -41,13 +43,17 @@ class Mesh
 		GLuint _vertexBufferId;
 		GLuint _normalBufferId;
 		GLuint _uvBufferId;
+		GLuint _tangentBufferId;
+		GLuint _biTangentBufferId;
 
 	    //the actual data
 		std::vector<glm::vec3> _vertices;       //vec3 with 3d coords for all vertices
 		std::vector<glm::vec3> _normals;        //vec3 with 3d normal data
 		std::vector<glm::vec2> _uvs;            //vec2 for uv
+		std::vector<glm::vec3> _tangents;       //vec3 for tangent
+		std::vector<glm::vec3> _biTangents;       //vec3 for biTangent
 
-		//references to the vertices/normals & uvs in previous vectors
+		//references to the vertices/normals/uvs/tangents in previous vectors
 		std::vector<unsigned> _indices;
 
         //buffer vertices, normals, and uv's

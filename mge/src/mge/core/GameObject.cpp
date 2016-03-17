@@ -20,6 +20,8 @@ GameObject::GameObject(std::string pName, glm::vec3 pPosition, bool pAddToWorld 
         World::Instance()->add(this);
 
     _rotateWithCamera = true;
+
+    std::cout << "game object created" << std::endl;
 }
 
 GameObject::~GameObject()
@@ -120,6 +122,29 @@ void GameObject::setLocalPositionLua (float x, float y, float z)
 glm::vec3 GameObject::getLocalPosition()
 {
 	return glm::normalize(glm::vec3(_transform[3]));
+}
+
+void GameObject::moveTo(float x, float y, float z, float pDuration)
+{
+    _moveStartedAt = Timer::now();
+    _moveFrom = getWorldPosition();
+    _moveTarget = glm::vec3(x, y, z);
+    _moveDuration = pDuration;
+    _moving = true;
+}
+
+void GameObject::handleMovement()
+{
+    if (Timer::now() >= _moveStartedAt + _moveDuration)
+    {
+        _moving = false;
+//        std::cout << "move done pre: " << getWorldPosition() << std::endl;
+        setLocalPosition(_moveTarget);
+//        std::cout << "move done post: " << getWorldPosition() << std::endl;
+        return;
+    }
+    float fraction = (Timer::now() - _moveStartedAt) / _moveDuration;
+    setLocalPosition(glm::mix(_moveFrom, _moveTarget, fraction));
 }
 
 void GameObject::LookAt(GameObject* pTarget)
@@ -309,6 +334,9 @@ void GameObject::update(float pStep, const glm::mat4& pParentTransform)
     for (int i = _children.size()-1; i >= 0; --i ) {
         _children[i]->update(pStep, _worldTransform);
     }
+
+    if (_moving)
+        handleMovement();
 }
 
 int GameObject::getChildCount() {
