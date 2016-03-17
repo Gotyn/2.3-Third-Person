@@ -12,7 +12,7 @@ story = {
         riddle = {
             "Weight in my belly, trees on my back, \nnails in my ribbon, feet I do lack."
         },
-        bookImageIntro = "BOOK_0.png",
+        bookImageIntro = "BOOK_00.png",
         bookImage = "BOOK_01.png"
     },
     {

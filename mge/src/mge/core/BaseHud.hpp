@@ -69,7 +69,7 @@ class BaseHud
         static bool DisplayRiddleAtStart();
         static bool texturesSet;
         static void handleExit();
-        void setBookTexture(int index);
+        static void setBookTexture(int index);
 
     protected:
 

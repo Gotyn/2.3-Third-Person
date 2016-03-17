@@ -623,7 +623,7 @@ void BaseHud::setStoryBookButtonTextureName(const std::string name) { storyBookB
 void BaseHud::setBookTextureIntroName(const std::string name)       { bookTextureIntroName       = name;  }
 void BaseHud::setBookTexture1Name(const std::string name)           { bookTexture1Name           = name;  }
 void BaseHud::setBookTexture2Name(const std::string name)           { bookTexture2Name           = name;  }
-void BaseHud::setBookTexture3Name(const std::string name)           { bookTexture4Name           = name;  }
+void BaseHud::setBookTexture3Name(const std::string name)           { bookTexture3Name           = name;  }
 void BaseHud::setBookTexture4Name(const std::string name)           { bookTexture4Name           = name;  }
 void BaseHud::setBookTexture5Name(const std::string name)           { bookTexture5Name           = name;  }
 void BaseHud::setBookTexture6Name(const std::string name)           { bookTexture6Name           = name;  }

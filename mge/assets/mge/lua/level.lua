@@ -79,6 +79,7 @@ function nextPuzzle()
         print("completed!!")
     else
         selectPuzzle(nextPuzzleIndex)
+        Hud.setBookTexture(activePuzzle)
         hud.showHelpBox = false
     end
 end
