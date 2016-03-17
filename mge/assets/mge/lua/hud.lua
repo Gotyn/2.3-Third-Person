@@ -18,6 +18,8 @@ hint_1 = "hint_1"
 hint_2 = "hint_2"
 hint_3 = "hint_3"
 riddle_text = "riddle text"
+bookSoundPlayed = false
+playFinalBookSound = false
 
 progress = 0
 
@@ -28,6 +30,7 @@ exit_spriteID = 0
 resume_spriteID = 0 
 start_spriteID = 0
 story_book_button_spriteID = 0
+soundPlayed = 0
 
 function draw()
 	if game_state == MODE.LEVEL then
@@ -73,6 +76,7 @@ function handleHelpButtonClick(spriteID)
         if showHelpBox == false then
             showHelpBox = true
             showRiddleBox = true
+            Audio.playSound("Riddle.wav")
         else
             showHelpBox = false
 			hint1_spriteID = 0 
@@ -98,6 +102,7 @@ function handleHintButtonsClick()
             showHintsBox2 = false
             showHintsBox3 = false
             showRiddleBox = false
+            Audio.playSound("Hint.wav")
         else
             showHintsBox1 = false
             showRiddleBox = true
@@ -116,6 +121,7 @@ function handleHintButtonsClick()
             showHintsBox1 = false
             showHintsBox3 = false
             showRiddleBox = false
+            Audio.playSound("Hint.wav")
         else
             showHintsBox2 = false
             showRiddleBox = true
@@ -134,6 +140,7 @@ function handleHintButtonsClick()
             showHintsBox2 = false
             showHintsBox1 = false
             showRiddleBox = false
+            Audio.playSound("Hint.wav")
         elseif showHintsBox3 == true then
             showHintsBox3 = false
             showRiddleBox = true
@@ -143,16 +150,56 @@ function handleHintButtonsClick()
 end
 
 function updateProgressBar(xOffset, yOffset, alignment, scaleX, scaleY)
-	if 	   (progress > 0.90)  then Hud.progressBar(xOffset, yOffset, 7, alignment, scaleX, scaleY) -- show 7 
-	elseif (progress > 0.80)  then Hud.progressBar(xOffset, yOffset, 6, alignment, scaleX, scaleY) -- show 6
-	elseif (progress > 0.65)  then Hud.progressBar(xOffset, yOffset, 5, alignment, scaleX, scaleY) -- show 5
-	elseif (progress > 0.50)  then Hud.progressBar(xOffset, yOffset, 4, alignment, scaleX, scaleY) -- show 4
-	elseif (progress > 0.35)  then Hud.progressBar(xOffset, yOffset, 3, alignment, scaleX, scaleY) -- show 3
-	elseif (progress > 0.20)  then Hud.progressBar(xOffset, yOffset, 2, alignment, scaleX, scaleY) -- show 2
-	elseif (progress > 0.10)  then Hud.progressBar(xOffset, yOffset, 1, alignment, scaleX, scaleY) -- show 1
-	elseif (progress <= 0.10) then Hud.progressBar(xOffset, yOffset, 0, alignment, scaleX, scaleY) -- show 0
+	if 	   (progress > 0.90) then
+        Hud.progressBar(xOffset, yOffset, 7, alignment, scaleX, scaleY) -- show 7
+        if soundPlayed ~= 7 then
+            Audio.playSound("Progression_8.wav")
+            soundPlayed = 7
+        end
+	elseif (progress > 0.80) then
+        Hud.progressBar(xOffset, yOffset, 6, alignment, scaleX, scaleY) -- show 6
+        if soundPlayed ~= 6 then
+            Audio.playSound("Progression_7.wav")
+            soundPlayed = 6
+        end
+	elseif (progress > 0.65) then
+        Hud.progressBar(xOffset, yOffset, 5, alignment, scaleX, scaleY) -- show 5
+        if soundPlayed ~= 5 then
+            Audio.playSound("Progression_6.wav")
+            soundPlayed = 5
+        end
+	elseif (progress > 0.50) then
+        Hud.progressBar(xOffset, yOffset, 4, alignment, scaleX, scaleY) -- show 4
+        if soundPlayed ~= 4 then
+            Audio.playSound("Progression_5.wav")
+            soundPlayed = 4
+        end
+	elseif (progress > 0.35) then
+        Hud.progressBar(xOffset, yOffset, 3, alignment, scaleX, scaleY) -- show 3
+        if soundPlayed ~= 3 then
+            Audio.playSound("Progression_4.wav")
+            soundPlayed = 3
+        end
+	elseif (progress > 0.20) then
+        Hud.progressBar(xOffset, yOffset, 2, alignment, scaleX, scaleY) -- show 2
+        if soundPlayed ~= 2 then
+            Audio.playSound("Progression_3.wav")
+            soundPlayed = 2
+        end
+	elseif (progress > 0.10) then
+        Hud.progressBar(xOffset, yOffset, 1, alignment, scaleX, scaleY) -- show 1
+        if soundPlayed ~= 1 then
+            Audio.playSound("Progression_2.wav")
+            soundPlayed = 1
+        end
+	elseif (progress <= 0.10) then
+        Hud.progressBar(xOffset, yOffset, 0, alignment, scaleX, scaleY) -- show 0
+        if soundPlayed ~= 0 then
+            Audio.playSound("Progression_1.wav")
+            soundPlayed = 0
+        end
 	end
-	
+
 end
 
 -- the box holding the hint buttons
@@ -205,6 +252,7 @@ function handleMenuButtonsClick()
             game_state = MODE.BOOK
             firstMenuShown = true
             start_spriteID = 1
+            Audio.playSound("Start.wav")
         end
     end
     
@@ -212,24 +260,35 @@ function handleMenuButtonsClick()
         if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             restartGame = true
+            Audio.playSound("Start.wav")
             print("RESTART!")
         end
         if showFinalMenu == false then 
             if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
                                 data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
                 game_state = MODE.LEVEL
+                Audio.playSound("Button.wav")
             end
         end
     end
     
     if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
 					  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
+        Audio.playSound("Exit.wav")
         Hud.handleExit()
     end
 end
 
 function popStoryBook()
     Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
+    if bookSoundPlayed == false then
+        if playFinalBookSound == false then
+            Audio.playSound("Book.wav")
+        else
+            Audio.playSound("Pages.wav")
+        end
+        bookSoundPlayed = true
+    end
 end
 
 function handleStoryBookButtonClick()
@@ -238,12 +297,23 @@ function handleStoryBookButtonClick()
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             firstBookShown = true
+            Audio.playSound("Button.wav")
         end
     else
         if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             continueToNextPuzzle = true
+            Audio.playSound("Button.wav")
         end
     end
 end
+
+--MAIN GAME AMBIENT THEME
+if playFinalBookSound == false then
+    Audio.playMusic("Cleo_ThemeIngame.ogg", true)
+else
+    Audio.stopMusic("Cleo_ThemeIngame.ogg", true)
+    Audio.playMusic("Opening_Ending_Theme.ogg", true)
+end
+

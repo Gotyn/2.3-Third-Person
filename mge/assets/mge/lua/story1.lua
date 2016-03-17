@@ -10,7 +10,7 @@ story = {
             "Ship"
         },
         riddle = {
-            "Weight in my belly, trees on my back, \nnails in my ribbon, feet I do lack."
+            "Weight in my belly, trees on my back, \n    nails in my ribbon, feet I do lack."
         },
         bookImageIntro = "BOOK_00.png",
         bookImage = "BOOK_01.png"
@@ -26,7 +26,7 @@ story = {
             "Eagle"
         },
         riddle = {
-            "Hard when young, but soft when old. \nI cannot live with my food. Majestic in movement, in eating crude."
+            "                         Hard when young, but soft when old. \nI cannot live with my food. Majestic in movement, in eating crude."
         },
         bookImage = "BOOK_02.png"
     },
@@ -41,7 +41,7 @@ story = {
             "Knife"
         },
         riddle = {
-            "I eat meat, but do not drink wine. \nI am a means to an end or it's protector. \nI have committed many gruesome betrayals."
+            "        I eat meat, but do not drink wine. \n    I am a means to an end or it's protector. \nI have committed many gruesome betrayals."
         },
         bookImage = "BOOK_03.png"
     },
@@ -59,7 +59,7 @@ story = {
             "Star"
         },
         riddle = {
-            "At night they come without being fetched. \nBy day they are lost without being stolen."
+            "At night they come without being fetched. \n By day they are lost without being stolen."
         },
         bookImage = "BOOK_04.png"
     },
@@ -75,7 +75,7 @@ story = {
             "Pyramid"
         },
         riddle = {
-            "Young ones can only listen to the tales of \nthe elders on how we were brought into exiistence"
+            "       Young ones can only listen to the tales of \nthe elders on how we were brought into exiistence"
         },
         bookImage = "BOOK_05.png"
     },
@@ -91,7 +91,7 @@ story = {
             "Scroll"
         },
         riddle = {
-            "Men has always sought for me, to use me \nfor his gain, yet fools claim to have found me."
+            "   Men has always sought for me, to use me \nfor his gain, yet fools claim to have found me."
         },
         bookImage = "BOOK_06.png"
     },
@@ -107,7 +107,7 @@ story = {
             "Lips"
         },
         riddle = {
-            "My touch is soft, but my intensions can be stern. \nWith your faith I can be great, but defy me and we will both fall."
+            "            My touch is soft, but my intensions can be stern. \nWith your faith I can be great, but defy me and we will both fall."
         },
         bookImage = "BOOK_07.png"
     },
@@ -123,7 +123,7 @@ story = {
             "Skull"
         },
         riddle = {
-            "Some try to hide, some try to cheat, but time will show, we will always meet. \nTry as you might, to guess my name. I promise you'll know, when I do my claim."
+            "  Some try to hide, some try to cheat, but time will show, we will always meet. \nTry as you might, to guess my name. I promise you'll know, when I do my claim."
         },
         bookImage = "BOOK_08.png"
     },
@@ -139,7 +139,7 @@ story = {
             "Camel"
         },
         riddle = {
-            "My kind has been around for centuries. \nWe carry mountains or our backs. \nYet, we do not protest, for we cannot speak."
+            "   My kind has been around for centuries. \n        We carry mountains or our backs. \nYet, we do not protest, for we cannot speak."
         },
         bookImage = "BOOK_09.png"
     },
@@ -171,7 +171,7 @@ story = {
             "Ankh"
         },
         riddle = {
-            "I am the gateway between two worlds. \nMy purpose is to send you back, not let you pass."
+            "          I am the gateway between two worlds. \nMy purpose is to send you back, not let you pass."
         },
         bookImage = "BOOK_11.png"
     },

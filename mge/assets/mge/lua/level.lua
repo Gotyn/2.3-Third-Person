@@ -22,7 +22,6 @@ camera:rotateAroundAxis(-23, 0, 1, 0)
 
 -- ambient lighting
 -- Game.ambientLight(0, 1, 0)
-
 print("spotlight name: " .. camera:getName())
 print("spotlight name: " .. spotlight:getName())
 print("spotlight intensity: " .. spotlight:getIntensity())
@@ -71,6 +70,9 @@ end
 
 function nextPuzzle()
     nextPuzzleIndex = activePuzzle + 1
+    if nextPuzzleIndex == #story then
+        hud.playFinalBookSound = true
+    end
     if nextPuzzleIndex > #story then
         storyCompleted = true
         hud.showFinalMenu = true
@@ -135,6 +137,7 @@ function updateLevel()
 
         if checkProgress() >= solvedThreshold then
             hud.game_state = hud.MODE.BOOK
+            hud.bookSoundPlayed = false
         end
         
         if hud.continueToNextPuzzle == true then
