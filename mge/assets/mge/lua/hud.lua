@@ -102,12 +102,8 @@ function handleHintButtonsClick()
             showRiddleBox = false
         else
             showHintsBox1 = false
-<<<<<<< HEAD
+			showRiddleBox = true
 			hint1_spriteID = 2 --off
-=======
-            showRiddleBox = true
-			hint1_spriteID = 0
->>>>>>> refs/remotes/origin/hud2
         end
     end
     
@@ -125,13 +121,8 @@ function handleHintButtonsClick()
             showRiddleBox = false
         else
             showHintsBox2 = false
-<<<<<<< HEAD
+			showRiddleBox = true
 			hint2_spriteID = 4 --off
-
-=======
-            showRiddleBox = true
-			hint2_spriteID = 0
->>>>>>> refs/remotes/origin/hud2
         end
     end
     
@@ -149,12 +140,8 @@ function handleHintButtonsClick()
             showRiddleBox = false
         elseif showHintsBox3 == true then
             showHintsBox3 = false
-<<<<<<< HEAD
+			showRiddleBox = true
 			hint3_spriteID = 6 --off
-=======
-            showRiddleBox = true
-			hint3_spriteID = 0
->>>>>>> refs/remotes/origin/hud2
         end
     end
 end
@@ -222,46 +209,33 @@ function handleMenuButtonsClick()
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             game_state = MODE.BOOK
             firstMenuShown = true
-<<<<<<< HEAD
 			start_spriteID = 4 --Switch to RestartButtonSprite
-            print("START!")
-=======
-            start_spriteID = 1
->>>>>>> refs/remotes/origin/hud2
         end
     end
     
     if firstMenuShown == true then
-        --StartButton
+        --RestartButton
 		if Hud.menuButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             restartGame = true
             print("RESTART!")
         end
-<<<<<<< HEAD
-    
-		--ResumeButton
-        if Hud.menuButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
-							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
-            game_state = MODE.LEVEL
-            print("RESUME!")
-=======
-        if showFinalMenu == false then 
-            if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
-                                data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
-                game_state = MODE.LEVEL
-            end
->>>>>>> refs/remotes/origin/hud2
-        end
-    end
-    
-	--ExitButton
-    if Hud.menuButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
-					  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
-        Hud.handleExit()
-    end
-end
 
+		if showFinalMenu == false then 
+		--ResumeButton
+			if Hud.menuButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
+							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
+				game_state = MODE.LEVEL
+			end
+		end
+    end
+	--ExitButton
+	if Hud.menuButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
+				  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
+		Hud.handleExit()
+	end
+end
+	
 function popStoryBook()
     Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
 end

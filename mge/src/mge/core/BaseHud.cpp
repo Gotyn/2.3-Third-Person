@@ -108,8 +108,6 @@ void BaseHud::loadTextures()
 {
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
-
-<<<<<<< HEAD
     if (!hintsButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + hintsButtonTextureName))        return;
     if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))           return;
     if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName)) return;
@@ -120,6 +118,21 @@ void BaseHud::loadTextures()
     if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))             return;
     if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))         return;
 
+    if (!bookTextureIntro->loadFromFile(config::MGE_SPRITE_PATH + bookTextureIntroName))    return;
+    if (!bookTexture1->loadFromFile(config::MGE_SPRITE_PATH + bookTexture1Name))            return;
+    if (!bookTexture2->loadFromFile(config::MGE_SPRITE_PATH + bookTexture2Name))            return;
+    if (!bookTexture3->loadFromFile(config::MGE_SPRITE_PATH + bookTexture3Name))            return;
+    if (!bookTexture4->loadFromFile(config::MGE_SPRITE_PATH + bookTexture4Name))            return;
+    if (!bookTexture5->loadFromFile(config::MGE_SPRITE_PATH + bookTexture5Name))            return;
+    if (!bookTexture6->loadFromFile(config::MGE_SPRITE_PATH + bookTexture6Name))            return;
+    if (!bookTexture7->loadFromFile(config::MGE_SPRITE_PATH + bookTexture7Name))            return;
+    if (!bookTexture8->loadFromFile(config::MGE_SPRITE_PATH + bookTexture8Name))            return;
+    if (!bookTexture9->loadFromFile(config::MGE_SPRITE_PATH + bookTexture9Name))            return;
+    if (!bookTexture10->loadFromFile(config::MGE_SPRITE_PATH + bookTexture10Name))          return;
+    if (!bookTexture11->loadFromFile(config::MGE_SPRITE_PATH + bookTexture11Name))          return;
+    if (!bookTextureFinal->loadFromFile(config::MGE_SPRITE_PATH + bookTextureFinalName))    return;
+
+
     hintsButtonTexture->setSmooth(true);
     menuButtonTexture->setSmooth(true);
     storyBookButtonTexture->setSmooth(true);
@@ -128,77 +141,6 @@ void BaseHud::loadTextures()
     hintsBoxTexture->setSmooth(true);
     menuBoxTexture->setSmooth(true);
     storyBookTexture->setSmooth(true);
-=======
-    if (!helpButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + helpButtonTextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton1Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton1TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton2Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton2TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton3Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton3TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!exitButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + exitButtonTextureName))
-        { std::cout << "Could not load texture for exit button"      << std::endl; return; }
-    if (!resumeButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + resumeButtonTextureName))
-        { std::cout << "Could not load texture for resume button"    << std::endl; return; }
-    if (!startButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + startButtonTextureName))
-        { std::cout << "Could not load texture for start button"     << std::endl; return; }
-    if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName))
-        { std::cout << "Could not load texture for storybook button" << std::endl; return; }
-    if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!riddleBoxTexture->loadFromFile  (config::MGE_SPRITE_PATH + riddleBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!hintsBoxTexture->loadFromFile   (config::MGE_SPRITE_PATH + hintsBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!menuBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + menuBoxTextureName))
-        { std::cout << "Could not load texture for menulabel"        << std::endl; return; }
-    if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))
-        { std::cout << "Could not load texture for storybook label"  << std::endl; return; }
-    if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!bookTextureIntro->loadFromFile(config::MGE_SPRITE_PATH + bookTextureIntroName))
-        { std::cout << "Could not load texture for book texture intro"  << std::endl; return; }
-    if (!bookTexture1->loadFromFile(config::MGE_SPRITE_PATH + bookTexture1Name))
-        { std::cout << "Could not load texture for book texture 1"  << std::endl; return; }
-    if (!bookTexture2->loadFromFile(config::MGE_SPRITE_PATH + bookTexture2Name))
-        { std::cout << "Could not load texture for book texture 2"  << std::endl; return; }
-    if (!bookTexture3->loadFromFile(config::MGE_SPRITE_PATH + bookTexture3Name))
-        { std::cout << "Could not load texture for book texture 3"  << std::endl; return; }
-    if (!bookTexture4->loadFromFile(config::MGE_SPRITE_PATH + bookTexture4Name))
-        { std::cout << "Could not load texture for book texture 4"  << std::endl; return; }
-    if (!bookTexture5->loadFromFile(config::MGE_SPRITE_PATH + bookTexture5Name))
-        { std::cout << "Could not load texture for book texture 5"  << std::endl; return; }
-    if (!bookTexture6->loadFromFile(config::MGE_SPRITE_PATH + bookTexture6Name))
-        { std::cout << "Could not load texture for book texture 6"  << std::endl; return; }
-    if (!bookTexture7->loadFromFile(config::MGE_SPRITE_PATH + bookTexture7Name))
-        { std::cout << "Could not load texture for book texture 7"  << std::endl; return; }
-    if (!bookTexture8->loadFromFile(config::MGE_SPRITE_PATH + bookTexture8Name))
-        { std::cout << "Could not load texture for book texture 8"  << std::endl; return; }
-    if (!bookTexture9->loadFromFile(config::MGE_SPRITE_PATH + bookTexture9Name))
-        { std::cout << "Could not load texture for book texture 9"  << std::endl; return; }
-    if (!bookTexture10->loadFromFile(config::MGE_SPRITE_PATH + bookTexture10Name))
-        { std::cout << "Could not load texture for book texture 10"  << std::endl; return; }
-    if (!bookTexture11->loadFromFile(config::MGE_SPRITE_PATH + bookTexture11Name))
-        { std::cout << "Could not load texture for book texture 11"  << std::endl; return; }
-    if (!bookTextureFinal->loadFromFile(config::MGE_SPRITE_PATH + bookTextureFinalName))
-        { std::cout << "Could not load texture for book texture final"  << std::endl; return; }
-
-
-
-    helpButtonTexture->setRepeated(true);
-    hintButton1Texture->setRepeated(true);
-    hintButton2Texture->setRepeated(true);
-    hintButton3Texture->setRepeated(true);
-    exitButtonTexture->setRepeated(true);
-    resumeButtonTexture->setRepeated(true);
-    startButtonTexture->setRepeated(true);
-    storyBookButtonTexture->setRepeated(true);
-    helpBoxTexture->setRepeated(true);
-    riddleBoxTexture->setRepeated(true);
-    hintsBoxTexture->setRepeated(true);
-    menuBoxTexture->setRepeated(true);
-    storyBookTexture->setRepeated(true);
     bookTextureIntro->setSmooth(true);
     bookTexture1->setSmooth(true);
     bookTexture2->setSmooth(true);
@@ -212,7 +154,6 @@ void BaseHud::loadTextures()
     bookTexture10->setSmooth(true);
     bookTexture11->setSmooth(true);
     bookTextureFinal->setSmooth(true);
->>>>>>> refs/remotes/origin/hud2
     _window->popGLStates();
 }
 
@@ -316,8 +257,6 @@ bool BaseHud::MenuButton (int xOffset, int yOffset, int spriteID, int alignment,
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
-
-
 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click

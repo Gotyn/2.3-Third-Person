@@ -195,10 +195,6 @@ story = {
     }
 }
 
-
-
-
-
 --Scales Puzzle pieces
 
 story[1].blocks[1]:scale(0.1, 0.1, 0.1)

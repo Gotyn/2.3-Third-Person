@@ -62,26 +62,8 @@ menu_box_scaleY = 0.33
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
-<<<<<<< HEAD
 --[MenuButton]
 menu_button_texture = "MENU_Buttons_Sheet.png"
-=======
---[StoryBook] Label that shows storybook container
-story_book_xOffset = 0
-story_book_yOffset = 0
-story_book_scaleX = 0.5
-story_book_scaleY = 0.5
-story_book_alignment = alignment.CENTER_CENTER
-story_book_texture = "BOOK_00.png"
-
---[StoryBookButton] Continue button in storybook container
-story_book_button_xOffset = 320
-story_book_button_yOffset = 230
-story_book_button_scaleX = 0.08
-story_book_button_scaleY = 0.08
-story_book_button_alignment = alignment.CENTER_CENTER
-story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
->>>>>>> refs/remotes/origin/hud2
 
 --[MenuButton: Resume]
 resume_button_xOffset = 30
@@ -109,16 +91,16 @@ exit_button_alignment = alignment.RIGHT_BOTTOM
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
-story_book_scaleX = 0.1
-story_book_scaleY = 0.1
+story_book_scaleX = 0.5
+story_book_scaleY = 0.5
 story_book_alignment = alignment.CENTER_CENTER
-story_book_texture = "BOOK_0.png"
+story_book_texture = "BOOK_00.png"
 
 --[StoryBookButton] Continue button in storybook container
-story_book_button_xOffset = 30
-story_book_button_yOffset = 0
-story_book_button_scaleX = 0.15
-story_book_button_scaleY = 0.15
+story_book_button_xOffset = 320
+story_book_button_yOffset = 230
+story_book_button_scaleX = 0.08
+story_book_button_scaleY = 0.08
 story_book_button_alignment = alignment.CENTER_CENTER
 story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
 -------------- BOOK END ---------------------------- BOOK END --------------
@@ -200,7 +182,6 @@ HUD.exit_button_yOffset = exit_button_yOffset
 HUD.exit_button_scaleX = exit_button_scaleX
 HUD.exit_button_scaleY = exit_button_scaleY
 HUD.exit_button_alignment = exit_button_alignment
-HUD.exit_button_texture = exit_button_texture
 
 --Resume button in menu
 HUD.resume_button_xOffset = resume_button_xOffset
@@ -208,7 +189,6 @@ HUD.resume_button_yOffset = resume_button_yOffset
 HUD.resume_button_scaleX = resume_button_scaleX
 HUD.resume_button_scaleY = resume_button_scaleY
 HUD.resume_button_alignment = resume_button_alignment
-HUD.resume_button_texture = resume_button_texture
 
 --Start button in menu
 HUD.start_button_xOffset = start_button_xOffset
@@ -216,7 +196,6 @@ HUD.start_button_yOffset = start_button_yOffset
 HUD.start_button_scaleX = start_button_scaleX
 HUD.start_button_scaleY = start_button_scaleY
 HUD.start_button_alignment = start_button_alignment
-HUD.start_button_texture = start_button_texture
 
 --Continue button in storybook container
 HUD.story_book_button_xOffset = story_book_button_xOffset
