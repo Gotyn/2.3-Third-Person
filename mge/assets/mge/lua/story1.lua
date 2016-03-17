@@ -2,44 +2,87 @@ story = {
     {
         wallImage = "1_MainWall_Base_Color.png",    --SHIPS (done)
         blocks = {  
+<<<<<<< HEAD
             Game.PuzzleBlock("Ship.obj", "Ship_Base_Color.png", "piece1", -1.325238, 4.995407, 4.780406)
             --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
+=======
+            Game.PuzzleBlock("Ship.obj", "Ship_Base_Color.png", "piece1", -1.6, 2.4, 7.4)
+>>>>>>> refs/remotes/origin/master
         },
         tips = {
-            "puzzle 1, tip1",
-            "puzzle 1, tip2"
+            "Not meant to submerge",
+            "Used for transportation",
+            "Ship"
         },
+<<<<<<< HEAD
         camPosition = {-5.809093, 3.296122, 6.267358},
         lightPosition = {-1.325238, 4.995407, 13.4},
         wallPosition = {4.169649, 0.326027, 5.563453}
+=======
+        riddle = {
+            "Weight in my belly, trees on my back, \nnails in my ribbon, feet I do lack."
+        },
+        bookImageIntro = "BOOK_00.png",
+        bookImage = "BOOK_01.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+>>>>>>> refs/remotes/origin/master
     },
     {
         wallImage = "2_MainWall_Base_Color.png",    --EAGLE (done)
         blocks = {  
+<<<<<<< HEAD
             Game.PuzzleBlock("Eagle.obj", "Eagle_Base_Color.png", "piece1", -1.620447, 1.626915, 5.364659)
             --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 6, 0, 0)
+=======
+            Game.PuzzleBlock("Eagle.obj", "Eagle_Base_Color.png", "piece1", -1.6, 2.4, 7.4)
+>>>>>>> refs/remotes/origin/master
         },
         tips = {
-            "puzzle 2, tip1",
-            "puzzle 2, tip2"
+            "King of the sky",
+            "Emblem of ancient Rome",
+            "Eagle"
         },
+        riddle = {
+            "Hard when young, but soft when old. \nI cannot live with my food. Majestic in movement, in eating crude."
+        },
+<<<<<<< HEAD
         camPosition = {-5.974538, 1.666161, 6.152138},
         lightPosition = {-1.847859, 1.815444, 9.814968},
         wallPosition = {5.442980, 3.081979, 5.682520}
+=======
+        bookImage = "BOOK_02.png",
+        camPosition = {-4.53, 2.66, 7.02},
+        lightPosition = {1.6, 2.4, 13.4}
+>>>>>>> refs/remotes/origin/master
     },
     {
         wallImage = "3_MainWall_Base_Color.png",    --KNIFE (done)
         blocks = {  
+<<<<<<< HEAD
             Game.PuzzleBlock("Knife.obj", "Knife_Base_Color.png", "piece1", 0.843153, 0.834008, 5.276042)
             --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
+=======
+            Game.PuzzleBlock("Knife.obj", "Knife_Base_Color.png", "piece1", 1.8, 0.8, 6.7)
+>>>>>>> refs/remotes/origin/master
         },
         tips = {
-            "puzzle 3, tip1",
-            "puzzle 3, tip2"
+            "Brings deadly resolutions",
+            "Very sharp",
+            "Knife"
         },
+<<<<<<< HEAD
         camPosition = {-2.434961, 0.555908, 6.144196},
         lightPosition = {0.843153, 1.088349, 13.4},
         wallPosition = {1.148681, 4.441195, 4.885514}
+=======
+        riddle = {
+            "I eat meat, but do not drink wine. \nI am a means to an end or it's protector. \nI have committed many gruesome betrayals."
+        },
+        bookImage = "BOOK_03.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+>>>>>>> refs/remotes/origin/master
     },
     -- {
     --     wallImage = "4_MainWall_Base_Color.png",    --STAR (done)
@@ -58,16 +101,51 @@ story = {
     {
         wallImage = "5_MainWall_Base_Color.png",    --PYRAMIDE (done)
         blocks = {  
+<<<<<<< HEAD
             Game.PuzzleBlock("Piramide_Base.obj", "Piramide_Base_Base_Color.png", "piece1", 3.800427, 1.652600, 6.775362),
             Game.PuzzleBlock("Piramide_Peak.obj", "Piramide_Peak_Base_Color.png", "piece2", 3.865358, 1.794074, 6.345235)
+=======
+            Game.PuzzleBlock("Star_Piece1.obj", "Star1_Base_Color.png", "piece1", 1.8, 0.8, 6.7),
+            Game.PuzzleBlock("Star_Piece2.obj", "Star2_Base_Color.png", "piece2", 1.8, 0.8, 6.7),
+            Game.PuzzleBlock("Star_Piece3.obj", "Star3_Base_Color.png", "piece3", 1.8, 0.8, 6.7)
+        
         },
         tips = {
-            "puzzle 5, tip1",
-            "puzzle 5, tip2"
+            "High in the sky",
+            "Bright in darkness",
+            "Star"
         },
+        riddle = {
+            "At night they come without being fetched. \nBy day they are lost without being stolen."
+        },
+        bookImage = "BOOK_04.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "5_MainWall_Base_Color.png",    --PYRAMIDE
+        blocks = {  
+            Game.PuzzleBlock("Piramide_Base.obj", "Piramide_Base_Base_Color.png", "piece1", 1.8, 0.8, 6.7),
+            Game.PuzzleBlock("Piramide_Peak.obj", "Piramide_Peak_Base_Color.png", "piece2", 1.79, 1.36, 6.68)
+>>>>>>> refs/remotes/origin/master
+        },
+        tips = {
+            "God's achitecture",
+            "Geometrical shape",
+            "Pyramid"
+        },
+<<<<<<< HEAD
         camPosition = {-0.270552, 2.220431, 6.825822},
         lightPosition = {3.067473, 1.827167, 11.252758},
         wallPosition = {-0.893377, 3.392399, 4.224762}
+=======
+        riddle = {
+            "Young ones can only listen to the tales of \nthe elders on how we were brought into exiistence"
+        },
+        bookImage = "BOOK_05.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+>>>>>>> refs/remotes/origin/master
     },
     {
         wallImage = "6_MainWall_Base_Color.png",    --SCROLL (done)
@@ -76,12 +154,132 @@ story = {
             Game.PuzzleBlock("scroll_Piece_2.obj", "Scroll2_Base_Color.png", "piece2", -0.964263, 2.766296, 6.073485)
         },
         tips = {
-            "puzzle 6, tip1",
-            "puzzle 6, tip2"
+            "Rollable, not foldable",
+            "Writable and recitable",
+            "Scroll"
         },
+        riddle = {
+            "Men has always sought for me, to use me \nfor his gain, yet fools claim to have found me."
+        },
+<<<<<<< HEAD
         camPosition = {-1.812449, 2.336787, 6.410395},
         lightPosition = {-1.438703, 2.400000, 11.904770},
         wallPosition = {0.647556, 2.089863, 4.580250}
+=======
+        bookImage = "BOOK_06.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "7_MainWall_Base_Color.png",    --LIPS
+        blocks = {  
+            Game.PuzzleBlock("Lips_Top.obj", "LipsTop_Base_Color.png", "piece1", 1.8, 0.8, 6.7),
+            Game.PuzzleBlock("Lips_Bottom.obj", "LipsLow_Base_Color.png", "piece2", 1.8, 0.254, 1)
+        },
+        tips = {
+            "Influences a large crowd",
+            "Words come from it",
+            "Lips"
+        },
+        riddle = {
+            "My touch is soft, but my intensions can be stern. \nWith your faith I can be great, but defy me and we will both fall."
+        },
+        bookImage = "BOOK_07.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "8_MainWall_Base_Color.png",    --[PLACE HOLDER] FOR SKULL
+        blocks = {  
+            Game.PuzzleBlock("Lips_Top.obj", "LipsTop_Base_Color.png", "piece1", 2, 0, 1),
+            Game.PuzzleBlock("Lips_Bottom.obj", "LipsLow_Base_Color.png", "piece2", 2, 0, 1)
+        },
+        tips = {
+            "Answer lies within you",
+            "Protector of the mind",
+            "Skull"
+        },
+        riddle = {
+            "Some try to hide, some try to cheat, but time will show, we will always meet. \nTry as you might, to guess my name. I promise you'll know, when I do my claim."
+        },
+        bookImage = "BOOK_08.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "9_MainWall_Base_Color.png",    --CAMEL
+        blocks = {  
+            Game.PuzzleBlock("Camal_Body_1.obj", "CamelBody_Base_Color.png", "piece1", 1.758, 0.729, 6.674),
+            Game.PuzzleBlock("Camal_Body_2.obj", "CamelBody2_Base_Color.png", "piece2", 1.63, 0.686, 4.939)
+        },
+        tips = {
+            "Living transport",
+            "Brother of Dromedaries",
+            "Camel"
+        },
+        riddle = {
+            "My kind has been around for centuries. \nWe carry mountains or our backs. \nYet, we do not protest, for we cannot speak."
+        },
+        bookImage = "BOOK_09.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "10_MainWall_Base_Color.png",   --POTION
+        blocks = {  
+            Game.PuzzleBlock("Potion_Base.obj", "Potion_Base_Color.png", "piece1", 1.758, 0.729, 6.674),
+            Game.PuzzleBlock("Potion_Top.obj", "PotionTop_Base_Color.png", "piece2", 1.765, 2.258, 4.816)
+        },
+        tips = {
+            "It is antidote",
+            "Pot shaped",
+            "Antidote"
+        },
+        riddle = {
+            "The solution is the antiodote."
+        },
+        bookImage = "BOOK_10.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "11_MainWall_Base_Color.png",   --[PLACE HOLDER] ARKH
+        blocks = {  
+            Game.PuzzleBlock("Potion_Base.obj", "Potion_Base_Color.png", "piece1", 1.758, 0.729, 6.674),
+            Game.PuzzleBlock("Potion_Top.obj", "PotionTop_Base_Color.png", "piece2", 1.765, 2.258, 4.816)
+        },
+        tips = {
+            "Ancient key",
+            "Looks like a cross",
+            "Ankh"
+        },
+        riddle = {
+            "I am the gateway between two worlds. \nMy purpose is to send you back, not let you pass."
+        },
+        bookImage = "BOOK_11.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+    },
+    {
+        wallImage = "12_MainWall_Base_Color.png",   --UFO 
+        blocks = {  
+            Game.PuzzleBlock("UFO_Part1.obj", "Potion_Base_Color.png", "piece1", 1.758, 0.729, 6.674),
+            Game.PuzzleBlock("UFO_Part2.obj", "PotionTop_Base_Color.png", "piece2", 1.758, 0.729, 6.674),
+            Game.PuzzleBlock("UFO_Part3.obj", "PotionTop_Base_Color.png", "piece2", 1.758, 0.729, 6.674),
+            Game.PuzzleBlock("UFO_Part4.obj", "PotionTop_Base_Color.png", "piece2", 1.758, 0.729, 6.674)
+        },
+        tips = {
+            "Difficult to explain",
+            "Can fly",
+            "U.F.O."
+        },
+        riddle = {
+            "Unbelievable fussy organization."
+        },
+        bookImage = "BOOK_12.png",
+        camPosition = {-5.53, 2.66, 7.02},
+        lightPosition = {-1.6, 2.4, 13.4}
+>>>>>>> refs/remotes/origin/master
     }
     -- {
     --     wallImage = "7_MainWall_Base_Color.png",    --LIPS (done)
@@ -173,6 +371,7 @@ story = {
 
 --Scales Puzzle pieces
 
+<<<<<<< HEAD
 story[1].blocks[1]:scale(0.08, 0.08, 0.08)
 
 story[2].blocks[1]:scale(0.1, 0.1, 0.1)
@@ -181,6 +380,11 @@ story[3].blocks[1]:scale(0.08, 0.08, 0.08)
 
 story[4].blocks[1]:scale(0.08, 0.08, 0.08)
 story[4].blocks[2]:scale(0.08, 0.08, 0.08)
+=======
+story[1].blocks[1]:scale(0.1, 0.1, 0.1)
+
+story[2].blocks[1]:scale(0.3, 0.3, 0.3)
+>>>>>>> refs/remotes/origin/master
 
 story[5].blocks[1]:scale(0.02, 0.02, 0.02)
 story[5].blocks[2]:scale(0.02, 0.02, 0.02)
