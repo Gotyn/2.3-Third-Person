@@ -2,10 +2,16 @@
 layout (location = 0) in vec3 position; //d
 layout (location = 1) in vec3 normal; //d
 layout (location = 2) in vec2 texCoords; //d
+<<<<<<< HEAD
+=======
+
+out vec2 TexCoords;
+>>>>>>> parent of a7e6ec8... close to working
 
 out VS_OUT {
     vec3 FragPos;
     vec2 TexCoords;
+<<<<<<< HEAD
 <<<<<<< HEAD
     vec3 TangentLightPos;
     vec3 TangentViewPos;
@@ -22,10 +28,18 @@ uniform vec3 viewPos;
     vec4 FragPosLightSpace;
 } vs_out;
 
+=======
+    vec4 FragPosLightSpace;
+} vs_out;
+
+>>>>>>> parent of a7e6ec8... close to working
 uniform mat4 projection; //d
 uniform mat4 view; //d
 uniform mat4 model; //d
 uniform mat4 lightSpaceMatrix; //d
+<<<<<<< HEAD
+>>>>>>> parent of a7e6ec8... close to working
+=======
 >>>>>>> parent of a7e6ec8... close to working
 
 void main()
@@ -46,5 +60,8 @@ void main()
     vs_out.TangentFragPos  = TBN * vs_out.FragPos;
 =======
     vs_out.FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
+<<<<<<< HEAD
+>>>>>>> parent of a7e6ec8... close to working
+=======
 >>>>>>> parent of a7e6ec8... close to working
 }
