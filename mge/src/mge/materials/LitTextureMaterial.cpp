@@ -113,6 +113,8 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     pMesh->streamToOpenGL(
         _shader->getAttribLocation("position"),
         _shader->getAttribLocation("normal"),
-        _shader->getAttribLocation("texCoords")
+        _shader->getAttribLocation("texCoords"),
+        _shader->getAttribLocation("tangent"),
+        _shader->getAttribLocation("biTangent")
     );
 }
