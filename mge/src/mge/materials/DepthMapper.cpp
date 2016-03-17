@@ -46,9 +46,7 @@ void DepthMapper::render(RenderPipeline* pRenderPipeline, World* pWorld, GameObj
         pMesh->streamToOpenGL(
         _shader->getAttribLocation("vertex"),
         _shader->getAttribLocation("normal"),
-        _shader->getAttribLocation("uv"),
-        _shader->getAttribLocation("tangent"),
-        _shader->getAttribLocation("biTangent")
+        _shader->getAttribLocation("uv")
     );
 
     glBindTexture(GL_TEXTURE_2D, _depthMap);

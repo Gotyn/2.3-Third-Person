@@ -16,8 +16,6 @@ GLint WobblingMaterial::_uDiffuseColor = 0;
 
 GLint WobblingMaterial::_aVertex = 0;
 GLint WobblingMaterial::_aNormal = 0;
-GLint WobblingMaterial::_aTangent = 0;
-GLint WobblingMaterial::_aBiTangent = 0;
 GLint WobblingMaterial::_aUV = 0;
 GLint WobblingMaterial::_offsetIndex = 0;
 GLint WobblingMaterial::_timeIndex = 0;
@@ -47,8 +45,6 @@ void WobblingMaterial::_lazyInitializeShader() {
 
         _aVertex = _shader->getAttribLocation("vertex");
         _aNormal = _shader->getAttribLocation("normal");
-        _aTangent = _shader->getAttribLocation("tangent");
-        _aBiTangent = _shader->getAttribLocation("biTangent");
         _aUV =     _shader->getAttribLocation("uv");
     }
 }
@@ -75,5 +71,5 @@ void WobblingMaterial::render(World* pWorld, GameObject* pGameObject, std::share
     glUniform2fv (_offsetIndex, 1, offset);
     glUniform2fv (_timeIndex, 1, _time);
     //now inform mesh of where to stream its data
-    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV, _aTangent, _aBiTangent);
+    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 }

@@ -56,8 +56,6 @@ class LitColorMaterial : public AbstractMaterial
         static GLint lightsUniforArraySize;
         static GLint _aVertex;
         static GLint _aNormal;
-        static GLint _aTangent;
-        static GLint _aBiTangent;
         static GLint _aUV;
 
         // ----------- STUFF FOR 2-ND SHADER TO SHOW SHADOW MAP ----------- //
