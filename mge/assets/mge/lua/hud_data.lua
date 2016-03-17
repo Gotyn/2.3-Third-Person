@@ -13,37 +13,36 @@ progress_bar_scaleY = 0.75
 progress_bar_alignment = alignment.CENTER_TOP
 progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 
+--[HintsButton] Button for Riddle / Hints 
+hints_button_texture = "HUD_Hints_Sheet.png"
+
 --[HelpButton] Button for Riddle / Hints 
 help_button_xOffset = 20
 help_button_yOffset = 20
-help_button_scaleX = 0.14
-help_button_scaleY = 0.14
+help_button_scaleX = 0.56
+help_button_scaleY = 0.56
 help_button_alignment = alignment.RIGHT_TOP
-help_button_texture = "HUD_Hint_Button_Sphinx_Sheet.png"
 
 --[HintButton1] Button for first hint
-hint_button1_xOffset = 30
+hint_button1_xOffset = 32
 hint_button1_yOffset = 92
-hint_button1_scaleX = 0.1
-hint_button1_scaleY = 0.1
+hint_button1_scaleX = 0.36
+hint_button1_scaleY = 0.36
 hint_button1_alignment = alignment.RIGHT_TOP
-hint_button1_texture = "HUD_Hint_Button_1_Sheet.png"
 
 --[HintButton2] Button for second hint
-hint_button2_xOffset = 30
+hint_button2_xOffset = 32
 hint_button2_yOffset = 140
-hint_button2_scaleX = 0.1
-hint_button2_scaleY = 0.1
+hint_button2_scaleX = 0.36
+hint_button2_scaleY = 0.36
 hint_button2_alignment = alignment.RIGHT_TOP
-hint_button2_texture = "HUD_Hint_Button_2_Sheet.png"
 
 --[HintButton3] Button for third hint
-hint_button3_xOffset = 30
+hint_button3_xOffset = 32
 hint_button3_yOffset = 188
-hint_button3_scaleX = 0.1
-hint_button3_scaleY = 0.1
+hint_button3_scaleX = 0.36
+hint_button3_scaleY = 0.36
 hint_button3_alignment = alignment.RIGHT_TOP
-hint_button3_texture = "HUD_Hint_Button_3_Sheet.png"
 
 --[HelpBox] Label behind the hint buttons (helpbox)
 help_box_xOffset = 27
@@ -53,6 +52,8 @@ help_box_scaleY = 0.11
 help_box_alignment = alignment.RIGHT_TOP
 help_box_texture = "HUD_Dropdown_Box.png"
 
+
+------------- MENU START -------------------------- MENU START -------------
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
@@ -61,6 +62,32 @@ menu_box_scaleY = 0.33
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
+--[MenuButton]
+menu_button_texture = "MENU_Buttons_Sheet.png"
+
+--[MenuButton: Resume]
+resume_button_xOffset = 30
+resume_button_yOffset = 270
+resume_button_scaleX = 0.2
+resume_button_scaleY = 0.2
+resume_button_alignment = alignment.RIGHT_BOTTOM
+
+--[MenuButton: Start]
+start_button_xOffset = 30
+start_button_yOffset = 150
+start_button_scaleX = 0.2
+start_button_scaleY = 0.2
+start_button_alignment = alignment.RIGHT_BOTTOM
+
+--[MenuButton: Exit]
+exit_button_xOffset = 30
+exit_button_yOffset = 30
+exit_button_scaleX = 0.2
+exit_button_scaleY = 0.2
+exit_button_alignment = alignment.RIGHT_BOTTOM
+-------------- MENU END ---------------------------- MENU END --------------
+
+------------- BOOK START -------------------------- BOOK START -------------
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
@@ -76,31 +103,7 @@ story_book_button_scaleX = 0.08
 story_book_button_scaleY = 0.08
 story_book_button_alignment = alignment.CENTER_CENTER
 story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
-
---[ResumeButton] Resume button in menu 
--- NOTE: ONLY VISIBLE AFTER STARTING! | Gets reset when hotloading, so click start again.
-resume_button_xOffset = 30
-resume_button_yOffset = 270
-resume_button_scaleX = 0.2
-resume_button_scaleY = 0.2
-resume_button_alignment = alignment.RIGHT_BOTTOM
-resume_button_texture = "MENU_Resume_Sheet.png"
-
---[StartButton] Start button in menu
-start_button_xOffset = 30
-start_button_yOffset = 150
-start_button_scaleX = 0.2
-start_button_scaleY = 0.2
-start_button_alignment = alignment.RIGHT_BOTTOM
-start_button_texture = "MENU_Play_Sheet.png"
-
---[ExitButton] Exit button in menu
-exit_button_xOffset = 30
-exit_button_yOffset = 30
-exit_button_scaleX = 0.2
-exit_button_scaleY = 0.2
-exit_button_alignment = alignment.RIGHT_BOTTOM
-exit_button_texture = "MENU_Exit_Sheet.png"
+-------------- BOOK END ---------------------------- BOOK END --------------
 
 --[RiddleBox] Label that shows the riddle
 riddle_box_xOffset = 0
@@ -139,13 +142,15 @@ HUD.progress_bar_scaleY = progress_bar_scaleY
 HUD.progress_bar_alignment = progress_bar_alignment
 HUD.progress_bar_texture = progress_bar_texture
 
+-- riddle / hint / help button texture
+HUD.hints_button_texture 	= hints_button_texture
+
 -- riddle / hint / help button
 HUD.help_button_xOffset = help_button_xOffset
 HUD.help_button_yOffset = help_button_yOffset
 HUD.help_button_scaleX = help_button_scaleX
 HUD.help_button_scaleY = help_button_scaleY
 HUD.help_button_alignment = help_button_alignment
-HUD.help_button_texture = help_button_texture
 
 --Button for first hint
 HUD.hint_button1_xOffset = hint_button1_xOffset
@@ -153,7 +158,6 @@ HUD.hint_button1_yOffset = hint_button1_yOffset
 HUD.hint_button1_scaleX = hint_button1_scaleX
 HUD.hint_button1_scaleY = hint_button1_scaleY
 HUD.hint_button1_alignment = hint_button1_alignment
-HUD.hint_button1_texture = hint_button1_texture
 
 --Button for second hint
 HUD.hint_button2_xOffset = hint_button2_xOffset
@@ -161,7 +165,6 @@ HUD.hint_button2_yOffset = hint_button2_yOffset
 HUD.hint_button2_scaleX = hint_button2_scaleX
 HUD.hint_button2_scaleY = hint_button2_scaleY
 HUD.hint_button2_alignment = hint_button2_alignment
-HUD.hint_button2_texture = hint_button2_texture
 
 --Button for third hint
 HUD.hint_button3_xOffset = hint_button3_xOffset
@@ -169,7 +172,9 @@ HUD.hint_button3_yOffset = hint_button3_yOffset
 HUD.hint_button3_scaleX = hint_button3_scaleX
 HUD.hint_button3_scaleY = hint_button3_scaleY
 HUD.hint_button3_alignment = hint_button3_alignment
-HUD.hint_button3_texture = hint_button3_texture
+
+--[MenuButton]
+HUD.menu_button_texture = menu_button_texture
 
 --Exit button in menu
 HUD.exit_button_xOffset = exit_button_xOffset
@@ -177,7 +182,6 @@ HUD.exit_button_yOffset = exit_button_yOffset
 HUD.exit_button_scaleX = exit_button_scaleX
 HUD.exit_button_scaleY = exit_button_scaleY
 HUD.exit_button_alignment = exit_button_alignment
-HUD.exit_button_texture = exit_button_texture
 
 --Resume button in menu
 HUD.resume_button_xOffset = resume_button_xOffset
@@ -185,7 +189,6 @@ HUD.resume_button_yOffset = resume_button_yOffset
 HUD.resume_button_scaleX = resume_button_scaleX
 HUD.resume_button_scaleY = resume_button_scaleY
 HUD.resume_button_alignment = resume_button_alignment
-HUD.resume_button_texture = resume_button_texture
 
 --Start button in menu
 HUD.start_button_xOffset = start_button_xOffset
@@ -193,7 +196,6 @@ HUD.start_button_yOffset = start_button_yOffset
 HUD.start_button_scaleX = start_button_scaleX
 HUD.start_button_scaleY = start_button_scaleY
 HUD.start_button_alignment = start_button_alignment
-HUD.start_button_texture = start_button_texture
 
 --Continue button in storybook container
 HUD.story_book_button_xOffset = story_book_button_xOffset

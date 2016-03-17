@@ -29,13 +29,8 @@ sf::Texture* BaseHud::bookTextureFinal = new sf::Texture;
 std::vector<sf::Texture*> BaseHud::bookTextures;
 
 // initialize static textures
-sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
-sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
-sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
-sf::Texture* BaseHud::exitButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::resumeButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::startButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::hintsButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::menuButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
@@ -44,13 +39,8 @@ sf::Texture* BaseHud::progressBarTexture = new sf::Texture;
 sf::Texture* BaseHud::menuBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookTexture = new sf::Texture;
 // initialize static sprites
-sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton2Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::exitButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::resumeButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::startButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::hintsButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::menuButtonSprite = new sf::Sprite; //contains play, exit, restart, resume, empty
 sf::Sprite* BaseHud::storyBookButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
 sf::Sprite* BaseHud::riddleBoxSprite = new sf::Sprite;
@@ -62,13 +52,8 @@ sf::Sprite* BaseHud::storyBookSprite = new sf::Sprite;
 sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
-std::string BaseHud::helpButtonTextureName  = "land.jpg";
-std::string BaseHud::hintButton1TextureName = "land.jpg";
-std::string BaseHud::hintButton2TextureName = "land.jpg";
-std::string BaseHud::hintButton3TextureName = "land.jpg";
-std::string BaseHud::exitButtonTextureName = "land.jpg";
-std::string BaseHud::resumeButtonTextureName = "land.jpg";
-std::string BaseHud::startButtonTextureName = "land.jpg";
+std::string BaseHud::hintsButtonTextureName  = "land.jpg";
+std::string BaseHud::menuButtonTextureName = "land.jpg";
 std::string BaseHud::storyBookButtonTextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "land.jpg";
@@ -123,77 +108,39 @@ void BaseHud::loadTextures()
 {
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
+    if (!hintsButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + hintsButtonTextureName))        return;
+    if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))           return;
+    if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName)) return;
+    if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))             return;
+    if (!riddleBoxTexture->loadFromFile  (config::MGE_SPRITE_PATH + riddleBoxTextureName))           return;
+    if (!hintsBoxTexture->loadFromFile   (config::MGE_SPRITE_PATH + hintsBoxTextureName))            return;
+    if (!menuBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + menuBoxTextureName))             return;
+    if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))             return;
+    if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))         return;
 
-    if (!helpButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + helpButtonTextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton1Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton1TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton2Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton2TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!hintButton3Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton3TextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!exitButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + exitButtonTextureName))
-        { std::cout << "Could not load texture for exit button"      << std::endl; return; }
-    if (!resumeButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + resumeButtonTextureName))
-        { std::cout << "Could not load texture for resume button"    << std::endl; return; }
-    if (!startButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + startButtonTextureName))
-        { std::cout << "Could not load texture for start button"     << std::endl; return; }
-    if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName))
-        { std::cout << "Could not load texture for storybook button" << std::endl; return; }
-    if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!riddleBoxTexture->loadFromFile  (config::MGE_SPRITE_PATH + riddleBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!hintsBoxTexture->loadFromFile   (config::MGE_SPRITE_PATH + hintsBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!menuBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + menuBoxTextureName))
-        { std::cout << "Could not load texture for menulabel"        << std::endl; return; }
-    if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))
-        { std::cout << "Could not load texture for storybook label"  << std::endl; return; }
-    if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!bookTextureIntro->loadFromFile(config::MGE_SPRITE_PATH + bookTextureIntroName))
-        { std::cout << "Could not load texture for book texture intro"  << std::endl; return; }
-    if (!bookTexture1->loadFromFile(config::MGE_SPRITE_PATH + bookTexture1Name))
-        { std::cout << "Could not load texture for book texture 1"  << std::endl; return; }
-    if (!bookTexture2->loadFromFile(config::MGE_SPRITE_PATH + bookTexture2Name))
-        { std::cout << "Could not load texture for book texture 2"  << std::endl; return; }
-    if (!bookTexture3->loadFromFile(config::MGE_SPRITE_PATH + bookTexture3Name))
-        { std::cout << "Could not load texture for book texture 3"  << std::endl; return; }
-    if (!bookTexture4->loadFromFile(config::MGE_SPRITE_PATH + bookTexture4Name))
-        { std::cout << "Could not load texture for book texture 4"  << std::endl; return; }
-    if (!bookTexture5->loadFromFile(config::MGE_SPRITE_PATH + bookTexture5Name))
-        { std::cout << "Could not load texture for book texture 5"  << std::endl; return; }
-    if (!bookTexture6->loadFromFile(config::MGE_SPRITE_PATH + bookTexture6Name))
-        { std::cout << "Could not load texture for book texture 6"  << std::endl; return; }
-    if (!bookTexture7->loadFromFile(config::MGE_SPRITE_PATH + bookTexture7Name))
-        { std::cout << "Could not load texture for book texture 7"  << std::endl; return; }
-    if (!bookTexture8->loadFromFile(config::MGE_SPRITE_PATH + bookTexture8Name))
-        { std::cout << "Could not load texture for book texture 8"  << std::endl; return; }
-    if (!bookTexture9->loadFromFile(config::MGE_SPRITE_PATH + bookTexture9Name))
-        { std::cout << "Could not load texture for book texture 9"  << std::endl; return; }
-    if (!bookTexture10->loadFromFile(config::MGE_SPRITE_PATH + bookTexture10Name))
-        { std::cout << "Could not load texture for book texture 10"  << std::endl; return; }
-    if (!bookTexture11->loadFromFile(config::MGE_SPRITE_PATH + bookTexture11Name))
-        { std::cout << "Could not load texture for book texture 11"  << std::endl; return; }
-    if (!bookTextureFinal->loadFromFile(config::MGE_SPRITE_PATH + bookTextureFinalName))
-        { std::cout << "Could not load texture for book texture final"  << std::endl; return; }
+    if (!bookTextureIntro->loadFromFile(config::MGE_SPRITE_PATH + bookTextureIntroName))    return;
+    if (!bookTexture1->loadFromFile(config::MGE_SPRITE_PATH + bookTexture1Name))            return;
+    if (!bookTexture2->loadFromFile(config::MGE_SPRITE_PATH + bookTexture2Name))            return;
+    if (!bookTexture3->loadFromFile(config::MGE_SPRITE_PATH + bookTexture3Name))            return;
+    if (!bookTexture4->loadFromFile(config::MGE_SPRITE_PATH + bookTexture4Name))            return;
+    if (!bookTexture5->loadFromFile(config::MGE_SPRITE_PATH + bookTexture5Name))            return;
+    if (!bookTexture6->loadFromFile(config::MGE_SPRITE_PATH + bookTexture6Name))            return;
+    if (!bookTexture7->loadFromFile(config::MGE_SPRITE_PATH + bookTexture7Name))            return;
+    if (!bookTexture8->loadFromFile(config::MGE_SPRITE_PATH + bookTexture8Name))            return;
+    if (!bookTexture9->loadFromFile(config::MGE_SPRITE_PATH + bookTexture9Name))            return;
+    if (!bookTexture10->loadFromFile(config::MGE_SPRITE_PATH + bookTexture10Name))          return;
+    if (!bookTexture11->loadFromFile(config::MGE_SPRITE_PATH + bookTexture11Name))          return;
+    if (!bookTextureFinal->loadFromFile(config::MGE_SPRITE_PATH + bookTextureFinalName))    return;
 
 
-
-    helpButtonTexture->setRepeated(true);
-    hintButton1Texture->setRepeated(true);
-    hintButton2Texture->setRepeated(true);
-    hintButton3Texture->setRepeated(true);
-    exitButtonTexture->setRepeated(true);
-    resumeButtonTexture->setRepeated(true);
-    startButtonTexture->setRepeated(true);
-    storyBookButtonTexture->setRepeated(true);
-    helpBoxTexture->setRepeated(true);
-    riddleBoxTexture->setRepeated(true);
-    hintsBoxTexture->setRepeated(true);
-    menuBoxTexture->setRepeated(true);
-    storyBookTexture->setRepeated(true);
+    hintsButtonTexture->setSmooth(true);
+    menuButtonTexture->setSmooth(true);
+    storyBookButtonTexture->setSmooth(true);
+    helpBoxTexture->setSmooth(true);
+    riddleBoxTexture->setSmooth(true);
+    hintsBoxTexture->setSmooth(true);
+    menuBoxTexture->setSmooth(true);
+    storyBookTexture->setSmooth(true);
     bookTextureIntro->setSmooth(true);
     bookTexture1->setSmooth(true);
     bookTexture2->setSmooth(true);
@@ -241,25 +188,34 @@ bool BaseHud::Button(int x, int y, std::string caption)
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HelpButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
+bool BaseHud::HintsButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
     int spriteSheetColumns = 2;
+    int spriteSheetRows = 4;
 
-    sf::Vector2u spriteSize(helpButtonTexture->getSize());                              // Get the image size
+    sf::Vector2u spriteSize(hintsButtonTexture->getSize());                              // Get the image size
     int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
+    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                          //unscaled!
+    int tileHeight = spriteSize.y / spriteSheetRows;                                //unscaled!
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              // unscaled!
 
     //create sprite
-    helpButtonSprite->setTexture(*helpButtonTexture);
-    helpButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) helpButtonSprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));    // unscaled!
-    else helpButtonSprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));          // unscaled!
+    hintsButtonSprite->setTexture(*hintsButtonTexture);
+    hintsButtonSprite->setScale(scaleX, scaleY);
 
-    helpButtonSprite->setPosition(alignedPos);
+    if      (spriteID == 0) hintsButtonSprite->setTextureRect(sf::IntRect(        0,              0, tileWidth, tileHeight)); //R1 C1    //Sphinx
+    else if (spriteID == 1) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth,              0, tileWidth, tileHeight)); //R1 C2    //Sphinx*
+    else if (spriteID == 2) hintsButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 1, tileWidth, tileHeight)); //R2 C1    //One
+    else if (spriteID == 3) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 1, tileWidth, tileHeight)); //R2 C2    //One*
+    else if (spriteID == 4) hintsButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Two
+    else if (spriteID == 5) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Two*
+    else if (spriteID == 6) hintsButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Three
+    else if (spriteID == 7) hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R5 C2    //Three*
 
-    _window->draw(*helpButtonSprite);
+    hintsButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*hintsButtonSprite);
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
@@ -267,152 +223,37 @@ bool BaseHud::HelpButton(int xOffset, int yOffset, int spriteID, int alignment, 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
 //----------------------------------------------------------------
-bool BaseHud::HintButton1(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(hintButton1Texture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
-
-    //create sprite
-    hintButton1Sprite->setTexture(*hintButton1Texture);
-    hintButton1Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton1Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
-    else hintButton1Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
-    hintButton1Sprite->setPosition(alignedPos);
-
-    _window->draw(*hintButton1Sprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::HintButton2(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(hintButton2Texture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
-
-    //create sprite
-    hintButton2Sprite->setTexture(*hintButton2Texture);
-    hintButton2Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton2Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
-    else hintButton2Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
-    hintButton2Sprite->setPosition(alignedPos);
-
-    _window->draw(*hintButton2Sprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::HintButton3(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(hintButton3Texture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              //unscaled!
-
-    //create sprite
-    hintButton3Sprite->setTexture(*hintButton3Texture);
-    hintButton3Sprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) hintButton3Sprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));   //unscaled!
-    else hintButton3Sprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));         //unscaled!
-    hintButton3Sprite->setPosition(alignedPos);
-
-    _window->draw(*hintButton3Sprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::ExitButton  (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(exitButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-
-    //create sprite
-    exitButtonSprite->setTexture(*exitButtonTexture);
-    exitButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) exitButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else exitButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
-    exitButtonSprite->setPosition(alignedPos);
-
-    _window->draw(*exitButtonSprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::ResumeButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
+bool BaseHud::MenuButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
 {
     int spriteSheetColumns = 2;
+    int spriteSheetRows = 5;
 
-    sf::Vector2u spriteSize(resumeButtonTexture->getSize());                              // Get the image size
+    sf::Vector2u spriteSize(menuButtonTexture->getSize());                              // Get the image size
     int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
+    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                          //unscaled!
+    int tileHeight = spriteSize.y / spriteSheetRows;                                //unscaled!
 
     sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
 
     //create sprite
-    resumeButtonSprite->setTexture(*resumeButtonTexture);
-    resumeButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) resumeButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else resumeButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
-    resumeButtonSprite->setPosition(alignedPos);
+    menuButtonSprite->setTexture(*menuButtonTexture);
+    menuButtonSprite->setScale(scaleX, scaleY);
 
-    _window->draw(*resumeButtonSprite);
+    if      (spriteID == 0) menuButtonSprite->setTextureRect(sf::IntRect(        0,              0, tileWidth, tileHeight)); //R1 C1    //Play
+    else if (spriteID == 1) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth,              0, tileWidth, tileHeight)); //R1 C2    //Play*
+    else if (spriteID == 2) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 1, tileWidth, tileHeight)); //R2 C1    //Exit
+    else if (spriteID == 3) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 1, tileWidth, tileHeight)); //R2 C2    //Exit*
+    else if (spriteID == 4) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Restart
+    else if (spriteID == 5) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Restart*
+    else if (spriteID == 6) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Resume
+    else if (spriteID == 7) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R4 C2    //Resume*
+    else if (spriteID == 8) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 4, tileWidth, tileHeight)); //R5 C1    //Empty
+    else if (spriteID == 9) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 4, tileWidth, tileHeight)); //R5 C2    //Empty*
 
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
+    menuButtonSprite->setPosition(alignedPos);
 
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::StartButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
-{
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(startButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-
-    //create sprite
-    startButtonSprite->setTexture(*startButtonTexture);
-    startButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else startButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
-    startButtonSprite->setPosition(alignedPos);
-
-    _window->draw(*startButtonSprite);
+    _window->draw(*menuButtonSprite);
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
@@ -604,10 +445,7 @@ void BaseHud::TextLabel(int x, int y, std::string caption) {
 //--------------------------------------------------------------------------------
 // a bunch of sessters used outside the class for setting texture names from lua
 //--------------------------------------------------------------------------------
-void BaseHud::setHelpButtonTextureName(const std::string name)      { helpButtonTextureName      = name;  }
-void BaseHud::setHintButton1TextureName(const std::string name)     { hintButton1TextureName     = name;  }
-void BaseHud::setHintButton2TextureName(const std::string name)     { hintButton2TextureName     = name;  }
-void BaseHud::setHintButton3TextureName(const std::string name)     { hintButton3TextureName     = name;  }
+void BaseHud::setHintsButtonTextureName(const std::string name)     { hintsButtonTextureName     = name;  }
 void BaseHud::setHelpBoxTextureName(const std::string name)         { helpBoxTextureName         = name;  }
 void BaseHud::setRiddleBoxTextureName(const std::string name)       { riddleBoxTextureName       = name;  }
 void BaseHud::setHintsBoxTextureName(const std::string name)        { hintsBoxTextureName        = name;  }
@@ -615,9 +453,7 @@ void BaseHud::setMenuBoxTextureName(const std::string name)         { menuBoxTex
 void BaseHud::setStoryBookTextureName(const std::string name)       { storyBookTextureName       = name;  }
 void BaseHud::setProgressbarTextureName(const std::string name)     { progressBarTextureName     = name;  }
 void BaseHud::setDisplayTime(const int value)                       { displayTime                = value; }
-void BaseHud::setExitButtonTextureName(const std::string name)      { exitButtonTextureName      = name;  }
-void BaseHud::setResumeButtonTextureName(const std::string name)    { resumeButtonTextureName    = name;  }
-void BaseHud::setStartButtonTextureName(const std::string name)     { startButtonTextureName     = name;  }
+void BaseHud::setMenuButtonTextureName(const std::string name)      { menuButtonTextureName      = name;  }
 void BaseHud::setStoryBookButtonTextureName(const std::string name) { storyBookButtonTextureName = name;  }
 
 void BaseHud::setBookTextureIntroName(const std::string name)       { bookTextureIntroName       = name;  }

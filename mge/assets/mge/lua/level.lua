@@ -224,16 +224,10 @@ function restartGame()
     end
 end
 
-
 -- TEXTURE NAMES FOR C++ START --
 display_riddle_at_start = gameHud_Data.display_riddle_at_start
-help_button_texture = gameHud_Data.help_button_texture
-hint_button1_texture = gameHud_Data.hint_button1_texture
-hint_button2_texture = gameHud_Data.hint_button2_texture
-hint_button3_texture = gameHud_Data.hint_button3_texture
-exit_button_texture = gameHud_Data.exit_button_texture
-resume_button_texture = gameHud_Data.resume_button_texture
-start_button_texture = gameHud_Data.start_button_texture
+hints_button_texture 	  = gameHud_Data.hints_button_texture
+menu_button_texture 	  = gameHud_Data.menu_button_texture 			--spritesheet with all menubuttons
 help_box_texture = gameHud_Data.help_box_texture
 riddle_box_texture = gameHud_Data.riddle_box_texture
 hints_box_texture = gameHud_Data.hints_box_texture
@@ -241,6 +235,7 @@ menu_box_texture = gameHud_Data.menu_box_texture
 progress_bar_texture = gameHud_Data.progress_bar_texture
 story_book_texture = gameHud_Data.story_book_texture
 story_book_button_texture = gameHud_Data.story_book_button_texture
+
 book_texture_intro = story[1].bookImageIntro
 book_texture_1 = story[1].bookImage
 book_texture_2 = story[2].bookImage

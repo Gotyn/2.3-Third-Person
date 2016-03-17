@@ -17,13 +17,8 @@ class BaseHud
         static bool Button          (int xOffset, int yOffset, std::string caption);
         static void TextLabel       (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
         static void ProgressBar     (int xOffset, int yOffset, int row, int alignment, float scaleX, float scaleY);
-        static bool HelpButton      (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton1     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton2     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool HintButton3     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool ExitButton      (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool ResumeButton    (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
-        static bool StartButton     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool HintsButton     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
+        static bool MenuButton      (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
         static bool StoryBookButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
         static void HelpBox         (int xOffset, int yOffset, int alignment, float scaleX, float scaleY);
         static void RiddleBox       (int xOffset, int yOffset, int fontSize, std::string caption, int alignment, float scaleX, float scaleY);
@@ -50,13 +45,8 @@ class BaseHud
         static void setBookTextureFinalName(const std::string name);
 
         //setters
-        static void setHelpButtonTextureName(const std::string name);
-        static void setHintButton1TextureName(const std::string name);
-        static void setHintButton2TextureName(const std::string name);
-        static void setHintButton3TextureName(const std::string name);
-        static void setExitButtonTextureName(const std::string name);
-        static void setResumeButtonTextureName(const std::string name);
-        static void setStartButtonTextureName(const std::string name);
+        static void setHintsButtonTextureName(const std::string name);
+        static void setMenuButtonTextureName(const std::string name);
         static void setStoryBookButtonTextureName(const std::string name);
         static void setHelpBoxTextureName(const std::string name);
         static void setRiddleBoxTextureName(const std::string name);
@@ -97,13 +87,8 @@ class BaseHud
         static std::vector<sf::Texture*> bookTextures;
 
         //hud textures
-        static sf::Texture* helpButtonTexture;
-        static sf::Texture* hintButton1Texture;
-        static sf::Texture* hintButton2Texture;
-        static sf::Texture* hintButton3Texture;
-        static sf::Texture* exitButtonTexture;
-        static sf::Texture* resumeButtonTexture;
-        static sf::Texture* startButtonTexture;
+        static sf::Texture* hintsButtonTexture;
+        static sf::Texture* menuButtonTexture;
         static sf::Texture* storyBookButtonTexture;
         static sf::Texture* helpBoxTexture;
         static sf::Texture* riddleBoxTexture;
@@ -112,13 +97,8 @@ class BaseHud
         static sf::Texture* menuBoxTexture;
         static sf::Texture* storyBookTexture;
         //hud sprites
-        static sf::Sprite* helpButtonSprite;
-        static sf::Sprite* hintButton1Sprite;
-        static sf::Sprite* hintButton2Sprite;
-        static sf::Sprite* hintButton3Sprite;
-        static sf::Sprite* exitButtonSprite;
-        static sf::Sprite* resumeButtonSprite;
-        static sf::Sprite* startButtonSprite;
+        static sf::Sprite* hintsButtonSprite;
+        static sf::Sprite* menuButtonSprite;
         static sf::Sprite* storyBookButtonSprite;
         static sf::Sprite* helpBoxSprite;
         static sf::Sprite* riddleBoxSprite;
@@ -130,13 +110,8 @@ class BaseHud
         static sf::Text* riddleBoxText;
         static sf::Text* hintsBoxText;
         //hud names
-        static std::string helpButtonTextureName;
-        static std::string hintButton1TextureName;
-        static std::string hintButton2TextureName;
-        static std::string hintButton3TextureName;
-        static std::string exitButtonTextureName;
-        static std::string resumeButtonTextureName;
-        static std::string startButtonTextureName;
+        static std::string hintsButtonTextureName;
+        static std::string menuButtonTextureName;
         static std::string storyBookButtonTextureName;
         static std::string helpBoxTextureName;
         static std::string riddleBoxTextureName;

@@ -162,13 +162,8 @@ void LuaGame::_initLua()
             .addFunction ("button", BaseHud::Button)
             .addFunction ("textLabel", BaseHud::TextLabel)
             .addFunction ("progressBar", BaseHud::ProgressBar)
-            .addFunction ("helpButton", BaseHud::HelpButton)
-            .addFunction ("hintButton1", BaseHud::HintButton1)
-            .addFunction ("hintButton2", BaseHud::HintButton2)
-            .addFunction ("hintButton3", BaseHud::HintButton3)
-            .addFunction ("exitButton", BaseHud::ExitButton)
-            .addFunction ("resumeButton", BaseHud::ResumeButton)
-            .addFunction ("startButton", BaseHud::StartButton)
+            .addFunction ("hintsButton", BaseHud::HintsButton)
+            .addFunction ("menuButton", BaseHud::MenuButton)
             .addFunction ("storyBookButton", BaseHud::StoryBookButton)
             .addFunction ("helpBox", BaseHud::HelpBox)
             .addFunction ("riddleBox", BaseHud::RiddleBox)
@@ -243,26 +238,11 @@ void LuaGame::setTextureNames()
     luabridge::LuaRef displayTime = luabridge::getGlobal (_L, "display_riddle_at_start");
     BaseHud::setDisplayTime(displayTime.cast<int>());
 
-    luabridge::LuaRef help_button_texture = luabridge::getGlobal (_L, "help_button_texture");
-    BaseHud::setHelpButtonTextureName(help_button_texture.cast<std::string>());
+    luabridge::LuaRef hints_button_texture = luabridge::getGlobal (_L, "hints_button_texture");
+    BaseHud::setHintsButtonTextureName(hints_button_texture.cast<std::string>());
 
-    luabridge::LuaRef hint_button1_texture = luabridge::getGlobal (_L, "hint_button1_texture");
-    BaseHud::setHintButton1TextureName(hint_button1_texture.cast<std::string>());
-
-    luabridge::LuaRef hint_button2_texture = luabridge::getGlobal (_L, "hint_button2_texture");
-    BaseHud::setHintButton2TextureName(hint_button2_texture.cast<std::string>());
-
-    luabridge::LuaRef hint_button3_texture = luabridge::getGlobal (_L, "hint_button3_texture");
-    BaseHud::setHintButton3TextureName(hint_button3_texture.cast<std::string>());
-
-    luabridge::LuaRef exit_button_texture = luabridge::getGlobal (_L, "exit_button_texture");
-    BaseHud::setExitButtonTextureName(exit_button_texture.cast<std::string>());
-
-    luabridge::LuaRef resume_button_texture = luabridge::getGlobal (_L, "resume_button_texture");
-    BaseHud::setResumeButtonTextureName(resume_button_texture.cast<std::string>());
-
-    luabridge::LuaRef start_button_texture = luabridge::getGlobal (_L, "start_button_texture");
-    BaseHud::setStartButtonTextureName(start_button_texture.cast<std::string>());
+    luabridge::LuaRef menu_button_texture = luabridge::getGlobal (_L, "menu_button_texture");
+    BaseHud::setMenuButtonTextureName(menu_button_texture.cast<std::string>());
 
     luabridge::LuaRef story_book_button_texture = luabridge::getGlobal (_L, "story_book_button_texture");
     BaseHud::setStoryBookButtonTextureName(story_book_button_texture.cast<std::string>());
