@@ -2761,7 +2761,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1458127827 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1458227510 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2772,7 +2772,7 @@
 	<vector>
 	"mge/core/GameObject.hpp"
 
-1457962955 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
+1458226798 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
 	<vector>
 	<string>
 	<iostream>
@@ -2857,7 +2857,7 @@
 	<string>
 	<GL/glew.h>
 
-1457152266 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
+1458226798 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
 	<vector>
 	<cstring>
 	<string>
@@ -2889,7 +2889,7 @@
 
 1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1458222772 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458226327 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
@@ -3065,7 +3065,7 @@
 	"mge/core/GameObject.hpp"
 	<iostream>
 
-1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.cpp
+1458226798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.cpp
 	"MeshRenderer.hpp"
 	"mge/config.hpp"
 	"mge/materials/ColorMaterial.hpp"
@@ -3144,7 +3144,7 @@
 	<vector>
 	<string>
 
-1458223471 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1458226327 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -3168,7 +3168,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1457962955 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1458226798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<stdio.h>
@@ -3187,7 +3187,7 @@
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-1456233910 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
+1458226798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>
@@ -3236,14 +3236,16 @@
 1455012284 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\timer.cpp
 	"mge/core/Timer.hpp"
 
-1458135928 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\world.cpp
+1458226798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\world.cpp
 	<cassert>
 	<algorithm>
 	<iostream>
+	"AbstractGame.hpp"
 	"mge/core/World.hpp"
 	"mge/core/Camera.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/core/BaseLight.h"
+	"MeshRenderer.hpp"
 
 1455716704 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\lua\luamanager.cpp
 
@@ -3340,7 +3342,7 @@
 1456080712 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
 	"Input.hpp"
 
-1458224555 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1458226798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3571,7 +3573,7 @@
 1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.cpp
 	"UpdateListener.hpp"
 
-1458135927 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1458226798 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
