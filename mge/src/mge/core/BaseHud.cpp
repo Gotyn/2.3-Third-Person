@@ -96,14 +96,14 @@ void BaseHud::loadTextures()
     if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
 
-    hintsButtonTexture->setRepeated(true);
-    menuButtonTexture->setRepeated(true);
-    storyBookButtonTexture->setRepeated(true);
-    helpBoxTexture->setRepeated(true);
-    riddleBoxTexture->setRepeated(true);
-    hintsBoxTexture->setRepeated(true);
-    menuBoxTexture->setRepeated(true);
-    storyBookTexture->setRepeated(true);
+    hintsButtonTexture->setSmooth(true);
+    menuButtonTexture->setSmooth(true);
+    storyBookButtonTexture->setSmooth(true);
+    helpBoxTexture->setSmooth(true);
+    riddleBoxTexture->setSmooth(true);
+    hintsBoxTexture->setSmooth(true);
+    menuBoxTexture->setSmooth(true);
+    storyBookTexture->setSmooth(true);
     _window->popGLStates();
 }
 
@@ -197,7 +197,7 @@ bool BaseHud::MenuButton (int xOffset, int yOffset, int spriteID, int alignment,
     else if (spriteID == 4) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Restart
     else if (spriteID == 5) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Restart*
     else if (spriteID == 6) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Resume
-    else if (spriteID == 7) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R5 C2    //Resume*
+    else if (spriteID == 7) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R4 C2    //Resume*
     else if (spriteID == 8) menuButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 4, tileWidth, tileHeight)); //R5 C1    //Empty
     else if (spriteID == 9) menuButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 4, tileWidth, tileHeight)); //R5 C2    //Empty*
 

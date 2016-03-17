@@ -2751,7 +2751,7 @@
 	"mge/core/World.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\main.cpp
+1457962955 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\main.cpp
 	<iostream>
 	"mge/core/AbstractGame.hpp"
 	"mge/MGEDemo.hpp"
@@ -2761,18 +2761,18 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1458127827 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
 	"mge/core/World.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\world.hpp
+1458135928 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\world.hpp
 	<vector>
 	"mge/core/GameObject.hpp"
 
-1457658760 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
+1457962955 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.hpp
 	<vector>
 	<string>
 	<iostream>
@@ -2781,22 +2781,22 @@
 	<typeindex>
 	<memory>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\glm.hpp
+1455012284 x:\users\martijn\documents\github\2.3-third-person\mge\src\glm.hpp
 	<iostream>
 	<iomanip>
 	<glm/glm.hpp>
 	<glm/ext.hpp>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\baselight.h
+1456319322 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\baselight.h
 	<string>
 	"mge/core/GameObject.hpp"
 	"mge/core/World.hpp"
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.hpp
 	<memory>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgedemo.hpp
+1457354502 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgedemo.hpp
 	<mge/core/AbstractGame.hpp>
 	<SFML/Graphics.hpp>
 	<vector>
@@ -2820,7 +2820,7 @@
 	"mge/config.hpp"
 	"mge/MGEDemo.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\modelviewer.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\modelviewer.hpp
 	<iostream>
 	<windows.h>
 	"mge/core/GameObject.hpp"
@@ -2832,32 +2832,32 @@
 	"mge/materials/ColorMaterial.hpp"
 	"mge/materials/TextureMaterial.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\camera.hpp
+1456319322 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\camera.hpp
 	<string>
 	"mge/core/GameObject.hpp"
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\texture.hpp
+1456224828 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\texture.hpp
 	<map>
 	<string>
 	<GL/glew.h>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.hpp
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/behaviours/AbstractBehaviour.hpp"
 	"mge/core/World.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\abstractmaterial.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\abstractmaterial.hpp
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/Mesh.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\shaderprogram.hpp
+1455012284 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\shaderprogram.hpp
 	<vector>
 	<string>
 	<GL/glew.h>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
+1457152266 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
 	<vector>
 	<cstring>
 	<string>
@@ -2865,20 +2865,20 @@
 	<glm.hpp>
 	"mge/core/World.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.hpp
+1456319322 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.hpp
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.hpp
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/core/Mesh.hpp"
 	<glm.hpp>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\lua\luamanager.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\lua\luamanager.hpp
 	<iostream>
 	"mge/core/GameObject.hpp"
 	"mge/behaviours/AbstractBehaviour.hpp"
@@ -2889,33 +2889,33 @@
 
 1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1458180679 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458206719 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\fps.hpp
+1455012284 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\fps.hpp
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\keysbehaviour.hpp
+1456319321 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\keysbehaviour.hpp
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\lookat.hpp
+1456319321 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\lookat.hpp
 	<glm.hpp>
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\debughud.hpp
+1455012284 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\debughud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1458159736 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\config.hpp
+1458135365 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\config.hpp
 	<string>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\sphinxdreams.h
+1456233910 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\sphinxdreams.h
 	<AbstractGame.hpp>
 	"mge/util/DebugHud.hpp"
 	"mge/core/FPS.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgepaul.h
+1456238358 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgepaul.h
 	<vector>
 	<string>
 	<lua.hpp>
@@ -2942,7 +2942,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\luabridge.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\luabridge.h
 	<cassert>
 	<sstream>
 	<stdexcept>
@@ -2962,37 +2962,37 @@
 	"detail/CFunctions.h"
 	"detail/Namespace.h"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\luahelpers.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\luahelpers.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\typetraits.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\typetraits.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\typelist.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\typelist.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\functraits.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\functraits.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\constructor.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\constructor.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\stack.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\stack.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\classinfo.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\classinfo.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\luaexception.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\luaexception.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\luaref.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\luaref.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\iterator.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\iterator.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\userdata.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\userdata.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\cfunctions.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\cfunctions.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\namespace.h
+1455247090 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luabridge\detail\namespace.h
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.h
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.h
 	"mge/materials/AbstractMaterial.hpp"
 	<glm.hpp>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.h
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.h
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
@@ -3002,11 +3002,11 @@
 	<ostream>
 	"BaseLight.h"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviour.hpp
+1456319322 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviour.hpp
 	<glm.hpp>
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviourpaul.h
+1456319322 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviourpaul.h
 	<glm.hpp>
 	"mge/behaviours/AbstractBehaviour.hpp"
 	"mge/core/AbstractGame.hpp"
@@ -3014,7 +3014,7 @@
 	<GL/glew.h>
 	<SFML/Graphics.hpp>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgemartijn.h
+1456238358 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgemartijn.h
 	<mge/core/AbstractGame.hpp>
 	<SFML/Graphics.hpp>
 	<vector>
@@ -3034,7 +3034,7 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
+1458135927 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.hpp
 	<lua.hpp>
 	<FileWatcher/FileWatcher.h>
 	<AbstractGame.hpp>
@@ -3049,35 +3049,35 @@
 	"lauxlib.h"
 	"lualib.h"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.cpp
+1456319321 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.cpp
 	<cassert>
 	<iostream>
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\keysbehaviour.cpp
+1456319321 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\keysbehaviour.cpp
 	"mge/behaviours/KeysBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 	<sfml/window/event.hpp>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\lookat.cpp
+1456319321 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\lookat.cpp
 	<glm.hpp>
 	"mge/behaviours/LookAt.hpp"
 	"mge/core/GameObject.hpp"
 	<iostream>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\meshrenderer.cpp
 	"MeshRenderer.hpp"
 	"mge/config.hpp"
 	"mge/materials/ColorMaterial.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviour.cpp
+1456319322 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviour.cpp
 	"OrbitBehaviour.hpp"
 	<SFML/Graphics.hpp>
 	<glm.hpp>
 	"mge/core/GameObject.hpp"
 	<iostream>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviourpaul.cpp
+1456319322 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\orbitbehaviourpaul.cpp
 	<glm.hpp>
 	"mge/behaviours/OrbitBehaviourPaul.h"
 	"mge/core/GameObject.hpp"
@@ -3087,11 +3087,11 @@
 	<ctime>
 	<cmath>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.cpp
+1456319322 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.cpp
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1458135927 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	<glm.hpp>
@@ -3100,7 +3100,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/World.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\lualevelmanger.h
+1456233910 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\lualevelmanger.h
 	<glm.hpp>
 	<iostream>
 	<string>
@@ -3122,17 +3122,17 @@
 	<lua.hpp>
 	<mge/config.hpp>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.hpp
+1456080712 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.hpp
 	"mge/core/AbstractGame.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\timer.hpp
+1455012284 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\timer.hpp
 	<SFML/System.hpp>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\audio.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\audio.cpp
 	"Audio.hpp"
 	"mge/util/Utils.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\audio.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\audio.hpp
 	<iostream>
 	<map>
 	<memory>
@@ -3140,11 +3140,11 @@
 	<SFML/Audio.hpp>
 	<memory>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\utils.hpp
+1457962956 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\utils.hpp
 	<vector>
 	<string>
 
-1458180785 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1458206967 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -3154,21 +3154,21 @@
 	<SFML/Graphics/Text.hpp>
 	"mge/config.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\baselight.cpp
+1456319322 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\baselight.cpp
 	"BaseLight.h"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\camera.cpp
+1456319322 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\camera.cpp
 	<iostream>
 	<glm.hpp>
 	"mge/core/Camera.hpp"
 	"mge/core/World.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\fps.cpp
+1455012284 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\fps.cpp
 	<iostream>
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1457658760 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1457962955 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<stdio.h>
@@ -3181,13 +3181,13 @@
 	"mge/core/Camera.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\lualevelmanger.cpp
+1455557663 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\lualevelmanger.cpp
 	"mge/core/LuaLevelManger.h"
 	<stdio.h>
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
+1456233910 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>
@@ -3197,12 +3197,12 @@
 	"mge/core/Camera.hpp"
 	"glm.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\modelviewer.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\modelviewer.cpp
 	"ModelViewer.hpp"
 	"mge/sphinx/PuzzleBlock.hpp"
 	"mge/util/Utils.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
+1457962956 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -3219,24 +3219,24 @@
 	"mge/materials/AbstractMaterial.hpp"
 	<iostream>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\shaderprogram.cpp
+1455012284 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\shaderprogram.cpp
 	"mge/core/ShaderProgram.hpp"
 	<iostream>
 	<fstream>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\sphinxdreams.cpp
+1456233910 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\sphinxdreams.cpp
 	"SphinxDreams.h"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\texture.cpp
+1456224828 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\texture.cpp
 	<iostream>
 	<string>
 	<SFML/Graphics.hpp>
 	"mge/core/Texture.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\timer.cpp
+1455012284 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\timer.cpp
 	"mge/core/Timer.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\world.cpp
+1458135928 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\world.cpp
 	<cassert>
 	<algorithm>
 	<iostream>
@@ -3245,19 +3245,19 @@
 	"mge/core/Mesh.hpp"
 	"mge/core/BaseLight.h"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\lua\luamanager.cpp
+1455716704 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\lua\luamanager.cpp
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\abstractmaterial.cpp
+1455012284 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\abstractmaterial.cpp
 	"mge/materials/AbstractMaterial.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.cpp
 	<glm.hpp>
 	"mge/materials/ColorMaterial.hpp"
 	"mge/config.hpp"
 	"mge/core/Camera.hpp"
 	"mge/core/Mesh.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
 	<glm.hpp>
 	"mge/materials/LitColorMaterial.h"
 	"mge/config.hpp"
@@ -3265,7 +3265,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/core/World.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
 	<glm.hpp>
 	"mge/materials/TextureMaterial.hpp"
 	"mge/core/Texture.hpp"
@@ -3273,7 +3273,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/config.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.cpp
 	"WobblingMaterial.h"
 	<glm.hpp>
 	"mge/materials/WobblingMaterial.h"
@@ -3284,7 +3284,7 @@
 	<ctime>
 	<cmath>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgedemo.cpp
+1456238358 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgedemo.cpp
 	<glm.hpp>
 	<iostream>
 	<string>
@@ -3301,7 +3301,7 @@
 	"lauxlib.h"
 	"lualib.h"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgemartijn.cpp
+1456238358 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgemartijn.cpp
 	<glm.hpp>
 	<iostream>
 	<string>
@@ -3316,7 +3316,7 @@
 	"lualib.h"
 	"Audio.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgepaul.cpp
+1457348574 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\mgepaul.cpp
 	<glm.hpp>
 	<iostream>
 	<string>
@@ -3327,7 +3327,7 @@
 	"lauxlib.h"
 	"lualib.h"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\debughud.cpp
+1455012284 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\debughud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -3337,10 +3337,10 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
+1456080712 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
 	"Input.hpp"
 
-1458180838 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1458206719 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
@@ -3351,22 +3351,22 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.hpp
+1457309039 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.hpp
 	<GameObject.hpp>
 	"mge/core/Camera.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
+1457309039 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
 	"GameCamera.hpp"
 	"mge/core/World.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
 
-1457978529 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1457962956 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
 	"mge/util/Utils.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\utils.cpp
+1457962956 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\utils.cpp
 	"Utils.hpp"
 	<windows.h>
 
@@ -3486,45 +3486,45 @@
 	"config.hpp"
 	"mge/core/RenderPipeline.hpp"
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
+1458135928 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.hpp
 	"mge/materials/DepthMapper.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/core/ShaderProgram.hpp"
 	"mge/core/RenderPipeline.hpp"
 	"ParticleSystem.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.hpp
 	"mge/materials/AbstractMaterial.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcher.h
+1456440759 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcher.h
 	<string>
 	<stdexcept>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcher.cpp
+1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcher.cpp
 	<FileWatcher/FileWatcher.h>
 	<FileWatcher/FileWatcherImpl.h>
 	<FileWatcher/FileWatcherWin32.h>
 	<FileWatcher/FileWatcherOSX.h>
 	<FileWatcher/FileWatcherLinux.h>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherimpl.h
+1456440759 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherimpl.h
 	"FileWatcher.h"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherwin32.h
+1456440759 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherwin32.h
 	"FileWatcherImpl.h"
 	<map>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherosx.h
-	"FileWatcherImpl.h"
-	<map>
-	<sys/types.h>
-
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherlinux.h
+1456440759 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherosx.h
 	"FileWatcherImpl.h"
 	<map>
 	<sys/types.h>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherlinux.cpp
+1456440759 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherlinux.h
+	"FileWatcherImpl.h"
+	<map>
+	<sys/types.h>
+
+1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherlinux.cpp
 	<FileWatcher/FileWatcherLinux.h>
 	<sys/stat.h>
 	<fcntl.h>
@@ -3533,7 +3533,7 @@
 	<errno.h>
 	<sys/inotify.h>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherosx.cpp
+1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherosx.cpp
 	<FileWatcher/FileWatcherOSX.h>
 	<sys/event.h>
 	<sys/time.h>
@@ -3545,33 +3545,33 @@
 	<dirent.h>
 	<string.h>
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherwin32.cpp
+1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\filewatcher\filewatcherwin32.cpp
 	<FileWatcher/FileWatcherWin32.h>
 	<windows.h>
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.hpp
+1456440759 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.hpp
 	<FileWatcher/FileWatcher.h>
 	"mge/LuaGame.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\prop.hpp
+1457348574 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\prop.hpp
 	<GameObject.hpp>
 	"mge/behaviours/MeshRenderer.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/materials/TextureMaterial.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\prop.cpp
+1457350496 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\prop.cpp
 	"Prop.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
+1457962955 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.cpp
+1456440759 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\util\updatelistener.cpp
 	"UpdateListener.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1458135927 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"
@@ -3582,7 +3582,7 @@
 	"Camera.hpp"
 	"LuaGame.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
+1457962955 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
 	"DepthMapper.hpp"
 	"mge/core/AbstractGame.hpp"
 	"config.hpp"
@@ -3765,47 +3765,47 @@
 1458128671 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\sphinx\mainlight.cpp
 	"MainLight.hpp"
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\particlesystem.hpp
+1458135927 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\particlesystem.hpp
 	<GL/glew.h>
 	<glm.hpp>
 	<AbstractBehaviour.hpp>
 	"ShaderProgram.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.hpp
+1457962956 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.hpp
 	<GameObject.hpp>
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
 	"mge/behaviours/MeshRenderer.hpp"
 
-1457688611 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.hpp
+1457962955 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.hpp
 	"mge/behaviours/AbstractBehaviour.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\light.hpp
+1458135927 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\light.hpp
 	<AbstractBehaviour.hpp>
 	<glm.hpp>
 
-1458154498 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\mainlight.hpp
+1458135928 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\mainlight.hpp
 	<GameObject.hpp>
 	"Light.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.cpp
+1457962955 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\colorflasher.cpp
 	"ColorFlasher.hpp"
 	<iostream>
 	"mge/core/GameObject.hpp"
 	"mge/core/Timer.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\light.cpp
+1458135927 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\light.cpp
 	"Light.hpp"
 	"GameObject.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\particlesystem.cpp
+1458135927 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\behaviours\particlesystem.cpp
 	<algorithm>
 	"ParticleSystem.hpp"
 	"GameObject.hpp"
 	"config.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1458135928 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
@@ -3815,9 +3815,9 @@
 	"mge/config.hpp"
 	"LuaGame.hpp"
 
-1457688611 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
+1457962956 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\storywall.cpp
 	"StoryWall.hpp"
 
-1458154498 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\mainlight.cpp
+1458135928 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\sphinx\mainlight.cpp
 	"MainLight.hpp"
 
