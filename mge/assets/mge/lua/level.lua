@@ -1,11 +1,11 @@
 gameHud = require "mge/lua/hud"
 gameHud_Data = require "mge/lua/hud_data"
 
-dofile("mge/lua/story4.lua")
+dofile("mge/lua/story1.lua")
 
 game_state = 1
 storyCompleted = false
-activePuzzle = 1
+activePuzzle = 5
 activePiece = 1
 solvedThreshold = 1.1
 
@@ -41,8 +41,8 @@ camera:setPosition(-5.537027, 2.663034, 7.021962)
 camera:rotateAroundAxis(-23, 0, 1, 0)
 
 spotlight:setIntensity(0.78)
-spotlight:setInnerCone(3)
-spotlight:setOuterCone(13)
+spotlight:setInnerCone(5)
+spotlight:setOuterCone(16)
 spotlight:setColor(0.9, 0.94, 0.62)
 
 ----------------------------
@@ -68,8 +68,8 @@ function selectPuzzle(puzzleIndex)
         if counter == puzzleIndex then
             puzzleSetActive(counter, true)
             -- camera:setPosition(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3])
-            -- camera:moveTo(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3], 10)
-            -- spotlight:setPosition(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3])
+            camera:moveTo(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3], 10)
+            spotlight:setPosition(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3])
         else
             puzzleSetActive(counter, false)
         end
@@ -135,8 +135,8 @@ function updateLevel()
 
         if Game.getKeyDown(KeyCode.P) == true then
             ---- print status calls ----  ==> uncomment a line to print status for different types of objects
-            camera:printStatus()
-            -- story[activePuzzle].blocks[activePiece]:printStatus()
+            -- camera:printStatus()
+            story[activePuzzle].blocks[activePiece]:printStatus()
 
             ----------------------------
         end
@@ -147,7 +147,7 @@ function updateLevel()
 
         -- handlePlacement(storyWall)
         -- handlePlacement(camera)
-        -- handlePlacement(story[activePuzzle].blocks[activePiece])
+        handlePlacement(story[activePuzzle].blocks[activePiece])
         
         --------------------------------
 
