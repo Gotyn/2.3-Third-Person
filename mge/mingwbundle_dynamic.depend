@@ -2889,7 +2889,7 @@
 
 1456223883 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1458206719 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458219405 x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
@@ -3144,7 +3144,7 @@
 	<vector>
 	<string>
 
-1458215541 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1458219405 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -3340,7 +3340,7 @@
 1456080712 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\core\input.cpp
 	"Input.hpp"
 
-1458206719 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1458219405 source:x:\users\martijn\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
