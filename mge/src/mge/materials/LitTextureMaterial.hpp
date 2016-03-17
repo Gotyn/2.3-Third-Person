@@ -13,6 +13,7 @@ class LitTextureMaterial : public AbstractMaterial
         virtual void render(RenderPipeline* pRenderPipe, World* pWorld, GameObject* pGameObject, std::shared_ptr<Mesh> pMesh, Camera* pCamera);
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
+        void setNormalMap (Texture* pDiffuseTexture);
         void changeDiffuseTexture (std::string pFilename);
 
         glm::vec3 diffuseColor;
@@ -23,6 +24,7 @@ class LitTextureMaterial : public AbstractMaterial
         static void _lazyInitializeShader();
 
         Texture* _diffuseTexture;
+        Texture* _normalMap;
 };
 
 #endif // LITTEXTUREMATERIAL_H
