@@ -77,24 +77,15 @@ void BaseHud::loadTextures()
     glActiveTexture(GL_TEXTURE0);
     _window->pushGLStates();
 
-    if (!hintsButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + hintsButtonTextureName))
-        { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))
-        { std::cout << "Could not load texture for menuspritesheet"  << std::endl; return; }
-    if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName))
-        { std::cout << "Could not load texture for storybook button" << std::endl; return; }
-    if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!riddleBoxTexture->loadFromFile  (config::MGE_SPRITE_PATH + riddleBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!hintsBoxTexture->loadFromFile   (config::MGE_SPRITE_PATH + hintsBoxTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
-    if (!menuBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + menuBoxTextureName))
-        { std::cout << "Could not load texture for menulabel"        << std::endl; return; }
-    if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))
-        { std::cout << "Could not load texture for storybook label"  << std::endl; return; }
-    if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
-        { std::cout << "Could not load texture for label"            << std::endl; return; }
+    if (!hintsButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + hintsButtonTextureName))        return;
+    if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))           return;
+    if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName)) return;
+    if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))             return;
+    if (!riddleBoxTexture->loadFromFile  (config::MGE_SPRITE_PATH + riddleBoxTextureName))           return;
+    if (!hintsBoxTexture->loadFromFile   (config::MGE_SPRITE_PATH + hintsBoxTextureName))            return;
+    if (!menuBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + menuBoxTextureName))             return;
+    if (!storyBookTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookTextureName))             return;
+    if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))         return;
 
     hintsButtonTexture->setSmooth(true);
     menuButtonTexture->setSmooth(true);
