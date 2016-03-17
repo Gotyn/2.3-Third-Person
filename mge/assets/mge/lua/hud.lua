@@ -186,8 +186,12 @@ end
 function handleMenuButtonsClick()
 
     if firstMenuShown == false then
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+        --if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+			--			   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
+						   
+		if Hud.menuButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
+						   
             game_state = MODE.BOOK
             firstMenuShown = true
 			start_spriteID = 4

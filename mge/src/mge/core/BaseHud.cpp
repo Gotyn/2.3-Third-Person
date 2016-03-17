@@ -109,6 +109,8 @@ void BaseHud::loadTextures()
         { std::cout << "Could not load texture for resume button"    << std::endl; return; }
     if (!startButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + startButtonTextureName))
         { std::cout << "Could not load texture for start button"     << std::endl; return; }
+    if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))
+        { std::cout << "Could not load texture for menuspritesheet"  << std::endl; return; }
     if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName))
         { std::cout << "Could not load texture for storybook button" << std::endl; return; }
     if (!helpBoxTexture->loadFromFile    (config::MGE_SPRITE_PATH + helpBoxTextureName))
@@ -124,8 +126,6 @@ void BaseHud::loadTextures()
     if (!progressBarTexture->loadFromFile(config::MGE_SPRITE_PATH + progressBarTextureName))
         { std::cout << "Could not load texture for label"            << std::endl; return; }
 
-
-
     helpButtonTexture->setRepeated(true);
     hintButton1Texture->setRepeated(true);
     hintButton2Texture->setRepeated(true);
@@ -133,6 +133,7 @@ void BaseHud::loadTextures()
     exitButtonTexture->setRepeated(true);
     resumeButtonTexture->setRepeated(true);
     startButtonTexture->setRepeated(true);
+    menuButtonTexture->setRepeated(true);
     storyBookButtonTexture->setRepeated(true);
     helpBoxTexture->setRepeated(true);
     riddleBoxTexture->setRepeated(true);
@@ -602,6 +603,7 @@ void BaseHud::setDisplayTime(const int value)                       { displayTim
 void BaseHud::setExitButtonTextureName(const std::string name)      { exitButtonTextureName      = name;  }
 void BaseHud::setResumeButtonTextureName(const std::string name)    { resumeButtonTextureName    = name;  }
 void BaseHud::setStartButtonTextureName(const std::string name)     { startButtonTextureName     = name;  }
+void BaseHud::setMenuButtonTextureName(const std::string name)      { startButtonTextureName     = name;  }
 void BaseHud::setStoryBookButtonTextureName(const std::string name) { storyBookButtonTextureName = name;  }
 
 //----------------------------------------------------------------------

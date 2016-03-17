@@ -40,6 +40,7 @@ class BaseHud
         static void setHintButton3TextureName(const std::string name);
         static void setExitButtonTextureName(const std::string name);
         static void setResumeButtonTextureName(const std::string name);
+        static void setMenuButtonTextureName(const std::string name);
         static void setStartButtonTextureName(const std::string name);
         static void setStoryBookButtonTextureName(const std::string name);
         static void setHelpBoxTextureName(const std::string name);

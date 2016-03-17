@@ -61,6 +61,10 @@ menu_box_scaleY = 0.5
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
+--[MenuButton]
+menu_button_texture = "MENU_Buttons_Sheet.png"
+
+
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
@@ -174,6 +178,9 @@ HUD.hint_button3_scaleX = hint_button3_scaleX
 HUD.hint_button3_scaleY = hint_button3_scaleY
 HUD.hint_button3_alignment = hint_button3_alignment
 HUD.hint_button3_texture = hint_button3_texture
+
+--[MenuButton]
+HUD.menu_button_texture = menu_button_texture
 
 --Exit button in menu
 HUD.exit_button_xOffset = exit_button_xOffset
