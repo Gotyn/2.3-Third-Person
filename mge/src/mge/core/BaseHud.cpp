@@ -17,10 +17,7 @@ sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
-sf::Texture* BaseHud::exitButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::resumeButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::menuButtonTexture = new sf::Texture;
-sf::Texture* BaseHud::startButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::helpBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::riddleBoxTexture = new sf::Texture;
@@ -33,9 +30,6 @@ sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton2Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
-sf::Sprite* BaseHud::exitButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::resumeButtonSprite = new sf::Sprite;
-sf::Sprite* BaseHud::startButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::menuButtonSprite = new sf::Sprite; //contains play, exit, restart, resume, empty
 sf::Sprite* BaseHud::storyBookButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::helpBoxSprite = new sf::Sprite;
@@ -52,10 +46,7 @@ std::string BaseHud::helpButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "land.jpg";
 std::string BaseHud::hintButton2TextureName = "land.jpg";
 std::string BaseHud::hintButton3TextureName = "land.jpg";
-std::string BaseHud::exitButtonTextureName = "land.jpg";
-std::string BaseHud::resumeButtonTextureName = "land.jpg";
 std::string BaseHud::menuButtonTextureName = "land.jpg";
-std::string BaseHud::startButtonTextureName = "land.jpg";
 std::string BaseHud::storyBookButtonTextureName = "land.jpg";
 std::string BaseHud::helpBoxTextureName = "land.jpg";
 std::string BaseHud::riddleBoxTextureName = "land.jpg";
@@ -103,12 +94,6 @@ void BaseHud::loadTextures()
         { std::cout << "Could not load texture for button"           << std::endl; return; }
     if (!hintButton3Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton3TextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
-    if (!exitButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + exitButtonTextureName))
-        { std::cout << "Could not load texture for exit button"      << std::endl; return; }
-    if (!resumeButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + resumeButtonTextureName))
-        { std::cout << "Could not load texture for resume button"    << std::endl; return; }
-    if (!startButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + startButtonTextureName))
-        { std::cout << "Could not load texture for start button"     << std::endl; return; }
     if (!menuButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + menuButtonTextureName))
         { std::cout << "Could not load texture for menuspritesheet"  << std::endl; return; }
     if (!storyBookButtonTexture->loadFromFile(config::MGE_SPRITE_PATH + storyBookButtonTextureName))
@@ -130,9 +115,6 @@ void BaseHud::loadTextures()
     hintButton1Texture->setRepeated(true);
     hintButton2Texture->setRepeated(true);
     hintButton3Texture->setRepeated(true);
-    exitButtonTexture->setRepeated(true);
-    resumeButtonTexture->setRepeated(true);
-    startButtonTexture->setRepeated(true);
     menuButtonTexture->setRepeated(true);
     storyBookButtonTexture->setRepeated(true);
     helpBoxTexture->setRepeated(true);
@@ -269,95 +251,6 @@ bool BaseHud::HintButton3(int xOffset, int yOffset, int spriteID, int alignment,
     hintButton3Sprite->setPosition(alignedPos);
 
     _window->draw(*hintButton3Sprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::ExitButton  (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(exitButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-
-    //create sprite
-    exitButtonSprite->setTexture(*exitButtonTexture);
-    exitButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) exitButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else exitButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
-    exitButtonSprite->setPosition(alignedPos);
-
-    _window->draw(*exitButtonSprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::ResumeButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
-{
-    int spriteSheetColumns = 2;
-
-    sf::Vector2u spriteSize(resumeButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                               //unscaled!
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-
-    //create sprite
-    resumeButtonSprite->setTexture(*resumeButtonTexture);
-    resumeButtonSprite->setScale(scaleX, scaleY);
-    if (spriteID == 0) resumeButtonSprite->setTextureRect(sf::IntRect(0,0,tileWidth,spriteSize.y));
-    else resumeButtonSprite->setTextureRect(sf::IntRect(tileWidth,0,tileWidth,spriteSize.y));
-    resumeButtonSprite->setPosition(alignedPos);
-
-    _window->draw(*resumeButtonSprite);
-
-    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
-}
-
-//----------------------------------------------------------------
-// image/sprite SFML button, triggers action upon click
-//----------------------------------------------------------------
-bool BaseHud::StartButton (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY)
-{
-    int spriteSheetColumns = 2;
-    int spriteSheetRows = 5;
-
-    sf::Vector2u spriteSize(startButtonTexture->getSize());                              // Get the image size
-    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
-    int scaledSpriteHeight = spriteSize.y * scaleY / spriteSheetRows;
-    int tileWidth = ( spriteSize.x / spriteSheetColumns );                          //unscaled!
-    int tileHeight = spriteSize.y / spriteSheetRows;                                //unscaled!
-
-    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
-
-    //create sprite
-    startButtonSprite->setTexture(*startButtonTexture);
-    startButtonSprite->setScale(scaleX, scaleY);
-
-    if      (spriteID == 0) startButtonSprite->setTextureRect(sf::IntRect(        0,              0, tileWidth, tileHeight)); //R1 C1    //Play
-    else if (spriteID == 1) startButtonSprite->setTextureRect(sf::IntRect(tileWidth,              0, tileWidth, tileHeight)); //R1 C2    //Play*
-    else if (spriteID == 2) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 1, tileWidth, tileHeight)); //R2 C1    //Exit
-    else if (spriteID == 3) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 1, tileWidth, tileHeight)); //R2 C2    //Exit*
-    else if (spriteID == 4) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 2, tileWidth, tileHeight)); //R3 C1    //Restart
-    else if (spriteID == 5) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 2, tileWidth, tileHeight)); //R3 C2    //Restart*
-    else if (spriteID == 6) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 3, tileWidth, tileHeight)); //R4 C1    //Resume
-    else if (spriteID == 7) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 3, tileWidth, tileHeight)); //R5 C2    //Resume*
-    else if (spriteID == 8) startButtonSprite->setTextureRect(sf::IntRect(        0, tileHeight * 4, tileWidth, tileHeight)); //R5 C1    //Empty
-    else if (spriteID == 9) startButtonSprite->setTextureRect(sf::IntRect(tileWidth, tileHeight * 4, tileWidth, tileHeight)); //R5 C2    //Empty*
-
-    startButtonSprite->setPosition(alignedPos);
-
-    _window->draw(*startButtonSprite);
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
@@ -600,10 +493,7 @@ void BaseHud::setMenuBoxTextureName(const std::string name)         { menuBoxTex
 void BaseHud::setStoryBookTextureName(const std::string name)       { storyBookTextureName       = name;  }
 void BaseHud::setProgressbarTextureName(const std::string name)     { progressBarTextureName     = name;  }
 void BaseHud::setDisplayTime(const int value)                       { displayTime                = value; }
-void BaseHud::setExitButtonTextureName(const std::string name)      { exitButtonTextureName      = name;  }
-void BaseHud::setResumeButtonTextureName(const std::string name)    { resumeButtonTextureName    = name;  }
-void BaseHud::setStartButtonTextureName(const std::string name)     { startButtonTextureName     = name;  }
-void BaseHud::setMenuButtonTextureName(const std::string name)      { startButtonTextureName     = name;  }
+void BaseHud::setMenuButtonTextureName(const std::string name)      { menuButtonTextureName      = name;  }
 void BaseHud::setStoryBookButtonTextureName(const std::string name) { storyBookButtonTextureName = name;  }
 
 //----------------------------------------------------------------------

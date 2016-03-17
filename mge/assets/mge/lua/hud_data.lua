@@ -53,6 +53,8 @@ help_box_scaleY = 0.11
 help_box_alignment = alignment.RIGHT_TOP
 help_box_texture = "HUD_Dropdown_Box.png"
 
+
+------------- MENU START -------------------------- MENU START -------------
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
@@ -64,7 +66,29 @@ menu_box_texture = "MENU_Background.png"
 --[MenuButton]
 menu_button_texture = "MENU_Buttons_Sheet.png"
 
+--[MenuButton: Resume]
+resume_button_xOffset = 30
+resume_button_yOffset = 270
+resume_button_scaleX = 0.2
+resume_button_scaleY = 0.2
+resume_button_alignment = alignment.RIGHT_BOTTOM
 
+--[MenuButton: Start]
+start_button_xOffset = 30
+start_button_yOffset = 150
+start_button_scaleX = 0.2
+start_button_scaleY = 0.2
+start_button_alignment = alignment.RIGHT_BOTTOM
+
+--[MenuButton: Exit]
+exit_button_xOffset = 30
+exit_button_yOffset = 30
+exit_button_scaleX = 0.2
+exit_button_scaleY = 0.2
+exit_button_alignment = alignment.RIGHT_BOTTOM
+-------------- MENU END ---------------------------- MENU END --------------
+
+------------- BOOK START -------------------------- BOOK START -------------
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
@@ -80,31 +104,7 @@ story_book_button_scaleX = 0.15
 story_book_button_scaleY = 0.15
 story_book_button_alignment = alignment.CENTER_CENTER
 story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
-
---[ResumeButton] Resume button in menu 
--- NOTE: ONLY VISIBLE AFTER STARTING! | Gets reset when hotloading, so click start again.
-resume_button_xOffset = 30
-resume_button_yOffset = 270
-resume_button_scaleX = 0.2
-resume_button_scaleY = 0.2
-resume_button_alignment = alignment.RIGHT_BOTTOM
-resume_button_texture = "MENU_Resume_Sheet.png"
-
---[StartButton] Start button in menu
-start_button_xOffset = 30
-start_button_yOffset = 150
-start_button_scaleX = 0.2
-start_button_scaleY = 0.2
-start_button_alignment = alignment.RIGHT_BOTTOM
-start_button_texture = "MENU_Buttons_Sheet.png"
-
---[ExitButton] Exit button in menu
-exit_button_xOffset = 30
-exit_button_yOffset = 30
-exit_button_scaleX = 0.2
-exit_button_scaleY = 0.2
-exit_button_alignment = alignment.RIGHT_BOTTOM
-exit_button_texture = "MENU_Exit_Sheet.png"
+-------------- BOOK END ---------------------------- BOOK END --------------
 
 --[RiddleBox] Label that shows the riddle
 riddle_box_xOffset = 0

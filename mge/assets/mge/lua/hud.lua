@@ -18,8 +18,8 @@ progress = 0
 hint1_spriteID = 0 
 hint2_spriteID = 0 
 hint3_spriteID = 0
-exit_spriteID = 0 
-resume_spriteID = 0 
+exit_spriteID = 2 
+resume_spriteID = 6 
 start_spriteID = 0
 story_book_button_spriteID = 0
 
@@ -186,34 +186,34 @@ end
 function handleMenuButtonsClick()
 
     if firstMenuShown == false then
-        --if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
-			--			   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
-						   
+		--StartButton
 		if Hud.menuButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
-						   
             game_state = MODE.BOOK
             firstMenuShown = true
-			start_spriteID = 4
+			start_spriteID = 4 --Switch to RestartButtonSprite
             print("START!")
         end
     end
     
     if firstMenuShown == true then
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+        --StartButton
+		if Hud.menuButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             -- CALL RESTART FUNCTION HERE
             print("RESTART!")
         end
     
-        if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
+		--ResumeButton
+        if Hud.menuButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
 							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
             game_state = MODE.LEVEL
             print("RESUME!")
         end
     end
     
-    if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
+	--ExitButton
+    if Hud.menuButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
 					  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
         print("EXIT!")
         Hud.handleExit()
