@@ -2,7 +2,7 @@ module("hud", package.seeall)
 local data = require("mge/lua/hud_data")
 
 MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
-game_state = MODE.MENU
+game_state = MODE.LEVEL
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
