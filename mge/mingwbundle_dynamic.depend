@@ -1507,7 +1507,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1458128671 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1458130197 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -1615,7 +1615,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1456175708 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\config.hpp
+1458160256 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\config.hpp
 	<string>
 
 1456319321 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\behaviours\abstractbehaviour.cpp
@@ -1638,7 +1638,7 @@
 	"mge/behaviours/RotatingBehaviour.hpp"
 	"mge/core/GameObject.hpp"
 
-1458128671 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.cpp
+1458158680 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\abstractgame.cpp
 	"AbstractGame.hpp"
 	<iostream>
 	<glm.hpp>
@@ -2602,7 +2602,7 @@
 1456080712 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\input.hpp
 	"mge/core/AbstractGame.hpp"
 
-1458128671 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.cpp
+1458217637 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2612,7 +2612,7 @@
 	<SFML/Graphics/Text.hpp>
 	"mge/config.hpp"
 
-1458128671 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458216666 e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
@@ -2710,7 +2710,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1458128671 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luagame.cpp
+1458216510 source:e:\chigishev_dump\saxion\year_2\quartile_2.3\project c++ third person\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
