@@ -7,40 +7,12 @@ game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 0.98
-
--- TEXTURE NAMES FOR C++ START --
-display_riddle_at_start = gameHud_Data.display_riddle_at_start
-help_button_texture = gameHud_Data.help_button_texture
-hint_button1_texture = gameHud_Data.hint_button1_texture
-hint_button2_texture = gameHud_Data.hint_button2_texture
-hint_button3_texture = gameHud_Data.hint_button3_texture
-exit_button_texture = gameHud_Data.exit_button_texture
-resume_button_texture = gameHud_Data.resume_button_texture
-start_button_texture = gameHud_Data.start_button_texture
-help_box_texture = gameHud_Data.help_box_texture
-riddle_box_texture = gameHud_Data.riddle_box_texture
-hints_box_texture = gameHud_Data.hints_box_texture
-menu_box_texture = gameHud_Data.menu_box_texture
-progress_bar_texture = gameHud_Data.progress_bar_texture
-story_book_texture = gameHud_Data.story_book_texture
-story_book_button_texture = gameHud_Data.story_book_button_texture
--- TEXTURE NAMES FOR C++ END --
+solvedThreshold = 0.5
 
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
 storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
-
--- PRE-CACHING STORY-WALL IMAGES STARTS HERE
-function cacheWallTextures()
-    for i, v in ipairs(story) do 
-        storyWall:changeTexture(story[i].wallImage)
-    end
-    storyWall:changeTexture(story[1].wallImage)
-end
-cacheWallTextures()
--- PRE-CACHING STORY-WALL IMAGES ENDS HERE
 
 spotlight = Game.getSpotlight()
 camera = Game.getCameraObject()
@@ -250,3 +222,45 @@ function restartGame()
         hud.restartGame = false
     end
 end
+
+
+-- TEXTURE NAMES FOR C++ START --
+display_riddle_at_start = gameHud_Data.display_riddle_at_start
+help_button_texture = gameHud_Data.help_button_texture
+hint_button1_texture = gameHud_Data.hint_button1_texture
+hint_button2_texture = gameHud_Data.hint_button2_texture
+hint_button3_texture = gameHud_Data.hint_button3_texture
+exit_button_texture = gameHud_Data.exit_button_texture
+resume_button_texture = gameHud_Data.resume_button_texture
+start_button_texture = gameHud_Data.start_button_texture
+help_box_texture = gameHud_Data.help_box_texture
+riddle_box_texture = gameHud_Data.riddle_box_texture
+hints_box_texture = gameHud_Data.hints_box_texture
+menu_box_texture = gameHud_Data.menu_box_texture
+progress_bar_texture = gameHud_Data.progress_bar_texture
+story_book_texture = gameHud_Data.story_book_texture
+story_book_button_texture = gameHud_Data.story_book_button_texture
+book_texture_intro = story[1].bookImageIntro
+book_texture_1 = story[1].bookImage
+book_texture_2 = story[2].bookImage
+book_texture_3 = story[3].bookImage
+book_texture_4 = story[4].bookImage
+book_texture_5 = story[5].bookImage
+book_texture_6 = story[6].bookImage
+book_texture_7 = story[7].bookImage
+book_texture_8 = story[8].bookImage
+book_texture_9 = story[9].bookImage
+book_texture_10 = story[10].bookImage
+book_texture_11 = story[11].bookImage
+book_texture_final = story[12].bookImage
+-- TEXTURE NAMES FOR C++ END --
+
+-- PRE-CACHING STORY-WALL IMAGES STARTS HERE
+function cacheWallTextures()
+    for i, v in ipairs(story) do 
+        storyWall:changeTexture(story[i].wallImage)
+    end
+    storyWall:changeTexture(story[1].wallImage)
+end
+cacheWallTextures()
+-- PRE-CACHING STORY-WALL IMAGES ENDS HERE

@@ -6,6 +6,7 @@ game_state = MODE.MENU
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
+showRiddleBox = true
 showHelpBox = true           -- NOTE: SHOULD BE TRUE UPON START OF THE LEVEL FOR INITIAL RIDDLE SHOW-UP
 initialRiddleCheck = false   -- NOTE: SHOULD BE FALSE FOR INITIAL RIDDLE SHOW-UP
 firstMenuShown = false
@@ -71,6 +72,7 @@ function handleHelpButtonClick(spriteID)
 				      data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
         if showHelpBox == false then
             showHelpBox = true
+            showRiddleBox = true
         else
             showHelpBox = false
 			hint1_spriteID = 0 
@@ -95,8 +97,10 @@ function handleHintButtonsClick()
 			
             showHintsBox2 = false
             showHintsBox3 = false
+            showRiddleBox = false
         else
             showHintsBox1 = false
+            showRiddleBox = true
 			hint1_spriteID = 0
         end
     end
@@ -111,10 +115,11 @@ function handleHintButtonsClick()
 			
             showHintsBox1 = false
             showHintsBox3 = false
-        elseif showHintsBox2 == true then
+            showRiddleBox = false
+        else
             showHintsBox2 = false
+            showRiddleBox = true
 			hint2_spriteID = 0
-
         end
     end
     
@@ -128,8 +133,10 @@ function handleHintButtonsClick()
 			
             showHintsBox2 = false
             showHintsBox1 = false
+            showRiddleBox = false
         elseif showHintsBox3 == true then
             showHintsBox3 = false
+            showRiddleBox = true
 			hint3_spriteID = 0
         end
     end
@@ -152,12 +159,15 @@ end
 function updateHelpBox()
     if showHelpBox == true then
         Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
-		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, riddle_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
+		if showRiddleBox == true then
+            Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, riddle_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
+        end
         handleHintButtonsClick()
     else
         showHintsBox1 = false
         showHintsBox2 = false
         showHintsBox3 = false
+        showRiddleBox = false
     end
 end
 
@@ -175,6 +185,7 @@ end
 function inintialRiddleDisplay()
     if Hud.displayRiddleAtStart() == true and initialRiddleCheck == false then 
         showHelpBox = false
+        showRiddleBox = false
         hint1_spriteID = 0
         hint2_spriteID = 0
         hint3_spriteID = 0

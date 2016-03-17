@@ -64,10 +64,10 @@ menu_box_texture = "MENU_Background.png"
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
-story_book_scaleX = 0.32
-story_book_scaleY = 0.35
+story_book_scaleX = 0.5
+story_book_scaleY = 0.5
 story_book_alignment = alignment.CENTER_CENTER
-story_book_texture = "BOOK_0.png"
+story_book_texture = "BOOK_00.png"
 
 --[StoryBookButton] Continue button in storybook container
 story_book_button_xOffset = 320
@@ -113,12 +113,12 @@ riddle_box_texture = "HUD_Riddle_Box.png"
 
 --[HintsBox] Label that shows the actual hint
 hints_box_xOffset = 0
-hints_box_yOffset = 120
+hints_box_yOffset = 0
 hints_box_font = 30
-hints_box_scaleX = 3
-hints_box_scaleY = 0.5
-hints_box_alignment = alignment.CENTER_TOP
-hints_box_texture = "bricks.jpg"
+hints_box_scaleX = 0.30
+hints_box_scaleY = 0.25
+hints_box_alignment = alignment.CENTER_BOTTOM
+hints_box_texture = "HUD_Riddle_Box.png"
 -- BUTTONS AND BOXES PARAMETERS END --
 
 --------------------------------------------------------------------------------
