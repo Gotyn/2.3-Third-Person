@@ -2125,7 +2125,7 @@
 
 1455012284 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderer.hpp
 
-1458210861 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
+1458229048 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"mge/core/Timer.hpp"
@@ -2143,7 +2143,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1458210861 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\config.hpp
+1458229048 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\config.hpp
 	<string>
 
 1458210861 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\sphinxdreams.h
@@ -2377,7 +2377,7 @@
 	<vector>
 	<string>
 
-1458210861 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
+1458229048 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\basehud.cpp
 	<cassert>
 	<iostream>
 	<cstdio>
@@ -2574,7 +2574,7 @@
 	"Utils.hpp"
 	<windows.h>
 
-1458215172 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
+1458229048 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\luagame.cpp
 	"LuaGame.hpp"
 	"mge/core/Timer.hpp"
 	"mge/core/Input.hpp"
