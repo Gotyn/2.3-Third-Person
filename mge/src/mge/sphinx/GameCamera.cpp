@@ -5,6 +5,7 @@
 GameCamera::GameCamera(glm::vec3 pPosition): GameObject("camera", pPosition)
 {
     Camera* cb = new Camera(glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f), this);
+//    Camera* cb = new Camera(glm::ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 1000.0f), this);
     rotate(37.0f, glm::vec3(0,1,0));
     std::cout << "game camera created" << std::endl;
 }
