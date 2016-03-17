@@ -2,19 +2,30 @@
 out vec4 FragColor;
 
 in VS_OUT {
-    vec3 Normal;
+    vec3 FragPos;
     vec2 TexCoords;
+<<<<<<< HEAD
+    vec3 TangentLightPos;
+    vec3 TangentViewPos;
+    vec3 TangentFragPos;
+} fs_in;
+
+uniform sampler2D diffuseMap;
+uniform sampler2D normalMap;
+=======
     vec4 FragPosLightSpace;
-    mat3 TBN;
 } fs_in;
 
 uniform sampler2D diffuseTexture;
 uniform sampler2D shadowMap;
-uniform sampler2D normalMap;
+<<<<<<< HEAD
+>>>>>>> parent of a7e6ec8... close to working
+=======
 
 uniform Light light;
 uniform vec3 ambient;
 uniform vec3 diffuseColor;
+uniform vec3 viewPos;
 
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 lightDir)
 {
@@ -43,9 +54,11 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 lightDir)
 
     return shadow;
 }
+>>>>>>> parent of a7e6ec8... close to working
 
 void main()
 {
+<<<<<<< HEAD
     // Obtain normal from normal map in range [0,1]
     vec3 normal = texture(normalMap, fs_in.TexCoords).rgb;
     // Transform normal vector to range [-1,1]
@@ -53,15 +66,18 @@ void main()
 
     // Get diffuse color
     vec3 color = texture(diffuseMap, fs_in.TexCoords).rgb;
+=======
     vec3 lightDir = normalize(light.position - fs_in.FragPos);
 
 //    // Check if lighting is inside the spotlight cone
 //    float theta = dot(lightDir, normalize(-light.direction));
 
     vec3 color = texture(diffuseTexture, fs_in.TexCoords).rgb * diffuseColor;
-    vec3 normal = texture(normalMap, fs_in.TexCoords).rgb;
-    normal = normalize(normal * 2.0 - 1.0);
-    normal = normalize(fs_in.TBN * normal);
+    vec3 normal = normalize(fs_in.Normal);
+<<<<<<< HEAD
+>>>>>>> parent of a7e6ec8... close to working
+=======
+>>>>>>> parent of a7e6ec8... close to working
     // Ambient
     vec3 ambient = 0.1 * color;
     // Diffuse
