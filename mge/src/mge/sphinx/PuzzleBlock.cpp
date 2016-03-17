@@ -19,7 +19,7 @@ PuzzleBlock::PuzzleBlock(std::string pModelName, std::string pTextureName, std::
     setLocalPosition(glm::vec3(x, y, z));
 
     //randomize block rotation
-    randomize();
+//    randomize();
 }
 
 PuzzleBlock::~PuzzleBlock()

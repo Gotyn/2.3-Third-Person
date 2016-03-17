@@ -1,8 +1,9 @@
 story = {
     {
-        wallImage = "1_MainWall_Base_Color.png",    --SHIPS
+        wallImage = "1_MainWall_Base_Color.png",    --SHIPS (done)
         blocks = {  
-            Game.PuzzleBlock("Ship.obj", "Ship_Base_Color.png", "piece1", -1.6, 2.4, 7.4)
+            Game.PuzzleBlock("Ship.obj", "Ship_Base_Color.png", "piece1", -1.325238, 4.995407, 4.780406)
+            --Game.PuzzleBlock("sphere_smooth.obj", "bricks.jpg", "piece2", 2, 0, 0)
         },
         tips = {
             "Not meant to submerge",
@@ -14,8 +15,9 @@ story = {
         },
         bookImageIntro = "BOOK_00.png",
         bookImage = "BOOK_01.png",
-        camPosition = {-5.53, 2.66, 7.02},
-        lightPosition = {-1.6, 2.4, 13.4}
+        camPosition = {-5.809093, 3.296122, 6.267358},
+        lightPosition = {-1.325238, 4.995407, 13.4},
+        wallPosition = {4.169649, 0.326027, 5.563453}
     },
     {
         wallImage = "2_MainWall_Base_Color.png",    --EAGLE
@@ -221,7 +223,7 @@ story = {
 
 --Scales Puzzle pieces
 
-story[1].blocks[1]:scale(0.1, 0.1, 0.1)
+story[1].blocks[1]:scale(0.08, 0.08, 0.08)
 
 story[2].blocks[1]:scale(0.3, 0.3, 0.3)
 
