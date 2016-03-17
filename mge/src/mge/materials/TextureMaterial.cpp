@@ -51,6 +51,8 @@ void TextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, Gam
     pMesh->streamToOpenGL(
         _shader->getAttribLocation("vertex"),
         _shader->getAttribLocation("normal"),
-        _shader->getAttribLocation("uv")
+        _shader->getAttribLocation("uv"),
+        _shader->getAttribLocation("tangent"),
+        _shader->getAttribLocation("biTangent")
     );
 }

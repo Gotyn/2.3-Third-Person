@@ -32,6 +32,8 @@ class ColorMaterial : public AbstractMaterial
 
         static GLint _aVertex ;
         static GLint _aNormal;
+        static GLint _aTangent;
+        static GLint _aBiTangent;
         static GLint _aUV ;
 
         //this one is unique per instance of color material

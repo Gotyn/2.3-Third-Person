@@ -2093,7 +2093,7 @@
 	<string>
 	<GL/glew.h>
 
-1458176071 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
+1458179151 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
 	<vector>
 	<cstring>
 	<string>
@@ -2104,7 +2104,7 @@
 1456319322 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\behaviours\rotatingbehaviour.hpp
 	"mge/behaviours/AbstractBehaviour.hpp"
 
-1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.hpp
+1458177321 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.hpp
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/core/Mesh.hpp"
 	<glm.hpp>
@@ -2239,11 +2239,11 @@
 	"mge/util/DebugHud.hpp"
 	"mge/config.hpp"
 
-1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.h
+1458178670 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.h
 	"mge/materials/AbstractMaterial.hpp"
 	<glm.hpp>
 
-1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.h
+1458178265 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.h
 	"mge/materials/AbstractMaterial.hpp"
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
@@ -2420,7 +2420,7 @@
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-1458172899 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
+1458177093 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>
@@ -2483,14 +2483,14 @@
 1455012284 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\abstractmaterial.cpp
 	"mge/materials/AbstractMaterial.hpp"
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.cpp
+1458177273 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\colormaterial.cpp
 	<glm.hpp>
 	"mge/materials/ColorMaterial.hpp"
 	"mge/config.hpp"
 	"mge/core/Camera.hpp"
 	"mge/core/Mesh.hpp"
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
+1458178407 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
 	<glm.hpp>
 	"mge/materials/LitColorMaterial.h"
 	"mge/config.hpp"
@@ -2498,7 +2498,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/core/World.hpp"
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
+1458178630 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
 	<glm.hpp>
 	"mge/materials/TextureMaterial.hpp"
 	"mge/core/Texture.hpp"
@@ -3443,7 +3443,7 @@
 	<map>
 	<sys/types.h>
 
-1458126251 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1458178597 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
@@ -3479,7 +3479,7 @@
 1457348574 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.hpp
 	"mge/materials/AbstractMaterial.hpp"
 
-1457442530 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
+1458178224 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\depthmapper.cpp
 	"DepthMapper.hpp"
 	"mge/core/AbstractGame.hpp"
 	"config.hpp"
