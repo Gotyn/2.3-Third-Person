@@ -168,8 +168,6 @@
 		<Unit filename="src/mge/materials/WobblingMaterial.h" />
 		<Unit filename="src/mge/sphinx/GameCamera.cpp" />
 		<Unit filename="src/mge/sphinx/GameCamera.hpp" />
-		<Unit filename="src/mge/sphinx/MainLight.cpp" />
-		<Unit filename="src/mge/sphinx/MainLight.hpp" />
 		<Unit filename="src/mge/sphinx/Prop.cpp" />
 		<Unit filename="src/mge/sphinx/Prop.hpp" />
 		<Unit filename="src/mge/sphinx/PuzzleBlock.cpp" />
