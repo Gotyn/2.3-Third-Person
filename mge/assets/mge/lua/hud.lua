@@ -2,24 +2,30 @@ module("hud", package.seeall)
 local data = require("mge/lua/hud_data")
 
 MODE = { MENU = 1, BOOK = 2, LEVEL = 3 }
-game_state = MODE.LEVEL
+game_state = MODE.MENU
 showHintsBox1 = false
 showHintsBox2 = false
 showHintsBox3 = false
-showHelpBox = false         -- NOTE: SHOULD BE TRUE UPON START OF THE LEVEL FOR INITIAL RIDDLE SHOW-UP
-initialRiddleCheck = true   -- NOTE: SHOULD BE FALSE FOR INITIAL RIDDLE SHOW-UP
-hintText = ""
+showRiddleBox = true
+showHelpBox = true           -- NOTE: SHOULD BE TRUE UPON START OF THE LEVEL FOR INITIAL RIDDLE SHOW-UP
+initialRiddleCheck = false   -- NOTE: SHOULD BE FALSE FOR INITIAL RIDDLE SHOW-UP
 firstMenuShown = false
 firstBookShown = false
 continueToNextPuzzle = false
+showFinalMenu = false
+restartGame = false
+hint_1 = "hint_1"
+hint_2 = "hint_2"
+hint_3 = "hint_3"
+riddle_text = "riddle text"
 
 progress = 0
 
-hint1_spriteID = 0 
-hint2_spriteID = 0 
-hint3_spriteID = 0
-exit_spriteID = 0 
-resume_spriteID = 0 
+hint1_spriteID = 2 
+hint2_spriteID = 4 
+hint3_spriteID = 6
+exit_spriteID = 2 
+resume_spriteID = 6 
 start_spriteID = 0
 story_book_button_spriteID = 0
 
@@ -55,25 +61,24 @@ function updateLevel()
 	
     inintialRiddleDisplay()
 	
-	-- Update ProgressBar: --
-	updateProgressBar(data.progress_bar_xOffset, data.progress_bar_yOffset, data.progress_bar_alignment,
-					  data.progress_bar_scaleX,  data.progress_bar_scaleY
-					  )
+	updateProgressBar(data.progress_bar_xOffset, data.progress_bar_yOffset, data.progress_bar_alignment, data.progress_bar_scaleX, data.progress_bar_scaleY)
     if Game.getKeyDown(KeyCode.M) == true then
         game_state = MODE.MENU
     end
 end
 
 function handleHelpButtonClick(spriteID)
-    if Hud.helpButton(data.help_button_xOffset, data.help_button_yOffset, spriteID, 
-				      data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then
+	--HelpButton
+	if Hud.hintsButton(data.help_button_xOffset, data.help_button_yOffset, spriteID, 
+				       data.help_button_alignment, data.help_button_scaleX, data.help_button_scaleY) == true then					
         if showHelpBox == false then
             showHelpBox = true
+            showRiddleBox = true
         else
             showHelpBox = false
-			hint1_spriteID = 0 
-			hint2_spriteID = 0 
-			hint3_spriteID = 0
+			hint1_spriteID = 2 --off
+			hint2_spriteID = 4 --off
+			hint3_spriteID = 6 --off
         end
         
 		showHintsBox1 = false
@@ -83,52 +88,60 @@ function handleHelpButtonClick(spriteID)
 end
 
 function handleHintButtonsClick()
-    if Hud.hintButton1(data.hint_button1_xOffset, data.hint_button1_yOffset, 
+    --HintButton1
+	if Hud.hintsButton(data.hint_button1_xOffset, data.hint_button1_yOffset, 
         hint1_spriteID, data.hint_button1_alignment, data.hint_button1_scaleX, data.hint_button1_scaleY) == true then
         if showHintsBox1 == false then
             showHintsBox1 = true
-			hint1_spriteID = 1
-			hint2_spriteID = 0
-			hint3_spriteID = 0
+			hint1_spriteID = 3 --on
+			hint2_spriteID = 4 --off
+			hint3_spriteID = 6 --off
 			
             showHintsBox2 = false
             showHintsBox3 = false
+            showRiddleBox = false
         else
             showHintsBox1 = false
-			hint1_spriteID = 0
-        end
-    end
-     
-    if Hud.hintButton2(data.hint_button2_xOffset, data.hint_button2_yOffset,
-        hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
-        if showHintsBox2 == false then
-            showHintsBox2 = true
-			hint1_spriteID = 0
-			hint2_spriteID = 1
-			hint3_spriteID = 0
-			
-            showHintsBox1 = false
-            showHintsBox3 = false
-        elseif showHintsBox2 == true then
-            showHintsBox2 = false
-			hint2_spriteID = 0
-
+			showRiddleBox = true
+			hint1_spriteID = 2 --off
         end
     end
     
-    if Hud.hintButton3(data.hint_button3_xOffset, data.hint_button3_yOffset, 
+	--HintButton2
+	if Hud.hintsButton(data.hint_button2_xOffset, data.hint_button2_yOffset,
+        hint2_spriteID, data.hint_button2_alignment, data.hint_button2_scaleX, data.hint_button2_scaleY) == true then
+        if showHintsBox2 == false then
+            showHintsBox2 = true
+			hint1_spriteID = 2 --off
+			hint2_spriteID = 5 --on
+			hint3_spriteID = 6 --off
+			
+            showHintsBox1 = false
+            showHintsBox3 = false
+            showRiddleBox = false
+        else
+            showHintsBox2 = false
+			showRiddleBox = true
+			hint2_spriteID = 4 --off
+        end
+    end
+    
+    --HintButton3
+	if Hud.hintsButton(data.hint_button3_xOffset, data.hint_button3_yOffset, 
         hint3_spriteID, data.hint_button3_alignment, data.hint_button3_scaleX, data.hint_button3_scaleY) == true then
         if showHintsBox3 == false then
             showHintsBox3 = true
-			hint1_spriteID = 0
-			hint2_spriteID = 0
-			hint3_spriteID = 1
+			hint1_spriteID = 2 --off
+			hint2_spriteID = 4 --off
+			hint3_spriteID = 7 --on
 			
             showHintsBox2 = false
             showHintsBox1 = false
+            showRiddleBox = false
         elseif showHintsBox3 == true then
             showHintsBox3 = false
-			hint3_spriteID = 0
+			showRiddleBox = true
+			hint3_spriteID = 6 --off
         end
     end
 end
@@ -149,29 +162,34 @@ end
 -- the box holding the hint buttons
 function updateHelpBox()
     if showHelpBox == true then
-        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, 
-					  data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
-		Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, 
-				      data.riddle_box_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
+        Hud.helpBox	 (data.help_box_xOffset, data.help_box_yOffset, data.help_box_alignment, data.help_box_scaleX, data.help_box_scaleY)
+		if showRiddleBox == true then
+            Hud.riddleBox(data.riddle_box_xOffset, data.riddle_box_yOffset, data.riddle_box_font, riddle_text, data.riddle_box_alignment, data.riddle_box_scaleX, data.riddle_box_scaleY)
+        end
         handleHintButtonsClick()
     else
         showHintsBox1 = false
         showHintsBox2 = false
         showHintsBox3 = false
+        showRiddleBox = false
     end
 end
 
 -- the box showing the actual hint
 function updateHintsBox()
-    if showHintsBox1 == true or showHintsBox2 == true or showHintsBox3 == true then
-        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, 
-					 hintText, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
+    if showHintsBox1 == true then
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, hint_1, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
+    elseif showHintsBox2 == true then
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, hint_2, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
+    elseif showHintsBox3 == true then
+        Hud.hintsBox(data.hints_box_xOffset, data.hints_box_yOffset, data.hints_box_font, hint_3, data.hints_box_alignment, data.hints_box_scaleX, data.hints_box_scaleY)
     end
 end
 
 function inintialRiddleDisplay()
     if Hud.displayRiddleAtStart() == true and initialRiddleCheck == false then 
         showHelpBox = false
+        showRiddleBox = false
         hint1_spriteID = 0
         hint2_spriteID = 0
         hint3_spriteID = 0
@@ -186,36 +204,38 @@ end
 function handleMenuButtonsClick()
 
     if firstMenuShown == false then
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+		--StartButton
+		if Hud.menuButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
             game_state = MODE.BOOK
             firstMenuShown = true
-            start_spriteID = 1
-            print("START!")
+			start_spriteID = 4 --Switch to RestartButtonSprite
         end
     end
     
     if firstMenuShown == true then
-        if Hud.startButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
+        --RestartButton
+		if Hud.menuButton(data.start_button_xOffset, data.start_button_yOffset, start_spriteID, 
 						   data.start_button_alignment, data.start_button_scaleX, data.start_button_scaleY) == true then
-            -- CALL RESTART FUNCTION HERE
+            restartGame = true
             print("RESTART!")
         end
-    
-        if Hud.resumeButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
-							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
-            game_state = MODE.LEVEL
-            print("RESUME!")
-        end
-    end
-    
-    if Hud.exitButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
-					  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
-        print("EXIT!")
-        Hud.handleExit()
-    end
-end
 
+		if showFinalMenu == false then 
+		--ResumeButton
+			if Hud.menuButton(data.resume_button_xOffset, data.resume_button_yOffset, resume_spriteID, 
+							data.resume_button_alignment, data.resume_button_scaleX, data.resume_button_scaleY) == true then
+				game_state = MODE.LEVEL
+			end
+		end
+    end
+	--ExitButton
+	if Hud.menuButton(data.exit_button_xOffset, data.exit_button_yOffset, exit_spriteID, 
+				  data.exit_button_alignment, data.exit_button_scaleX, data.exit_button_scaleY) == true then
+		Hud.handleExit()
+	end
+end
+	
 function popStoryBook()
     Hud.storyBook(data.story_book_xOffset, data.story_book_yOffset, data.story_book_alignment, data.story_book_scaleX, data.story_book_scaleY)
 end
@@ -226,14 +246,12 @@ function handleStoryBookButtonClick()
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             firstBookShown = true
-            print("CONTINUE TO 1st LEVEL!")
         end
     else
         if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             continueToNextPuzzle = true
-            print("CONTINUE TO NEXT LEVEL!")
         end
     end
 end
