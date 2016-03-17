@@ -62,7 +62,6 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
 //    glUniform1i (_shader->getUniformLocation("shadowMap"), 1);
 
 <<<<<<< HEAD
-<<<<<<< HEAD
     //setup texture slot 2 (normalMap)
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, _normalMap->getId());
@@ -70,8 +69,6 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
 
 //    GLuint diffuseColorHandle = _shader->getUniformLocation("diffuseColor");
 =======
-=======
->>>>>>> parent of a7e6ec8... close to working
     GLuint diffuseColorHandle = _shader->getUniformLocation("diffuseColor");
 >>>>>>> parent of a7e6ec8... close to working
     GLuint viewPos = _shader->getUniformLocation("viewPos");
