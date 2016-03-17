@@ -16,8 +16,6 @@ LitTextureMaterial::LitTextureMaterial(Texture * pDiffuseTexture):_diffuseTextur
     diffuseColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
     _lazyInitializeShader();
-
-    _normalMap = Texture::load("mge/textures/normalMap.png");
 }
 
 LitTextureMaterial::~LitTextureMaterial()
@@ -41,11 +39,6 @@ void LitTextureMaterial::setDiffuseTexture (Texture* pDiffuseTexture)
     _diffuseTexture = pDiffuseTexture;
 }
 
-void LitTextureMaterial::setNormalMap (Texture* pNormalTexture)
-{
-//    _normalMap = pNormalTexture;
-}
-
 void LitTextureMaterial::changeDiffuseTexture (std::string pFilename)
 {
     setDiffuseTexture(Texture::load("mge/textures/" + pFilename));
@@ -67,11 +60,6 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, pRenderPipeline->getShadowMap());
     glUniform1i (_shader->getUniformLocation("shadowMap"), 1);
-
-    //setup texture slot 2 (normalMap)
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, _normalMap->getId());
-    glUniform1i (_shader->getUniformLocation("normalMap"), 1);
 
     GLuint diffuseColorHandle = _shader->getUniformLocation("diffuseColor");
     GLuint viewPos = _shader->getUniformLocation("viewPos");
@@ -113,6 +101,6 @@ void LitTextureMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, 
         _shader->getAttribLocation("normal"),
         _shader->getAttribLocation("texCoords"),
         _shader->getAttribLocation("tangent"),
-        _shader->getAttribLocation("bitangent")
+        _shader->getAttribLocation("biTangent")
     );
 }

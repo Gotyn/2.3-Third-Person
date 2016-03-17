@@ -16,12 +16,10 @@ in VS_OUT {
     vec3 Normal;
     vec2 TexCoords;
     vec4 FragPosLightSpace;
-    mat3 TBN;
 } fs_in;
 
 uniform sampler2D diffuseTexture;
 uniform sampler2D shadowMap;
-uniform sampler2D normalMap;
 
 uniform Light light;
 uniform vec3 ambient;
@@ -64,10 +62,7 @@ void main()
 //    float theta = dot(lightDir, normalize(-light.direction));
 
     vec3 color = texture(diffuseTexture, fs_in.TexCoords).rgb * diffuseColor;
-//    vec3 normal = normalize(fs_in.Normal);
-    vec3 normal = texture(normalMap, fs_in.TexCoords).rgb;
-    normal = normalize(normal * 2.0 - 1.0);
-    normal = normalize(fs_in.TBN * normal);
+    vec3 normal = normalize(fs_in.Normal);
     // Ambient
     vec3 ambientColor = ambient * color;
     // Diffuse
