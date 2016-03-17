@@ -12,7 +12,10 @@
 #define SCREEN_WIDTH 1024 // 1024,  1366,   1600,   1680,   1920
 #define SCREEN_HEIGHT 710 //  710,   768,    900,   1050,   1080
 #define MSAA 4
+<<<<<<< HEAD
 #define RENDERDEBUG true
+=======
+>>>>>>> parent of a027120... render debug fixed
 
 using namespace std;
 
