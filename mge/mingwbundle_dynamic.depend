@@ -1997,11 +1997,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-<<<<<<< HEAD
 1458183080 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
-=======
-1458165753 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
->>>>>>> parent of a7e6ec8... close to working
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2424,11 +2420,7 @@
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-<<<<<<< HEAD
 1458183863 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
-=======
-1458177093 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
->>>>>>> parent of a7e6ec8... close to working
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>
@@ -2498,7 +2490,7 @@
 	"mge/core/Camera.hpp"
 	"mge/core/Mesh.hpp"
 
-1458178407 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
+1458179038 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\litcolormaterial.cpp
 	<glm.hpp>
 	"mge/materials/LitColorMaterial.h"
 	"mge/config.hpp"
@@ -2506,7 +2498,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/core/World.hpp"
 
-1458178630 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
+1458178965 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\texturematerial.cpp
 	<glm.hpp>
 	"mge/materials/TextureMaterial.hpp"
 	"mge/core/Texture.hpp"
@@ -2514,7 +2506,7 @@
 	"mge/core/Mesh.hpp"
 	"mge/config.hpp"
 
-1457348574 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.cpp
+1458178913 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\wobblingmaterial.cpp
 	"WobblingMaterial.h"
 	<glm.hpp>
 	"mge/materials/WobblingMaterial.h"
@@ -3451,7 +3443,7 @@
 	<map>
 	<sys/types.h>
 
-1458178597 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
+1458181108 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.cpp
 	<glm.hpp>
 	"mge/core/RenderPipeline.hpp"
 	"mge/materials/LitTextureMaterial.hpp"
@@ -3461,7 +3453,7 @@
 	"mge/config.hpp"
 	"LuaGame.hpp"
 
-1457442530 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
+1458180491 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\materials\littexturematerial.hpp
 	"mge/core/Texture.hpp"
 	"mge/core/Mesh.hpp"
 	"mge/materials/AbstractMaterial.hpp"
