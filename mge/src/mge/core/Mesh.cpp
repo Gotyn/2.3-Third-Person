@@ -199,9 +199,14 @@ Mesh* Mesh::load(string pFileName)
 					glm::vec2 vert2deltaUV2 = triangleUVs[0] - triangleUVs[1];
 					glm::vec2 vert3deltaUV2 = triangleUVs[1] - triangleUVs[2];
 
-                    mesh->calculateTangents(mesh, vert1Edge1, vert1edge2, vert1deltaUV1, vert1deltaUV2);
-                    mesh->calculateTangents(mesh, vert2Edge1, vert2edge2, vert2deltaUV1, vert2deltaUV2);
-                    mesh->calculateTangents(mesh, vert3Edge1, vert3edge2, vert3deltaUV1, vert3deltaUV2);
+                    glm::vec3 tangent1 = mesh->calculateTangent(vert1Edge1, vert1edge2, vert1deltaUV1, vert1deltaUV2);
+                    glm::vec3 tangent2 = mesh->calculateTangent(vert2Edge1, vert2edge2, vert2deltaUV1, vert2deltaUV2);
+                    glm::vec3 tangent3 = mesh->calculateTangent(vert3Edge1, vert3edge2, vert3deltaUV1, vert3deltaUV2);
+
+
+                    mesh->_tangents.push_back(tangent1);
+                    mesh->_tangents.push_back(tangent2);
+                    mesh->_tangents.push_back(tangent3);
 
 //                    bitangent1.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
 //                    bitangent1.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
@@ -318,22 +323,14 @@ void Mesh::renderDebugInfo(glm::mat4& pModelMatrix, World* pWorld) {
             glm::vec3 tangentEnd = tangentStart + tangent*0.2f;
             glVertex3fv(glm::value_ptr(tangentEnd));
 //        }
-            glColor3f(1,0,0);
-            //now get bi-tangent end
-            glm::vec3 biTangent = glm::vec3(_biTangents[_indices[i]]);
-            glm::vec3 biTangentStart = _vertices[_indices[i]];
-            glVertex3fv(glm::value_ptr(biTangentStart));
-            glm::vec3 biTangentEnd = biTangentStart + biTangent*0.2f;
-            glVertex3fv(glm::value_ptr(biTangentEnd));
 
     }
     glEnd();
 }
 
-void Mesh::calculateTangents(Mesh* pMesh, glm::vec3 edge1, glm::vec3 edge2, glm::vec2 deltaUV1, glm::vec2 deltaUV2)
+glm::vec3 Mesh::calculateTangent(glm::vec3 edge1, glm::vec3 edge2, glm::vec2 deltaUV1, glm::vec2 deltaUV2)
 {
     glm::vec3 tangent = glm::vec3(0.0f);
-    glm::vec3 biTangent = glm::vec3(0.0f);
 
     GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
 
@@ -342,12 +339,6 @@ void Mesh::calculateTangents(Mesh* pMesh, glm::vec3 edge1, glm::vec3 edge2, glm:
     tangent.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
     tangent = glm::normalize(tangent);
 
-    biTangent.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
-    biTangent.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
-    biTangent.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
-    biTangent = glm::normalize(biTangent);
-
-    pMesh->_tangents.push_back(tangent);
-    pMesh->_biTangents.push_back(biTangent);
+    return tangent;
 }
 

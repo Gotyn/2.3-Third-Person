@@ -2093,7 +2093,7 @@
 	<string>
 	<GL/glew.h>
 
-1458176071 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
+1458170540 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
 	<vector>
 	<cstring>
 	<string>
@@ -2420,7 +2420,7 @@
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-1458172899 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
+1458172614 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>
