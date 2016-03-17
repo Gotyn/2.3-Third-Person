@@ -28,6 +28,8 @@ class GameObject
         void printStatus();
         void WriteLogFile(const char* szString);
 
+        void moveTo(float x, float y, float z, float pDuration);
+
         //contains local rotation, scale, position
 		void setTransform (const glm::mat4& pTransform);
         glm::mat4& getTransform();
@@ -90,10 +92,17 @@ class GameObject
         bool _rotateWithCamera;
 		glm::mat4 _transform;
 		glm::mat4 _worldTransform;
+        bool _moving = false;
+        float _moveStartedAt;
+        float _moveDuration;
+        glm::vec3 _moveFrom;
+        glm::vec3 _moveTarget;
 
         GameObject* _parent;
 		std::vector<GameObject*> _children;
         std::unordered_map<const std::type_info* , AbstractBehaviour *> _behaviours;
+
+        void handleMovement();
 
         //update children list administration
         void _innerAdd (GameObject* pChild);
