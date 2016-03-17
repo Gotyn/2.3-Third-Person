@@ -103,7 +103,7 @@ story = {
             "Lips"
         },
         riddle = {
-            "My touch is soft, but my intensions can be stern. \nWith your faith I can be great,\n but defy me and we will both fall."
+            "My touch is soft, but my intensions can be stern. \nWith your faith I can be great, but defy me and we will both fall."
         }
     },
     {
@@ -118,7 +118,7 @@ story = {
             "Skull"
         },
         riddle = {
-            "Some try to hide, some try to cheat, \nbut time will show, we will always meet. \nTry as you might, to guess my name. \nI promise you'll know, when I do my claim."
+            "Some try to hide, some try to cheat, but time will show, we will always meet. \nTry as you might, to guess my name. I promise you'll know, when I do my claim."
         }
     },
     {
@@ -133,7 +133,7 @@ story = {
             "Camel"
         },
         riddle = {
-            "My kind has been around for centuries. \nWe carry mountains or our backs. Yet, we do not protest, for we cannot speak."
+            "My kind has been around for centuries. \nWe carry mountains or our backs. \nYet, we do not protest, for we cannot speak."
         }
     },
     {
