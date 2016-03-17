@@ -14,6 +14,7 @@ sf::Font BaseHud::_font;
 sf::Vector2u BaseHud::wSize(0,0);
 // initialize static textures
 sf::Texture* BaseHud::helpButtonTexture = new sf::Texture;
+sf::Texture* BaseHud::hintsButtonTexture = new sf::Texture;
 sf::Texture* BaseHud::hintButton1Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton2Texture = new sf::Texture;
 sf::Texture* BaseHud::hintButton3Texture = new sf::Texture;
@@ -27,6 +28,7 @@ sf::Texture* BaseHud::menuBoxTexture = new sf::Texture;
 sf::Texture* BaseHud::storyBookTexture = new sf::Texture;
 // initialize static sprites
 sf::Sprite* BaseHud::helpButtonSprite = new sf::Sprite;
+sf::Sprite* BaseHud::hintsButtonSprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton1Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton2Sprite = new sf::Sprite;
 sf::Sprite* BaseHud::hintButton3Sprite = new sf::Sprite;
@@ -43,6 +45,7 @@ sf::Text* BaseHud::riddleBoxText = new sf::Text;
 sf::Text* BaseHud::hintsBoxText = new sf::Text;
 // initialize static texture names (set default valid file name to avoid errors)
 std::string BaseHud::helpButtonTextureName  = "land.jpg";
+std::string BaseHud::hintsButtonTextureName  = "land.jpg";
 std::string BaseHud::hintButton1TextureName = "land.jpg";
 std::string BaseHud::hintButton2TextureName = "land.jpg";
 std::string BaseHud::hintButton3TextureName = "land.jpg";
@@ -88,6 +91,8 @@ void BaseHud::loadTextures()
 
     if (!helpButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + helpButtonTextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
+    if (!hintsButtonTexture->loadFromFile (config::MGE_SPRITE_PATH + hintsButtonTextureName))
+        { std::cout << "Could not load texture for button"           << std::endl; return; }
     if (!hintButton1Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton1TextureName))
         { std::cout << "Could not load texture for button"           << std::endl; return; }
     if (!hintButton2Texture->loadFromFile(config::MGE_SPRITE_PATH + hintButton2TextureName))
@@ -112,6 +117,7 @@ void BaseHud::loadTextures()
         { std::cout << "Could not load texture for label"            << std::endl; return; }
 
     helpButtonTexture->setRepeated(true);
+    hintsButtonTexture->setRepeated(true);
     hintButton1Texture->setRepeated(true);
     hintButton2Texture->setRepeated(true);
     hintButton3Texture->setRepeated(true);
@@ -178,6 +184,34 @@ bool BaseHud::HelpButton(int xOffset, int yOffset, int spriteID, int alignment, 
 
     return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
 }
+
+//----------------------------------------------------------------
+// image/sprite SFML button, triggers action upon click
+//----------------------------------------------------------------
+bool BaseHud::HintsButton(int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY) {
+    int spriteSheetColumns = 2;
+
+    sf::Vector2u spriteSize(hintsButtonTexture->getSize());                              // Get the image size
+    int scaledSpriteWidth = spriteSize.x * scaleX / spriteSheetColumns;
+    int scaledSpriteHeight = spriteSize.y * scaleY;
+
+    sf::Vector2f alignedPos = fixAlignment(alignment, xOffset, yOffset, scaledSpriteWidth, scaledSpriteHeight);
+    int tileWidth = ( spriteSize.x / spriteSheetColumns );                                              // unscaled!
+
+    //create sprite
+    hintsButtonSprite->setTexture(*hintsButtonTexture);
+    hintsButtonSprite->setScale(scaleX, scaleY);
+    if (spriteID == 0) hintsButtonSprite->setTextureRect(sf::IntRect(0, 0, tileWidth, spriteSize.y));    // unscaled!
+    else hintsButtonSprite->setTextureRect(sf::IntRect(tileWidth, 0, tileWidth, spriteSize.y));          // unscaled!
+
+    hintsButtonSprite->setPosition(alignedPos);
+
+    _window->draw(*hintsButtonSprite);
+
+    return CheckMouseOnButton(alignedPos, scaledSpriteWidth, scaledSpriteHeight); //check for mouseclick
+}
+
+
 
 //----------------------------------------------------------------
 // image/sprite SFML button, triggers action upon click
@@ -483,6 +517,7 @@ void BaseHud::TextLabel(int x, int y, std::string caption) {
 // a bunch of sessters used outside the class for setting texture names from lua
 //--------------------------------------------------------------------------------
 void BaseHud::setHelpButtonTextureName(const std::string name)      { helpButtonTextureName      = name;  }
+void BaseHud::setHintsButtonTextureName(const std::string name)     { hintsButtonTextureName     = name;  }
 void BaseHud::setHintButton1TextureName(const std::string name)     { hintButton1TextureName     = name;  }
 void BaseHud::setHintButton2TextureName(const std::string name)     { hintButton2TextureName     = name;  }
 void BaseHud::setHintButton3TextureName(const std::string name)     { hintButton3TextureName     = name;  }

@@ -15,6 +15,7 @@ class BaseHud
         static bool Button          (int xOffset, int yOffset, std::string caption);
         static void TextLabel       (int xOffset, int yOffset, std::string caption);  //Adds a label that fits around given text.
         static void ProgressBar     (int xOffset, int yOffset, int row, int alignment, float scaleX, float scaleY);
+        static bool HintsButton     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
         static bool HelpButton      (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
         static bool HintButton1     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
         static bool HintButton2     (int xOffset, int yOffset, int spriteID, int alignment, float scaleX, float scaleY);
@@ -32,6 +33,7 @@ class BaseHud
         static void loadTextures();
         //setters
         static void setHelpButtonTextureName(const std::string name);
+        static void setHintsButtonTextureName(const std::string name);
         static void setHintButton1TextureName(const std::string name);
         static void setHintButton2TextureName(const std::string name);
         static void setHintButton3TextureName(const std::string name);
@@ -60,6 +62,7 @@ class BaseHud
 
         //hud textures
         static sf::Texture* helpButtonTexture;
+        static sf::Texture* hintsButtonTexture;
         static sf::Texture* hintButton1Texture;
         static sf::Texture* hintButton2Texture;
         static sf::Texture* hintButton3Texture;
@@ -73,6 +76,7 @@ class BaseHud
         static sf::Texture* storyBookTexture;
         //hud sprites
         static sf::Sprite* helpButtonSprite;
+        static sf::Sprite* hintsButtonSprite;
         static sf::Sprite* hintButton1Sprite;
         static sf::Sprite* hintButton2Sprite;
         static sf::Sprite* hintButton3Sprite;
@@ -89,6 +93,7 @@ class BaseHud
         static sf::Text* hintsBoxText;
         //hud names
         static std::string helpButtonTextureName;
+        static std::string hintsButtonTextureName;
         static std::string hintButton1TextureName;
         static std::string hintButton2TextureName;
         static std::string hintButton3TextureName;

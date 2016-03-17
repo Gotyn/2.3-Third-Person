@@ -13,6 +13,14 @@ progress_bar_scaleY = 0.75
 progress_bar_alignment = alignment.CENTER_TOP
 progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 
+--[HintsButton] Button for Riddle / Hints 
+hints_button_xOffset = 20
+hints_button_yOffset = 20
+hints_button_scaleX = 0.28
+hints_button_scaleY = 0.28
+hints_button_alignment = alignment.RIGHT_TOP
+hints_button_texture = "HUD_Hints_Sheet.png"
+
 --[HelpButton] Button for Riddle / Hints 
 help_button_xOffset = 20
 help_button_yOffset = 20
@@ -146,6 +154,14 @@ HUD.progress_bar_scaleX = progress_bar_scaleX
 HUD.progress_bar_scaleY = progress_bar_scaleY
 HUD.progress_bar_alignment = progress_bar_alignment
 HUD.progress_bar_texture = progress_bar_texture
+
+-- riddle / hint / help button
+HUD.hints_button_xOffset 	= hints_button_xOffset
+HUD.hints_button_yOffset 	= hints_button_yOffset
+HUD.hints_button_scaleX 	= hints_button_scaleX
+HUD.hints_button_scaleY 	= hints_button_scaleY
+HUD.hints_button_alignment 	= hints_button_alignment
+HUD.hints_button_texture 	= hints_button_texture
 
 -- riddle / hint / help button
 HUD.help_button_xOffset = help_button_xOffset
