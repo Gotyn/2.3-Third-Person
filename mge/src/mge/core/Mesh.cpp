@@ -203,11 +203,6 @@ Mesh* Mesh::load(string pFileName)
                     mesh->calculateTangents(mesh, vert2Edge1, vert2edge2, vert2deltaUV1, vert2deltaUV2);
                     mesh->calculateTangents(mesh, vert3Edge1, vert3edge2, vert3deltaUV1, vert3deltaUV2);
 
-//                    bitangent1.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
-//                    bitangent1.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
-//                    bitangent1.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
-//                    bitangent1 = glm::normalize(bitangent1);
-
 				} else {
 				    //If we read a different amount, something is wrong
 					cout << "Error reading obj, needing v,vn,vt" << endl;
@@ -244,6 +239,14 @@ void Mesh::_buffer()
     glBindBuffer( GL_ARRAY_BUFFER, _normalBufferId );
     glBufferData( GL_ARRAY_BUFFER, _normals.size()*sizeof(glm::vec3), &_normals[0], GL_STATIC_DRAW );
 
+    glGenBuffers(1, &_tangentBufferId);
+    glBindBuffer( GL_ARRAY_BUFFER, _tangentBufferId );
+    glBufferData( GL_ARRAY_BUFFER, _normals.size()*sizeof(glm::vec3), &_tangents[0], GL_STATIC_DRAW );
+
+    glGenBuffers(1, &_biTangentBufferId);
+    glBindBuffer( GL_ARRAY_BUFFER, _biTangentBufferId );
+    glBufferData( GL_ARRAY_BUFFER, _normals.size()*sizeof(glm::vec3), &_biTangents[0], GL_STATIC_DRAW );
+
     glGenBuffers(1, &_uvBufferId);
     glBindBuffer( GL_ARRAY_BUFFER, _uvBufferId );
     glBufferData( GL_ARRAY_BUFFER, _uvs.size()*sizeof(glm::vec2), &_uvs[0], GL_STATIC_DRAW );
@@ -251,7 +254,7 @@ void Mesh::_buffer()
     glBindBuffer( GL_ARRAY_BUFFER, 0 );
 }
 
-void Mesh::streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib) {
+void Mesh::streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib, GLint pTangentsAttrib, GLint pBiTangentsAttrib) {
     if (pVerticesAttrib != -1) {
         glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferId);
         glEnableVertexAttribArray(pVerticesAttrib);
@@ -262,6 +265,18 @@ void Mesh::streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUV
         glBindBuffer( GL_ARRAY_BUFFER, _normalBufferId);
         glEnableVertexAttribArray(pNormalsAttrib);
         glVertexAttribPointer(pNormalsAttrib, 3, GL_FLOAT, GL_TRUE, 0, 0 );
+    }
+
+    if (pTangentsAttrib != -1) {
+        glBindBuffer( GL_ARRAY_BUFFER, _tangentBufferId);
+        glEnableVertexAttribArray(pTangentsAttrib);
+        glVertexAttribPointer(pTangentsAttrib, 3, GL_FLOAT, GL_TRUE, 0, 0 );
+    }
+
+    if (pBiTangentsAttrib != -1) {
+        glBindBuffer( GL_ARRAY_BUFFER, _biTangentBufferId);
+        glEnableVertexAttribArray(pBiTangentsAttrib);
+        glVertexAttribPointer(pBiTangentsAttrib, 3, GL_FLOAT, GL_TRUE, 0, 0 );
     }
 
     if (pUVsAttrib != -1) {
@@ -282,6 +297,8 @@ void Mesh::streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUV
 	if (pUVsAttrib != -1) glDisableVertexAttribArray(pUVsAttrib);
 	if (pNormalsAttrib != -1) glDisableVertexAttribArray(pNormalsAttrib);
 	if (pVerticesAttrib != -1) glDisableVertexAttribArray(pVerticesAttrib);
+	if (pTangentsAttrib != -1) glDisableVertexAttribArray(pTangentsAttrib);
+	if (pBiTangentsAttrib != -1) glDisableVertexAttribArray(pBiTangentsAttrib);
 }
 
 void Mesh::renderDebugInfo(glm::mat4& pModelMatrix, World* pWorld) {
