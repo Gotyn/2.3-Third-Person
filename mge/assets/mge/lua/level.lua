@@ -15,6 +15,16 @@ storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
 
+sideWall = Game.StoryWall("Side_wall_OBJ.obj", "SideWall_Base_Color.png", "SideWall")
+sideWall:rotateAroundAxis(240, 0, 1, 0)
+sideWall:scale(0.7, 0.7, 0.7)
+sideWall:setPosition (3.1, 2.3, 3.3)
+
+backWall = Game.StoryWall("BackScreen.obj", "Backwall_Base_Color.png", "BackWall")
+backWall:rotateAroundAxis(240, 0, 1, 0)
+backWall:scale(0.7, 0.7, 0.7)
+backWall:setPosition (3.1, 2.3, 3.3)
+
 spotlight = Game.getSpotlight()
 camera = Game.getCameraObject()
 
