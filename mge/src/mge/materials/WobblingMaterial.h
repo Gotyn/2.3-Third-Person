@@ -31,8 +31,6 @@ class WobblingMaterial : public AbstractMaterial
 
         static GLint _aVertex ;
         static GLint _aNormal;
-        static GLint _aTangent;
-        static GLint _aBiTangent;
         static GLint _aUV ;
         static GLint _offsetIndex ;
         static GLint _timeIndex ;

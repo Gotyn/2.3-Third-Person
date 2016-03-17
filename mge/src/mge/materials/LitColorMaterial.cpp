@@ -22,8 +22,6 @@ GLint LitColorMaterial::uConeAnglesIndex[MAX_LIGHTS_NUM];
 GLint LitColorMaterial::uCameraPosIndex = 0;
 GLint LitColorMaterial::_aVertex = 0;
 GLint LitColorMaterial::_aNormal = 0;
-GLint LitColorMaterial::_aTangent = 0;
-GLint LitColorMaterial::_aBiTangent = 0;
 GLint LitColorMaterial::_aUV = 0;
 GLint LitColorMaterial::lightsUniforArraySize = 0;
 
@@ -107,8 +105,6 @@ void LitColorMaterial::_lazyInitializeShader() {
         lightsUniforArraySize   = _shader->getUniformLocation ("uniformArraySize");
         _aVertex = _shader->getAttribLocation("vertex");
         _aNormal = _shader->getAttribLocation("normal");
-        _aNormal = _shader->getAttribLocation("tangent");
-        _aNormal = _shader->getAttribLocation("biTangent");
         _aUV     = _shader->getAttribLocation("uv");
 
         tempSize = World::Instance()->sceneLights().size();
@@ -188,5 +184,5 @@ void LitColorMaterial::render(RenderPipeline* pRenderPipeline, World* pWorld, Ga
         }
     }
     //now inform mesh of where to stream its data*/
-    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV, _aTangent, _aBiTangent);
+    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
 }
