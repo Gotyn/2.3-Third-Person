@@ -50,7 +50,7 @@ story = {
             "I eat meat, but do not drink wine. \nI am a means to an end or it's protector. \nI have committed many gruesome betrayals."
         },
         bookImage = "BOOK_03.png",
-        camPosition = {-2.434961, 0.555908, 6.144196},
+        camPosition = {-2.479640, 2.096649, 7.160201},
         lightPosition = {0.843153, 1.088349, 13.4},
         wallPosition = {1.148681, 4.441195, 4.885514}
     },
@@ -70,7 +70,7 @@ story = {
             "Young ones can only listen to the tales of \nthe elders on how we were brought into exiistence"
         },
         bookImage = "BOOK_05.png",
-        camPosition = {-0.270552, 2.220431, 6.825822},
+        camPosition = {0.119922, 2.905429, 8.183538},
         lightPosition = {3.067473, 1.827167, 11.252758},
         wallPosition = {-0.893377, 3.392399, 4.224762}
     },
