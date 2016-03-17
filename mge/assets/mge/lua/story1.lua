@@ -15,14 +15,14 @@ story = {
         },
         bookImageIntro = "BOOK_00.png",
         bookImage = "BOOK_01.png",
-        camPosition = {-5.809093, 3.296122, 6.267358},
+        camPosition = {-5.809093, 5.566962, 6.267358},
         lightPosition = {-1.325238, 4.995407, 13.4},
         wallPosition = {4.169649, 0.326027, 5.563453}
     },
     {
-        wallImage = "2_MainWall_Base_Color.png",    --EAGLE
+        wallImage = "2_MainWall_Base_Color.png",    --EAGLE (done)
         blocks = {  
-            Game.PuzzleBlock("Eagle.obj", "Eagle_Base_Color.png", "piece1", -1.6, 2.4, 7.4)
+            Game.PuzzleBlock("Eagle.obj", "Eagle_Base_Color.png", "piece1", -1.620447, 1.626915, 5.364659)
         },
         tips = {
             "King of the sky",
@@ -33,13 +33,13 @@ story = {
             "Hard when young, but soft when old. \nI cannot live with my food. Majestic in movement, in eating crude."
         },
         bookImage = "BOOK_02.png",
-        camPosition = {-4.53, 2.66, 7.02},
-        lightPosition = {1.6, 2.4, 13.4}
+        camPosition = {-5.974538, 1.666161, 6.152138},
+        lightPosition = {-1.847859, 1.815444, 9.814968}
     },
     {
-        wallImage = "3_MainWall_Base_Color.png",    --KNIFE
+        wallImage = "3_MainWall_Base_Color.png",    --KNIFE (done)
         blocks = {  
-            Game.PuzzleBlock("Knife.obj", "Knife_Base_Color.png", "piece1", 1.8, 0.8, 6.7)
+            Game.PuzzleBlock("Knife.obj", "Knife_Base_Color.png", "piece1", 0.843153, 0.834008, 5.276042)
         },
         tips = {
             "Brings deadly resolutions",
@@ -50,28 +50,29 @@ story = {
             "I eat meat, but do not drink wine. \nI am a means to an end or it's protector. \nI have committed many gruesome betrayals."
         },
         bookImage = "BOOK_03.png",
-        camPosition = {-5.53, 2.66, 7.02},
-        lightPosition = {-1.6, 2.4, 13.4}
+        camPosition = {-2.434961, 0.555908, 6.144196},
+        lightPosition = {0.843153, 1.088349, 13.4},
+        wallPosition = {1.148681, 4.441195, 4.885514}
     },
     {
-        wallImage = "4_MainWall_Base_Color.png",    --STAR
+        wallImage = "5_MainWall_Base_Color.png",    --PYRAMID
         blocks = {  
-            Game.PuzzleBlock("Star_Piece1.obj", "Star1_Base_Color.png", "piece1", 1.8, 0.8, 6.7),
-            Game.PuzzleBlock("Star_Piece2.obj", "Star2_Base_Color.png", "piece2", 1.8, 0.8, 6.7),
-            Game.PuzzleBlock("Star_Piece3.obj", "Star3_Base_Color.png", "piece3", 1.8, 0.8, 6.7)
+            Game.PuzzleBlock("Piramide_Base.obj", "Piramide_Base_Base_Color.png", "piece1", 3.800427, 1.652600, 6.775362),
+            Game.PuzzleBlock("Piramide_Peak.obj", "Piramide_Peak_Base_Color.png", "piece2", 3.865358, 1.794074, 6.345235)
         
         },
         tips = {
-            "High in the sky",
-            "Bright in darkness",
-            "Star"
+            "God's achitecture",
+            "Geometrical shape",
+            "Pyramid"
         },
         riddle = {
-            "At night they come without being fetched. \nBy day they are lost without being stolen."
+            "Young ones can only listen to the tales of \nthe elders on how we were brought into exiistence"
         },
-        bookImage = "BOOK_04.png",
-        camPosition = {-5.53, 2.66, 7.02},
-        lightPosition = {-1.6, 2.4, 13.4}
+        bookImage = "BOOK_05.png",
+        camPosition = {-0.270552, 2.220431, 6.825822},
+        lightPosition = {3.067473, 1.827167, 11.252758},
+        wallPosition = {-0.893377, 3.392399, 4.224762}
     },
     {
         wallImage = "5_MainWall_Base_Color.png",    --PYRAMIDE
@@ -225,38 +226,37 @@ story = {
 
 story[1].blocks[1]:scale(0.08, 0.08, 0.08)
 
-story[2].blocks[1]:scale(0.3, 0.3, 0.3)
+story[2].blocks[1]:scale(0.1, 0.1, 0.1)
 
-story[3].blocks[1]:scale(0.2, 0.2, 0.2)
+story[3].blocks[1]:scale(0.08, 0.08, 0.08)
 
-story[4].blocks[1]:scale(0.2, 0.2, 0.2)
-story[4].blocks[2]:scale(0.2, 0.2, 0.2)
-story[4].blocks[3]:scale(0.2, 0.2, 0.2)
+story[4].blocks[1]:scale(0.08, 0.08, 0.08)
+story[4].blocks[2]:scale(0.08, 0.08, 0.08)
 
-story[5].blocks[1]:scale(0.3, 0.3, 0.3)
-story[5].blocks[2]:scale(0.3, 0.3, 0.3)
+-- story[5].blocks[1]:scale(0.3, 0.3, 0.3)
+-- story[5].blocks[2]:scale(0.3, 0.3, 0.3)
 
-story[6].blocks[1]:scale(0.2, 0.2, 0.2)
-story[6].blocks[2]:scale(0.2, 0.2, 0.2)
+-- story[6].blocks[1]:scale(0.2, 0.2, 0.2)
+-- story[6].blocks[2]:scale(0.2, 0.2, 0.2)
 
-story[7].blocks[1]:scale(0.3, 0.3, 0.3)
-story[7].blocks[2]:scale(0.3, 0.3, 0.3)
+-- story[7].blocks[1]:scale(0.3, 0.3, 0.3)
+-- story[7].blocks[2]:scale(0.3, 0.3, 0.3)
 
 --story[8].blocks[1]:scale(0.2, 0.2, 0.2)
 --story[8].blocks[2]:scale(0.2, 0.2, 0.2)
 --story[8].blocks[3]:scale(0.2, 0.2, 0.2)
 
-story[9].blocks[1]:scale(0.3, 0.3, 0.3)
-story[9].blocks[2]:scale(0.3, 0.3, 0.3)
+-- story[9].blocks[1]:scale(0.3, 0.3, 0.3)
+-- story[9].blocks[2]:scale(0.3, 0.3, 0.3)
 
-story[10].blocks[1]:scale(0.3, 0.3, 0.3)
-story[10].blocks[2]:scale(0.3, 0.3, 0.3)
+-- story[10].blocks[1]:scale(0.3, 0.3, 0.3)
+-- story[10].blocks[2]:scale(0.3, 0.3, 0.3)
 
 --story[11].blocks[1]:scale(0.3, 0.3, 0.3)
 --story[11].blocks[2]:scale(0.3, 0.3, 0.3)
 --story[11].blocks[3]:scale(0.3, 0.3, 0.3)
 
-story[12].blocks[1]:scale(0.3, 0.3, 0.3)
-story[12].blocks[2]:scale(0.3, 0.3, 0.3)
-story[12].blocks[3]:scale(0.3, 0.3, 0.3)
-story[12].blocks[4]:scale(0.3, 0.3, 0.3)
+-- story[12].blocks[1]:scale(0.3, 0.3, 0.3)
+-- story[12].blocks[2]:scale(0.3, 0.3, 0.3)
+-- story[12].blocks[3]:scale(0.3, 0.3, 0.3)
+-- story[12].blocks[4]:scale(0.3, 0.3, 0.3)

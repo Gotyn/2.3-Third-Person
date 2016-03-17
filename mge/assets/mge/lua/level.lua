@@ -7,7 +7,7 @@ game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 1.1
+solvedThreshold = 0.94
 
 ---- initial scene setup ----
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
@@ -18,12 +18,12 @@ storyWall:setPosition (3.1, 2.3, 3.3)
 spotlight = Game.getSpotlight()
 camera = Game.getCameraObject()
 
-camera:setPosition(-5.537027, 2.663034, 7.021962)
+camera:setPosition(-5.809093, 5.566962, 6.267358)
 camera:rotateAroundAxis(-23, 0, 1, 0)
 
 spotlight:setIntensity(0.78)
-spotlight:setInnerCone(3)
-spotlight:setOuterCone(13)
+spotlight:setInnerCone(7)
+spotlight:setOuterCone(16)
 spotlight:setColor(0.9, 0.94, 0.62)
 
 ----------------------------
@@ -50,7 +50,7 @@ function selectPuzzle(puzzleIndex)
             puzzleSetActive(counter, true)
             -- camera:setPosition(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3])
             camera:moveTo(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3], 10)
-            spotlight:setPosition(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3])
+            spotlight:moveTo(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3], 7)
         else
             puzzleSetActive(counter, false)
         end
@@ -132,7 +132,7 @@ function updateLevel()
         ---- object placement calls ----  ==> uncomment a line to place different types of objects
 
         -- handlePlacement(storyWall)
-        -- handlePlacement(camera)
+        handlePlacement(camera)
         -- handlePlacement(story[activePuzzle].blocks[activePiece])
         
         --------------------------------
