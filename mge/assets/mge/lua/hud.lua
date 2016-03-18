@@ -154,43 +154,43 @@ function handleHintButtonsClick()
 end
 
 function updateProgressBar(xOffset, yOffset, alignment, scaleX, scaleY)
-	if 	   (progress > 0.94) then
+	if 	   (progress > 0.92) then
         Hud.progressBar(xOffset, yOffset, 7, alignment, scaleX, scaleY) -- show 7
         if soundPlayed ~= 7 then
             Audio.playSound("Progression_8.wav")
             soundPlayed = 7
         end
-	elseif (progress > 0.90) then
+	elseif (progress > 0.86) then
         Hud.progressBar(xOffset, yOffset, 6, alignment, scaleX, scaleY) -- show 6
         if soundPlayed ~= 6 then
             Audio.playSound("Progression_7.wav")
             soundPlayed = 6
         end
-	elseif (progress > 0.86) then
+	elseif (progress > 0.80) then
         Hud.progressBar(xOffset, yOffset, 5, alignment, scaleX, scaleY) -- show 5
         if soundPlayed ~= 5 then
             Audio.playSound("Progression_6.wav")
             soundPlayed = 5
         end
-	elseif (progress > 0.82) then
+	elseif (progress > 0.74) then
         Hud.progressBar(xOffset, yOffset, 4, alignment, scaleX, scaleY) -- show 4
         if soundPlayed ~= 4 then
             Audio.playSound("Progression_5.wav")
             soundPlayed = 4
         end
-	elseif (progress > 0.75) then
+	elseif (progress > 0.68) then
         Hud.progressBar(xOffset, yOffset, 3, alignment, scaleX, scaleY) -- show 3
         if soundPlayed ~= 3 then
             Audio.playSound("Progression_4.wav")
             soundPlayed = 3
         end
-	elseif (progress > 0.68) then
+	elseif (progress > 0.60) then
         Hud.progressBar(xOffset, yOffset, 2, alignment, scaleX, scaleY) -- show 2
         if soundPlayed ~= 2 then
             Audio.playSound("Progression_3.wav")
             soundPlayed = 2
         end
-	elseif (progress > 0.60) then
+	elseif (progress > 0.50) then
         Hud.progressBar(xOffset, yOffset, 1, alignment, scaleX, scaleY) -- show 1
         if soundPlayed ~= 1 then
             Audio.playSound("Progression_2.wav")
