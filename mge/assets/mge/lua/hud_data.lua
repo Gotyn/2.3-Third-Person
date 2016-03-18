@@ -8,8 +8,8 @@ display_riddle_at_start = 60
 --[ProgressBar] ProgressBar 
 progress_bar_xOffset = 0
 progress_bar_yOffset = 50 
-progress_bar_scaleX = 0.75
-progress_bar_scaleY = 0.75
+progress_bar_scaleX = 1
+progress_bar_scaleY = 1
 progress_bar_alignment = alignment.CENTER_TOP
 progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 
@@ -17,38 +17,38 @@ progress_bar_texture = "HUD_ProgressBar_Sheet.png"
 hints_button_texture = "HUD_Hints_Sheet.png"
 
 --[HelpButton] Button for Riddle / Hints 
-help_button_xOffset = 20
-help_button_yOffset = 20
-help_button_scaleX = 0.56
-help_button_scaleY = 0.56
+help_button_xOffset = 30
+help_button_yOffset = 30
+help_button_scaleX = 0.65
+help_button_scaleY = 0.65
 help_button_alignment = alignment.RIGHT_TOP
 
 --[HintButton1] Button for first hint
-hint_button1_xOffset = 32
-hint_button1_yOffset = 92
-hint_button1_scaleX = 0.36
-hint_button1_scaleY = 0.36
+hint_button1_xOffset = 40
+hint_button1_yOffset = 120
+hint_button1_scaleX = 0.5
+hint_button1_scaleY = 0.5
 hint_button1_alignment = alignment.RIGHT_TOP
 
 --[HintButton2] Button for second hint
-hint_button2_xOffset = 32
-hint_button2_yOffset = 140
-hint_button2_scaleX = 0.36
-hint_button2_scaleY = 0.36
+hint_button2_xOffset = 40
+hint_button2_yOffset = 190
+hint_button2_scaleX = 0.5
+hint_button2_scaleY = 0.5
 hint_button2_alignment = alignment.RIGHT_TOP
 
 --[HintButton3] Button for third hint
-hint_button3_xOffset = 32
-hint_button3_yOffset = 188
-hint_button3_scaleX = 0.36
-hint_button3_scaleY = 0.36
+hint_button3_xOffset = 40
+hint_button3_yOffset = 260
+hint_button3_scaleX = 0.5
+hint_button3_scaleY = 0.5
 hint_button3_alignment = alignment.RIGHT_TOP
 
 --[HelpBox] Label behind the hint buttons (helpbox)
-help_box_xOffset = 27
-help_box_yOffset = 25
-help_box_scaleX = 0.11
-help_box_scaleY = 0.11
+help_box_xOffset = 32
+help_box_yOffset = 14
+help_box_scaleX = 0.155
+help_box_scaleY = 0.155
 help_box_alignment = alignment.RIGHT_TOP
 help_box_texture = "HUD_Dropdown_Box.png"
 
@@ -57,8 +57,8 @@ help_box_texture = "HUD_Dropdown_Box.png"
 --[MenuBox] Label that shows menu container
 menu_box_xOffset = 0
 menu_box_yOffset = 0
-menu_box_scaleX = 0.3
-menu_box_scaleY = 0.33
+menu_box_scaleX = 1
+menu_box_scaleY = 1
 menu_box_alignment = alignment.CENTER_CENTER
 menu_box_texture = "MENU_Background.png"
 
@@ -66,24 +66,24 @@ menu_box_texture = "MENU_Background.png"
 menu_button_texture = "MENU_Buttons_Sheet.png"
 
 --[MenuButton: Resume]
-resume_button_xOffset = 30
-resume_button_yOffset = 270
-resume_button_scaleX = 0.2
-resume_button_scaleY = 0.2
+resume_button_xOffset = 250
+resume_button_yOffset = 500
+resume_button_scaleX = 0.3
+resume_button_scaleY = 0.3
 resume_button_alignment = alignment.RIGHT_BOTTOM
 
 --[MenuButton: Start]
-start_button_xOffset = 30
-start_button_yOffset = 150
-start_button_scaleX = 0.2
-start_button_scaleY = 0.2
+start_button_xOffset = 250
+start_button_yOffset = 320
+start_button_scaleX = 0.3
+start_button_scaleY = 0.3
 start_button_alignment = alignment.RIGHT_BOTTOM
 
 --[MenuButton: Exit]
-exit_button_xOffset = 30
-exit_button_yOffset = 30
-exit_button_scaleX = 0.2
-exit_button_scaleY = 0.2
+exit_button_xOffset = 250
+exit_button_yOffset = 140
+exit_button_scaleX = 0.3
+exit_button_scaleY = 0.3
 exit_button_alignment = alignment.RIGHT_BOTTOM
 -------------- MENU END ---------------------------- MENU END --------------
 
@@ -91,17 +91,17 @@ exit_button_alignment = alignment.RIGHT_BOTTOM
 --[StoryBook] Label that shows storybook container
 story_book_xOffset = 0
 story_book_yOffset = 0
-story_book_scaleX = 0.5
-story_book_scaleY = 0.5
+story_book_scaleX = 1
+story_book_scaleY = 1
 story_book_alignment = alignment.CENTER_CENTER
 story_book_texture = "BOOK_00.png"
 
 --[StoryBookButton] Continue button in storybook container
-story_book_button_xOffset = 320
-story_book_button_yOffset = 230
-story_book_button_scaleX = 0.08
-story_book_button_scaleY = 0.08
-story_book_button_alignment = alignment.CENTER_CENTER
+story_book_button_xOffset = 0
+story_book_button_yOffset = 80
+story_book_button_scaleX = 0.15
+story_book_button_scaleY = 0.15
+story_book_button_alignment = alignment.CENTER_BOTTOM
 story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
 -------------- BOOK END ---------------------------- BOOK END --------------
 
@@ -109,8 +109,8 @@ story_book_button_texture = "BOOK_Continue_Button_Sheet.png"
 riddle_box_xOffset = 0
 riddle_box_yOffset = 0
 riddle_box_font = 25
-riddle_box_scaleX = 0.30
-riddle_box_scaleY = 0.25
+riddle_box_scaleX = 0.8
+riddle_box_scaleY = 0.6
 riddle_box_alignment = alignment.CENTER_BOTTOM
 riddle_box_texture = "HUD_Riddle_Box.png"
 
@@ -118,8 +118,8 @@ riddle_box_texture = "HUD_Riddle_Box.png"
 hints_box_xOffset = 0
 hints_box_yOffset = 0
 hints_box_font = 30
-hints_box_scaleX = 0.30
-hints_box_scaleY = 0.25
+hints_box_scaleX = 0.8
+hints_box_scaleY = 0.6
 hints_box_alignment = alignment.CENTER_BOTTOM
 hints_box_texture = "HUD_Riddle_Box.png"
 -- BUTTONS AND BOXES PARAMETERS END --
