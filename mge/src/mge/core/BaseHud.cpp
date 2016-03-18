@@ -555,13 +555,13 @@ void BaseHud::fillBookTexturesVector()
     bookTextures.push_back(bookTexture1);
     bookTextures.push_back(bookTexture2);
     bookTextures.push_back(bookTexture3);
-    bookTextures.push_back(bookTexture4);
+    //bookTextures.push_back(bookTexture4);
     bookTextures.push_back(bookTexture5);
-    bookTextures.push_back(bookTexture6);
+    //bookTextures.push_back(bookTexture6);
     bookTextures.push_back(bookTexture7);
-    bookTextures.push_back(bookTexture8);
+    //bookTextures.push_back(bookTexture8);
     bookTextures.push_back(bookTexture9);
     bookTextures.push_back(bookTexture10);
-    bookTextures.push_back(bookTexture11);
+    //bookTextures.push_back(bookTexture11);
     bookTextures.push_back(bookTextureFinal);
 }

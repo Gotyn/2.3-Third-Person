@@ -265,20 +265,20 @@ void LuaGame::setTextureNames()
     luabridge::LuaRef book_texture_3 = luabridge::getGlobal (_L, "book_texture_3");
     BaseHud::setBookTexture3Name(book_texture_3.cast<std::string>());
 
-    luabridge::LuaRef book_texture_4 = luabridge::getGlobal (_L, "book_texture_4");
-    BaseHud::setBookTexture4Name(book_texture_4.cast<std::string>());
+    //luabridge::LuaRef book_texture_4 = luabridge::getGlobal (_L, "book_texture_4");
+    //BaseHud::setBookTexture4Name(book_texture_4.cast<std::string>());
 
     luabridge::LuaRef book_texture_5 = luabridge::getGlobal (_L, "book_texture_5");
     BaseHud::setBookTexture5Name(book_texture_5.cast<std::string>());
 
-    luabridge::LuaRef book_texture_6 = luabridge::getGlobal (_L, "book_texture_6");
-    BaseHud::setBookTexture6Name(book_texture_6.cast<std::string>());
+    //luabridge::LuaRef book_texture_6 = luabridge::getGlobal (_L, "book_texture_6");
+    //BaseHud::setBookTexture6Name(book_texture_6.cast<std::string>());
 
     luabridge::LuaRef book_texture_7 = luabridge::getGlobal (_L, "book_texture_7");
     BaseHud::setBookTexture7Name(book_texture_7.cast<std::string>());
 
-    luabridge::LuaRef book_texture_8 = luabridge::getGlobal (_L, "book_texture_8");
-    BaseHud::setBookTexture8Name(book_texture_8.cast<std::string>());
+    //luabridge::LuaRef book_texture_8 = luabridge::getGlobal (_L, "book_texture_8");
+    //BaseHud::setBookTexture8Name(book_texture_8.cast<std::string>());
 
     luabridge::LuaRef book_texture_9 = luabridge::getGlobal (_L, "book_texture_9");
     BaseHud::setBookTexture9Name(book_texture_9.cast<std::string>());
@@ -286,8 +286,8 @@ void LuaGame::setTextureNames()
     luabridge::LuaRef book_texture_10 = luabridge::getGlobal (_L, "book_texture_10");
     BaseHud::setBookTexture10Name(book_texture_10.cast<std::string>());
 
-    luabridge::LuaRef book_texture_11 = luabridge::getGlobal (_L, "book_texture_11");
-    BaseHud::setBookTexture11Name(book_texture_11.cast<std::string>());
+    //luabridge::LuaRef book_texture_11 = luabridge::getGlobal (_L, "book_texture_11");
+    //BaseHud::setBookTexture11Name(book_texture_11.cast<std::string>());
 
     luabridge::LuaRef book_texture_final = luabridge::getGlobal (_L, "book_texture_final");
     BaseHud::setBookTextureFinalName(book_texture_final.cast<std::string>());
