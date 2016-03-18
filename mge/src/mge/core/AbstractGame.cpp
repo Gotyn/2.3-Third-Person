@@ -8,6 +8,8 @@
 #include "mge/core/FPS.hpp"
 #include "mge/core/World.hpp"
 
+#include "mge/config.hpp"
+
 using namespace std;
 
 sf::RenderWindow* AbstractGame::_window = 0;
@@ -37,8 +39,16 @@ void AbstractGame::initialize() {
 
 void AbstractGame::_initializeWindow() {
 	cout << "Initializing window..." << endl;
-	_window = new sf::RenderWindow( sf::VideoMode(SCREEN_WIDTH,SCREEN_HEIGHT), "My Game!", WINDOW_MODE, sf::ContextSettings(24,8,MSAA,3,3));
+	_window = new sf::RenderWindow( sf::VideoMode(SCREEN_WIDTH,SCREEN_HEIGHT), "Sphinx Dream", WINDOW_MODE, sf::ContextSettings(24,8,MSAA,3,3));
 	_window->setVerticalSyncEnabled(true);
+	_window->clear(sf::Color(0,0,0));
+	sf::Texture* texture = new sf::Texture;
+	texture->loadFromFile(config::MGE_SPRITE_PATH+ "Loading_Screen.png");
+	sf::Sprite* sprite = new sf::Sprite;
+	sprite->setTexture(*texture);
+	sprite->setTextureRect(sf::IntRect(0,0,1920,1080));
+    _window->draw(*sprite);
+	_window->display();
     cout << "Window initialized." << endl << endl;
 }
 

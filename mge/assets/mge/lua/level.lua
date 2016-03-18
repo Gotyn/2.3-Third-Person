@@ -75,6 +75,9 @@ end
 
 function nextPuzzle()
     nextPuzzleIndex = activePuzzle + 1
+    if nextPuzzleIndex == #story then
+        hud.playFinalBookSound = true
+    end
     if nextPuzzleIndex > #story then
         storyCompleted = true
         hud.showFinalMenu = true
@@ -149,6 +152,7 @@ function updateLevel()
 
         if checkProgress() >= solvedThreshold then
             hud.game_state = hud.MODE.BOOK
+            hud.bookSoundPlayed = false
         end
         
         if hud.continueToNextPuzzle == true then
@@ -254,6 +258,16 @@ book_texture_intro = story[1].bookImageIntro
 book_texture_1 = story[1].bookImage
 book_texture_2 = story[2].bookImage
 book_texture_3 = story[3].bookImage
+book_texture_5 = story[4].bookImage
+book_texture_7 = story[5].bookImage
+book_texture_9 = story[6].bookImage
+book_texture_10 = story[7].bookImage
+book_texture_final = story[8].bookImage
+
+--[[book_texture_intro = story[1].bookImageIntro
+book_texture_1 = story[1].bookImage
+book_texture_2 = story[2].bookImage
+book_texture_3 = story[3].bookImage
 book_texture_4 = story[4].bookImage
 book_texture_5 = story[5].bookImage
 book_texture_6 = story[6].bookImage
@@ -262,7 +276,7 @@ book_texture_8 = story[8].bookImage
 book_texture_9 = story[9].bookImage
 book_texture_10 = story[10].bookImage
 book_texture_11 = story[11].bookImage
-book_texture_final = story[12].bookImage
+book_texture_final = story[12].bookImage]]--
 -- TEXTURE NAMES FOR C++ END --
 
 -- PRE-CACHING STORY-WALL IMAGES STARTS HERE
