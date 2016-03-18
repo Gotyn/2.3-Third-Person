@@ -190,9 +190,9 @@ function inintialRiddleDisplay()
     if Hud.displayRiddleAtStart() == true and initialRiddleCheck == false then 
         showHelpBox = false
         showRiddleBox = false
-        hint1_spriteID = 0
-        hint2_spriteID = 0
-        hint3_spriteID = 0
+        hint1_spriteID = 2 --off
+        hint2_spriteID = 4 --off
+        hint3_spriteID = 6 --off
         initialRiddleCheck = true
     end
 end
@@ -246,6 +246,7 @@ function handleStoryBookButtonClick()
             data.story_book_button_alignment, data.story_book_button_scaleX, data.story_book_button_scaleY) == true then
             game_state = MODE.LEVEL
             firstBookShown = true
+			Hud.setBookTexture(activePuzzle)
         end
     else
         if Hud.storyBookButton(data.story_book_button_xOffset, data.story_book_button_yOffset, story_book_button_spriteID, 
