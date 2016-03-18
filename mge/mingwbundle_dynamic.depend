@@ -1997,7 +1997,7 @@
 	"mge/MGEMartijn.h"
 	"mge/LuaGame.hpp"
 
-1458224612 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
+1458233861 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\abstractgame.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<string>
@@ -2093,7 +2093,7 @@
 	<string>
 	<GL/glew.h>
 
-1458215984 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
+1458231166 c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.hpp
 	<vector>
 	<cstring>
 	<string>
@@ -2401,7 +2401,7 @@
 	"mge/core/FPS.hpp"
 	"mge/core/Timer.hpp"
 
-1458215459 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
+1458231166 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\gameobject.cpp
 	<cassert>
 	<iostream>
 	<stdio.h>
@@ -2420,7 +2420,7 @@
 	<stdlib.h>
 	"mge/core/Timer.hpp"
 
-1458216041 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
+1458231166 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\mesh.cpp
 	"mge/core/Mesh.hpp"
 	<iostream>
 	<map>
@@ -2585,13 +2585,13 @@
 	"mge/sphinx/Prop.hpp"
 	"mge/sphinx/GameCamera.hpp"
 
-1458216444 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
+1458247560 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\puzzleblock.cpp
 	"PuzzleBlock.hpp"
 	"mge/core/Timer.hpp"
 	"mge/Materials/LitTextureMaterial.hpp"
 	"mge/util/Utils.hpp"
 
-1458221149 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
+1458233792 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\sphinx\gamecamera.cpp
 	"GameCamera.hpp"
 	"mge/core/World.hpp"
 	"mge/behaviours/RotatingBehaviour.hpp"
@@ -3465,7 +3465,7 @@
 	"mge/core/RenderPipeline.hpp"
 	"ParticleSystem.hpp"
 
-1458222689 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
+1458237319 source:c:\users\jorda_000\documents\github\2.3-third-person\mge\src\mge\core\renderpipeline.cpp
 	<iostream>
 	<GL/glew.h>
 	"config.hpp"

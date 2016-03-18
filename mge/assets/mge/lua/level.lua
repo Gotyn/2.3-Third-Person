@@ -7,7 +7,7 @@ game_state = 1
 storyCompleted = false
 activePuzzle = 1
 activePiece = 1
-solvedThreshold = 1.1
+solvedThreshold = 0.94
 
 ---- initial scene setup ----
 storyWall = Game.StoryWall("Main_wall_OBJ.obj", "1_MainWall_Base_Color.png", "StoryWall")
@@ -15,15 +15,25 @@ storyWall:rotateAroundAxis(240, 0, 1, 0)
 storyWall:scale(0.7, 0.7, 0.7)
 storyWall:setPosition (3.1, 2.3, 3.3)
 
+sideWall = Game.StoryWall("Side_wall_OBJ.obj", "SideWall_Base_Color.png", "SideWall")
+sideWall:rotateAroundAxis(240, 0, 1, 0)
+sideWall:scale(0.7, 0.7, 0.7)
+sideWall:setPosition (3.1, 2.3, 3.3)
+
+backWall = Game.StoryWall("BackScreen.obj", "Backwall_Base_Color.png", "BackWall")
+backWall:rotateAroundAxis(240, 0, 1, 0)
+backWall:scale(0.7, 0.7, 0.7)
+backWall:setPosition (3.1, 2.3, 3.3)
+
 spotlight = Game.getSpotlight()
 camera = Game.getCameraObject()
 
-camera:setPosition(-5.537027, 2.663034, 7.021962)
+camera:setPosition(-5.809093, 5.566962, 6.267358)
 camera:rotateAroundAxis(-23, 0, 1, 0)
 
 spotlight:setIntensity(0.78)
-spotlight:setInnerCone(3)
-spotlight:setOuterCone(13)
+spotlight:setInnerCone(7)
+spotlight:setOuterCone(18)
 spotlight:setColor(0.9, 0.94, 0.62)
 
 ----------------------------
@@ -50,7 +60,7 @@ function selectPuzzle(puzzleIndex)
             puzzleSetActive(counter, true)
             -- camera:setPosition(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3])
             camera:moveTo(story[puzzleIndex].camPosition[1], story[puzzleIndex].camPosition[2], story[puzzleIndex].camPosition[3], 10)
-            spotlight:setPosition(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3])
+            spotlight:moveTo(story[puzzleIndex].lightPosition[1], story[puzzleIndex].lightPosition[2], story[puzzleIndex].lightPosition[3], 7)
         else
             puzzleSetActive(counter, false)
         end
@@ -121,7 +131,7 @@ function updateLevel()
 
         if Game.getKeyDown(KeyCode.P) == true then
             ---- print status calls ----  ==> uncomment a line to print status for different types of objects
-            camera:printStatus()
+            -- camera:printStatus()
             -- story[activePuzzle].blocks[activePiece]:printStatus()
 
             ----------------------------

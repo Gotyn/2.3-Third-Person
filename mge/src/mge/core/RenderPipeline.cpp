@@ -18,7 +18,8 @@ RenderPipeline::RenderPipeline()
 	glEnable( GL_CULL_FACE ); // default GL_BACK
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glClearColor((float)0x2d/0xff, (float)0x6b/0xff, (float)0xce/0xff, 1.0f );
+//	glClearColor((float)0x2d/0xff, (float)0x6b/0xff, (float)0xce/0xff, 1.0f );
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     std::cout << "Render settings loaded." << std::endl << std::endl;
 
