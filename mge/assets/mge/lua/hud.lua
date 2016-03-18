@@ -190,9 +190,9 @@ function inintialRiddleDisplay()
     if Hud.displayRiddleAtStart() == true and initialRiddleCheck == false then 
         showHelpBox = false
         showRiddleBox = false
-        hint1_spriteID = 0
-        hint2_spriteID = 0
-        hint3_spriteID = 0
+        hint1_spriteID = 2 --off
+        hint2_spriteID = 4 --off
+        hint3_spriteID = 6 --off
         initialRiddleCheck = true
     end
 end
